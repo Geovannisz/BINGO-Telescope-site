@@ -28,3 +28,10 @@ Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js)
 16:29:28 [vite] Re-optimizing dependencies because lockfile has changed
 16:29:28 [vite] server restarted.
 [vite] connected.
+17:04:32 Configuration file updated. Restarting...
+[vite] connected.
+17:04:38 [vite] Re-optimizing dependencies because vite config has changed
+17:04:38 [vite] server restarted.
+[vite] connected.
+17:07:44 [watch] public/admin/index.html
+17:13:10 [watch] public/admin/index.html

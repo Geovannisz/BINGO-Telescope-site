@@ -1,3 +1,5 @@
+site_url: "https://geovannisz.github.io/BINGO-Telescope-site"
+
 backend:
   name: git-gateway
   repo: Geovannisz/BINGO-Telescope-site

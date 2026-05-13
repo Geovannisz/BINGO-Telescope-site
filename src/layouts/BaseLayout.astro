@@ -17,7 +17,7 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/BINGO-Telescope-site/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | BINGO Telescope</title>
     <meta name="description" content={description} />
@@ -42,7 +42,7 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
         window.netlifyIdentity.on("init", (user: any) => {
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
+              document.location.href = "/BINGO-Telescope-site/admin/";
             });
           }
         });
