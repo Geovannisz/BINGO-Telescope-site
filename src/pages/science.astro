@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Ciência">
+  <div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Ciência do BINGO</h2>
+        <p class="mt-4 text-lg text-slate-400">
+          Explorando o cosmos através da Rádio Cosmologia.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        <div class="bg-slate-800/40 rounded-2xl border border-slate-700/50 p-8 md:p-12">
+          <div class="md:flex gap-12 items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+               <div class="aspect-video bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden border border-slate-700 relative">
+                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" alt="BAO Visual" class="w-full h-full object-cover opacity-60 mix-blend-screen" />
+                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+               </div>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="text-2xl font-bold text-cyan-400 mb-4">Oscilações Acústicas de Bárions (BAO)</h3>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                No universo primordial, ondas sonoras viajaram pelo plasma denso. Quando o universo esfriou e a luz viajou livremente (formando a Radiação Cósmica de Fundo), essas ondas congelaram, deixando "marcas" na distribuição da matéria.
+              </p>
+              <p class="text-slate-300 leading-relaxed">
+                Essas marcas, chamadas de BAO, servem como uma "régua padrão" cósmica. Medindo o tamanho aparente dessa régua em diferentes épocas do universo, podemos rastrear o histórico da expansão cósmica e estudar as propriedades da Energia Escura.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/40 rounded-2xl border border-slate-700/50 p-8 md:p-12">
+          <div class="md:flex gap-12 items-center flex-row-reverse">
+             <div class="md:w-1/2 mb-8 md:mb-0">
+               <div class="aspect-video bg-slate-900 rounded-xl flex items-center justify-center overflow-hidden border border-slate-700 relative">
+                  <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=1000&auto=format&fit=crop" alt="FRB Visual" class="w-full h-full object-cover opacity-60 mix-blend-screen" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+               </div>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="text-2xl font-bold text-cyan-400 mb-4">Fast Radio Bursts (FRBs)</h3>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                FRBs são pulsos milissegundos incrivelmente brilhantes de ondas de rádio vindos de fora da nossa galáxia. Sua origem exata ainda é um dos maiores mistérios da astrofísica moderna.
+              </p>
+              <p class="text-slate-300 leading-relaxed">
+                O BINGO, com seu vasto campo de visão e alta sensibilidade temporal, será uma excelente ferramenta para detectar e estudar FRBs, ajudando a revelar os processos extremos que os geram e usando-os como sondas do meio intergaláctico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

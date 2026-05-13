@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-gold: #fbbf24;
+  --color-brand-blue-deep: #0f172a;
+}
