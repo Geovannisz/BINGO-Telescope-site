@@ -1,0 +1,47 @@
+backend:
+  name: git-gateway
+  repo: Geovannisz/BINGO-Telescope-site
+  branch: main
+  # Optional: se não quiser que qualquer um no GitHub altere, configure o open_authoring falso (padrão)
+  # O Netlify Identity gerencia os acessos se configurado lá.
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "news"
+    label: "Notícias"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Autor", name: "author", widget: "string", default: "BINGO Team"}
+      - {label: "Imagem de Capa", name: "image", widget: "image", required: false}
+      - {label: "Resumo Curto (1 a 2 linhas)", name: "summary", widget: "string"}
+      - {label: "Corpo da Notícia", name: "body", widget: "markdown"}
+
+  - name: "team"
+    label: "Equipe"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nome", name: "name", widget: "string"}
+      - {label: "Cargo", name: "role", widget: "string"}
+      - {label: "Instituição", name: "institution", widget: "string"}
+      - {label: "Foto", name: "photo", widget: "image", required: false}
+      - {label: "Bio Curta", name: "bio", widget: "text", required: false}
+
+  - name: "publications"
+    label: "Publicações"
+    folder: "src/content/publications"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Autores", name: "authors", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
+      - {label: "Resumo", name: "summary", widget: "text", required: false}

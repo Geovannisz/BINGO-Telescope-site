@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Instrumentação">
+  <div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center mb-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Instrumentação do Telescópio</h2>
+        <p class="mt-4 text-lg text-slate-400">
+          Design engenhoso para observações de ponta.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Arranjo Óptico</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            O BINGO usa um design de dois espelhos (Crossed-Dragone) de trânsito, sem partes móveis, apontado para o sul celestial. Os espelhos primário e secundário têm cerca de 40 metros de diâmetro.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Cornetas (Horns)</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Um arranjo focal de cerca de 28 cornetas corrugadas de feixe duplo cobrirá um campo de visão instantâneo grande. As cornetas são peças gigantes de engenharia mecânica de precisão.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Receptores</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Receptores altamente sensíveis operam em temperatura ambiente, mas utilizam tecnologia de baixo ruído para captar o fraco sinal do HI cosmológico entre 980 e 1260 MHz.
+          </p>
+        </div>
+
+        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors lg:col-span-3">
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Backend Digital</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
+            Sinais analógicos são convertidos digitalmente e processados em tempo real por um poderoso backend baseado em FPGAs (Field Programmable Gate Arrays) ou GPUs, responsável pela correlação e integração dos dados gerando os produtos científicos finais.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
