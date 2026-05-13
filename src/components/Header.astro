@@ -7,15 +7,16 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
 
 const navLinks = [
-  { href: '/BINGO-Telescope-site/', label: t('nav.home') },
-  { href: '/BINGO-Telescope-site/about', label: t('nav.about') },
-  { href: '/BINGO-Telescope-site/science', label: t('nav.science') },
-  { href: '/BINGO-Telescope-site/instrumentation', label: t('nav.instrumentation') },
-  { href: '/BINGO-Telescope-site/team', label: t('nav.team') },
-  { href: '/BINGO-Telescope-site/news', label: t('nav.news') },
-  { href: '/BINGO-Telescope-site/publications', label: t('nav.publications') },
+  { href: `${base}`, label: t('nav.home') },
+  { href: `${base}about`, label: t('nav.about') },
+  { href: `${base}science`, label: t('nav.science') },
+  { href: `${base}instrumentation`, label: t('nav.instrumentation') },
+  { href: `${base}team`, label: t('nav.team') },
+  { href: `${base}news`, label: t('nav.news') },
+  { href: `${base}publications`, label: t('nav.publications') },
 ];
 ---
 
@@ -23,7 +24,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <div class="flex-shrink-0 flex items-center">
-        <a href="/BINGO-Telescope-site/" class="text-2xl font-bold text-white tracking-wider flex items-center gap-2">
+        <a href={base} class="text-2xl font-bold text-white tracking-wider flex items-center gap-2">
           <span class="text-cyan-400">BINGO</span> Telescope
         </a>
       </div>

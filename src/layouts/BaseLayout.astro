@@ -17,7 +17,7 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/BINGO-Telescope-site/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | BINGO Telescope</title>
     <meta name="description" content={description} />
@@ -27,7 +27,7 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Netlify Identity Widget -->
+    <!-- Netlify Identity Widget (required by Decap CMS admin panel) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="bg-slate-900 text-slate-200 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-500/30">
@@ -38,15 +38,12 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
     <Footer />
 
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user: any) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/BINGO-Telescope-site/admin/";
-            });
-          }
-        });
-      }
+      import { onAuthChange, AUTH_EVENTS } from '@netlify/identity';
+      onAuthChange((event) => {
+        if (event === AUTH_EVENTS.LOGIN) {
+          document.location.href = import.meta.env.BASE_URL + 'admin/';
+        }
+      });
     </script>
   </body>
 </html>
