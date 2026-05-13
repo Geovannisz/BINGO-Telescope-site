@@ -1,4 +1,4 @@
-site_url: "https://geovannisz.github.io/BINGO-Telescope-site"
+site_url: "https://glittery-unicorn-e798c2.netlify.app"
 
 backend:
   name: git-gateway

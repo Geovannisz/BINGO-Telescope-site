@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 
 const allNews = await getCollection('news');
 const sortedNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Notícias e Blog">
@@ -24,7 +25,7 @@ const sortedNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.va
             date={post.data.date.toLocaleDateString('pt-BR')}
             summary={post.data.summary}
             image={post.data.image}
-            href={`/BINGO-Telescope-site/news/${post.id}`}
+            href={`${base}news/${post.id}`}
           />
         ))}
       </div>
