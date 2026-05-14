@@ -214,9 +214,6 @@
   padding: 2rem 0;
 }
 .partners-bar img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
   opacity: 0.85;
   transition: opacity 0.3s;
 }
