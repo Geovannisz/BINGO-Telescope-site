@@ -8,8 +8,10 @@ const base = import.meta.env.BASE_URL;
   <div class="partners-bar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-center text-xs text-slate-500 uppercase tracking-wider mb-4 font-medium">Financiadores e Parceiros</p>
-      <div class="flex justify-center items-center">
-        <img src={`${base}images/logos/Regua-de-logos-bco-1536x200.png`} alt="Logos dos parceiros e financiadores do BINGO" class="w-full max-w-6xl h-auto object-contain px-4" />
+      <div class="w-full overflow-x-auto pb-4 custom-scrollbar">
+        <div class="flex justify-center min-w-[1000px] lg:min-w-full">
+          <img src={`${base}images/logos/Regua-de-logos-bco-1536x200.png`} alt="Logos dos parceiros e financiadores do BINGO" class="h-24 md:h-36 lg:h-48 w-auto object-contain" />
+        </div>
       </div>
     </div>
   </div>
