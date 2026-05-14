@@ -17,7 +17,7 @@ const base = import.meta.env.BASE_URL;
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | BINGO Telescope</title>
@@ -40,8 +40,8 @@ const base = import.meta.env.BASE_URL;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Netlify Identity Widget (required by Decap CMS admin panel) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- NOTE: Netlify Identity Widget is loaded only in /admin/index.html, not globally.
+         This avoids CORS errors on public pages while keeping the CMS functional. -->
   </head>
   <body class="bg-cosmic text-slate-200 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-500/30">
     <Header lang={lang} />
@@ -51,16 +51,6 @@ const base = import.meta.env.BASE_URL;
     <Footer />
 
     <script is:inline>
-      // Netlify Identity redirect after login
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", function(user) {
-          if (!user) {
-            window.netlifyIdentity.on("login", function() {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
 
       // Scroll-triggered animations via IntersectionObserver
       document.addEventListener('DOMContentLoaded', function() {

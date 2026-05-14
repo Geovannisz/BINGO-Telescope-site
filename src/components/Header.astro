@@ -36,9 +36,12 @@ const secondaryLinks = [
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href={base} class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-shadow">
-            <span class="text-white font-black text-sm">B</span>
-          </div>
+          <!-- Official BINGO-ABDUS logo (source: cropped-BINGO-ABDUS_logo_sembranco-1-100x85.png) -->
+          <img
+            src={`${base}images/logos/bingo-header-logo.png`}
+            alt="BINGO Logo"
+            class="h-10 w-auto object-contain drop-shadow-lg group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.4)] transition-all duration-300"
+          />
           <span class="text-2xl font-extrabold text-white tracking-wider" style="font-family: 'Outfit', sans-serif;">
             <span class="gradient-text-cyan">BINGO</span><span class="text-slate-400 font-light ml-1">Telescope</span>
           </span>
@@ -110,8 +113,8 @@ const secondaryLinks = [
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-indigo-500/10" style="background: rgba(7, 13, 31, 0.98);">
+  <!-- Mobile Menu (scrollable on small screens, smooth height transition) -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-indigo-500/10 max-h-[calc(100vh-5rem)] overflow-y-auto" style="background: rgba(7, 13, 31, 0.98);">
     <div class="px-4 pt-4 pb-6 space-y-1">
       {mainLinks.map((link) => (
         <a

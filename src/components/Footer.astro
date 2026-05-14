@@ -21,12 +21,16 @@ const base = import.meta.env.BASE_URL;
 
   <div class="relative pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-        <div class="col-span-1 md:col-span-1">
+      <!-- Footer navigation grid: 1 col mobile → 2 cols tablet → 4 cols desktop -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
+        <div class="sm:col-span-2 lg:col-span-1">
           <a href={base} class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 via-indigo-500 to-cyan-600 flex items-center justify-center">
-              <span class="text-white font-black text-xs">B</span>
-            </div>
+            <!-- Official BINGO-ABDUS logo -->
+            <img
+              src={`${base}images/logos/bingo-header-logo.png`}
+              alt="BINGO Logo"
+              class="h-9 w-auto object-contain"
+            />
             <span class="text-xl font-extrabold text-white tracking-wider" style="font-family: 'Outfit', sans-serif;">
               <span class="gradient-text-cyan">BINGO</span><span class="text-slate-400 font-light ml-1">Telescope</span>
             </span>

@@ -484,3 +484,123 @@
 h1, h2, h3 {
   font-family: "Outfit", "Inter", sans-serif;
 }
+
+/* ===== RESPONSIVE UTILITIES ===== */
+
+/* ---------- Mobile-first typography scaling ---------- */
+/* Ensure h1 headings don't overflow on very small screens */
+@media (max-width: 374px) {
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  .stat-number { font-size: 1.75rem; }
+}
+
+/* ---------- Responsive stat numbers ---------- */
+@media (max-width: 639px) {
+  .stat-number {
+    font-size: 2rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  .stat-item {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* ---------- Responsive video container ---------- */
+@media (max-width: 639px) {
+  .video-container {
+    border-radius: 0.75rem;
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+  }
+}
+
+/* ---------- Responsive timeline ---------- */
+@media (max-width: 639px) {
+  .timeline {
+    padding-left: 1.5rem;
+  }
+  .timeline-item {
+    padding-left: 1rem;
+    padding-bottom: 1.5rem;
+  }
+  .timeline-item::before {
+    left: -1.5rem;
+    width: 10px;
+    height: 10px;
+  }
+  .timeline-item .timeline-year {
+    font-size: 0.8rem;
+  }
+  .timeline-item .timeline-text {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+}
+
+/* ---------- Improved touch targets for mobile ---------- */
+@media (max-width: 1023px) {
+  /* Ensure all interactive elements meet 44px minimum touch target */
+  nav a, button, [role="button"] {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ---------- Section padding responsive scaling ---------- */
+@media (max-width: 639px) {
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+  .section-divider {
+    width: 40px;
+    height: 2px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* ---------- Glass card mobile adjustments ---------- */
+@media (max-width: 639px) {
+  .glass-card-glow {
+    border-radius: 1rem;
+  }
+  .subproject-card .card-image {
+    height: 180px;
+  }
+}
+
+/* ---------- Partners bar mobile scroll ---------- */
+@media (max-width: 639px) {
+  .partners-bar {
+    padding: 1.5rem 0;
+  }
+}
+
+/* ---------- Info card mobile ---------- */
+@media (max-width: 639px) {
+  .info-card {
+    border-radius: 1rem;
+  }
+}
+
+/* ---------- Custom scrollbar for partner logos ---------- */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 2px;
+}
+
+/* ---------- Utility: safe-area insets for modern mobile ---------- */
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

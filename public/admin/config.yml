@@ -32,6 +32,7 @@ collections:
       - {label: "Instituição", name: "institution", widget: "string"}
       - {label: "Foto", name: "photo", widget: "image", required: false}
       - {label: "Bio Curta", name: "bio", widget: "text", required: false}
+      - {label: "Categoria", name: "category", widget: "select", options: ["Pesquisador", "Estudante", "Engenheiro", "Colaborador"], default: "Pesquisador"}
 
   - name: "publications"
     label: "Publicações"

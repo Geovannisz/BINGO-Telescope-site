@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL;
   <Hero />
 
   <!-- Features Section — with CMB Planck background -->
-  <section class="py-24 relative overflow-hidden section-bg-image">
+  <section class="py-16 sm:py-24 relative overflow-hidden section-bg-image">
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/cmb_planck-background.png');`}></div>
     <div class="bg-overlay"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- About the Project Section -->
-  <section class="py-24 bg-cosmic relative overflow-hidden">
+  <section class="py-16 sm:py-24 bg-cosmic relative overflow-hidden">
     <div class="starfield"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex gap-16 items-center animate-on-scroll">
@@ -91,7 +91,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Current Phase Section -->
-  <section class="py-20 relative overflow-hidden section-bg-image">
+  <section class="py-14 sm:py-20 relative overflow-hidden section-bg-image">
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/cobe_cmb-background.png'); opacity: 0.06;`}></div>
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%);"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,12 +128,12 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Stats Section — with Planck CMB background -->
-  <section class="py-16 relative overflow-hidden section-bg-image border-y border-indigo-500/10">
+  <section class="py-12 sm:py-16 relative overflow-hidden section-bg-image border-y border-indigo-500/10">
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/1567217436969-Planck_CMB_Rectangular_2k-background.jpg'); opacity: 0.1;`}></div>
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.8) 0%, rgba(7, 13, 31, 0.9) 100%);"></div>
     <div class="starfield"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 animate-on-scroll">
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 animate-on-scroll">
         <div class="stat-item">
           <div class="stat-number">~40m</div>
           <div class="stat-label">Diâmetro dos Espelhos</div>
@@ -147,15 +147,15 @@ const base = import.meta.env.BASE_URL;
           <div class="stat-label">Publicações Científicas</div>
         </div>
         <div class="stat-item flex flex-col items-center">
-          <div class="flex justify-center gap-1.5 mb-2">
-            <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-6 w-auto rounded shadow" title="Brasil" />
-            <img src="https://flagcdn.com/cn.svg" alt="China" class="h-6 w-auto rounded shadow" title="China" />
-            <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-6 w-auto rounded shadow" title="Reino Unido" />
-            <img src="https://flagcdn.com/fr.svg" alt="França" class="h-6 w-auto rounded shadow" title="França" />
-            <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-6 w-auto rounded shadow" title="Holanda" />
-            <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-6 w-auto rounded shadow" title="África do Sul" />
+          <div class="flex justify-center gap-1 sm:gap-1.5 mb-2 flex-wrap">
+            <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-5 sm:h-6 w-auto rounded shadow" title="Brasil" />
+            <img src="https://flagcdn.com/cn.svg" alt="China" class="h-5 sm:h-6 w-auto rounded shadow" title="China" />
+            <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-5 sm:h-6 w-auto rounded shadow" title="Reino Unido" />
+            <img src="https://flagcdn.com/fr.svg" alt="França" class="h-5 sm:h-6 w-auto rounded shadow" title="França" />
+            <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-5 sm:h-6 w-auto rounded shadow" title="Holanda" />
+            <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-5 sm:h-6 w-auto rounded shadow" title="África do Sul" />
           </div>
-          <div class="stat-number text-2xl mt-1">7+</div>
+          <div class="stat-number text-xl sm:text-2xl mt-1">7+</div>
           <div class="stat-label">Países Colaboradores</div>
         </div>
       </div>
@@ -163,7 +163,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- Extensions Section -->
-  <section class="py-24 bg-cosmic-alt">
+  <section class="py-16 sm:py-24 bg-cosmic-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 animate-on-scroll">
         <p class="section-label">Extensões</p>
@@ -214,7 +214,7 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- News Section -->
-  <section class="py-24 bg-cosmic border-t border-indigo-500/10">
+  <section class="py-16 sm:py-24 bg-cosmic border-t border-indigo-500/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-end mb-12 animate-on-scroll">
         <div>
