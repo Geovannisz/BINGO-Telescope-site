@@ -22,20 +22,11 @@
   letter-spacing: 0.04em;
 }
 
-/* Fix the Nasalization "B" which looks like a "3" — add vertical stroke on the left */
+/* The "B" in Nasalization looks like a "3" — use Outfit for just the B character.
+   Outfit's geometric B visually matches Nasalization's futuristic style. */
 .bingo-b {
-  position: relative;
-  display: inline-block;
-}
-.bingo-b::before {
-  content: "";
-  position: absolute;
-  left: 0.01em;
-  top: 0.12em;
-  bottom: 0.05em;
-  width: 0.11em;
-  background: currentColor;
-  border-radius: 0.02em;
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
 }
 
 /* ===== Custom Animations ===== */
