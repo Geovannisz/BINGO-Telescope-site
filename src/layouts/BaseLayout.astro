@@ -35,12 +35,10 @@ const base = import.meta.env.BASE_URL;
     <meta name="twitter:title" content={`${title} | BINGO Telescope`} />
     <meta name="twitter:description" content={description} />
 
-    <!-- Fonts: Inter (body) + Outfit (headings) + Quicksand (BINGO B character) + Nasalization (BINGO branding) -->
+    <!-- Fonts: Inter (body) + Outfit (headings) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Nasalization™ by Typodermic — used exclusively for the "BINGO" brand text -->
-    <link href="https://fonts.cdnfonts.com/css/nasalization" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- NOTE: Netlify Identity Widget is loaded only in /admin/index.html, not globally.
          This avoids CORS errors on public pages while keeping the CMS functional. -->
   </head>
@@ -98,11 +96,7 @@ const base = import.meta.env.BASE_URL;
               if (part === 'BINGO') {
                 var span = document.createElement('span');
                 span.className = 'font-bingo';
-                var bSpan = document.createElement('span');
-                bSpan.className = 'bingo-b';
-                bSpan.textContent = 'B';
-                span.appendChild(bSpan);
-                span.appendChild(document.createTextNode('INGO'));
+                span.textContent = 'BINGO';
                 frag.appendChild(span);
               } else if (part) {
                 frag.appendChild(document.createTextNode(part));

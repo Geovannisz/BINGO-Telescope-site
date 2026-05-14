@@ -13,20 +13,21 @@
   --color-brand-cosmic: #070d1f;
 }
 
+@font-face {
+  font-family: 'Nasalization';
+  src: url('/fonts/nasalization-rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ===== BINGO Brand Font (Nasalization™ by Typodermic) ===== */
 /* Apply to any element containing the word "BINGO" that should use the branded font.
    Usage: <span class="font-bingo">BINGO</span>
    NOTE: Only the word "BINGO" itself should use this font, not surrounding text. */
 .font-bingo {
-  font-family: "Nasalization Rg", "Outfit", sans-serif;
+  font-family: "Nasalization", "Outfit", sans-serif;
   letter-spacing: 0.04em;
-}
-
-/* The "B" in Nasalization looks like a "3" — use Quicksand for just the B character.
-   Quicksand provides a rounded, geometric B that seamlessly matches Nasalization's futuristic aesthetic, but with adjustable weight so it isn't too bold. */
-.bingo-b {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
 }
 
 /* ===== Custom Animations ===== */
