@@ -4,12 +4,22 @@
 @theme {
   --font-sans: "Inter", sans-serif;
   --font-heading: "Outfit", sans-serif;
+  --font-bingo: "Nasalization Rg", "Outfit", sans-serif;
   --color-brand-cyan: #22d3ee;
   --color-brand-indigo: #6366f1;
   --color-brand-amber: #f59e0b;
   --color-brand-gold: #fbbf24;
   --color-brand-blue-deep: #0a1628;
   --color-brand-cosmic: #070d1f;
+}
+
+/* ===== BINGO Brand Font (Nasalization™ by Typodermic) ===== */
+/* Apply to any element containing the word "BINGO" that should use the branded font.
+   Usage: <span class="font-bingo">BINGO</span>
+   NOTE: Only the word "BINGO" itself should use this font, not surrounding text. */
+.font-bingo {
+  font-family: "Nasalization Rg", "Outfit", sans-serif;
+  letter-spacing: 0.04em;
 }
 
 /* ===== Custom Animations ===== */
