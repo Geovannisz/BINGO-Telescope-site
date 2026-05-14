@@ -98,7 +98,11 @@ const base = import.meta.env.BASE_URL;
               if (part === 'BINGO') {
                 var span = document.createElement('span');
                 span.className = 'font-bingo';
-                span.textContent = 'BINGO';
+                var bSpan = document.createElement('span');
+                bSpan.className = 'bingo-b';
+                bSpan.textContent = 'B';
+                span.appendChild(bSpan);
+                span.appendChild(document.createTextNode('INGO'));
                 frag.appendChild(span);
               } else if (part) {
                 frag.appendChild(document.createTextNode(part));
