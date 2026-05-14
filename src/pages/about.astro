@@ -4,40 +4,47 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Sobre o Projeto">
-  <!-- Page Header -->
-  <div class="relative py-20 bg-slate-900 overflow-hidden">
+  <!-- Page Header with WMAP background -->
+  <div class="relative py-24 overflow-hidden section-bg-image" style="min-height: 40vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.15;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Sobre o Projeto <span class="text-cyan-400">BINGO</span></h1>
+        <p class="section-label">Sobre</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Sobre o Projeto <span class="gradient-text-cyan">BINGO</span></h1>
         <p class="mt-6 text-lg leading-8 text-slate-300">
-          O BINGO (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador projetado para explorar as profundezas do universo e buscar respostas para a natureza da Energia Escura.
+          O BINGO (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador projetado para explorar as profundezas do universo e buscar respostas para a natureza da Energia Escura — o componente misterioso que constitui ~68% do conteúdo energético do cosmos.
         </p>
       </div>
     </div>
   </div>
 
-  <div class="bg-slate-900 pb-24">
+  <div class="bg-cosmic pb-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <!-- Image + Text Section -->
+
+      <!-- Mission and Objectives -->
       <div class="md:flex gap-12 items-center mb-20 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5">
             <img src={`${base}images/telescope/BINGO_model_1.jpeg`} alt="Render 3D do Telescópio BINGO" class="w-full h-auto" />
           </div>
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-            <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3" style="font-family: 'Outfit', sans-serif;">
+            <div class="feature-icon">
               <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
             </div>
-            História e Objetivos
+            Missão e Objetivos
           </h2>
           <p class="text-slate-300 leading-relaxed mb-4">
-            Concebido como um projeto colaborativo internacional, o BINGO visa mapear a distribuição de hidrogênio neutro (HI) no universo em frequências de rádio (980 MHz a 1260 MHz). O objetivo primário é detectar Oscilações Acústicas de Bárions (BAO) no universo tardio, fornecendo uma régua padrão independente para medir a expansão do universo.
+            Concebido no início da década de 2010 como um projeto colaborativo internacional, o BINGO visa realizar a <strong class="text-cyan-400">primeira detecção de Oscilações Acústicas de Bárions (BAO) em frequências de rádio</strong>, utilizando a técnica inovadora de Intensity Mapping da linha de emissão de 21cm do hidrogênio neutro (HI).
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Operando na faixa de 980 MHz a 1260 MHz, o BINGO cobrirá o intervalo de redshift 0.127 ≤ z ≤ 0.449 — correspondendo a sinais emitidos quando o universo tinha entre 72% e 88% de sua idade atual. Este mapeamento fornecerá uma <strong class="text-white">régua padrão independente</strong> para medir a expansão do universo.
           </p>
           <p class="text-slate-300 leading-relaxed">
-            Através da técnica de <strong class="text-cyan-400">Intensity Mapping</strong>, o BINGO será capaz de observar a emissão HI coletiva de grandes volumes do universo, sem a necessidade de resolver galáxias individuais, cobrindo o intervalo de redshift 0.127 ≤ z ≤ 0.449.
+            Além da ciência primária de BAO, o BINGO terá capacidade de detectar <strong class="text-cyan-400">Fast Radio Bursts (FRBs)</strong>, monitorar pulsares, e contribuir para estudos de foreground galáctico e física fundamental — tornando-o um dos instrumentos mais versáteis da rádio-astronomia brasileira.
           </p>
         </div>
       </div>
@@ -45,13 +52,13 @@ const base = import.meta.env.BASE_URL;
       <!-- International Consortium -->
       <div class="md:flex gap-12 items-center flex-row-reverse mb-20 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
             <img src={`${base}images/site-construction/BINGO_paraiba.jpg`} alt="Localização do BINGO na Paraíba" class="w-full h-auto" />
           </div>
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-            <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3" style="font-family: 'Outfit', sans-serif;">
+            <div class="feature-icon">
               <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
             </div>
             Consórcio Internacional
@@ -65,74 +72,112 @@ const base = import.meta.env.BASE_URL;
             <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-8 w-auto rounded-sm shadow-md" title="África do Sul" />
           </div>
           <p class="text-slate-300 leading-relaxed mb-4">
-            O projeto é liderado pelo Brasil (USP, INPE, UFCG) em forte parceria com instituições da China, Reino Unido, França, Holanda, África do Sul e outros países, unindo expertise global em astrofísica e engenharia de rádio.
+            O BINGO é liderado pelo <strong class="text-white">Brasil</strong> — com destaque para a Universidade de São Paulo (USP/IF), o Instituto Nacional de Pesquisas Espaciais (INPE) e a Universidade Federal de Campina Grande (UFCG) — em forte parceria com instituições de múltiplos países.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            A <strong class="text-white">China</strong> é parceira crucial, contribuindo com fabricação de componentes estruturais e expertise em engenharia de radiotelescópios. O <strong class="text-white">Reino Unido</strong> (Manchester, UCL), a <strong class="text-white">França</strong> (Observatório de Paris, Nançay) e a <strong class="text-white">Holanda</strong> (ASTRON) contribuem com design de receptores, processamento de sinais e expertise em interferometria.
           </p>
           <p class="text-slate-300 leading-relaxed">
-            O telescópio está sendo construído na Serra do Urubu, em Aguiar, Paraíba — uma região escolhida por sua baixa interferência de radiofrequência (RFI) e latitude ideal para observações do hemisfério sul celestial.
+            O telescópio está sendo construído na <strong class="text-cyan-400">Serra do Urubu, em Aguiar, Paraíba</strong> — uma região escolhida por sua baixíssima interferência de radiofrequência (RFI), latitude ideal (~7°S) para observações do hemisfério sul, e topografia natural que oferece proteção adicional contra ruído eletromagnético.
+          </p>
+        </div>
+      </div>
+
+      <!-- Liderança Científica -->
+      <div class="glass-card-glow p-8 md:p-12 mb-20 animate-on-scroll">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">Liderança Científica</h2>
+          <div class="section-divider"></div>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            O projeto BINGO foi concebido e liderado pelo Prof. <strong class="text-cyan-400">Elcio Abdalla</strong> (IF-USP), um dos mais renomados físicos teóricos e cosmólogos do Brasil, com contribuições fundamentais para a compreensão da energia escura e da estrutura em larga escala do universo.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            A coordenação técnica e instrumental é liderada pelo Prof. <strong class="text-white">Carlos Alexandre Wuensche</strong> (INPE), responsável pelo design dos receptores, cornetas e pelo desenvolvimento do protótipo BINGO-Uirapuru. O consórcio conta com mais de <strong class="text-cyan-400">60 pesquisadores</strong> espalhados por mais de 20 instituições em 7 países.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            O nome da extensão "BINGO-ABDUS" homenageia tanto o acrônimo funcional (Advanced BINGO Dark Universe Studies) quanto o legado do físico paquistanês <strong class="text-white">Abdus Salam</strong>, laureado com o Prêmio Nobel de Física de 1979 por sua contribuição à teoria eletrofraca.
           </p>
         </div>
       </div>
 
       <!-- Timeline -->
       <div class="max-w-3xl mx-auto animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-8 text-center">Linha do Tempo do Projeto</h2>
+        <h2 class="text-2xl font-bold text-white mb-8 text-center" style="font-family: 'Outfit', sans-serif;">Linha do Tempo do Projeto</h2>
         <div class="section-divider"></div>
         <div class="timeline mt-8">
           <div class="timeline-item">
             <div class="timeline-year">2012</div>
-            <div class="timeline-text">Concepção do projeto BINGO como um radiotelescópio dedicado a BAO via Intensity Mapping de 21cm.</div>
+            <div class="timeline-text">Concepção do projeto BINGO como um radiotelescópio dedicado à detecção de BAO via Intensity Mapping de 21cm do hidrogênio neutro. Proposta inicial apresentada pela colaboração Brasil-Reino Unido.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2014</div>
+            <div class="timeline-text">Início dos estudos de viabilidade, seleção do design óptico Crossed-Dragone, e primeiras simulações de performance científica. Definição dos requisitos de sensibilidade para detecção de BAO.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2017</div>
+            <div class="timeline-text">Seleção definitiva do site na Serra do Urubu, Aguiar, Paraíba, após extensas campanhas de medição de RFI. A região demonstrou níveis excepcionalmente baixos de interferência eletromagnética.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2019</div>
-            <div class="timeline-text">Construção e teste do protótipo da corneta corrugada broadband. Publicação do paper de fabricação (Wuensche et al.).</div>
+            <div class="timeline-text">Construção e teste do protótipo da corneta corrugada broadband. Publicação do paper de fabricação (Wuensche et al., 2019). Validação do diagrama de radiação e resposta em frequência.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2020</div>
-            <div class="timeline-text">Instalação do BINGO-Uirapuru na UFCG, Campina Grande, como testbed de receptores e software.</div>
+            <div class="timeline-text">Instalação do BINGO-Uirapuru no campus da UFCG em Campina Grande, como testbed de receptores, backend digital e software de processamento de dados.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2022</div>
-            <div class="timeline-text">Publicação da série de 8 artigos "The BINGO Project" (I–VIII) na Astronomy & Astrophysics, detalhando ciência, instrumento, simulações e previsões cosmológicas.</div>
+            <div class="timeline-text">Publicação da série de 8 artigos "The BINGO Project" (Papers I–VIII) na Astronomy & Astrophysics — detalhando ciência, instrumento, simulações de foreground, calibração, e previsões cosmológicas abrangentes.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2023</div>
-            <div class="timeline-text">Lançamento do consórcio BINGO-ABDUS (Advanced BINGO Dark Universe Studies) em parceria com ASTRON e Nancy Observatory.</div>
+            <div class="timeline-text">Lançamento oficial do consórcio BINGO-ABDUS (Advanced BINGO Dark Universe Studies) em parceria com ASTRON (Holanda) e Observatório de Nançay (França). Início do desenvolvimento de antenas phased-array Vivaldi.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2024</div>
-            <div class="timeline-text">Paper IX — Proposta do BINGO Interferometry System (BIS) para detecção e localização de Fast Radio Bursts.</div>
+            <div class="timeline-text">Paper IX publicado: proposta do BINGO Interferometry System (BIS) com outriggers para detecção e localização de Fast Radio Bursts. Fabricação da estrutura principal na China.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-text">Transporte da estrutura para o Brasil e início da montagem no site de Aguiar. Paper X publicado com previsões cosmológicas atualizadas. Desenvolvimento contínuo de tiles phased-array Vivaldi.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-year">2026</div>
-            <div class="timeline-text">Paper X publicado. Construção avançada do site em Aguiar, Paraíba. Desenvolvimento contínuo de antenas phased-array Vivaldi.</div>
+            <div class="timeline-text">Fase de comissionamento e calibração do telescópio. Primeiras observações científicas previstas. Integração dos receptores e validação do pipeline de processamento de dados.</div>
           </div>
         </div>
       </div>
 
-      <!-- BINGO-ABDUS Section -->
-      <div class="mt-24 pt-16 border-t border-slate-800 animate-on-scroll">
-        <div class="md:flex gap-12 items-center">
-          <div class="md:w-1/2 mb-10 md:mb-0">
-            <h3 class="text-3xl font-bold text-white mb-4">Consórcio <span class="text-cyan-400">BINGO-ABDUS</span></h3>
-            <h4 class="text-lg text-slate-300 font-medium mb-6">Advanced BINGO Dark Universe Studies</h4>
-            <p class="text-slate-400 leading-relaxed mb-4">
-              O Telescópio BINGO iniciou uma nova fase ambiciosa chamada <strong class="text-white">BINGO-ABDUS</strong>. O nome homenageia o físico ganhador do Prêmio Nobel, Abdus Salam.
-            </p>
-            <p class="text-slate-400 leading-relaxed mb-6">
-              Esta expansão planeja operações conjuntas com grandes radiotelescópios mundiais (FAST, Tianlai). O objetivo é aumentar o alcance (observando até z ~ 2.1) e melhorar a sensibilidade para mapeamento BAO, detecção de pulsares, FRBs e investigação de Buracos Negros Primordiais.
-            </p>
-            <a href={`${base}abdus`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-              Saiba mais sobre o BINGO-ABDUS
-              <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-          </div>
-          <div class="md:w-1/2">
-            <div class="aspect-square sm:aspect-video md:aspect-square rounded-2xl overflow-hidden border border-slate-700 relative group bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center p-12">
-              <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-64 h-64 object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-          </div>
+      <!-- Publications Overview -->
+      <div class="mt-24 pt-16 border-t border-indigo-500/10 animate-on-scroll">
+        <div class="text-center mb-12">
+          <p class="section-label">Produção Científica</p>
+          <h2 class="text-2xl font-bold text-white" style="font-family: 'Outfit', sans-serif;">Série de Artigos "The BINGO Project"</h2>
+          <div class="section-divider mt-4"></div>
+          <p class="text-slate-400 max-w-2xl mx-auto">O consórcio publicou uma série abrangente de artigos científicos na revista Astronomy & Astrophysics, documentando todos os aspectos do projeto.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper I</strong> — <span class="text-slate-300">Visão geral do projeto e objetivos científicos</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper II</strong> — <span class="text-slate-300">Design do instrumento e simulações ópticas</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper III</strong> — <span class="text-slate-300">Otimização do plano focal e layout das cornetas</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper IV</strong> — <span class="text-slate-300">Simulações de foreground e component separation</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper V</strong> — <span class="text-slate-300">Efeitos de calibração e sistemáticos</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper VI</strong> — <span class="text-slate-300">Pipeline de map-making e power spectrum</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper VII</strong> — <span class="text-slate-300">Previsões cosmológicas para BAO e w₀/wₐ</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper VIII</strong> — <span class="text-slate-300">Mapeamento de HI e foreground removal</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper IX</strong> — <span class="text-slate-300">BINGO Interferometry System (BIS) para FRBs</span></p></div>
+          <div class="info-card p-4"><p class="text-sm"><strong class="text-cyan-400">Paper X</strong> — <span class="text-slate-300">Previsões atualizadas e BINGO-ABDUS</span></p></div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href={`${base}publications`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+            Ver todas as publicações
+            <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
         </div>
       </div>
+
     </div>
   </div>
 </BaseLayout>

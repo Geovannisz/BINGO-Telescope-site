@@ -4,70 +4,133 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Divulgação Científica">
-  <div class="relative py-20 bg-slate-900 overflow-hidden">
+  <div class="relative py-24 overflow-hidden section-bg-image" style="min-height: 40vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/galaxy-background.jpg'); opacity: 0.1;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Divulgação <span class="text-amber-400">Científica</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia.</p>
+        <p class="section-label">Extensão</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Divulgação <span class="text-amber-400">Científica</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia na Paraíba e além.</p>
       </div>
     </div>
   </div>
 
-  <div class="bg-slate-900 pb-24">
+  <div class="bg-cosmic pb-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
       <!-- Esperança no Espaço -->
-      <div class="glass-card p-8 md:p-12 mb-16 animate-on-scroll">
+      <div class="glass-card-glow p-8 md:p-12 mb-16 animate-on-scroll">
         <div class="md:flex gap-12 items-center">
           <div class="md:w-1/2 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-slate-700/50">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 mb-4">
               <img src={`${base}images/outreach/outreach-esperanca-no-espaco.jpeg`} alt="Projeto Esperança no Espaço — estudante usando telescópio artesanal" class="w-full h-auto" />
             </div>
-            <div class="mt-4 rounded-xl overflow-hidden border border-slate-700/30 bg-white/5 p-4 flex items-center justify-center">
+            <div class="rounded-xl overflow-hidden border border-amber-500/15 bg-white/5 p-4 flex items-center justify-center">
               <img src={`${base}images/outreach/projeto-esperanca-no-espaco-1024x320.png`} alt="Logo do Projeto Esperança no Espaço" class="max-h-32 w-auto object-contain" />
             </div>
           </div>
           <div class="md:w-1/2">
-            <h2 class="text-3xl font-bold text-white mb-2">BINGO: <span class="text-amber-400">Esperança no Espaço</span></h2>
-            <p class="text-slate-500 text-sm mb-6 uppercase tracking-wider">Projeto de Extensão e Inclusão Social</p>
+            <h2 class="text-3xl font-bold text-white mb-2" style="font-family: 'Outfit', sans-serif;">BINGO: <span class="text-amber-400">Esperança no Espaço</span></h2>
+            <p class="text-slate-500 text-sm mb-6 uppercase tracking-wider font-medium">Projeto de Extensão e Inclusão Social</p>
             <p class="text-slate-300 leading-relaxed mb-4">
-              O <strong class="text-white">Esperança no Espaço</strong> é uma iniciativa de divulgação científica e inclusão social ligada ao projeto BINGO. O programa facilita a construção de telescópios por detentos no Presídio Público de Esperança, na Paraíba, utilizando materiais reciclados como canos de PVC e cabos de vassoura.
+              O <strong class="text-white">Esperança no Espaço</strong> é uma das iniciativas mais marcantes do projeto BINGO — um programa que une divulgação científica, inclusão social e ressocialização. O programa facilita a construção de telescópios artesanais por internos do <strong class="text-amber-400">Presídio Público de Esperança</strong>, na Paraíba, utilizando materiais reciclados como canos de PVC, lentes de óculos e cabos de vassoura.
             </p>
             <p class="text-slate-300 leading-relaxed mb-4">
-              O projeto promove a popularização da ciência através da astronomia, ao mesmo tempo que contribui para a ressocialização dos internos, conectando-os com os esforços científicos e educacionais mais amplos do projeto BINGO.
+              A iniciativa nasceu da convicção de que a astronomia, por sua capacidade de inspirar admiração e curiosidade, pode ser uma poderosa ferramenta de transformação social. Os participantes aprendem conceitos de óptica, mecânica e astronomia enquanto constroem instrumentos funcionais que permitem observar a Lua, planetas e estrelas.
             </p>
             <p class="text-slate-300 leading-relaxed">
-              As atividades incluem oficinas de construção de telescópios, observações astronômicas guiadas, e palestras sobre o universo e o papel do BINGO na ciência brasileira.
+              O projeto foi reconhecido pela mídia nacional e internacional como um exemplo inovador de como a ciência pode contribuir para a dignidade humana e a educação em contextos de vulnerabilidade. Os telescópios construídos são doados para escolas públicas da região, multiplicando o impacto educacional.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Educational Activities -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <div class="glass-card p-8 animate-on-scroll">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
+      <!-- Activities Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="glass-card-glow p-8 animate-on-scroll">
+          <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           </div>
           <h3 class="text-lg font-bold text-white mb-2">Educação e Capacitação</h3>
           <p class="text-slate-400 text-sm leading-relaxed">
-            Formação de estudantes de graduação e pós-graduação em rádio-astronomia, cosmologia observacional e engenharia de radiofrequência, tanto nas universidades parceiras quanto nas comunidades locais na Paraíba.
+            Formação de estudantes de graduação e pós-graduação em rádio-astronomia, cosmologia observacional e engenharia de radiofrequência. O BINGO é um laboratório vivo para mais de 30 alunos em universidades brasileiras, desenvolvendo teses e dissertações sobre todos os aspectos do projeto.
           </p>
         </div>
-        <div class="glass-card p-8 animate-on-scroll">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
+        <div class="glass-card-glow p-8 animate-on-scroll">
+          <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           </div>
           <h3 class="text-lg font-bold text-white mb-2">Impacto Comunitário</h3>
           <p class="text-slate-400 text-sm leading-relaxed">
-            A construção do BINGO em Aguiar traz desenvolvimento tecnológico e econômico para a região, incluindo infraestrutura de internet, capacitação técnica local e turismo científico.
+            A construção do BINGO em Aguiar traz desenvolvimento tecnológico e econômico para uma das regiões mais carentes do Brasil. A instalação de infraestrutura de telecomunicações e internet, capacitação técnica de trabalhadores locais, e o potencial de turismo científico estão transformando a região.
           </p>
+        </div>
+        <div class="glass-card-glow p-8 animate-on-scroll">
+          <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
+            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2m5 2V2m5 2V2M3 20h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2zM3 10h18"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Palestras e Workshops</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            A equipe BINGO organiza regularmente palestras em escolas, universidades e eventos públicos sobre astronomia, cosmologia e o projeto BINGO. Workshops hands-on de construção de radiotelescópios simples e observações astronômicas guiadas complementam as atividades educacionais.
+          </p>
+        </div>
+      </div>
+
+      <!-- Social Impact -->
+      <div class="glass-card-glow p-8 md:p-12 mb-16 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Impacto Social do Projeto BINGO</h2>
+        <div class="section-divider"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-amber-400 mb-3">Na Comunidade de Aguiar</h3>
+            <ul class="space-y-3 text-slate-300 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Instalação de internet banda larga na zona rural, beneficiando centenas de famílias</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Geração de empregos locais na construção e futura operação do telescópio</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Capacitação técnica de trabalhadores locais em construção civil e elétrica</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Potencial de turismo científico, atraindo visitantes para a região</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-amber-400 mb-3">Na Educação e Ciência</h3>
+            <ul class="space-y-3 text-slate-300 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Mais de 30 alunos de pós-graduação com teses e dissertações vinculadas ao BINGO</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>10+ artigos publicados em revistas internacionais de alto impacto (A&A)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Parcerias com universidades de 7+ países, promovendo intercâmbio científico</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-amber-400 mt-1">•</span>
+                <span>Desenvolvimento de tecnologia nacional em rádio-astronomia e instrumentação</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
       <!-- Video presentation -->
       <div class="max-w-3xl mx-auto animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-6 text-center">Conheça o Projeto BINGO</h2>
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Conheça o Projeto BINGO</h2>
         <div class="section-divider"></div>
         <div class="video-container animate-glow mt-8">
           <iframe

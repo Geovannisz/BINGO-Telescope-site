@@ -4,32 +4,41 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Instrumentação">
-  <div class="relative py-20 bg-slate-900 overflow-hidden">
+  <!-- Page Header with WMAP CMB background -->
+  <div class="relative py-24 overflow-hidden section-bg-image" style="min-height: 40vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/wmap_cmb-background.png'); opacity: 0.12;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Instrumentação do <span class="text-cyan-400">Telescópio</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Design engenhoso para observações de ponta em rádio-cosmologia.</p>
+        <p class="section-label">Instrumentação</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Instrumentação do <span class="gradient-text-cyan">Telescópio</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Design engenhoso com dois espelhos de ~40m, 28 cornetas corrugadas e receptores de última geração — projetado para detectar o fraco sinal cosmológico do hidrogênio neutro com precisão sem precedentes.</p>
       </div>
     </div>
   </div>
 
-  <div class="bg-slate-900 pb-24">
+  <div class="bg-cosmic pb-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
       <!-- Optical Design -->
       <div class="md:flex gap-12 items-center mb-16 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
             <img src={`${base}images/telescope/BINGO_model_2.jpeg`} alt="BINGO - Arranjo óptico Crossed-Dragone" class="w-full h-auto" />
           </div>
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-cyan-400 mb-4">Arranjo Óptico Crossed-Dragone</h2>
+          <p class="section-label text-left">Design Óptico</p>
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Arranjo Óptico <span class="gradient-text-cyan">Crossed-Dragone</span></h2>
           <p class="text-slate-300 leading-relaxed mb-4">
-            O BINGO usa um design de dois espelhos (Crossed-Dragone) de trânsito, sem partes móveis, apontado para o sul celestial. Os espelhos primário e secundário têm cerca de 40 metros de diâmetro.
+            O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de ~40m com um espelho secundário de ~35.6m dispostos em ângulo cruzado. Esta configuração foi escolhida por produzir um campo de visão amplo com distorções mínimas.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            O telescópio opera em modo de <strong class="text-white">trânsito</strong>, sem partes móveis — ele fica fixo, apontado para uma faixa do céu (declinação ~-15°), e varre o céu conforme a Terra gira. Isso simplifica enormemente a engenharia mecânica, elimina vibrações e instabilidades de apontamento, e garante observações extremamente estáveis.
           </p>
           <p class="text-slate-300 leading-relaxed">
-            Esta configuração minimiza lóbulos laterais e oferece um campo de visão amplo, ideal para surveys de intensity mapping. O telescópio varre o céu à medida que a Terra gira.
+            A configuração crossed-dragone minimiza lóbulos laterais e spillover (radiação que escapa do plano focal), que são fontes críticas de contaminação sistemática para mapeamento de HI cosmológico, onde o sinal desejado é ~10⁵ vezes mais fraco que os foregrounds galácticos.
           </p>
         </div>
       </div>
@@ -37,35 +46,43 @@ const base = import.meta.env.BASE_URL;
       <!-- Horns -->
       <div class="md:flex gap-12 items-center flex-row-reverse mb-16 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
             <img src={`${base}images/horns/horns.png`} alt="Arranjo focal de cornetas do BINGO" class="w-full h-auto" />
           </div>
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-cyan-400 mb-4">Cornetas Corrugadas (Horns)</h2>
+          <p class="section-label text-left">Receptores</p>
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Cornetas Corrugadas <span class="gradient-text-cyan">(Horns)</span></h2>
           <p class="text-slate-300 leading-relaxed mb-4">
-            Um arranjo focal de 28 cornetas corrugadas de feixe duplo cobrirá um campo de visão instantâneo grande. As cornetas são peças gigantes de engenharia mecânica de precisão, otimizadas para 960–1280 MHz.
+            O plano focal do BINGO acomodará um arranjo de <strong class="text-cyan-400">28 cornetas corrugadas</strong> de feixe duplo, organizadas em 4 colunas × 7 linhas. Cada corneta é uma peça de engenharia de precisão, com corrugações internas cuidadosamente projetadas para produzir um diagrama de radiação altamente simétrico e com baixíssima polarização cruzada.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            As cornetas foram otimizadas para operar na banda de <strong class="text-white">960–1280 MHz</strong>, com uma largura de banda de ~30% — um desafio significativo de engenharia para cornetas broadband. O protótipo foi fabricado e testado extensivamente, com resultados excelentes publicados em Wuensche et al. (2019).
           </p>
           <p class="text-slate-300 leading-relaxed">
-            O protótipo da corneta foi fabricado e testado extensivamente, com resultados publicados em Wuensche et al. (2019). Cada corneta é projetada para mínima contaminação cruzada de polarização.
+            O campo de visão instantâneo do arranjo é de aproximadamente <strong class="text-cyan-400">14.75° × 6°</strong>, permitindo cobrir uma faixa substancial do céu a cada passagem sideral. A disposição das cornetas foi simulada extensivamente (Paper III) para maximizar a cobertura do plano focal e minimizar spillover e cross-talk entre elementos adjacentes.
           </p>
         </div>
       </div>
 
       <!-- Horn Structure Diagram -->
       <div class="mb-16 animate-on-scroll">
-        <div class="glass-card p-8">
-          <h2 class="text-2xl font-bold text-cyan-400 mb-6 text-center">Torre de Antenas</h2>
+        <div class="glass-card-glow p-8">
+          <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Torre de Antenas</h2>
+          <div class="section-divider"></div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="rounded-xl overflow-hidden border border-slate-700/30">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
               <img src={`${base}images/horns/Horn structure.png`} alt="Diagrama da torre de antenas com 28 cornetas" class="w-full h-auto bg-white/90 p-4" />
             </div>
             <div>
               <p class="text-slate-300 leading-relaxed mb-4">
-                A torre de antenas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta.
+                A torre de antenas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta com precisão milimétrica de posicionamento.
+              </p>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                A disposição foi extensivamente simulada (Paper III) para maximizar a cobertura do plano focal enquanto minimiza spillover e cross-talk entre as cornetas adjacentes. A separação entre cornetas foi otimizada para produzir feixes que se sobrepõem minimamente, garantindo cobertura uniforme da faixa observada.
               </p>
               <p class="text-slate-300 leading-relaxed">
-                A disposição foi simulada extensivamente (Paper III) para maximizar a cobertura do plano focal e minimizar spillover e cross-talk entre as cornetas adjacentes.
+                Cada corneta alimenta um receptor de polarização dupla (ortogonal), fornecendo 56 canais de dados independentes para o pipeline de processamento.
               </p>
             </div>
           </div>
@@ -74,41 +91,65 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Phased Array & Receivers -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <div class="glass-card p-8 animate-on-scroll">
-          <div class="rounded-xl overflow-hidden border border-slate-700/30 mb-6">
+        <div class="glass-card-glow p-8 animate-on-scroll">
+          <div class="rounded-xl overflow-hidden border border-indigo-500/15 mb-6">
             <img src={`${base}images/phased-array/prototype_white_background.png`} alt="Protótipo de antena phased-array Vivaldi" class="w-full h-48 object-contain bg-white p-2" />
           </div>
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Antenas Phased-Array Vivaldi</h3>
+          <p class="section-label text-left">BINGO-ABDUS</p>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Antenas Phased-Array Vivaldi</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+            Para a fase BINGO-ABDUS, está em desenvolvimento um sistema de <strong class="text-cyan-400">antenas phased-array</strong> baseadas em elementos Vivaldi (tapered slot antennas). Estas antenas são uma alternativa compacta e escalável às cornetas tradicionais, permitindo formar múltiplos feixes simultaneamente por beamforming digital.
+          </p>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Desenvolvimento de tiles phased-array com antenas Vivaldi para a fase BINGO-ABDUS. Os protótipos são testados em câmara anecóica para validação dos padrões de radiação via simulações HFSS e OSKAR.
+            Os protótipos de tiles 4×4 são fabricados em PCB (printed circuit board) e validados comparando medições experimentais em câmara anecóica com simulações eletromagnéticas via HFSS e OSKAR. O design Vivaldi oferece largura de banda instantânea superior a 3:1 (300–1400 MHz), cobrindo toda a faixa expandida do BINGO-ABDUS.
           </p>
         </div>
-        <div class="glass-card p-8 animate-on-scroll">
-          <div class="rounded-xl overflow-hidden border border-slate-700/30 mb-6">
+        <div class="glass-card-glow p-8 animate-on-scroll">
+          <div class="rounded-xl overflow-hidden border border-indigo-500/15 mb-6">
             <img src={`${base}images/phased-array/tile_in_measure_room_2.png`} alt="Tile Vivaldi em câmara anecóica" class="w-full h-48 object-cover" />
           </div>
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Câmara Anecóica e Medições</h3>
+          <p class="section-label text-left">Validação</p>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Câmara Anecóica e Medições</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+            Os tiles são caracterizados em câmara anecóica para validar o diagrama de radiação (beam pattern), ganho, eficiência de abertura, e resposta em frequência, comparando medições experimentais com simulações eletromagnéticas full-wave.
+          </p>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Os tiles são caracterizados em câmara anecóica para validar o diagrama de radiação (beam pattern), ganho, e resposta em frequência, comparando medições experimentais com simulações eletromagnéticas.
+            O processo de validação inclui medição de padrão copolar e cross-polar em múltiplas frequências, análise de acoplamento mútuo entre elementos do array, e verificação da capacidade de steering do feixe por beamforming digital — essencial para a capacidade multi-beam do BINGO-ABDUS.
           </p>
         </div>
       </div>
 
-      <!-- Backend and Receivers -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-on-scroll">
-        <div class="glass-card p-8">
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Receptores</h3>
+      <!-- Backend, Receivers, and RFI -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
+        <div class="glass-card-glow p-8">
+          <div class="feature-icon mb-4">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Receptores</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Receptores altamente sensíveis operam em temperatura ambiente, mas utilizam tecnologia de baixo ruído para captar o fraco sinal do HI cosmológico entre 980 e 1260 MHz. Cada receptor processa sinais de polarização dupla.
+            Receptores de alta sensibilidade operam em temperatura ambiente, utilizando LNAs (Low Noise Amplifiers) com tecnologia de baixo ruído para captar o fraco sinal do HI cosmológico. Cada receptor processa sinais de polarização dupla, cobrindo a banda 980–1260 MHz com temperatura de sistema (Tsys) abaixo de 70K.
           </p>
         </div>
-        <div class="glass-card p-8">
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Backend Digital</h3>
+        <div class="glass-card-glow p-8">
+          <div class="feature-icon mb-4">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Backend Digital</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Sinais analógicos são convertidos digitalmente e processados em tempo real por um backend baseado em FPGAs ou GPUs, responsável pela correlação e integração dos dados gerando os produtos científicos finais.
+            O backend digital converte e processa sinais em tempo real. Baseado em arquitetura FPGA/GPU, o sistema realiza digitalização a alta taxa de amostragem, channelization via polyphase filterbank, correlação e integração temporal. Para FRBs, o backend realizará detecção de transientes em tempo real via algoritmos de dedispersion.
+          </p>
+        </div>
+        <div class="glass-card-glow p-8">
+          <div class="feature-icon mb-4">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Mitigação de RFI</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            A interferência de radiofrequência (RFI) é o maior desafio técnico para detecção de HI cosmológico. Além da localização remota em Aguiar, o BINGO emprega filtros de hardware, algoritmos de RFI flagging em tempo real, e técnicas de subspace projection para remover contaminação sem distorcer o sinal cosmológico.
           </p>
         </div>
       </div>
+
     </div>
   </div>
 </BaseLayout>

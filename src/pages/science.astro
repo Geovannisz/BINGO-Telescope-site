@@ -4,103 +4,226 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Ciência">
-  <div class="relative py-20 bg-slate-900 overflow-hidden">
+  <!-- Page Header with BAO background -->
+  <div class="relative py-24 overflow-hidden section-bg-image" style="min-height: 40vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg'); opacity: 0.2;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.4) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Ciência do <span class="text-cyan-400">BINGO</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Explorando o cosmos através da Rádio Cosmologia e do mapeamento de intensidade do hidrogênio neutro.</p>
+        <p class="section-label">Ciência</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Ciência do <span class="gradient-text-cyan">BINGO</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Explorando o cosmos através da Rádio Cosmologia, do mapeamento de intensidade do hidrogênio neutro, e da detecção de fenômenos transientes como Fast Radio Bursts.</p>
       </div>
     </div>
   </div>
 
-  <div class="bg-slate-900 pb-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8 space-y-16">
-      <!-- BAO Section -->
-      <div class="glass-card p-8 md:p-12 animate-on-scroll">
+  <div class="bg-cosmic pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 space-y-20">
+
+      <!-- ==================== BAO SECTION ==================== -->
+      <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
         <div class="md:flex gap-12 items-center">
           <div class="md:w-1/2 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-slate-700">
-              <img src={`${base}images/telescope/BINGO_model_1.jpeg`} alt="Telescópio BINGO" class="w-full h-auto" />
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
+              <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Visualização de Oscilações Acústicas de Bárions" class="w-full h-auto" />
             </div>
           </div>
           <div class="md:w-1/2">
-            <h2 class="text-2xl font-bold text-cyan-400 mb-4">Oscilações Acústicas de Bárions (BAO)</h2>
+            <p class="section-label text-left">Cosmologia</p>
+            <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Oscilações Acústicas de <span class="gradient-text-cyan">Bárions</span> (BAO)</h2>
             <p class="text-slate-300 leading-relaxed mb-4">
-              No universo primordial, ondas sonoras viajaram pelo plasma denso. Quando o universo esfriou e a luz viajou livremente (formando a Radiação Cósmica de Fundo), essas ondas congelaram, deixando "marcas" na distribuição da matéria.
+              No universo primordial, menos de 380.000 anos após o Big Bang, toda a matéria e radiação estavam unidas em um plasma extremamente quente e denso. Neste plasma, a gravidade puxava a matéria para dentro, enquanto a pressão da radiação a empurrava para fora — criando <strong class="text-cyan-400">ondas sonoras esféricas</strong> que viajavam a velocidades próximas à da luz.
             </p>
             <p class="text-slate-300 leading-relaxed mb-4">
-              Essas marcas, chamadas de BAO, servem como uma "régua padrão" cósmica (~150 Mpc). Medindo o tamanho aparente dessa régua em diferentes épocas, podemos rastrear o histórico da expansão cósmica e estudar as propriedades da Energia Escura.
+              Quando o universo esfriou o suficiente para que os átomos se formassem (a chamada <strong class="text-white">era da recombinação</strong>), essas ondas "congelaram" instantaneamente. A distância que elas percorreram — aproximadamente <strong class="text-cyan-400">~150 Megaparsecs (490 milhões de anos-luz)</strong> — ficou permanentemente gravada na distribuição da matéria, como rugas no tecido do cosmos.
             </p>
             <p class="text-slate-300 leading-relaxed">
-              O BINGO usa a técnica de <strong class="text-cyan-400">Intensity Mapping</strong> para medir a emissão coletiva da linha de 21cm do hidrogênio neutro, sem resolver galáxias individuais, cobrindo redshifts de 0.127 a 0.449.
+              Esta distância funciona como uma <strong class="text-white">"régua padrão" cósmica</strong>: conhecemos seu tamanho real, então ao medir como ela aparenta em diferentes épocas cósmicas, podemos calcular com precisão a taxa de expansão do universo e as propriedades da Energia Escura que a acelera.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- 21cm / Intensity Mapping -->
-      <div class="glass-card p-8 md:p-12 animate-on-scroll">
+      <!-- ==================== 21cm / INTENSITY MAPPING ==================== -->
+      <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
         <div class="md:flex gap-12 items-center flex-row-reverse">
           <div class="md:w-1/2 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-slate-700">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
               <img src={`${base}images/horns/horns2.png`} alt="Cornetas do BINGO" class="w-full h-auto" />
             </div>
           </div>
           <div class="md:w-1/2">
-            <h2 class="text-2xl font-bold text-cyan-400 mb-4">Mapeamento de Intensidade de 21cm</h2>
+            <p class="section-label text-left">Técnica Observacional</p>
+            <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Mapeamento de Intensidade de <span class="gradient-text-cyan">21cm</span></h2>
             <p class="text-slate-300 leading-relaxed mb-4">
-              O hidrogênio neutro (HI), o elemento mais abundante do universo, emite radiação na frequência de 1420 MHz (21cm). Devido à expansão do universo, essa linha é deslocada para frequências menores (redshift), permitindo mapear a distribuição 3D da matéria.
+              O <strong class="text-white">hidrogênio neutro (HI)</strong>, o elemento mais abundante do universo, emite naturalmente radiação eletromagnética na frequência de 1420 MHz — correspondendo a um comprimento de onda de 21 centímetros. Esta emissão ocorre quando o spin do elétron "inverte" em relação ao spin do próton, liberando um fóton de rádio.
             </p>
             <p class="text-slate-300 leading-relaxed mb-4">
-              Ao contrário de surveys ópticos que contam galáxias individualmente, o Intensity Mapping mede a intensidade total da emissão de HI em grandes voxels, sendo muito mais eficiente para cobrir grandes volumes cosmológicos rapidamente.
+              Devido à expansão cósmica, sinais de HI emitidos em épocas mais remotas do universo chegam até nós com frequências menores (deslocamento para o vermelho ou <em>redshift</em>). Ao medir a frequência exata do sinal recebido, sabemos de que distância/época ele veio — permitindo criar um <strong class="text-cyan-400">mapa tridimensional</strong> da matéria no universo.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              A técnica de <strong class="text-cyan-400">Intensity Mapping</strong> é uma inovação fundamental: ao contrário de surveys ópticos que identificam galáxias individualmente (processo lento e caro), o Intensity Mapping mede a intensidade <em>total</em> da emissão de HI em grandes volumes (voxels) de uma vez. Isso permite cobrir enormes volumes cosmológicos muito mais rapidamente.
             </p>
             <p class="text-slate-300 leading-relaxed">
-              O BINGO opera na banda 980–1260 MHz, correspondendo a sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual.
+              O BINGO opera na banda <strong class="text-white">980–1260 MHz</strong>, detectando sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual (redshift <strong class="text-cyan-400">0.127 ≤ z ≤ 0.449</strong>).
             </p>
           </div>
         </div>
       </div>
 
-      <!-- FRBs -->
-      <div class="glass-card p-8 md:p-12 animate-on-scroll">
-        <div class="md:flex gap-12 items-center">
-          <div class="md:w-1/2 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-slate-700">
-              <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="BINGO Telescope" class="w-full h-auto" />
+      <!-- ==================== FRBs — MASSIVE EXPANSION ==================== -->
+      <div class="relative overflow-hidden rounded-2xl border border-indigo-500/15 animate-on-scroll">
+        <!-- FRB Header -->
+        <div class="relative p-8 md:p-12 overflow-hidden" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(7, 13, 31, 0.95) 100%);">
+          <div class="starfield"></div>
+          <div class="relative z-10">
+            <p class="section-label text-left">Astrofísica de Alta Energia</p>
+            <h2 class="text-3xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Fast Radio Bursts <span class="gradient-text">(FRBs)</span></h2>
+            <p class="text-slate-300 leading-relaxed max-w-3xl">
+              Fast Radio Bursts são um dos maiores mistérios da astronomia moderna. São pulsos extremamente intensos e breves de ondas de rádio — durando apenas milissegundos — que liberam tanta energia quanto o Sol emite em vários dias. Detectadas pela primeira vez em 2007, as FRBs vêm de bilhões de anos-luz de distância e sua origem ainda é debatida.
+            </p>
+          </div>
+        </div>
+
+        <!-- FRB Content Grid -->
+        <div class="p-8 md:p-12" style="background: rgba(7, 13, 31, 0.95);">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Discovery -->
+            <div class="info-card p-6">
+              <div class="feature-icon mb-4">
+                <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-3">A Descoberta — Lorimer Burst (2007)</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                O primeiro FRB foi descoberto por Duncan Lorimer e David Narkevic em 2007, analisando dados de arquivo do radiotelescópio Parkes, na Austrália. O sinal, batizado de "Lorimer Burst" (FRB 010724), durou apenas 5 milissegundos, mas sua medida de dispersão era tão alta que só poderia ter vindo de uma distância cosmológica — a centenas de milhões de anos-luz.
+              </p>
+            </div>
+
+            <!-- Types -->
+            <div class="info-card p-6">
+              <div class="feature-icon mb-4">
+                <svg class="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-3">Repeaters vs. One-offs</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                A maioria dos FRBs são eventos únicos — um pulso brilhante que nunca se repete. No entanto, desde a descoberta do FRB 121102 em 2012 (o primeiro "repeater"), sabemos que algumas fontes emitem centenas ou milhares de pulsos repetidamente. Curiosamente, o FRB 180916 repete em ciclos de 16,35 dias, sugerindo um mecanismo orbital ou precesso.
+              </p>
+            </div>
+
+            <!-- Magnetars -->
+            <div class="info-card p-6">
+              <div class="feature-icon mb-4">
+                <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-3">Magnetares — A Evidência de 2020</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Em abril de 2020, astrônomos detectaram um FRB vindo do magnetar SGR 1935+2154, <em>dentro da nossa própria galáxia</em> — a primeira vez que se observou um FRB de fonte conhecida. Magnetares são estrelas de nêutrons com campos magnéticos trilhões de vezes mais fortes que o da Terra. Quando o stress no campo magnético se acumula e "estala", ele pode liberar pulsos de rádio enormes em milissegundos.
+              </p>
+            </div>
+
+            <!-- Cosmological Probes -->
+            <div class="info-card p-6">
+              <div class="feature-icon mb-4">
+                <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-3">FRBs como Sondas Cosmológicas</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                As FRBs não são apenas curiosidades astrofísicas — são poderosas ferramentas cosmológicas. Ao atravessar o espaço intergaláctico, o pulso de rádio é dispersado pelo gás ionizado (plasma) ao longo do caminho. A <strong class="text-white">medida de dispersão (DM)</strong> do pulso revela a quantidade total de matéria bariônica entre nós e a fonte, mapeando o "missing baryon problem" do universo.
+              </p>
             </div>
           </div>
-          <div class="md:w-1/2">
-            <h2 class="text-2xl font-bold text-cyan-400 mb-4">Fast Radio Bursts (FRBs)</h2>
-            <p class="text-slate-300 leading-relaxed mb-4">
-              FRBs são pulsos de milissegundos incrivelmente brilhantes de ondas de rádio vindos de fora da nossa galáxia. Sua origem exata ainda é um dos maiores mistérios da astrofísica moderna.
-            </p>
-            <p class="text-slate-300 leading-relaxed mb-4">
-              O BINGO, com seu vasto campo de visão e alta sensibilidade temporal, será uma excelente ferramenta para detectar FRBs. Com o <strong class="text-cyan-400">BINGO Interferometry System (BIS)</strong> — proposto no Paper IX — utilizando outriggers de 4–6m, prevê-se a localização de ~23 FRBs por ano.
-            </p>
-            <p class="text-slate-300 leading-relaxed">
-              As FRBs também podem ser usadas como sondas cosmológicas, pois sua dispersão revela informações sobre o meio intergaláctico e a distribuição de bárions no universo.
-            </p>
+
+          <!-- BINGO and FRBs -->
+          <div class="glass-card p-8 md:flex gap-12 items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+              <div class="rounded-xl overflow-hidden border border-indigo-500/15">
+                <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="BINGO Telescope para detecção de FRBs" class="w-full h-auto" />
+              </div>
+            </div>
+            <div class="md:w-1/2">
+              <h3 class="text-xl font-bold text-white mb-4">O Papel do BINGO na Detecção de FRBs</h3>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                Com seu vasto campo de visão (~14.75° × 6°) e alta sensibilidade temporal, o BINGO é uma excelente plataforma para detectar FRBs. O <strong class="text-cyan-400">BINGO Interferometry System (BIS)</strong>, proposto no Paper IX, utilizará uma rede de outriggers — antenas menores de 4–6 metros espalhadas geograficamente — para localizar precisamente as fontes de FRBs no céu.
+              </p>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                As simulações preveem que o BIS será capaz de detectar e localizar <strong class="text-white">~23 FRBs por ano</strong>, com precisão de arco-minutos. O BINGO-Uirapuru, na UFCG, será um dos outriggers dessa rede interferométrica.
+              </p>
+              <p class="text-slate-300 leading-relaxed">
+                A combinação de detecção de FRBs com a medição de DM permitirá ao BINGO contribuir para resolver um dos problemas fundamentais da cosmologia: a localização dos bárions "faltantes" no universo atual.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Dark Energy -->
-      <div class="glass-card p-8 md:p-12 animate-on-scroll">
-        <h2 class="text-2xl font-bold text-cyan-400 mb-4 text-center">Energia Escura e o Modelo ΛCDM</h2>
+      <!-- ==================== DARK ENERGY ==================== -->
+      <div class="relative overflow-hidden rounded-2xl animate-on-scroll section-bg-image">
+        <div class="bg-img" style={`background-image: url('${base}images/backgrounds/wmap_cmb-background.png'); opacity: 0.08;`}></div>
+        <div class="bg-overlay" style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 13, 31, 0.95) 100%);"></div>
+        <div class="relative z-10 p-8 md:p-12">
+          <p class="section-label text-center">Cosmologia Fundamental</p>
+          <h2 class="text-2xl font-bold text-white mb-4 text-center" style="font-family: 'Outfit', sans-serif;">Energia Escura e o Modelo <span class="gradient-text-cyan">ΛCDM</span></h2>
+          <div class="section-divider"></div>
+          <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h3 class="text-lg font-semibold text-cyan-400 mb-3">O Universo Acelerado</h3>
+                <p class="text-slate-300 leading-relaxed mb-4">
+                  Em 1998, duas equipes independentes descobriram, estudando supernovas tipo Ia distantes, que a expansão do universo está <em>acelerando</em> — uma descoberta que rendeu o Prêmio Nobel de Física em 2011. O agente dessa aceleração foi batizado de <strong class="text-white">Energia Escura</strong>.
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                  O modelo padrão da cosmologia — <strong class="text-cyan-400">ΛCDM</strong> (Lambda Cold Dark Matter) — descreve um universo composto de ~68% de Energia Escura, ~27% de Matéria Escura e apenas ~5% de matéria bariônica ordinária. A "constante cosmológica" Λ é a forma mais simples de Energia Escura.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-cyan-400 mb-3">A Contribuição do BINGO</h3>
+                <p class="text-slate-300 leading-relaxed mb-4">
+                  O BINGO fornecerá constrains independentes sobre a <strong class="text-white">equação de estado da Energia Escura</strong>, parametrizada por w₀ e wₐ: se w = −1 (constante cosmológica) ou se w varia com o tempo (energia escura dinâmica).
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                  Combinando dados de Intensity Mapping com CMB (Planck), surveys de lentes gravitacionais (LSST/Rubin) e supernovas, o BINGO contribuirá para resolver a <strong class="text-cyan-400">tensão H₀</strong> — a discrepância entre diferentes medidas da constante de Hubble — e testar modelos alternativos de gravidade. Os Papers VII e X detalham as previsões cosmológicas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Composition pie -->
+            <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+              <div class="text-center p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/20">
+                <div class="text-2xl font-black text-indigo-400" style="font-family: 'Outfit', sans-serif;">~68%</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Energia Escura</div>
+              </div>
+              <div class="text-center p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
+                <div class="text-2xl font-black text-cyan-400" style="font-family: 'Outfit', sans-serif;">~27%</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Matéria Escura</div>
+              </div>
+              <div class="text-center p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                <div class="text-2xl font-black text-amber-400" style="font-family: 'Outfit', sans-serif;">~5%</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Matéria Ordinária</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PRIMORDIAL BLACK HOLES ==================== -->
+      <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
+        <p class="section-label text-center">Fronteira da Pesquisa</p>
+        <h2 class="text-2xl font-bold text-white mb-4 text-center" style="font-family: 'Outfit', sans-serif;">Buracos Negros Primordiais e <span class="gradient-text-cyan">Matéria Escura</span></h2>
         <div class="section-divider"></div>
         <div class="max-w-3xl mx-auto">
           <p class="text-slate-300 leading-relaxed mb-4">
-            Observações de supernovas tipo Ia, CMB e estrutura de larga escala mostram que ~68% do conteúdo energético do universo é Energia Escura — uma componente misteriosa que acelera a expansão cósmica.
+            Uma das hipóteses mais intrigantes da cosmologia moderna sugere que <strong class="text-white">Buracos Negros Primordiais (PBHs)</strong> — formados nos primeiros instantes do universo a partir de flutuações de densidade extremas — poderiam compor uma fração significativa da matéria escura.
           </p>
           <p class="text-slate-300 leading-relaxed mb-4">
-            O BINGO fornecerá constrains independentes sobre a equação de estado da Energia Escura (parâmetros w₀ e wₐ), combinando dados de Intensity Mapping com CMB (Planck) e supernovas, conforme demonstrado nos Papers VII e X.
+            O BINGO-ABDUS investigará essa possibilidade através do <strong class="text-cyan-400">lensing gravitacional</strong> do sinal de HI: se PBHs existirem em número suficiente, eles distorceriam a luz/rádio de fontes distantes de maneiras mensuráveis pelo mapeamento de intensidade de alta resolução.
           </p>
           <p class="text-slate-300 leading-relaxed">
-            A fase BINGO-ABDUS expandirá dramaticamente o alcance em redshift, permitindo estudar a evolução temporal da Energia Escura com precisão sem precedentes para um radiotelescópio dedicado.
+            Esta pesquisa está na fronteira entre cosmologia observacional e física fundamental, com potencial para revolucionar nossa compreensão do setor escuro do universo.
           </p>
         </div>
       </div>
+
     </div>
   </div>
 </BaseLayout>
