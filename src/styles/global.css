@@ -22,11 +22,11 @@
   letter-spacing: 0.04em;
 }
 
-/* The "B" in Nasalization looks like a "3" — use Righteous for just the B character.
-   Righteous provides a bold, rounded, geometric B that seamlessly matches Aqum Two Bold and Nasalization's futuristic aesthetic. */
+/* The "B" in Nasalization looks like a "3" — use Quicksand for just the B character.
+   Quicksand provides a rounded, geometric B that seamlessly matches Nasalization's futuristic aesthetic, but with adjustable weight so it isn't too bold. */
 .bingo-b {
-  font-family: "Righteous", sans-serif;
-  font-weight: 400;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
 }
 
 /* ===== Custom Animations ===== */
