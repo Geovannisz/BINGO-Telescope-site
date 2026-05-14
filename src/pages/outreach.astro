@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Divulgação Científica">
+  <div class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Divulgação <span class="text-amber-400">Científica</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-slate-900 pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <!-- Esperança no Espaço -->
+      <div class="glass-card p-8 md:p-12 mb-16 animate-on-scroll">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <div class="rounded-xl overflow-hidden border border-slate-700/50">
+              <img src={`${base}images/outreach/outreach-esperanca-no-espaco.jpeg`} alt="Projeto Esperança no Espaço — estudante usando telescópio artesanal" class="w-full h-auto" />
+            </div>
+            <div class="mt-4 rounded-xl overflow-hidden border border-slate-700/30 bg-white/5 p-4 flex items-center justify-center">
+              <img src={`${base}images/outreach/projeto-esperanca-no-espaco-1024x320.png`} alt="Logo do Projeto Esperança no Espaço" class="max-h-16 w-auto object-contain" />
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold text-white mb-2">BINGO: <span class="text-amber-400">Esperança no Espaço</span></h2>
+            <p class="text-slate-500 text-sm mb-6 uppercase tracking-wider">Projeto de Extensão e Inclusão Social</p>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              O <strong class="text-white">Esperança no Espaço</strong> é uma iniciativa de divulgação científica e inclusão social ligada ao projeto BINGO. O programa facilita a construção de telescópios por detentos no Presídio Público de Esperança, na Paraíba, utilizando materiais reciclados como canos de PVC e cabos de vassoura.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              O projeto promove a popularização da ciência através da astronomia, ao mesmo tempo que contribui para a ressocialização dos internos, conectando-os com os esforços científicos e educacionais mais amplos do projeto BINGO.
+            </p>
+            <p class="text-slate-300 leading-relaxed">
+              As atividades incluem oficinas de construção de telescópios, observações astronômicas guiadas, e palestras sobre o universo e o papel do BINGO na ciência brasileira.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Activities -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
+            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Educação e Capacitação</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Formação de estudantes de graduação e pós-graduação em rádio-astronomia, cosmologia observacional e engenharia de radiofrequência, tanto nas universidades parceiras quanto nas comunidades locais na Paraíba.
+          </p>
+        </div>
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center mb-4 border border-amber-500/20">
+            <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Impacto Comunitário</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            A construção do BINGO em Aguiar traz desenvolvimento tecnológico e econômico para a região, incluindo infraestrutura de internet, capacitação técnica local e turismo científico.
+          </p>
+        </div>
+      </div>
+
+      <!-- Video presentation -->
+      <div class="max-w-3xl mx-auto animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">Conheça o Projeto BINGO</h2>
+        <div class="section-divider"></div>
+        <div class="video-container animate-glow mt-8">
+          <iframe
+            src="https://www.youtube.com/embed/iB6xn86tKOA?rel=0&modestbranding=1"
+            title="Apresentação do Telescópio BINGO"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

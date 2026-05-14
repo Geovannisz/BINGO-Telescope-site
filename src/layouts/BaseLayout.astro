@@ -9,7 +9,8 @@ interface Props {
   lang?: 'pt' | 'en' | 'zh';
 }
 
-const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations from Integrated Neutral Gas Observations", lang = 'pt' } = Astro.props;
+const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. Radiotelescópio em Aguiar, Paraíba, Brasil.", lang = 'pt' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!DOCTYPE html>
@@ -17,15 +18,22 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title} | BINGO Telescope</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="BINGO, telescope, radio telescope, BAO, baryon acoustic oscillations, intensity mapping, dark energy, hydrogen, 21cm, cosmology, Paraíba, Brazil" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} | BINGO Telescope`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${base}images/telescope/BINGO_model_1.jpeg`} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Netlify Identity Widget (required by Decap CMS admin panel) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -37,12 +45,31 @@ const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations fro
     </main>
     <Footer />
 
-    <script>
-      import { onAuthChange, AUTH_EVENTS } from '@netlify/identity';
-      onAuthChange((event) => {
-        if (event === AUTH_EVENTS.LOGIN) {
-          document.location.href = import.meta.env.BASE_URL + 'admin/';
-        }
+    <script is:inline>
+      // Netlify Identity redirect after login
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function() {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+
+      // Scroll-triggered animations via IntersectionObserver
+      document.addEventListener('DOMContentLoaded', function() {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+          observer.observe(el);
+        });
       });
     </script>
   </body>

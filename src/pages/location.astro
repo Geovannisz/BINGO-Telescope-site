@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Localização">
+  <div class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Localização do <span class="text-cyan-400">BINGO</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Serra do Urubu, Aguiar, Paraíba — Brasil. Um local escolhido a dedo para observações de rádio.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-slate-900 pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <!-- Map + Description -->
+      <div class="md:flex gap-12 items-center mb-16 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+            <img src={`${base}images/site-construction/BINGO_paraiba.jpg`} alt="Mapa de localização do BINGO na Paraíba" class="w-full h-auto" />
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-white mb-4">Por que Aguiar, Paraíba?</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            A localização do BINGO foi escolhida criteriosamente com base em vários fatores científicos e logísticos cruciais para o sucesso do projeto.
+          </p>
+          <ul class="space-y-3 text-slate-300 text-sm">
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-0.5">📡</span>
+              <span><strong class="text-white">Baixa RFI:</strong> A Serra do Urubu é uma região com baixíssima interferência de radiofrequência (RFI), essencial para detectar o fraco sinal de HI cosmológico.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-0.5">🌍</span>
+              <span><strong class="text-white">Latitude ideal:</strong> A latitude de ~7°S é perfeita para observações do hemisfério sul celestial, cobrindo regiões do céu complementares a outros surveys.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-0.5">⛰️</span>
+              <span><strong class="text-white">Topografia natural:</strong> A elevação e o relevo natural da Serra do Urubu fornecem proteção adicional contra RFI terrestre.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-cyan-400 font-bold mt-0.5">🏗️</span>
+              <span><strong class="text-white">Acesso:</strong> Relativamente acessível a partir de Campina Grande e João Pessoa, permitindo logística de construção e manutenção.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Construction photos -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center animate-on-scroll">Infraestrutura no Site</h2>
+        <div class="section-divider"></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div class="glass-card overflow-hidden animate-on-scroll">
+            <div class="h-56 overflow-hidden">
+              <img src={`${base}images/site-construction/casa-de-comando.jpg`} alt="Casa de Comando do BINGO em Aguiar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-white mb-2">Casa de Comando</h3>
+              <p class="text-slate-400 text-sm">Edificação que abrigará os receptores, backend digital, servidores de dados e o centro de controle das operações do telescópio.</p>
+            </div>
+          </div>
+          <div class="glass-card overflow-hidden animate-on-scroll">
+            <div class="h-56 overflow-hidden">
+              <img src={`${base}images/site-construction/Figura_canteiro.jpg`} alt="Canteiro de obras do BINGO" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-white mb-2">Canteiro de Obras</h3>
+              <p class="text-slate-400 text-sm">Vista do terreno preparado na Serra do Urubu para a instalação da estrutura dos espelhos e da torre de antenas do telescópio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internet center -->
+      <div class="glass-card p-8 animate-on-scroll">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <div class="rounded-xl overflow-hidden border border-slate-700/50">
+              <img src={`${base}images/site-construction/Figura_centrodeinternet.jpeg`} alt="Centro de Internet do BINGO" class="w-full h-auto" />
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-xl font-bold text-white mb-4">Impacto na Comunidade Local</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              O projeto BINGO não apenas contribui para a ciência global, mas também transforma a comunidade local. A instalação de infraestrutura de telecomunicações e internet na região de Aguiar é um dos benefícios diretos do projeto.
+            </p>
+            <p class="text-slate-300 leading-relaxed">
+              A presença do telescópio também estimula o turismo científico e a formação de mão de obra técnica local, criando oportunidades de emprego e desenvolvimento regional.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coordinates -->
+      <div class="mt-12 text-center animate-on-scroll">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-slate-300">
+          <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span class="font-mono text-sm">Serra do Urubu, Aguiar — Paraíba, Brasil</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

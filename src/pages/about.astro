@@ -1,68 +1,130 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Sobre o Projeto">
-  <div class="bg-slate-900 py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-      <div class="mx-auto max-w-3xl lg:mx-0">
-        <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">Sobre o Projeto BINGO</h2>
+  <!-- Page Header -->
+  <div class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Sobre o Projeto <span class="text-cyan-400">BINGO</span></h1>
         <p class="mt-6 text-lg leading-8 text-slate-300">
-          O BINGO (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador projetado para explorar as profundezas do universo e buscar respostas para um dos maiores mistérios da cosmologia moderna: a Energia Escura.
+          O BINGO (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador projetado para explorar as profundezas do universo e buscar respostas para a natureza da Energia Escura.
         </p>
       </div>
+    </div>
+  </div>
 
-      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-          <div class="flex flex-col">
-            <dt class="text-xl font-semibold leading-7 text-white flex items-center gap-3">
-              <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
-                <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-              </div>
-              História e Objetivos
-            </dt>
-            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-400">
-              <p class="flex-auto">Concebido como um projeto colaborativo internacional, o BINGO visa mapear a distribuição de hidrogênio neutro (HI) no universo em frequências de rádio (980 MHz a 1260 MHz). O objetivo primário é detectar Oscilações Acústicas de Bárions (BAO) no universo tardio, fornecendo uma régua padrão independente para medir a expansão do universo.</p>
-            </dd>
+  <div class="bg-slate-900 pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <!-- Image + Text Section -->
+      <div class="md:flex gap-12 items-center mb-20 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <div class="rounded-2xl overflow-hidden border border-slate-700/50 shadow-2xl">
+            <img src={`${base}images/telescope/BINGO_model_1.jpeg`} alt="Render 3D do Telescópio BINGO" class="w-full h-auto" />
           </div>
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+            <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+              <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            História e Objetivos
+          </h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Concebido como um projeto colaborativo internacional, o BINGO visa mapear a distribuição de hidrogênio neutro (HI) no universo em frequências de rádio (980 MHz a 1260 MHz). O objetivo primário é detectar Oscilações Acústicas de Bárions (BAO) no universo tardio, fornecendo uma régua padrão independente para medir a expansão do universo.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            Através da técnica de <strong class="text-cyan-400">Intensity Mapping</strong>, o BINGO será capaz de observar a emissão HI coletiva de grandes volumes do universo, sem a necessidade de resolver galáxias individuais, cobrindo o intervalo de redshift 0.127 ≤ z ≤ 0.449.
+          </p>
+        </div>
+      </div>
 
-          <div class="flex flex-col">
-            <dt class="text-xl font-semibold leading-7 text-white flex items-center gap-3">
-              <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
-                 <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-              </div>
-              Consórcio Internacional
-            </dt>
-            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-slate-400">
-              <p class="flex-auto">O projeto é liderado pelo Brasil (USP, INPE, UFCG) em forte parceria com instituições da China, Reino Unido, França, África do Sul e outros países, unindo expertise global em astrofísica e engenharia de rádio.</p>
-            </dd>
+      <!-- International Consortium -->
+      <div class="md:flex gap-12 items-center flex-row-reverse mb-20 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+            <img src={`${base}images/site-construction/BINGO_paraiba.jpg`} alt="Localização do BINGO na Paraíba" class="w-full h-auto" />
           </div>
-        </dl>
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+            <div class="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+              <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            Consórcio Internacional
+          </h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            O projeto é liderado pelo Brasil (USP, INPE, UFCG) em forte parceria com instituições da China, Reino Unido, França, Holanda, África do Sul e outros países, unindo expertise global em astrofísica e engenharia de rádio.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            O telescópio está sendo construído na Serra do Urubu, em Aguiar, Paraíba — uma região escolhida por sua baixa interferência de radiofrequência (RFI) e latitude ideal para observações do hemisfério sul celestial.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="max-w-3xl mx-auto animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-8 text-center">Linha do Tempo do Projeto</h2>
+        <div class="section-divider"></div>
+        <div class="timeline mt-8">
+          <div class="timeline-item">
+            <div class="timeline-year">2012</div>
+            <div class="timeline-text">Concepção do projeto BINGO como um radiotelescópio dedicado a BAO via Intensity Mapping de 21cm.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2019</div>
+            <div class="timeline-text">Construção e teste do protótipo da corneta corrugada broadband. Publicação do paper de fabricação (Wuensche et al.).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-text">Instalação do BINGO-Uirapuru na UFCG, Campina Grande, como testbed de receptores e software.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022</div>
+            <div class="timeline-text">Publicação da série de 8 artigos "The BINGO Project" (I–VIII) na Astronomy & Astrophysics, detalhando ciência, instrumento, simulações e previsões cosmológicas.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-text">Lançamento do consórcio BINGO-ABDUS (Advanced BINGO Dark Universe Studies) em parceria com ASTRON e Nancy Observatory.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-text">Paper IX — Proposta do BINGO Interferometry System (BIS) para detecção e localização de Fast Radio Bursts.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-text">Paper X publicado. Construção avançada do site em Aguiar, Paraíba. Desenvolvimento contínuo de antenas phased-array Vivaldi.</div>
+          </div>
+        </div>
       </div>
 
       <!-- BINGO-ABDUS Section -->
-      <div class="mt-32 pt-16 border-t border-slate-800">
+      <div class="mt-24 pt-16 border-t border-slate-800 animate-on-scroll">
         <div class="md:flex gap-12 items-center">
           <div class="md:w-1/2 mb-10 md:mb-0">
             <h3 class="text-3xl font-bold text-white mb-4">Consórcio <span class="text-cyan-400">BINGO-ABDUS</span></h3>
             <h4 class="text-lg text-slate-300 font-medium mb-6">Advanced BINGO Dark Universe Studies</h4>
             <p class="text-slate-400 leading-relaxed mb-4">
-              O Telescópio BINGO iniciou uma nova fase ambiciosa chamada <strong>BINGO-ABDUS</strong>. O nome homenageia o físico ganhador do Prêmio Nobel, Abdus Salam.
+              O Telescópio BINGO iniciou uma nova fase ambiciosa chamada <strong class="text-white">BINGO-ABDUS</strong>. O nome homenageia o físico ganhador do Prêmio Nobel, Abdus Salam.
             </p>
             <p class="text-slate-400 leading-relaxed mb-6">
-              Esta expansão do projeto planeja operações conjuntas com grandes radiotelescópios mundiais (como FAST e Tianlai). O objetivo é aumentar o alcance (observando até um redshift z ~ 2.1) e melhorar a sensibilidade, transformando o consórcio em uma super-máquina para mapeamento BAO e também para detectar pulsares, FRBs e investigar Buracos Negros Primordiais.
+              Esta expansão planeja operações conjuntas com grandes radiotelescópios mundiais (FAST, Tianlai). O objetivo é aumentar o alcance (observando até z ~ 2.1) e melhorar a sensibilidade para mapeamento BAO, detecção de pulsares, FRBs e investigação de Buracos Negros Primordiais.
             </p>
+            <a href={`${base}abdus`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+              Saiba mais sobre o BINGO-ABDUS
+              <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
           </div>
           <div class="md:w-1/2">
-             <div class="aspect-square sm:aspect-video md:aspect-square bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 relative group">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" alt="Universe" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700" />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent"></div>
-             </div>
+            <div class="aspect-square sm:aspect-video md:aspect-square rounded-2xl overflow-hidden border border-slate-700 relative group bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center p-12">
+              <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-64 h-64 object-contain group-hover:scale-105 transition-transform duration-500" />
+            </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </BaseLayout>

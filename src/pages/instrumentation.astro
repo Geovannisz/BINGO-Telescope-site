@@ -1,47 +1,113 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Instrumentação">
-  <div class="py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center mb-16">
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Instrumentação do Telescópio</h2>
-        <p class="mt-4 text-lg text-slate-400">
-          Design engenhoso para observações de ponta.
-        </p>
+  <div class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">Instrumentação do <span class="text-cyan-400">Telescópio</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300">Design engenhoso para observações de ponta em rádio-cosmologia.</p>
       </div>
+    </div>
+  </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Arranjo Óptico</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
+  <div class="bg-slate-900 pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <!-- Optical Design -->
+      <div class="md:flex gap-12 items-center mb-16 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+            <img src={`${base}images/telescope/BINGO_model_2.jpeg`} alt="BINGO - Arranjo óptico Crossed-Dragone" class="w-full h-auto" />
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-cyan-400 mb-4">Arranjo Óptico Crossed-Dragone</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
             O BINGO usa um design de dois espelhos (Crossed-Dragone) de trânsito, sem partes móveis, apontado para o sul celestial. Os espelhos primário e secundário têm cerca de 40 metros de diâmetro.
           </p>
-        </div>
-
-        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
-          <h3 class="text-xl font-bold text-cyan-400 mb-3">Cornetas (Horns)</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Um arranjo focal de cerca de 28 cornetas corrugadas de feixe duplo cobrirá um campo de visão instantâneo grande. As cornetas são peças gigantes de engenharia mecânica de precisão.
+          <p class="text-slate-300 leading-relaxed">
+            Esta configuração minimiza lóbulos laterais e oferece um campo de visão amplo, ideal para surveys de intensity mapping. O telescópio varre o céu à medida que a Terra gira.
           </p>
         </div>
+      </div>
 
-        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors">
+      <!-- Horns -->
+      <div class="md:flex gap-12 items-center flex-row-reverse mb-16 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <div class="rounded-2xl overflow-hidden border border-slate-700/50">
+            <img src={`${base}images/horns/horns.png`} alt="Arranjo focal de cornetas do BINGO" class="w-full h-auto" />
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-bold text-cyan-400 mb-4">Cornetas Corrugadas (Horns)</h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Um arranjo focal de 28 cornetas corrugadas de feixe duplo cobrirá um campo de visão instantâneo grande. As cornetas são peças gigantes de engenharia mecânica de precisão, otimizadas para 960–1280 MHz.
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            O protótipo da corneta foi fabricado e testado extensivamente, com resultados publicados em Wuensche et al. (2019). Cada corneta é projetada para mínima contaminação cruzada de polarização.
+          </p>
+        </div>
+      </div>
+
+      <!-- Horn Structure Diagram -->
+      <div class="mb-16 animate-on-scroll">
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold text-cyan-400 mb-6 text-center">Torre de Antenas</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="rounded-xl overflow-hidden border border-slate-700/30">
+              <img src={`${base}images/horns/Horn structure.png`} alt="Diagrama da torre de antenas com 28 cornetas" class="w-full h-auto bg-white/90 p-4" />
+            </div>
+            <div>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                A torre de antenas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta.
+              </p>
+              <p class="text-slate-300 leading-relaxed">
+                A disposição foi simulada extensivamente (Paper III) para maximizar a cobertura do plano focal e minimizar spillover e cross-talk entre as cornetas adjacentes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phased Array & Receivers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="rounded-xl overflow-hidden border border-slate-700/30 mb-6">
+            <img src={`${base}images/phased-array/prototype_white_background.png`} alt="Protótipo de antena phased-array Vivaldi" class="w-full h-48 object-contain bg-white p-2" />
+          </div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Antenas Phased-Array Vivaldi</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Desenvolvimento de tiles phased-array com antenas Vivaldi para a fase BINGO-ABDUS. Os protótipos são testados em câmara anecóica para validação dos padrões de radiação via simulações HFSS e OSKAR.
+          </p>
+        </div>
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="rounded-xl overflow-hidden border border-slate-700/30 mb-6">
+            <img src={`${base}images/phased-array/tile_in_measure_room_2.png`} alt="Tile Vivaldi em câmara anecóica" class="w-full h-48 object-cover" />
+          </div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-3">Câmara Anecóica e Medições</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Os tiles são caracterizados em câmara anecóica para validar o diagrama de radiação (beam pattern), ganho, e resposta em frequência, comparando medições experimentais com simulações eletromagnéticas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Backend and Receivers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-on-scroll">
+        <div class="glass-card p-8">
           <h3 class="text-xl font-bold text-cyan-400 mb-3">Receptores</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Receptores altamente sensíveis operam em temperatura ambiente, mas utilizam tecnologia de baixo ruído para captar o fraco sinal do HI cosmológico entre 980 e 1260 MHz.
+            Receptores altamente sensíveis operam em temperatura ambiente, mas utilizam tecnologia de baixo ruído para captar o fraco sinal do HI cosmológico entre 980 e 1260 MHz. Cada receptor processa sinais de polarização dupla.
           </p>
         </div>
-
-        <div class="bg-slate-800/40 rounded-xl border border-slate-700/50 p-6 hover:bg-slate-800 transition-colors lg:col-span-3">
+        <div class="glass-card p-8">
           <h3 class="text-xl font-bold text-cyan-400 mb-3">Backend Digital</h3>
-          <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
-            Sinais analógicos são convertidos digitalmente e processados em tempo real por um poderoso backend baseado em FPGAs (Field Programmable Gate Arrays) ou GPUs, responsável pela correlação e integração dos dados gerando os produtos científicos finais.
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Sinais analógicos são convertidos digitalmente e processados em tempo real por um backend baseado em FPGAs ou GPUs, responsável pela correlação e integração dos dados gerando os produtos científicos finais.
           </p>
         </div>
-
       </div>
     </div>
   </div>

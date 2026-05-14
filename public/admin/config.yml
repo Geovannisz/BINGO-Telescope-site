@@ -2,10 +2,7 @@ site_url: "https://glittery-unicorn-e798c2.netlify.app"
 
 backend:
   name: git-gateway
-  repo: Geovannisz/BINGO-Telescope-site
   branch: main
-  # Optional: se não quiser que qualquer um no GitHub altere, configure o open_authoring falso (padrão)
-  # O Netlify Identity gerencia os acessos se configurado lá.
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

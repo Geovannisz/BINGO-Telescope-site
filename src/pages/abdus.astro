@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="BINGO-ABDUS">
+  <div class="relative py-20 bg-slate-900 overflow-hidden">
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <div class="flex items-center gap-4 mb-6">
+          <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="h-16 w-auto" />
+        </div>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">BINGO-<span class="text-cyan-400">ABDUS</span></h1>
+        <p class="mt-4 text-xl text-slate-300 font-light">Advanced BINGO Dark Universe Studies</p>
+        <p class="mt-4 text-lg leading-8 text-slate-400">Consórcio internacional para desvendar o setor escuro do universo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-slate-900 pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <!-- Main description -->
+      <div class="max-w-4xl mx-auto mb-16 animate-on-scroll">
+        <div class="glass-card p-8 md:p-12">
+          <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+            O telescópio BINGO iniciou uma nova fase com o <strong class="text-white">BINGO-ABDUS</strong>. O nome do consórcio homenageia o grande físico <strong class="text-cyan-400">Abdus Salam</strong>, ganhador do Prêmio Nobel de Física, e é acrônimo para <em>Advanced BINGO Dark Universe Studies</em>.
+          </p>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            É um radiotelescópio ambicioso resultante de uma colaboração entre o BINGO (Brasil e China), o <strong class="text-white">Netherlands Institute for Radio Astronomy (ASTRON)</strong> e o <strong class="text-white">Nancy Observatory</strong> (França).
+          </p>
+          <p class="text-slate-300 leading-relaxed">
+            O BINGO-ABDUS visa expandir drasticamente o alcance do BINGO, observando sinais de rádio de até <strong class="text-cyan-400">z ~ 2.1</strong> e cobrindo uma fração muito maior do céu com resolução incrível.
+          </p>
+        </div>
+      </div>
+
+      <!-- Objectives grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 border border-cyan-500/20">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Redshift Expandido</h3>
+          <p class="text-slate-400 text-sm">Observações até z ~ 2.1, cobrindo bilhões de anos de história cósmica adicional em comparação ao BINGO Fase 1.</p>
+        </div>
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 border border-cyan-500/20">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">FRBs e Pulsares</h3>
+          <p class="text-slate-400 text-sm">Detecção e localização de Fast Radio Bursts e monitoramento de pulsares com a rede interferométrica.</p>
+        </div>
+        <div class="glass-card p-8 animate-on-scroll">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 border border-cyan-500/20">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Buracos Negros Primordiais</h3>
+          <p class="text-slate-400 text-sm">Investigação de Buracos Negros Primordiais como candidatos a matéria escura através de lensing gravitacional em HI.</p>
+        </div>
+      </div>
+
+      <!-- Partners -->
+      <div class="glass-card p-8 md:p-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 text-center">Parceiros do Consórcio</h2>
+        <div class="section-divider"></div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <h3 class="text-lg font-bold text-cyan-400 mb-2">BINGO</h3>
+            <p class="text-slate-400 text-sm">Brasil & China — Universidade de São Paulo (USP), INPE, UFCG, universidades chinesas</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-cyan-400 mb-2">ASTRON</h3>
+            <p class="text-slate-400 text-sm">Netherlands Institute for Radio Astronomy — Holanda</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-cyan-400 mb-2">Nancy Observatory</h3>
+            <p class="text-slate-400 text-sm">Observatório de radioastronomia — França</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reference paper -->
+      <div class="mt-8 text-center animate-on-scroll">
+        <a href="https://arxiv.org/abs/2309.05099" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+          📄 Paper: BINGO-ABDUS — A radiotelescope to unveil the dark sector (Abdalla et al., 2023)
+          <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
