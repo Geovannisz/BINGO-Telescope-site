@@ -65,17 +65,26 @@ const base = import.meta.env.BASE_URL;
         <h2 class="text-2xl font-bold text-white mb-6 text-center">Parceiros do Consórcio</h2>
         <div class="section-divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
+          <div class="flex flex-col items-center">
+            <div class="h-24 flex items-center justify-center mb-4">
+              <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="BINGO Logo" class="h-20 w-auto object-contain drop-shadow-md" />
+            </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">BINGO</h3>
             <p class="text-slate-400 text-sm">Brasil & China — Universidade de São Paulo (USP), INPE, UFCG, universidades chinesas</p>
           </div>
-          <div>
+          <div class="flex flex-col items-center">
+            <div class="h-24 flex items-center justify-center mb-4 bg-white/10 p-4 rounded-xl">
+              <img src={`${base}images/abdus/astron-logo.svg`} alt="ASTRON Logo" class="h-12 w-auto object-contain drop-shadow" />
+            </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">ASTRON</h3>
             <p class="text-slate-400 text-sm">Netherlands Institute for Radio Astronomy — Holanda</p>
           </div>
-          <div>
+          <div class="flex flex-col items-center">
+            <div class="h-24 flex items-center justify-center mb-4 bg-white/90 p-4 rounded-xl">
+              <img src={`${base}images/abdus/nancay-logo.svg`} alt="Nançay Observatory Logo" class="h-16 w-auto object-contain" />
+            </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">Nancy Observatory</h3>
-            <p class="text-slate-400 text-sm">Observatório de radioastronomia — França</p>
+            <p class="text-slate-400 text-sm">Station de Radioastronomie de Nançay — França</p>
           </div>
         </div>
       </div>

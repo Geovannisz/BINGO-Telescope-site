@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150">
+  <!-- Dark background compatible ASTRON logo representation -->
+  <text x="250" y="80" font-family="Arial, sans-serif" font-weight="900" font-size="72" fill="#ffffff" text-anchor="middle" letter-spacing="2">ASTRON</text>
+  <text x="250" y="115" font-family="Arial, sans-serif" font-size="18" fill="#4ade80" text-anchor="middle" letter-spacing="1">Netherlands Institute for Radio Astronomy</text>
+</svg>
