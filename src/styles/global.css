@@ -22,11 +22,11 @@
   letter-spacing: 0.04em;
 }
 
-/* The "B" in Nasalization looks like a "3" — use Outfit for just the B character.
-   Outfit's geometric B visually matches Nasalization's futuristic style. */
+/* The "B" in Nasalization looks like a "3" — use Space Grotesk for just the B character.
+   Space Grotesk provides a wide, geometric B that seamlessly matches Nasalization's futuristic aesthetic. */
 .bingo-b {
-  font-family: "Outfit", sans-serif;
-  font-weight: 800;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
 }
 
 /* ===== Custom Animations ===== */
