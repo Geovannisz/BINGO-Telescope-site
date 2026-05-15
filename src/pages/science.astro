@@ -66,8 +66,29 @@ const base = import.meta.env.BASE_URL;
               A técnica de <strong class="text-cyan-400">Intensity Mapping</strong> é uma inovação fundamental: ao contrário de surveys ópticos que identificam galáxias individualmente (processo lento e caro), o Intensity Mapping mede a intensidade <em>total</em> da emissão de HI em grandes volumes (voxels) de uma vez. Isso permite cobrir enormes volumes cosmológicos muito mais rapidamente.
             </p>
             <p class="text-slate-300 leading-relaxed">
-              O BINGO opera na banda <strong class="text-white">980–1260 MHz</strong>, detectando sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual (redshift <strong class="text-cyan-400">0.127 ≤ z ≤ 0.449</strong>).
+              O BINGO opera na banda <strong class="text-white">980–1260 MHz</strong>, detectando sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual (redshift <strong class="text-cyan-400">0.127 ≤ z ≤ 0.449</strong>). O survey abrangerá uma vasta área do céu de aproximadamente <strong class="text-white">6.000 graus quadrados</strong>, alcançando uma resolução angular de <strong class="text-cyan-400">≈ 40 arcmin</strong>.
             </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== PIPELINE & SIMULATIONS ==================== -->
+      <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
+        <div class="md:flex gap-12 items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <p class="section-label text-left">Análise de Dados</p>
+            <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Pipeline & <span class="gradient-text-cyan">Simulações</span></h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              O processamento dos dados do BINGO é suportado por uma infraestrutura computacional robusta. O objetivo principal do <strong class="text-white">Pipeline</strong> é processar os dados brutos e produzir séries temporais limpas, que posteriormente são transformadas em mapas que reconstroem o sinal cósmico captado pelo telescópio ao longo de seu período de operação.
+            </p>
+            <p class="text-slate-300 leading-relaxed">
+              Em paralelo, as <strong class="text-cyan-400">Simulações</strong> atuam como ferramentas fundamentais para a missão. Elas permitem investigar exaustivamente os diferentes cenários construtivos e operacionais do BINGO, bem como o desempenho da sua futura rede de antenas auxiliares (outriggers), garantindo a mitigação de artefatos antes mesmo da luz atingir os receptores.
+            </p>
+          </div>
+          <div class="md:w-1/2">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
+              <img src={`${base}images/telescope/BINGO_model_1.jpeg`} alt="Simulação e análise de dados do Telescópio BINGO" class="w-full h-auto opacity-90" />
+            </div>
           </div>
         </div>
       </div>
@@ -142,9 +163,12 @@ const base = import.meta.env.BASE_URL;
               </div>
             </div>
             <div class="md:w-1/2">
-              <h3 class="text-xl font-bold text-white mb-4">O Papel do BINGO na Detecção de FRBs</h3>
+              <h3 class="text-xl font-bold text-white mb-4">O Papel do BINGO na Detecção de FRBs e Transientes</h3>
               <p class="text-slate-300 leading-relaxed mb-4">
                 Com seu vasto campo de visão (~14.75° × 6°) e alta sensibilidade temporal, o BINGO é uma excelente plataforma para detectar FRBs. O <strong class="text-cyan-400">BINGO Interferometry System (BIS)</strong>, proposto no Paper IX, utilizará uma rede de outriggers — antenas menores de 4–6 metros espalhadas geograficamente — para localizar precisamente as fontes de FRBs no céu.
+              </p>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                Além das FRBs, o telescópio tem como objetivo científico estudar outros fenômenos de rádio periódicos e transientes, como <strong class="text-white">Pulsares</strong> e <strong class="text-white">RRATs (Rotating Radio Transients)</strong>, expandindo muito o retorno astrofísico do projeto.
               </p>
               <p class="text-slate-300 leading-relaxed mb-4">
                 As simulações preveem que o BIS será capaz de detectar e localizar <strong class="text-white">~23 FRBs por ano</strong>, com precisão de arco-minutos. O BINGO-Uirapuru, na UFCG, será um dos outriggers dessa rede interferométrica.
