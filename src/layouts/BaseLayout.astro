@@ -89,14 +89,14 @@ const base = import.meta.env.BASE_URL;
           while (walker.nextNode()) textNodes.push(walker.currentNode);
 
           textNodes.forEach(function(textNode) {
-            var parts = textNode.textContent.split(/(BINGO)/g);
+            var parts = textNode.textContent.split(/(BINGO-ABDUS|BINGO)/g);
             if (parts.length <= 1) return;
             var frag = document.createDocumentFragment();
             parts.forEach(function(part) {
-              if (part === 'BINGO') {
+              if (part === 'BINGO' || part === 'BINGO-ABDUS') {
                 var span = document.createElement('span');
                 span.className = 'font-bingo';
-                span.textContent = 'BINGO';
+                span.textContent = part;
                 frag.appendChild(span);
               } else if (part) {
                 frag.appendChild(document.createTextNode(part));
