@@ -21,25 +21,100 @@ const base = import.meta.env.BASE_URL;
   <div class="bg-cosmic pb-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
+      <!-- Concept Section -->
+      <div class="mb-16 animate-on-scroll">
+        <div class="glass-card-glow p-8">
+          <p class="section-label text-left">Abordagem Observacional</p>
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">Single-Dish vs Interferometria</h2>
+          <div class="md:flex gap-12 items-center">
+            <div class="md:w-3/5">
+              <p class="text-slate-300 leading-relaxed mb-4">
+                O radiotelescópio BINGO privilegia um conceito complementar aos radiotelescópios interferométricos tradicionais: ele utilizará, para um mesmo sistema refletor, <strong class="text-cyan-400">muitos detectores (cornetas) no plano focal</strong>. Em geral, interferômetros são compostos por vários refletores espalhados com apenas um ou poucos detectores em cada plano focal.
+              </p>
+              <p class="text-slate-300 leading-relaxed mb-4">
+                Telescópios single-dish multi-beam como o BINGO têm uma vantagem clara no <strong class="text-white">custo de fabricação e manutenção</strong>, além do fato de que o processamento de dados é inerentemente mais simples. A desvantagem óbvia é que a área de coleta de um interferômetro e a sua consequente resolução angular são geralmente muito maiores.
+              </p>
+              <p class="text-slate-300 leading-relaxed">
+                Este design é extremamente eficiente para o Mapeamento de Intensidade (Intensity Mapping), onde o objetivo não é resolver galáxias individuais com alta resolução (o que demandaria um interferômetro gigante), mas sim mapear as flutuações de densidade do gás em grandes escalas no universo com altíssima sensibilidade a brilhos de superfície difusos.
+              </p>
+            </div>
+            <div class="md:w-2/5 mt-8 md:mt-0">
+              <div class="rounded-xl overflow-hidden border border-indigo-500/15">
+                <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full h-auto bg-slate-900" />
+                <p class="text-xs text-slate-400 text-center py-2 bg-slate-800/80">Arranjo conceitual dos módulos de cornetas do BINGO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Optical Design -->
-      <div class="md:flex gap-12 items-center mb-16 animate-on-scroll">
+      <div class="md:flex gap-12 items-start mb-16 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 mb-6">
             <img src={`${base}images/telescope/BINGO_model_2.jpeg`} alt="BINGO - Arranjo óptico Crossed-Dragone" class="w-full h-auto" />
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
+            <img src={`${base}images/telescope/optical_design_scheme.jpeg`} alt="Esquema do design óptico do BINGO com ângulos de orientação" class="w-full h-auto bg-white/5" />
           </div>
         </div>
         <div class="md:w-1/2">
           <p class="section-label text-left">Design Óptico</p>
           <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Arranjo Óptico <span class="gradient-text-cyan">Crossed-Dragone</span></h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
-            O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de ~40m com um espelho secundário de ~35.6m dispostos em ângulo cruzado. Esta configuração foi escolhida por produzir um campo de visão amplo com distorções mínimas.
+          <p class="text-slate-300 leading-relaxed mb-6">
+            O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de 40m com um espelho secundário hiperbólico de 36m dispostos em ângulo cruzado. Esta configuração minimiza lóbulos laterais e spillover, e foi escolhida por produzir um campo de visão amplo com distorções mínimas.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-6">
             O telescópio opera em modo de <strong class="text-white">trânsito</strong>, sem partes móveis — ele fica fixo, apontado para uma faixa do céu (declinação ~-15°), e varre o céu conforme a Terra gira. Isso simplifica enormemente a engenharia mecânica, elimina vibrações e instabilidades de apontamento, e garante observações extremamente estáveis.
           </p>
-          <p class="text-slate-300 leading-relaxed">
-            A configuração crossed-dragone minimiza lóbulos laterais e spillover (radiação que escapa do plano focal), que são fontes críticas de contaminação sistemática para mapeamento de HI cosmológico, onde o sinal desejado é ~10⁵ vezes mais fraco que os foregrounds galácticos.
-          </p>
+          
+          <h3 class="text-xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Parâmetros e Características</h3>
+          <div class="overflow-x-auto rounded-lg border border-indigo-500/20 bg-slate-800/40">
+            <table class="w-full text-sm text-left text-slate-300">
+              <tbody class="divide-y divide-indigo-500/20">
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Refletor Primário</td>
+                  <td class="px-4 py-3">Paraboloide fora de eixo (off-axis), 40m de diâmetro</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Refletor Secundário</td>
+                  <td class="px-4 py-3">Hiperboloide fora de eixo (off-axis), 36m de diâmetro</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Distância Focal Efetiva</td>
+                  <td class="px-4 py-3">63.2 m</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">FWHM (Resolução)</td>
+                  <td class="px-4 py-3">0.67° (~40 arcmin)</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Número de Cornetas</td>
+                  <td class="px-4 py-3">28 (polarização dupla/circular)</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Dimensões da Corneta</td>
+                  <td class="px-4 py-3">Abertura: 1.9 m | Comprimento: 4.3 m</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Área Coberta no Céu</td>
+                  <td class="px-4 py-3">~5300 a 6000 deg²</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Temperatura do Sistema</td>
+                  <td class="px-4 py-3">70 K (não-criogênico)</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Banda de Frequência</td>
+                  <td class="px-4 py-3">980 – 1260 MHz</td>
+                </tr>
+                <tr class="hover:bg-slate-700/30 transition-colors">
+                  <td class="px-4 py-3 font-medium text-white">Intervalo de Redshift</td>
+                  <td class="px-4 py-3">0.13 – 0.45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -145,7 +220,7 @@ const base = import.meta.env.BASE_URL;
           </div>
           <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Mitigação de RFI</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            A interferência de radiofrequência (RFI) é o maior desafio técnico para detecção de HI cosmológico. Além da localização remota em Aguiar, o BINGO emprega filtros de hardware, algoritmos de RFI flagging em tempo real, e técnicas de subspace projection para remover contaminação sem distorcer o sinal cosmológico.
+            A interferência de radiofrequência (RFI) é o maior desafio técnico para detecção de HI cosmológico. O corte inferior de frequência em <strong class="text-cyan-400">980 MHz</strong> foi escolhido especificamente para minimizar a interferência de sinais de telefonia celular (banda de 700–956 MHz). Além da localização remota em Aguiar, o BINGO emprega filtros de hardware, algoritmos de RFI flagging em tempo real, e técnicas de subspace projection para remover contaminação sem distorcer o sinal cósmico.
           </p>
         </div>
       </div>
