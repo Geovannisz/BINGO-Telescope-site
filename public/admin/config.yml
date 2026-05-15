@@ -1,7 +1,8 @@
-site_url: "https://glittery-unicorn-e798c2.netlify.app"
+site_url: "https://geovannisz.github.io/BINGO-Telescope-site"
 
 backend:
-  name: git-gateway
+  name: github
+  repo: Geovannisz/BINGO-Telescope-site
   branch: main
 
 media_folder: "public/images/uploads"
