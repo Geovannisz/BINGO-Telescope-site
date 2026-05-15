@@ -4,51 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BINGO Telescope — Content Manager</title>
-    <style>
-      .google-login-bar {
-        background: #1e293b;
-        border-bottom: 1px solid #334155;
-        padding: 12px 24px;
-        text-align: center;
-        font-family: system-ui, sans-serif;
-      }
-      .google-login-bar button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #4285f4;
-        color: white;
-        border: none;
-        cursor: pointer;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        transition: background 0.2s;
-      }
-      .google-login-bar button:hover { background: #3367d6; }
-      .google-login-bar span { color: #94a3b8; font-size: 13px; margin-left: 12px; }
-    </style>
   </head>
   <body>
-    <div class="google-login-bar">
-      <button onclick="openGoogleAuth()">
-        🔑 Login com Google
-      </button>
-      <span>Pesquisadores autorizados podem usar sua conta Google</span>
-    </div>
-    <script>
-      function openGoogleAuth() {
-        const w = 600, h = 700;
-        const left = (screen.width - w) / 2;
-        const top = (screen.height - h) / 2;
-        window.open(
-          'https://bingo-cms-oauth.geovanni.workers.dev/google/auth',
-          'Google Login',
-          `width=${w},height=${h},top=${top},left=${left}`
-        );
-      }
-    </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
