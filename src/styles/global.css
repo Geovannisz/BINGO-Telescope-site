@@ -175,7 +175,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.15;
+  opacity: 0.25; /* Increased to show more image */
   z-index: 0;
   animation: subtle-zoom 30s ease-in-out infinite alternate;
 }
@@ -183,7 +183,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(7, 13, 31, 0.5) 0%, rgba(15, 23, 42, 0.85) 70%, #0f172a 100%);
+  background: linear-gradient(180deg, rgba(7, 13, 31, 0.3) 0%, rgba(15, 23, 42, 0.7) 70%, #0f172a 100%);
   z-index: 1;
 }
 
@@ -197,13 +197,13 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.08;
+  opacity: 0.15; /* Increased to show more image */
   z-index: 0;
 }
 .section-bg-image > .bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(7, 13, 31, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(7, 13, 31, 0.8) 100%);
   z-index: 1;
 }
 
