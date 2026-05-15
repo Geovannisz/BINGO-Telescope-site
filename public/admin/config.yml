@@ -4,6 +4,8 @@ backend:
   name: github
   repo: Geovannisz/BINGO-Telescope-site
   branch: main
+  base_url: https://bingo-cms-oauth.geovanni.workers.dev//callback
+  auth_endpoint: /auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
