@@ -8,13 +8,15 @@ interface Props {
 }
 
 const { title, date, summary, image, href } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const imageUrl = image?.startsWith('/') ? `${base}${image.slice(1)}` : image;
 ---
 
 <a href={href} class="group block h-full">
   <article class="bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden h-full flex flex-col transition-all duration-300 hover:bg-slate-800 hover:border-cyan-500/30 hover:shadow-lg hover:-translate-y-1">
     <div class="h-48 overflow-hidden bg-slate-900 relative">
-      {image ? (
-        <img src={image} alt={title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+      {imageUrl ? (
+        <img src={imageUrl} alt={title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
       ) : (
         <div class="w-full h-full bg-slate-800 flex items-center justify-center">
           <svg class="w-12 h-12 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

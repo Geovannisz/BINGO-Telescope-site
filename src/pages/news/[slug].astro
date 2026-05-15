@@ -12,6 +12,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
+
+const imageUrl = entry.data.image?.startsWith('/') 
+  ? `${base}${entry.data.image.slice(1)}` 
+  : entry.data.image;
 ---
 
 <BaseLayout title={entry.data.title}>
@@ -25,9 +29,9 @@ const base = import.meta.env.BASE_URL;
         </div>
       </div>
 
-      {entry.data.image && (
+      {imageUrl && (
         <div class="mb-12 rounded-2xl overflow-hidden aspect-video border border-slate-700">
-          <img src={entry.data.image} alt={entry.data.title} class="w-full h-full object-cover" />
+          <img src={imageUrl} alt={entry.data.title} class="w-full h-full object-cover" />
         </div>
       )}
 
