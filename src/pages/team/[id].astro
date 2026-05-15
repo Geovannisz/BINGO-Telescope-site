@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const team = await getCollection('team');
+  return team.map((member) => ({
+    params: { id: member.id },
+    props: { member },
+  }));
+}
+
+const { member } = Astro.props;
+const d = member.data;
+const base = import.meta.env.BASE_URL;
+
+const photoSrc = d.photo
+  ? (d.photo.startsWith('http') || d.photo.startsWith(base))
+    ? d.photo
+    : `${base}${d.photo.startsWith('/') ? d.photo.slice(1) : d.photo}`
+  : null;
+
+const stageColors: Record<string, string> = {
+  'Stage 0': 'bg-rose-500/15 text-rose-400 border-rose-500/30',
+  'Stage I': 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+  'Stage II': 'bg-amber-500/15 text-amber-400 border-amber-500/30',
+  'Stage III': 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+  'Stage IV': 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+  'Stage V': 'bg-purple-500/15 text-purple-400 border-purple-500/30',
+  'Coordenação': 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30',
+};
+const stageClass = d.stage ? (stageColors[d.stage] || '') : '';
+
+/* Helper: only render a section if at least one field has content */
+const hasTrajectory = d.interest_origin || d.motivation || d.years_researching || d.research_lines || d.memorable_experience;
+const hasResearch = d.project_title || d.project_description || d.project_problem || d.project_importance || d.project_methods || d.project_results || d.project_challenges;
+const hasOutreach = d.explain_simple || d.biggest_curiosity || d.common_myth || d.impressive_discovery || d.career_advice;
+const hasPublications = d.published_articles || d.books_chapters || d.groups_labs || d.future_projects;
+const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
+---
+
+<BaseLayout title={d.name}>
+  <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.1;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <a href={`${base}team/`} class="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 text-sm mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Voltar à Equipe
+      </a>
+      <div class="flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-8">
+        <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden bg-slate-700 border-4 border-indigo-500/30 shadow-xl shadow-cyan-500/10 flex-shrink-0">
+          {photoSrc ? (
+            <img src={photoSrc} alt={`Foto de ${d.name}`} class="w-full h-full object-cover" />
+          ) : (
+            <div class="w-full h-full flex items-center justify-center text-slate-400">
+              <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            </div>
+          )}
+        </div>
+        <div class="text-center md:text-left">
+          <h1 class="text-3xl sm:text-4xl font-black text-white mb-2" style="font-family: 'Outfit', sans-serif;">{d.name}</h1>
+          <p class="text-cyan-400 text-lg font-semibold mb-1">{d.role}</p>
+          <p class="text-slate-400 text-sm uppercase tracking-wider mb-3">{d.institution}</p>
+          <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+            {d.stage && <span class={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border ${stageClass}`}>{d.stage}</span>}
+            {d.area && <span class="text-xs text-slate-300 bg-slate-700/50 px-3 py-1.5 rounded-full border border-slate-600/30">{d.area}</span>}
+            {d.city && <span class="text-xs text-slate-400 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700/30">📍 {d.city}</span>}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-cosmic pb-24">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-10">
+
+      {/* ── Bio ── */}
+      {d.bio && (
+        <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
+          <p class="text-slate-300 leading-relaxed text-lg">{d.bio}</p>
+        </div>
+      )}
+
+      {/* ── Links ── */}
+      {hasLinks && (
+        <div class="flex flex-wrap gap-3 justify-center animate-on-scroll">
+          {d.email && <a href={`mailto:${d.email}`} class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-400 text-sm transition-all"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>E-mail</a>}
+          {d.lattes && <a href={d.lattes} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-400 text-sm transition-all"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Lattes</a>}
+          {d.orcid && <a href={d.orcid} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-400 text-sm transition-all">ORCID</a>}
+          {d.linkedin && <a href={d.linkedin} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-400 text-sm transition-all">LinkedIn</a>}
+          {d.researchgate && <a href={d.researchgate} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-700/50 text-slate-300 hover:border-cyan-500/40 hover:text-cyan-400 text-sm transition-all">ResearchGate</a>}
+        </div>
+      )}
+
+      {/* ── Trajetória ── */}
+      {hasTrajectory && (
+        <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">
+            <span class="gradient-text-cyan">Trajetória</span> Acadêmica
+          </h2>
+          <div class="space-y-6">
+            {d.interest_origin && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Como começou o interesse</h3><p class="text-slate-300 leading-relaxed">{d.interest_origin}</p></div>}
+            {d.motivation && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Motivação</h3><p class="text-slate-300 leading-relaxed">{d.motivation}</p></div>}
+            {d.years_researching && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Tempo de pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.years_researching}</p></div>}
+            {d.research_lines && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Linhas de pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.research_lines}</p></div>}
+            {d.memorable_experience && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Experiência marcante</h3><p class="text-slate-300 leading-relaxed">{d.memorable_experience}</p></div>}
+          </div>
+        </div>
+      )}
+
+      {/* ── Pesquisa Atual ── */}
+      {hasResearch && (
+        <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">
+            <span class="gradient-text-cyan">Pesquisa</span> Atual
+          </h2>
+          {d.project_title && <h3 class="text-xl font-semibold text-white mb-4 border-l-4 border-cyan-500 pl-4">{d.project_title}</h3>}
+          <div class="space-y-6">
+            {d.project_description && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Sobre a pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.project_description}</p></div>}
+            {d.project_problem && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Problema investigado</h3><p class="text-slate-300 leading-relaxed">{d.project_problem}</p></div>}
+            {d.project_importance && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Importância</h3><p class="text-slate-300 leading-relaxed">{d.project_importance}</p></div>}
+            {d.project_methods && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Métodos</h3><p class="text-slate-300 leading-relaxed">{d.project_methods}</p></div>}
+            {d.project_results && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Resultados</h3><p class="text-slate-300 leading-relaxed">{d.project_results}</p></div>}
+            {d.project_challenges && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Desafios</h3><p class="text-slate-300 leading-relaxed">{d.project_challenges}</p></div>}
+          </div>
+        </div>
+      )}
+
+      {/* ── Divulgação ── */}
+      {hasOutreach && (
+        <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">
+            <span class="gradient-text-cyan">Divulgação</span> Científica
+          </h2>
+          <div class="space-y-6">
+            {d.explain_simple && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Pesquisa em palavras simples</h3><p class="text-slate-300 leading-relaxed italic">"{d.explain_simple}"</p></div>}
+            {d.biggest_curiosity && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Curiosidade</h3><p class="text-slate-300 leading-relaxed">{d.biggest_curiosity}</p></div>}
+            {d.common_myth && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Mitos comuns</h3><p class="text-slate-300 leading-relaxed">{d.common_myth}</p></div>}
+            {d.impressive_discovery && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Descoberta impressionante</h3><p class="text-slate-300 leading-relaxed">{d.impressive_discovery}</p></div>}
+            {d.career_advice && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Conselho profissional</h3><p class="text-slate-300 leading-relaxed">💡 {d.career_advice}</p></div>}
+          </div>
+        </div>
+      )}
+
+      {/* ── Produção Científica ── */}
+      {hasPublications && (
+        <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">
+            <span class="gradient-text-cyan">Produção</span> Científica
+          </h2>
+          <div class="space-y-6">
+            {d.published_articles && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Artigos publicados</h3><p class="text-slate-300 leading-relaxed whitespace-pre-line">{d.published_articles}</p></div>}
+            {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><p class="text-slate-300 leading-relaxed">{d.books_chapters}</p></div>}
+            {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><p class="text-slate-300 leading-relaxed">{d.groups_labs}</p></div>}
+            {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><p class="text-slate-300 leading-relaxed">{d.future_projects}</p></div>}
+          </div>
+        </div>
+      )}
+
+    </div>
+  </div>
+</BaseLayout>

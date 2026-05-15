@@ -15,12 +15,70 @@ const newsCollection = defineCollection({
 const teamCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/team" }),
   schema: z.object({
+    /* ── Basic Info ── */
     name: z.string(),
-    role: z.string(),
+    role: z.enum([
+      'Coordenador Geral',
+      'Pesquisador Sênior',
+      'Pós-doc',
+      'Doutorando',
+      'Mestrando',
+      'Iniciação Científica',
+      'Engenheiro',
+      'Colaborador Externo',
+    ]),
     institution: z.string(),
     photo: z.string().optional(),
+    stage: z.enum([
+      'Stage 0',
+      'Stage I',
+      'Stage II',
+      'Stage III',
+      'Stage IV',
+      'Stage V',
+      'Coordenação',
+    ]).default('Coordenação'),
+    city: z.string().optional(),
+    area: z.string().optional(),
+    email: z.string().optional(),
+    lattes: z.string().optional(),
+    orcid: z.string().optional(),
+    linkedin: z.string().optional(),
+    researchgate: z.string().optional(),
+
+    /* ── Trajectory ── */
     bio: z.string().optional(),
-    category: z.string().default('Pesquisador'),
+    interest_origin: z.string().optional(),
+    motivation: z.string().optional(),
+    years_researching: z.string().optional(),
+    research_lines: z.string().optional(),
+    memorable_experience: z.string().optional(),
+
+    /* ── Current Research ── */
+    project_title: z.string().optional(),
+    project_description: z.string().optional(),
+    project_problem: z.string().optional(),
+    project_importance: z.string().optional(),
+    project_methods: z.string().optional(),
+    project_results: z.string().optional(),
+    project_challenges: z.string().optional(),
+
+    /* ── Outreach / Fun ── */
+    explain_simple: z.string().optional(),
+    biggest_curiosity: z.string().optional(),
+    common_myth: z.string().optional(),
+    impressive_discovery: z.string().optional(),
+    career_advice: z.string().optional(),
+
+    /* ── Publications ── */
+    published_articles: z.string().optional(),
+    books_chapters: z.string().optional(),
+    groups_labs: z.string().optional(),
+    future_projects: z.string().optional(),
+
+    /* ── Authorization ── */
+    authorized: z.boolean().default(true),
+    credit_name: z.string().optional(),
   }),
 });
 

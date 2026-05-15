@@ -2,25 +2,126 @@
 /* ===================================================================
    TEAM PAGE — /team
    
-   Displays all team members from src/content/team/*.md in a responsive
-   grid. Members are sorted alphabetically by name. Each card shows:
-   - Photo (circular, with fallback person icon if no photo)
-   - Name, role, institution
-   
-   TO ADD A TEAM MEMBER:
-   Create a new .md file in src/content/team/ with frontmatter:
-     name, role, institution, photo (optional), category (optional), bio (optional)
-   
-   TO MODIFY GRID LAYOUT:
-   Change the grid-cols-* classes below. Current: 1→2→3→4 columns.
+   Displays:
+   1. Working Groups (Stages 0-V) overview
+   2. Team members grouped by role hierarchy
    =================================================================== */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamMember from '../components/TeamMember.astro';
 import { getCollection } from 'astro:content';
 
 const allTeam = await getCollection('team');
-const sortedTeam = allTeam.sort((a, b) => a.data.name.localeCompare(b.data.name));
 const base = import.meta.env.BASE_URL;
+
+/* Role hierarchy for display order */
+const roleOrder = [
+  'Coordenador Geral',
+  'Pesquisador Sênior',
+  'Pós-doc',
+  'Doutorando',
+  'Mestrando',
+  'Iniciação Científica',
+  'Engenheiro',
+  'Colaborador Externo',
+];
+
+const roleLabels: Record<string, string> = {
+  'Coordenador Geral': 'Coordenação Geral',
+  'Pesquisador Sênior': 'Pesquisadores Seniores',
+  'Pós-doc': 'Pós-Doutorandos',
+  'Doutorando': 'Doutorandos',
+  'Mestrando': 'Mestrandos',
+  'Iniciação Científica': 'Iniciação Científica',
+  'Engenheiro': 'Engenheiros',
+  'Colaborador Externo': 'Colaboradores Externos',
+};
+
+const roleDescriptions: Record<string, string> = {
+  'Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
+  'Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
+  'Pós-doc': 'Pesquisadores em estágio pós-doutoral',
+  'Doutorando': 'Estudantes desenvolvendo teses de doutorado',
+  'Mestrando': 'Estudantes desenvolvendo dissertações de mestrado',
+  'Iniciação Científica': 'Estudantes de graduação em projetos de IC',
+  'Engenheiro': 'Profissionais de engenharia e infraestrutura',
+  'Colaborador Externo': 'Parceiros e colaboradores de outras instituições',
+};
+
+/* Group members by role */
+const grouped = roleOrder
+  .map(role => ({
+    role,
+    label: roleLabels[role] || role,
+    description: roleDescriptions[role] || '',
+    members: allTeam
+      .filter(m => m.data.role === role)
+      .sort((a, b) => a.data.name.localeCompare(b.data.name)),
+  }))
+  .filter(g => g.members.length > 0);
+
+/* Working Groups data */
+const stages = [
+  {
+    id: '0',
+    name: 'Stage 0',
+    title: 'Receptor, Backend Digital & Outrigger',
+    description: 'Desenvolvimento dos componentes instrumentais do radiotelescópio: preparação do sítio, medições de RFI, montagem estrutural, cornetas receptoras, filtros, receptores, conversores A/D, processamento digital com FPGAs e infraestrutura de armazenamento.',
+    color: 'from-rose-500/20 to-rose-600/5',
+    border: 'border-rose-500/30',
+    badge: 'bg-rose-500/15 text-rose-400',
+    icon: '🔧',
+  },
+  {
+    id: 'I',
+    name: 'Stage I',
+    title: 'Dados Brutos, FRBs & Outriggers',
+    description: 'Análise de dados brutos no domínio do tempo, detecção de Fast Radio Bursts, Pulsares e outros transientes rádio. Desenvolvimento e operação dos outriggers do BINGO.',
+    color: 'from-orange-500/20 to-orange-600/5',
+    border: 'border-orange-500/30',
+    badge: 'bg-orange-500/15 text-orange-400',
+    icon: '⚡',
+  },
+  {
+    id: 'II',
+    name: 'Stage II',
+    title: 'Construção de Mapas & Remoção de Foreground',
+    description: 'Combinação de espectros e direções de apontamento para gerar mapas do céu. Remoção de emissões de foreground (Via Láctea, outras galáxias) para isolar o sinal de 21cm — equivalente a encontrar uma agulha no fundo do mar.',
+    color: 'from-amber-500/20 to-amber-600/5',
+    border: 'border-amber-500/30',
+    badge: 'bg-amber-500/15 text-amber-400',
+    icon: '🗺️',
+  },
+  {
+    id: 'III',
+    name: 'Stage III',
+    title: 'Simulação & Inferência Cosmológica',
+    description: 'Criação de universos simulados em supercomputadores para testar métodos de extração do sinal. Desenvolvimento de pipelines de inferência cosmológica usando power spectrum, BAO wiggles e funções de correlação.',
+    color: 'from-emerald-500/20 to-emerald-600/5',
+    border: 'border-emerald-500/30',
+    badge: 'bg-emerald-500/15 text-emerald-400',
+    icon: '🖥️',
+  },
+  {
+    id: 'IV',
+    name: 'Stage IV',
+    title: 'Modelos Teóricos Cosmológicos & Astrofísicos',
+    description: 'Investigação de nova física via intensity mapping de 21cm: partículas de matéria escura, interações no setor escuro, desvios da relatividade geral. Desenvolvimento de frameworks teóricos e algoritmos de análise.',
+    color: 'from-blue-500/20 to-blue-600/5',
+    border: 'border-blue-500/30',
+    badge: 'bg-blue-500/15 text-blue-400',
+    icon: '🔬',
+  },
+  {
+    id: 'V',
+    name: 'Stage V',
+    title: 'Divulgação Científica & Extensão',
+    description: 'Popularização da ciência, atividades educacionais, palestras em escolas e universidades, e projetos de impacto social como o "Esperança no Espaço".',
+    color: 'from-purple-500/20 to-purple-600/5',
+    border: 'border-purple-500/30',
+    badge: 'bg-purple-500/15 text-purple-400',
+    icon: '🎓',
+  },
+];
 ---
 
 <BaseLayout title="Equipe">
@@ -36,29 +137,77 @@ const base = import.meta.env.BASE_URL;
           Nossa <span class="gradient-text-cyan">Equipe</span>
         </h1>
         <p class="mt-4 text-base sm:text-lg leading-7 text-slate-300 max-w-2xl">
-          A colaboração internacional por trás do telescópio BINGO.
+          A colaboração internacional por trás do telescópio BINGO — pesquisadores, engenheiros e estudantes unidos para desvendar o universo.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Team Members Grid -->
   <div class="bg-cosmic pb-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <!-- Responsive grid: 1 col on xs, 2 on sm, 3 on md, 4 on lg -->
-      <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-        {sortedTeam.map((member) => (
-          <TeamMember
-            name={member.data.name}
-            role={member.data.role}
-            institution={member.data.institution}
-            photo={member.data.photo}
-          />
-        ))}
-      </div>
 
-      <!-- Empty state when no team members -->
-      {sortedTeam.length === 0 && (
+      <!-- ══════════════════════════════════════════════════════════
+           WORKING GROUPS (STAGES)
+           ══════════════════════════════════════════════════════════ -->
+      <section class="mb-20 animate-on-scroll">
+        <div class="text-center mb-12">
+          <p class="section-label">Organização</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: 'Outfit', sans-serif;">
+            Grupos de <span class="gradient-text-cyan">Trabalho</span>
+          </h2>
+          <div class="section-divider"></div>
+          <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+            O projeto BINGO é estruturado em seis etapas interdependentes — do hardware ao impacto social — cada uma liderada por um grupo de especialistas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {stages.map((s) => (
+            <div class={`glass-card-glow p-6 sm:p-8 border ${s.border} transition-all duration-300 hover:shadow-lg`}>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">{s.icon}</span>
+                <span class={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${s.badge}`}>{s.name}</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">{s.title}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           TEAM MEMBERS BY ROLE
+           ══════════════════════════════════════════════════════════ -->
+      {grouped.map((group) => (
+        <section class="mb-16 animate-on-scroll">
+          <div class="mb-8">
+            <h2 class="text-xl sm:text-2xl font-bold text-white" style="font-family: 'Outfit', sans-serif;">
+              {group.label}
+            </h2>
+            {group.description && <p class="text-slate-400 text-sm mt-1">{group.description}</p>}
+            <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500 mt-3"></div>
+          </div>
+          <div class={`grid gap-4 sm:gap-6 lg:gap-8 ${
+            group.role === 'Coordenador Geral'
+              ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-2 max-w-2xl'
+              : 'grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          }`}>
+            {group.members.map((member) => (
+              <TeamMember
+                name={member.data.name}
+                role={member.data.role}
+                institution={member.data.institution}
+                photo={member.data.photo}
+                stage={member.data.stage}
+                slug={member.id}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <!-- Empty state -->
+      {allTeam.length === 0 && (
         <div class="text-center py-16">
           <p class="text-slate-500 text-lg">Nenhum membro da equipe cadastrado ainda.</p>
           <p class="text-slate-600 text-sm mt-2">Adicione membros via o painel <a href={`${base}admin/`} class="text-cyan-400 hover:underline">admin</a>.</p>
