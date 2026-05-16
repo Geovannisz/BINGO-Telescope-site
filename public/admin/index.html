@@ -235,6 +235,10 @@
         color: #64748b !important;
       }
 
+      /* ==================================================== */
+      /* CORREÇÃO DOS FUNDOS BRANCOS NOS WIDGETS DO FORMULÁRIO*/
+      /* ==================================================== */
+      
       /* Campos de Texto (Inputs, Textareas, Selects) - Regra Global */
       input, select, textarea {
         background-color: #020617 !important;
@@ -250,6 +254,55 @@
         box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
       }
 
+      /* Área de Texto do Markdown (onde estava ilegível na foto) */
+      [data-slate-editor], [contenteditable="true"] {
+        background-color: #020617 !important;
+        color: #f8fafc !important;
+        min-height: 250px !important;
+        padding: 16px !important;
+        border: 1px solid #1e293b !important;
+        border-top: none !important;
+        border-radius: 0 0 8px 8px !important;
+      }
+
+      /* Botões na barra superior (Publish, Delete) */
+      [class*="ToolbarContainer"] button {
+        background-color: #1e293b !important;
+        color: #f8fafc !important;
+        border: 1px solid #334155 !important;
+        font-weight: 600 !important;
+        border-radius: 6px !important;
+        padding: 8px 16px !important;
+      }
+      [class*="ToolbarContainer"] button[class*="info"], [class*="ToolbarContainer"] button[class*="primary"] {
+        background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%) !important;
+        color: white !important;
+        border: none !important;
+      }
+      [class*="ToolbarContainer"] button[class*="danger"] {
+        background-color: #ef4444 !important;
+        color: white !important;
+        border: none !important;
+      }
+
+      /* Mata o fundo branco das caixas de Imagem e Data */
+      [class*="EditorControlPane"] [class*="ControlPaneContainer"] > div > div > div > div {
+        background-color: #020617 !important;
+        color: #f8fafc !important;
+        border-color: #1e293b !important;
+      }
+
+      /* Botões menores dentro do formulário (Choose Image, Now, Clear) */
+      [class*="EditorControlPane"] button {
+        background-color: #1e293b !important;
+        color: #f8fafc !important;
+        border: 1px solid #334155 !important;
+        border-radius: 6px !important;
+      }
+      [class*="EditorControlPane"] button:hover {
+        background-color: #334155 !important;
+      }
+
       /* Barra de ferramentas do Markdown (Negrito, Itálico...) */
       [class*="MarkdownControl"] > div:first-child {
         background-color: #1e293b !important;
@@ -258,6 +311,8 @@
       }
       [class*="MarkdownControl"] button {
         color: #f8fafc !important;
+        background-color: transparent !important;
+        border: none !important;
       }
       
       /* Fundo do Preview Pane (lado direito) antes do iframe carregar */
