@@ -88,6 +88,15 @@ body, #nc-root {
   background: var(--bg-hover) !important;
   color: var(--bingo-cyan) !important;
 }
+/* Active/selected collection in sidebar */
+#nc-root aside a[href*="/collections/"][class*="active"],
+#nc-root aside a[href*="/collections/"][aria-current="page"],
+[data-theme="dark"] #nc-root aside a[class*="active"],
+[data-theme="dark"] #nc-root aside a[aria-current="page"] {
+  background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(99,102,241,0.1)) !important;
+  color: var(--bingo-cyan) !important;
+  font-weight: 600 !important;
+}
 
 /* ═══ GLOBAL INPUT/SELECT/TEXTAREA — cosmetic only, no layout changes ═══ */
 #nc-root input,
@@ -109,6 +118,30 @@ body, #nc-root {
   color: var(--text-muted) !important;
 }
 
+/* Date/time widget — the wrapper div around date inputs */
+#nc-root [class*="DateTime"],
+#nc-root [class*="datetime"],
+#nc-root [class*="DateControl"],
+#nc-root [class*="react-datetime"] {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+#nc-root [class*="DateTime"] input,
+#nc-root [class*="datetime"] input,
+#nc-root [class*="react-datetime"] input {
+  background-color: var(--bg-input) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+/* Date widget buttons (Now, Clear) */
+#nc-root [class*="DateTime"] button,
+#nc-root [class*="datetime"] button {
+  background-color: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
 /* ═══ GLOBAL LABELS ═══ */
 #nc-root label {
   color: var(--bingo-cyan-dark) !important;
@@ -118,6 +151,25 @@ body, #nc-root {
 /* ═══ GLOBAL BUTTONS — safe cosmetic theming ═══ */
 #nc-root button {
   color: var(--text-primary) !important;
+}
+
+/* "New <collection>" create link — gradient button */
+#nc-root a[href*="/new"],
+#nc-root a[href*="/create"] {
+  background: var(--gradient-brand) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 15px rgba(6,182,212,0.25) !important;
+}
+#nc-root a[href*="/new"]:hover,
+#nc-root a[href*="/create"]:hover {
+  background: var(--gradient-brand-hover) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 25px rgba(6,182,212,0.35) !important;
 }
 
 /* Slate / contenteditable editors */
