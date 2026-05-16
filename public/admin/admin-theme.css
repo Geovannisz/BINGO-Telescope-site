@@ -1,179 +1,17 @@
 /*
- * BINGO Telescope — Admin Theme
- * Single dark theme. Minimal. Functional.
- * NO layout changes. Only colors.
+ * BINGO Telescope — Admin
+ * Minimal overrides. Let Decap CMS handle its own styling.
+ * Only customizes: login button, font, and "New" button color.
  */
 
-/* ── Force dark color-scheme globally ── */
-html {
-  color-scheme: dark !important;
+/* ── Font ── */
+body, #nc-root {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* ── Base colors ── */
-body,
-#nc-root,
-#nc-root > div {
-  background-color: #0f172a !important;
-  color: #e2e8f0 !important;
-}
-
-/* ── All divs: transparent so parent bg shows ── */
-#nc-root div {
-  background-color: transparent !important;
-}
-
-/* ── Header ── */
-#nc-root header {
-  background-color: #0b1120 !important;
-  border-bottom: 1px solid #1e293b !important;
-}
-#nc-root header * {
-  color: #e2e8f0 !important;
-}
-#nc-root header a:hover {
-  color: #22d3ee !important;
-}
-
-/* ── Sidebar ── */
-#nc-root aside {
-  background-color: #0b1120 !important;
-  border-right: 1px solid #1e293b !important;
-}
-#nc-root aside * {
-  color: #94a3b8 !important;
-}
-#nc-root aside a:hover {
-  color: #22d3ee !important;
-}
-
-/* ── All inputs, selects, textareas ── */
-input, select, textarea,
-#nc-root input,
-#nc-root select,
-#nc-root textarea {
-  background-color: #1e293b !important;
-  color: #f1f5f9 !important;
-  border-color: #334155 !important;
-}
-input:focus, select:focus, textarea:focus {
-  border-color: #22d3ee !important;
-  outline: none !important;
-  box-shadow: 0 0 0 2px rgba(34,211,238,0.2) !important;
-}
-input::placeholder, textarea::placeholder {
-  color: #64748b !important;
-}
-
-/* ── Contenteditable / Slate editors ── */
-[data-slate-editor],
-[contenteditable="true"] {
-  background-color: #1e293b !important;
-  color: #f1f5f9 !important;
-}
-
-/* ── All labels ── */
-#nc-root label {
-  color: #22d3ee !important;
-}
-
-/* ── All buttons ── */
-#nc-root button {
-  background-color: #1e293b !important;
-  color: #e2e8f0 !important;
-  border-color: #334155 !important;
-}
-#nc-root button:hover {
-  border-color: #22d3ee !important;
-}
-
-/* ── "New" create links ── */
-#nc-root a[href*="/new"] {
-  background-color: #0891b2 !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-  text-decoration: none !important;
-}
-
-/* ── All links ── */
-#nc-root a {
-  color: #e2e8f0 !important;
-}
-#nc-root a:hover {
-  color: #22d3ee !important;
-}
-
-/* ── All spans/paragraphs inside the CMS ── */
-#nc-root span,
-#nc-root p,
-#nc-root h1, #nc-root h2, #nc-root h3,
-#nc-root h4, #nc-root h5, #nc-root h6 {
-  color: #e2e8f0 !important;
-}
-
-/* ── Images: remove white background ── */
-#nc-root img {
-  background-color: transparent !important;
-}
-
-/* ── Iframes ── */
-#nc-root iframe {
-  background-color: #0f172a !important;
-}
-
-/* ── SVG icons ── */
-#nc-root svg {
-  color: #94a3b8 !important;
-}
-
-/* ── Any remaining white backgrounds: catch-all ── */
-#nc-root [style*="background: rgb(255"],
-#nc-root [style*="background-color: rgb(255"],
-#nc-root [style*="background:#fff"],
-#nc-root [style*="background: #fff"],
-#nc-root [style*="background:white"],
-#nc-root [style*="background: white"] {
-  background-color: #1e293b !important;
-}
-
-/* ══════════════════════════════════════
-   PORTALED POPUPS (outside #nc-root)
-   ══════════════════════════════════════ */
-body > div:not(#nc-root) {
-  color-scheme: dark !important;
-}
-body > div:not(#nc-root) > div {
-  background-color: #1e293b !important;
-  color: #e2e8f0 !important;
-  border-color: #334155 !important;
-}
-body > div:not(#nc-root) li {
-  color: #e2e8f0 !important;
-}
-body > div:not(#nc-root) li:hover {
-  background-color: rgba(34,211,238,0.1) !important;
-  color: #22d3ee !important;
-}
-body > div:not(#nc-root) span,
-body > div:not(#nc-root) p,
-body > div:not(#nc-root) label {
-  color: #e2e8f0 !important;
-}
-body > div:not(#nc-root) input,
-body > div:not(#nc-root) select,
-body > div:not(#nc-root) textarea {
-  background-color: #1e293b !important;
-  color: #f1f5f9 !important;
-  border-color: #334155 !important;
-}
-body > div:not(#nc-root) button {
-  color: #e2e8f0 !important;
-}
-
-/* ══════════════════════════════════════
-   LOGIN PAGE
-   ══════════════════════════════════════ */
+/* ── Login button ── */
 .bingo-login-btn {
-  background-color: #0891b2 !important;
+  background: linear-gradient(135deg, #0891b2, #6366f1) !important;
   color: #fff !important;
   border: none !important;
   border-radius: 8px !important;
@@ -181,4 +19,7 @@ body > div:not(#nc-root) button {
   font-size: 15px !important;
   font-weight: 600 !important;
   cursor: pointer !important;
+}
+.bingo-login-btn:hover {
+  opacity: 0.9;
 }
