@@ -29,7 +29,7 @@ const stageColors: Record<string, string> = {
   'Stage V': 'bg-purple-500/15 text-purple-400 border-purple-500/30',
   'Coordenação': 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30',
 };
-const stageClass = d.stage ? (stageColors[d.stage] || '') : '';
+const stagesArray = d.stage || [];
 
 /* Helper: only render a section if at least one field has content */
 const hasTrajectory = d.interest_origin || d.motivation || d.years_researching || d.research_lines || d.memorable_experience;
@@ -64,7 +64,10 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
           <p class="text-cyan-400 text-lg font-semibold mb-1">{d.role}</p>
           <p class="text-slate-400 text-sm uppercase tracking-wider mb-3">{d.institution}</p>
           <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-            {d.stage && <span class={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border ${stageClass}`}>{d.stage}</span>}
+            {stagesArray.map((s: string) => {
+              const sClass = stageColors[s] || '';
+              return <span class={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-full border ${sClass}`}>{s}</span>;
+            })}
             {d.area && <span class="text-xs text-slate-300 bg-slate-700/50 px-3 py-1.5 rounded-full border border-slate-600/30">{d.area}</span>}
             {d.city && <span class="text-xs text-slate-400 bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-700/30">📍 {d.city}</span>}
           </div>

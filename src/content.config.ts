@@ -29,15 +29,10 @@ const teamCollection = defineCollection({
     ]),
     institution: z.string(),
     photo: z.string().optional(),
-    stage: z.enum([
-      'Stage 0',
-      'Stage I',
-      'Stage II',
-      'Stage III',
-      'Stage IV',
-      'Stage V',
-      'Coordenação',
-    ]).default('Coordenação'),
+    stage: z.union([
+      z.string(),
+      z.array(z.string())
+    ]).transform(val => Array.isArray(val) ? val : [val]).default(['Coordenação']),
     city: z.string().optional(),
     area: z.string().optional(),
     email: z.string().optional(),
