@@ -153,12 +153,21 @@ export function protectScientificTerms(): void {
         }
 
         const span = document.createElement('span');
+        
+        // Check if the term needs the BINGO font
         if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
-          span.className = 'font-bingo notranslate';
+          // IMPORTANT: We DO NOT use 'notranslate' here.
+          // Applying 'notranslate' blocks Google Translate from reading the sentence fluidly,
+          // causing severe punctuation hallucinations (like adding periods or ellipses)
+          // and preventing grammatical word reordering (e.g., 'projeto BINGO' -> 'BINGO project').
+          span.className = 'font-bingo';
         } else {
+          // For multi-word English hero terms (like "Dark Energy"), we DO use notranslate
+          // so they don't get translated to Portuguese/Chinese.
           span.className = 'notranslate';
+          span.translate = false;
         }
-        span.translate = false;
+        
         span.textContent = prefix + part + suffix;
         frag.appendChild(span);
       } else if (part) {
