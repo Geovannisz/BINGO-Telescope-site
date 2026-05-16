@@ -1,35 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
-
 /*
-  BINGO Telescope — Admin Theme
-  Single dark theme. Ultra-simple. No class-name guessing.
-  Uses color-scheme + broad element selectors only.
-*/
+ * BINGO Telescope — Admin Theme
+ * Single dark theme. Minimal. Functional.
+ * NO layout changes. Only colors.
+ */
 
+/* ── Force dark color-scheme globally ── */
 html {
-  color-scheme: dark;
+  color-scheme: dark !important;
 }
 
-/* ═══ Global colors ═══ */
-html, body, #nc-root, #nc-root > div {
+/* ── Base colors ── */
+body,
+#nc-root,
+#nc-root > div {
   background-color: #0f172a !important;
   color: #e2e8f0 !important;
-  font-family: 'Outfit', sans-serif !important;
 }
 
-/* All divs, sections, mains, asides, headers, navs */
-div, section, main, aside, header, nav, footer, article {
-  color: inherit;
+/* ── All divs: transparent so parent bg shows ── */
+#nc-root div {
+  background-color: transparent !important;
 }
 
-/* ═══ Inputs / Selects / Textareas ═══ */
-input, textarea, select {
+/* ── Header ── */
+#nc-root header {
+  background-color: #0b1120 !important;
+  border-bottom: 1px solid #1e293b !important;
+}
+#nc-root header * {
+  color: #e2e8f0 !important;
+}
+#nc-root header a:hover {
+  color: #22d3ee !important;
+}
+
+/* ── Sidebar ── */
+#nc-root aside {
+  background-color: #0b1120 !important;
+  border-right: 1px solid #1e293b !important;
+}
+#nc-root aside * {
+  color: #94a3b8 !important;
+}
+#nc-root aside a:hover {
+  color: #22d3ee !important;
+}
+
+/* ── All inputs, selects, textareas ── */
+input, select, textarea,
+#nc-root input,
+#nc-root select,
+#nc-root textarea {
   background-color: #1e293b !important;
   color: #f1f5f9 !important;
-  border: 1px solid #334155 !important;
-  border-radius: 6px;
+  border-color: #334155 !important;
 }
-input:focus, textarea:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   border-color: #22d3ee !important;
   outline: none !important;
   box-shadow: 0 0 0 2px rgba(34,211,238,0.2) !important;
@@ -38,69 +64,104 @@ input::placeholder, textarea::placeholder {
   color: #64748b !important;
 }
 
-/* ═══ Labels ═══ */
-label {
-  color: #22d3ee !important;
-  font-weight: 600 !important;
+/* ── Contenteditable / Slate editors ── */
+[data-slate-editor],
+[contenteditable="true"] {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
 }
 
-/* ═══ Buttons ═══ */
-button {
+/* ── All labels ── */
+#nc-root label {
+  color: #22d3ee !important;
+}
+
+/* ── All buttons ── */
+#nc-root button {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+#nc-root button:hover {
+  border-color: #22d3ee !important;
+}
+
+/* ── "New" create links ── */
+#nc-root a[href*="/new"] {
+  background-color: #0891b2 !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+}
+
+/* ── All links ── */
+#nc-root a {
+  color: #e2e8f0 !important;
+}
+#nc-root a:hover {
+  color: #22d3ee !important;
+}
+
+/* ── All spans/paragraphs inside the CMS ── */
+#nc-root span,
+#nc-root p,
+#nc-root h1, #nc-root h2, #nc-root h3,
+#nc-root h4, #nc-root h5, #nc-root h6 {
   color: #e2e8f0 !important;
 }
 
-/* ═══ Links ═══ */
-a {
+/* ── Images: remove white background ── */
+#nc-root img {
+  background-color: transparent !important;
+}
+
+/* ── Iframes ── */
+#nc-root iframe {
+  background-color: #0f172a !important;
+}
+
+/* ── SVG icons ── */
+#nc-root svg {
   color: #94a3b8 !important;
 }
-a:hover {
-  color: #22d3ee !important;
-}
 
-/* "New" create links — gradient button */
-#nc-root a[href*="/new"],
-#nc-root a[href*="/create"] {
-  background: linear-gradient(135deg, #06b6d4, #6366f1) !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 8px !important;
-  padding: 8px 18px !important;
-  text-decoration: none !important;
-  font-weight: 600 !important;
-}
-
-/* ═══ Login button ═══ */
-.bingo-login-btn {
-  background: linear-gradient(135deg, #06b6d4, #6366f1) !important;
-  color: #fff !important;
-  border: none !important;
-  border-radius: 10px !important;
-  font-weight: 700 !important;
-  font-size: 15px !important;
-  padding: 14px 36px !important;
-  cursor: pointer !important;
-}
-
-/* ═══ All popup/portal elements (rendered outside #nc-root) ═══ */
-body > div:not(#nc-root) {
-  color-scheme: dark;
-}
-body > div:not(#nc-root) div,
-body > div:not(#nc-root) ul,
-body > div:not(#nc-root) li,
-body > div:not(#nc-root) span,
-body > div:not(#nc-root) p {
+/* ── Any remaining white backgrounds: catch-all ── */
+#nc-root [style*="background: rgb(255"],
+#nc-root [style*="background-color: rgb(255"],
+#nc-root [style*="background:#fff"],
+#nc-root [style*="background: #fff"],
+#nc-root [style*="background:white"],
+#nc-root [style*="background: white"] {
   background-color: #1e293b !important;
+}
+
+/* ══════════════════════════════════════
+   PORTALED POPUPS (outside #nc-root)
+   ══════════════════════════════════════ */
+body > div:not(#nc-root) {
+  color-scheme: dark !important;
+}
+body > div:not(#nc-root) > div {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+body > div:not(#nc-root) li {
   color: #e2e8f0 !important;
 }
 body > div:not(#nc-root) li:hover {
-  background-color: #334155 !important;
+  background-color: rgba(34,211,238,0.1) !important;
   color: #22d3ee !important;
+}
+body > div:not(#nc-root) span,
+body > div:not(#nc-root) p,
+body > div:not(#nc-root) label {
+  color: #e2e8f0 !important;
 }
 body > div:not(#nc-root) input,
 body > div:not(#nc-root) select,
 body > div:not(#nc-root) textarea {
-  background-color: #0f172a !important;
+  background-color: #1e293b !important;
   color: #f1f5f9 !important;
   border-color: #334155 !important;
 }
@@ -108,18 +169,16 @@ body > div:not(#nc-root) button {
   color: #e2e8f0 !important;
 }
 
-/* ═══ Preview badge ═══ */
-.bingo-preview-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  background: linear-gradient(135deg, #06b6d4, #6366f1);
-  color: #fff;
-  border-radius: 16px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
+/* ══════════════════════════════════════
+   LOGIN PAGE
+   ══════════════════════════════════════ */
+.bingo-login-btn {
+  background-color: #0891b2 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 32px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
 }
