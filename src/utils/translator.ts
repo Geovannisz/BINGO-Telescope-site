@@ -121,14 +121,29 @@ export function protectScientificTerms(): void {
     if (parts.length <= 1) continue;
 
     const frag = document.createDocumentFragment();
-    for (const part of parts) {
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
       regex.lastIndex = 0;
       if (regex.test(part)) {
-        // This part is a protected term — wrap in notranslate span
+        // This part is a protected term — wrap in notranslate span.
+        // Include adjacent spaces inside the span so Google Translate
+        // can't consume them when it wraps surrounding text in <font> tags.
+        let prefix = '';
+        let suffix = '';
+        // Steal trailing space from previous text part
+        if (i > 0 && parts[i - 1] && parts[i - 1].endsWith(' ')) {
+          parts[i - 1] = parts[i - 1].slice(0, -1);
+          prefix = ' ';
+        }
+        // Steal leading space from next text part
+        if (i < parts.length - 1 && parts[i + 1] && parts[i + 1].startsWith(' ')) {
+          parts[i + 1] = parts[i + 1].slice(1);
+          suffix = ' ';
+        }
         const span = document.createElement('span');
         span.className = 'notranslate';
         span.translate = false;
-        span.textContent = part;
+        span.textContent = prefix + part + suffix;
         frag.appendChild(span);
       } else if (part) {
         frag.appendChild(document.createTextNode(part));
