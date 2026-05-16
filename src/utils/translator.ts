@@ -129,7 +129,8 @@ export function protectScientificTerms(): void {
         if (i > 0) {
           let prev = parts[i - 1] || '';
           // Absorb trailing spaces and opening punctuation (including Chinese)
-          const prefixMatch = prev.match(/(\s*[({[<—–\/\\-（【《]+\s*|\s+)$/);
+          // Move hyphen to the very end of the character class to prevent unintended ranges
+          const prefixMatch = prev.match(/(\s*[({[<—–\/\\（【《-]+\s*|\s+)$/);
           if (prefixMatch) {
             prefix = prefixMatch[0];
             let newPrev = prev.slice(0, -prefix.length);
@@ -139,6 +140,11 @@ export function protectScientificTerms(): void {
               newPrev += ' ';
             }
             parts[i - 1] = newPrev;
+            // CRITICAL FIX: Update the already appended text node in the fragment!
+            const prevNode = frag.childNodes[i - 1];
+            if (prevNode && prevNode.nodeType === Node.TEXT_NODE) {
+              prevNode.textContent = newPrev;
+            }
           }
         }
 
@@ -146,7 +152,8 @@ export function protectScientificTerms(): void {
         if (i < parts.length - 1) {
           let next = parts[i + 1] || '';
           // Absorb leading spaces and closing/terminal punctuation (including Chinese)
-          const suffixMatch = next.match(/^(\s*[.,;:!?)}\]>—–\/，。：；！？）】》]+\s*|\s+)/);
+          // Move hyphen to the very end of the character class as well
+          const suffixMatch = next.match(/^(\s*[.,;:!?)}\]>—–\/，。：；！？）】》-]+\s*|\s+)/);
           if (suffixMatch) {
             suffix = suffixMatch[0];
             let newNext = next.slice(suffix.length);
