@@ -125,24 +125,37 @@ export function protectScientificTerms(): void {
       const part = parts[i];
       regex.lastIndex = 0;
       if (regex.test(part)) {
-        // Protected term — wrap in notranslate span.
-        // ALWAYS include spaces inside the span to prevent Google Translate
-        // from collapsing whitespace when it wraps adjacent text in <font> tags.
-        let prefix = ' ';
+        let prefix = '';
         if (i > 0) {
-          const prev = parts[i - 1] || '';
-          // No space if previous text ends with opening punctuation
-          if (prev.match(/[({[<—–\/]\s*$/)) {
-            prefix = '';
+          let prev = parts[i - 1] || '';
+          // Absorb trailing spaces and opening punctuation (including Chinese)
+          const prefixMatch = prev.match(/(\s*[({[<—–\/\\-（【《]+\s*|\s+)$/);
+          if (prefixMatch) {
+            prefix = prefixMatch[0];
+            let newPrev = prev.slice(0, -prefix.length);
+            // Phantom space injection: if the absorbed string had a space, leave a space in the text node
+            // so Google Translate doesn't think the sentence was abruptly cut off.
+            if (/\s/.test(prefix) && newPrev !== '' && !newPrev.endsWith(' ')) {
+              newPrev += ' ';
+            }
+            parts[i - 1] = newPrev;
           }
         }
 
-        let suffix = ' ';
+        let suffix = '';
         if (i < parts.length - 1) {
-          const next = parts[i + 1] || '';
-          // No space if next text starts with closing or terminal punctuation
-          if (next.match(/^\s*[.,;:!?)}\]>—–\/]/)) {
-            suffix = '';
+          let next = parts[i + 1] || '';
+          // Absorb leading spaces and closing/terminal punctuation (including Chinese)
+          const suffixMatch = next.match(/^(\s*[.,;:!?)}\]>—–\/，。：；！？）】》]+\s*|\s+)/);
+          if (suffixMatch) {
+            suffix = suffixMatch[0];
+            let newNext = next.slice(suffix.length);
+            // Phantom space injection: if the absorbed string had a space, leave a space in the text node
+            // so Google Translate knows it's a continuation of the same sentence.
+            if (/\s/.test(suffix) && newNext !== '' && !newNext.startsWith(' ')) {
+              newNext = ' ' + newNext;
+            }
+            parts[i + 1] = newNext;
           }
         }
 
