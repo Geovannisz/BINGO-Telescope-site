@@ -201,12 +201,70 @@
         transform: translateX(4px) !important;
         background-color: #1e293b !important;
       }
+      /* ==================================================== */
+      /* 7. EDITOR VIEW (TELA DE FORMULÁRIO)                  */
+      /* ==================================================== */
+      /* Fundo principal do Editor (Lado Esquerdo) */
+      [class*="EditorContainer"], [class*="SplitPane"], [class*="EditorControlPane"] {
+        background-color: #0f172a !important;
+      }
+      
+      /* Topbar do Editor (botão Publish, Save) */
+      [class*="ToolbarContainer"] {
+        background-color: #020617 !important;
+        border-bottom: 1px solid #1e293b !important;
+      }
+      [class*="ToolbarContainer"] * {
+        color: #f8fafc !important;
+      }
+
+      /* Títulos e Labels dentro do formulário */
+      [class*="ControlPaneContainer"] h1, [class*="ControlPaneContainer"] h2, [class*="ControlPaneContainer"] label, [class*="ControlPaneContainer"] span {
+        color: #cbd5e1 !important;
+      }
+      /* Caixas de hint/descrição */
+      [class*="Hint"] {
+        color: #64748b !important;
+      }
+
+      /* Campos de Texto (Inputs, Textareas, Selects) - Regra Global */
+      input, select, textarea {
+        background-color: #020617 !important;
+        color: #f8fafc !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        transition: border-color 0.2s !important;
+      }
+      input:focus, textarea:focus, select:focus {
+        border-color: #06b6d4 !important;
+        outline: none !important;
+        box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
+      }
+
+      /* Barra de ferramentas do Markdown (Negrito, Itálico...) */
+      [class*="MarkdownControl"] > div:first-child {
+        background-color: #1e293b !important;
+        border-bottom: 1px solid #334155 !important;
+        border-radius: 8px 8px 0 0 !important;
+      }
+      [class*="MarkdownControl"] button {
+        color: #f8fafc !important;
+      }
+      
+      /* Fundo do Preview Pane (lado direito) antes do iframe carregar */
+      [class*="PreviewPaneContainer"] {
+        background-color: #020617 !important;
+      }
     </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Garante que o texto mude caso o CSS não pegue por causa de iframes/shadow DOM
+      // Aplica o Dark Mode também no Iframe de Preview (Lado direito do editor)
+      CMS.registerPreviewStyle("./preview.css");
+
+      // Garante que o texto do botão de login original seja atualizado
       const observer = new MutationObserver(() => {
         const btns = document.querySelectorAll('button');
         btns.forEach(btn => {
