@@ -89,14 +89,15 @@
 
   function getFieldValues() {
     const fields = {};
-    const controlPane = document.querySelector('[class*="ControlPaneContainer"], [class*="EditorControlPane"]');
-    if (!controlPane) return fields;
+    const root = document.getElementById('nc-root');
+    if (!root) return fields;
 
-    // Scan all labeled fields
-    controlPane.querySelectorAll('label').forEach(label => {
+    // Scan all labels in the CMS to find form fields
+    root.querySelectorAll('label').forEach(label => {
       const text = label.textContent.trim();
       if (!text || fields[text]) return;
-      const parent = label.closest('[class*="Widget"]') || label.parentElement?.parentElement;
+      // Walk up to find the widget container
+      const parent = label.closest('[id]') || label.parentElement?.parentElement;
       if (!parent) return;
 
       const input = parent.querySelector('input, textarea, select');
@@ -222,10 +223,10 @@
   }
 
   function updatePreview() {
-    const previewPane = document.querySelector('[class*="PreviewPaneContainer"]');
-    if (!previewPane) return;
+    // Find the preview iframe — search broadly since class names are hashed
+    const iframe = document.querySelector('#nc-root iframe');
+    if (!iframe) return;
 
-    const iframe = previewPane.querySelector('iframe');
     const collection = detectCollection();
     if (!collection) return;
 
@@ -239,35 +240,19 @@
 
     if (!html) return;
 
-    if (iframe) {
-      try {
-        const doc = iframe.contentDocument || iframe.contentWindow.document;
-        doc.open();
-        doc.write(`<!DOCTYPE html><html><head>
-          <meta charset="utf-8">
-          <link rel="stylesheet" href="./preview.css">
-          <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-          <style>body{margin:0;padding:20px;font-family:'Outfit',sans-serif;}</style>
-        </head><body>${html}</body></html>`);
-        doc.close();
-      } catch (e) {
-        injectPreviewOverlay(previewPane, html);
-      }
-    } else {
-      injectPreviewOverlay(previewPane, html);
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      doc.open();
+      doc.write(`<!DOCTYPE html><html><head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./preview.css">
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>body{margin:0;padding:20px;font-family:'Outfit',sans-serif;}</style>
+      </head><body>${html}</body></html>`);
+      doc.close();
+    } catch (e) {
+      // Cross-origin or no iframe access — fail silently
     }
-  }
-
-  function injectPreviewOverlay(container, html) {
-    let overlay = container.querySelector('.bingo-preview-overlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.className = 'bingo-preview-overlay';
-      overlay.style.cssText = 'position:absolute;inset:0;overflow:auto;padding:24px;z-index:10;background:var(--bg-secondary);';
-      container.style.position = 'relative';
-      container.appendChild(overlay);
-    }
-    overlay.innerHTML = html;
   }
 
   let previewTimer = null;
@@ -277,23 +262,13 @@
   }
 
   function initLivePreview() {
-    // Watch for editor to appear, then attach listeners
-    const editorObs = new MutationObserver(() => {
-      const editor = document.querySelector('[class*="EditorControlPane"], [class*="ControlPaneContainer"]');
-      if (!editor) return;
-      if (editor.dataset.bingoWatched) return;
-      editor.dataset.bingoWatched = 'true';
+    // Attach input/change listeners to the entire #nc-root
+    // This is simpler and more robust than trying to find specific editor containers
+    const ncRoot = document.getElementById('nc-root');
+    if (!ncRoot) return;
 
-      editor.addEventListener('input', schedulePreviewUpdate, true);
-      editor.addEventListener('change', schedulePreviewUpdate, true);
-
-      // MutationObserver for contenteditable / Slate changes
-      const slateObs = new MutationObserver(schedulePreviewUpdate);
-      slateObs.observe(editor, { childList: true, subtree: true, characterData: true });
-
-      setTimeout(updatePreview, 500);
-    });
-    editorObs.observe(document.body, { childList: true, subtree: true });
+    ncRoot.addEventListener('input', schedulePreviewUpdate, true);
+    ncRoot.addEventListener('change', schedulePreviewUpdate, true);
 
     window.addEventListener('hashchange', () => {
       setTimeout(updatePreview, 600);
