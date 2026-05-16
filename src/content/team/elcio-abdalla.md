@@ -3,7 +3,8 @@ name: Prof. Dr. Elcio Abdalla
 role: Coordenador Geral
 institution: Universidade de São Paulo (USP)
 photo: /images/team/elcio-abdalla.jpg
-stage: Coordenação
+stage:
+  - Coordenação
 city: São Paulo, SP, Brasil
 area: Física Teórica, Cosmologia Observacional
 email: eabdalla@if.usp.br
