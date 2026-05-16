@@ -1,0 +1,15 @@
+[
+  {
+    "title": "Exemplo de Notícia",
+    "date": "2026-01-15T10:00:00.000Z",
+    "author": "BINGO Team",
+    "image": "/images/uploads/example.jpg",
+    "summary": "Resumo curto da notícia em 1-2 linhas.",
+    "_body": "Corpo da notícia em **Markdown**.\n\nPode conter múltiplos parágrafos, links, imagens, etc."
+  },
+  {
+    "title": "Notícia Mínima (só campos obrigatórios)",
+    "date": "2026-02-20T14:30:00.000Z",
+    "summary": "Apenas os campos obrigatórios preenchidos."
+  }
+]

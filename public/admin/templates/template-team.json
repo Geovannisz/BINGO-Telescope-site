@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Nome Completo do Pesquisador",
+    "role": "Pesquisador Sênior",
+    "institution": "Universidade Federal da Paraíba (UFPB)",
+    "stage": ["Stage I", "Stage III"],
+    "city": "João Pessoa, PB, Brasil",
+    "area": "Cosmologia Observacional",
+    "email": "pesquisador@ufpb.br",
+    "lattes": "http://lattes.cnpq.br/0000000000000000",
+    "orcid": "https://orcid.org/0000-0000-0000-0000",
+    "bio": "Breve descrição profissional do pesquisador em 2-3 frases.",
+    "authorized": true
+  },
+  {
+    "name": "Membro Mínimo",
+    "role": "Mestrando",
+    "institution": "Universidade de São Paulo (USP)"
+  },
+  {
+    "name": "Membro com Pesquisa",
+    "role": "Doutorando",
+    "institution": "INPE",
+    "stage": ["Stage II"],
+    "project_title": "Título do Projeto de Pesquisa",
+    "project_description": "Descrição da pesquisa de forma acessível.",
+    "explain_simple": "Explicação para leigos sobre o que a pesquisa faz.",
+    "authorized": true
+  }
+]
