@@ -110,7 +110,16 @@
         box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4) !important;
       }
 
-      /* 5. Cards (Grid View) - Totalmente Escuros e Sem Sobreposição */
+      /* ==================================================== */
+      /* 5. FORÇAR EXIBIÇÃO EM LISTA PARA TODAS AS COLEÇÕES   */
+      /* ==================================================== */
+      /* Transforma a grade nativa do CMS em uma lista empilhada */
+      main [class*="CardsGrid"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+      
       main a[class*="Card"] {
         background-color: #0f172a !important;
         border-radius: 12px !important;
@@ -120,57 +129,63 @@
         padding: 0 !important;
         overflow: hidden !important;
         display: flex !important;
-        flex-direction: column !important; /* Força imagem em cima, texto embaixo */
-        justify-content: flex-start !important;
+        flex-direction: row !important; /* Deita o card: Imagem na Esquerda, Texto Direita */
+        align-items: stretch !important;
+        height: 120px !important; /* Altura fixa de item de lista */
+        width: 100% !important;
+        max-width: 100% !important;
       }
       main a[class*="Card"]:hover {
-        transform: translateY(-4px) !important;
+        transform: translateX(4px) !important; /* Efeito de deslizar para direita */
         box-shadow: 0 12px 24px rgba(0,0,0,0.8) !important;
         border-color: #06b6d4 !important;
       }
 
-      /* MATA O GRADIENTE BRANCO E O POSICIONAMENTO ABSOLUTO DO DECAP CMS */
+      /* MATA O GRADIENTE BRANCO E POSICIONAMENTO ABSOLUTO */
       main a[class*="Card"] div {
         background-color: transparent !important;
-        background-image: none !important; /* Destrói o gradiente branco */
+        background-image: none !important;
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
-        position: relative !important; /* Remove absolute */
+        position: relative !important;
         top: auto !important;
         bottom: auto !important;
         left: auto !important;
         right: auto !important;
       }
 
-      /* Título do Card (Agora fica certinho embaixo da imagem) */
+      /* Título do Card (Agora alinhado verticalmente à direita) */
       main a[class*="Card"] h2 {
         background-image: none !important;
         background-color: transparent !important;
         position: relative !important;
         color: #f8fafc !important;
         font-size: 1.1rem !important;
-        padding: 16px !important;
+        padding: 0 24px !important;
         margin: 0 !important;
-        white-space: normal !important; /* Permite o texto quebrar em várias linhas */
+        display: flex !important;
+        align-items: center !important; /* Centraliza verticalmente o texto */
+        white-space: normal !important;
         line-height: 1.4 !important;
-        min-height: 60px !important;
+        flex-grow: 1 !important; /* Ocupa todo o resto do card */
       }
 
-      /* --- FIX DEFINITIVO DAS IMAGENS NOS CARDS --- */
+      /* --- IMAGEM DO CARD (Agora é uma miniatura na esquerda) --- */
       main a[class*="Card"] [class*="CardImage"] {
-        width: 100% !important;
-        height: 180px !important; /* Força uma altura fixa para a capa */
+        width: 180px !important; /* Largura fixa da miniatura */
+        height: 100% !important;
         background-color: #020617 !important;
         overflow: hidden !important;
         display: block !important;
-        flex-shrink: 0 !important; /* Impede a imagem de ser esmagada */
+        flex-shrink: 0 !important;
+        border-right: 1px solid #1e293b !important; /* Linha sutil separando imagem do texto */
       }
       main a[class*="Card"] img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important; /* A mágica: preenche perfeitamente sem distorcer e corta os excessos */
+        object-fit: cover !important;
         object-position: center !important;
         display: block !important;
         margin: 0 !important;
@@ -334,6 +349,22 @@
         });
       });
       observer.observe(document.body, { childList: true, subtree: true });
+
+      // Oculta completamente os botões de troca de visualização (Grid/List)
+      // para garantir o novo layout padronizado de Lista.
+      const viewObserver = new MutationObserver(() => {
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+           // Os botões Grid/List do CMS têm SVGs e NÃO possuem texto
+           if (btn.textContent.trim() === '' && btn.querySelector('svg')) {
+              // Certificar que estamos ocultando apenas botões da barra superior
+              if (btn.closest('[class*="CollectionTop"]')) {
+                 btn.style.display = 'none';
+              }
+           }
+        });
+      });
+      viewObserver.observe(document.body, { childList: true, subtree: true });
     </script>
   </body>
 </html>
