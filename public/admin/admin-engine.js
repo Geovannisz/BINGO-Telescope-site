@@ -1,6 +1,9 @@
 /**
  * BINGO Telescope — Admin Panel Engine
- * Theme toggle + Live Preview system
+ * Theme toggle + Login customization + Live Preview
+ *
+ * IMPORTANT: This script must NOT interfere with the Decap CMS
+ * internal DOM. All DOM manipulation is carefully scoped.
  */
 (function () {
   'use strict';
@@ -37,54 +40,35 @@
 
   /* ═══════════════════════════════════════════
      2. LOGIN PAGE DETECTION & CUSTOMIZATION
+     Uses a single MutationObserver (shared below).
      ═══════════════════════════════════════════ */
-  function initLoginCustomization() {
-    const obs = new MutationObserver(() => {
-      // Detect login page by looking for the GitHub login button
-      const btns = document.querySelectorAll('button');
-      let isLoginPage = false;
-      btns.forEach(btn => {
-        if (btn.textContent.includes('Login with GitHub')) {
-          btn.textContent = '🔭 Acessar Painel BINGO';
-          btn.classList.add('bingo-login-btn');
-          isLoginPage = true;
-        }
-        // Also catch already-renamed buttons
-        if (btn.textContent.includes('Acessar Painel BINGO')) {
-          btn.classList.add('bingo-login-btn');
-          isLoginPage = true;
-        }
-      });
+  function checkLoginPage() {
+    const loginBtn = Array.from(document.querySelectorAll('button')).find(
+      b => b.textContent.includes('Login with GitHub')
+    );
 
-      // Toggle body class for login-specific background
-      if (isLoginPage) {
-        document.body.classList.add('bingo-login');
-      } else if (document.querySelector('header') || document.querySelector('aside')) {
-        // We're in the CMS dashboard, remove login class
-        document.body.classList.remove('bingo-login');
-      }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
+    if (loginBtn) {
+      loginBtn.textContent = '🔭 Acessar Painel BINGO';
+      loginBtn.classList.add('bingo-login-btn');
+      document.body.classList.add('bingo-login');
+      return;
+    }
+
+    // If already renamed
+    const renamedBtn = Array.from(document.querySelectorAll('.bingo-login-btn'));
+    if (renamedBtn.length > 0) {
+      document.body.classList.add('bingo-login');
+      return;
+    }
+
+    // If we see CMS chrome (header/aside), we're past login
+    if (document.querySelector('header') || document.querySelector('aside')) {
+      document.body.classList.remove('bingo-login');
+    }
   }
 
   /* ═══════════════════════════════════════════
-     3. HIDE VIEW TOGGLE BUTTONS
-     ═══════════════════════════════════════════ */
-  function initHideViewToggles() {
-    const obs = new MutationObserver(() => {
-      document.querySelectorAll('button').forEach(btn => {
-        if (btn.textContent.trim() === '' && btn.querySelector('svg')) {
-          if (btn.closest('[class*="CollectionTop"]')) {
-            btn.style.display = 'none';
-          }
-        }
-      });
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
-  }
-
-  /* ═══════════════════════════════════════════
-     4. LIVE PREVIEW ENGINE
+     3. LIVE PREVIEW ENGINE
      ═══════════════════════════════════════════ */
 
   function detectCollection() {
@@ -108,28 +92,13 @@
     const controlPane = document.querySelector('[class*="ControlPaneContainer"], [class*="EditorControlPane"]');
     if (!controlPane) return fields;
 
-    const widgets = controlPane.querySelectorAll('[id]');
-    widgets.forEach(w => {
-      const input = w.querySelector('input, textarea, select, [data-slate-editor], [contenteditable="true"]');
-      if (input) {
-        const label = w.querySelector('label');
-        const key = label ? label.textContent.trim() : w.id;
-        if (input.tagName === 'SELECT') {
-          fields[key] = input.options[input.selectedIndex]?.text || input.value;
-        } else if (input.hasAttribute('contenteditable') || input.hasAttribute('data-slate-editor')) {
-          fields[key] = input.innerText || '';
-        } else {
-          fields[key] = input.value || '';
-        }
-      }
-    });
-
-    // Fallback: scan all labeled fields
+    // Scan all labeled fields
     controlPane.querySelectorAll('label').forEach(label => {
       const text = label.textContent.trim();
-      if (fields[text]) return;
+      if (!text || fields[text]) return;
       const parent = label.closest('[class*="Widget"]') || label.parentElement?.parentElement;
       if (!parent) return;
+
       const input = parent.querySelector('input, textarea, select');
       if (input) {
         if (input.tagName === 'SELECT') {
@@ -270,22 +239,18 @@
 
     if (!html) return;
 
-    // Write to iframe or create overlay
     if (iframe) {
       try {
         const doc = iframe.contentDocument || iframe.contentWindow.document;
-        const cssLink = document.querySelector('link[href*="preview.css"]');
-        const cssHref = cssLink ? cssLink.href : '/admin/preview.css';
         doc.open();
         doc.write(`<!DOCTYPE html><html><head>
           <meta charset="utf-8">
-          <link rel="stylesheet" href="${cssHref}">
+          <link rel="stylesheet" href="./preview.css">
           <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
           <style>body{margin:0;padding:20px;font-family:'Outfit',sans-serif;}</style>
         </head><body>${html}</body></html>`);
         doc.close();
       } catch (e) {
-        // Cross-origin fallback: inject into pane directly
         injectPreviewOverlay(previewPane, html);
       }
     } else {
@@ -308,7 +273,7 @@
   let previewTimer = null;
   function schedulePreviewUpdate() {
     clearTimeout(previewTimer);
-    previewTimer = setTimeout(updatePreview, 300);
+    previewTimer = setTimeout(updatePreview, 400);
   }
 
   function initLivePreview() {
@@ -319,7 +284,6 @@
       if (editor.dataset.bingoWatched) return;
       editor.dataset.bingoWatched = 'true';
 
-      // Listen for input events on form fields
       editor.addEventListener('input', schedulePreviewUpdate, true);
       editor.addEventListener('change', schedulePreviewUpdate, true);
 
@@ -327,37 +291,43 @@
       const slateObs = new MutationObserver(schedulePreviewUpdate);
       slateObs.observe(editor, { childList: true, subtree: true, characterData: true });
 
-      // Initial render
       setTimeout(updatePreview, 500);
     });
     editorObs.observe(document.body, { childList: true, subtree: true });
 
-    // Also listen for hash changes (navigation between entries)
     window.addEventListener('hashchange', () => {
       setTimeout(updatePreview, 600);
     });
   }
 
   /* ═══════════════════════════════════════════
-     INIT
+     4. REGISTER PREVIEW STYLE WITH CMS
      ═══════════════════════════════════════════ */
   function registerPreviewStyles() {
-    // Register preview stylesheet with Decap CMS
     if (window.CMS) {
       try {
         CMS.registerPreviewStyle('./preview.css');
-      } catch (e) { /* CMS not ready yet, will retry */ }
+      } catch (e) { /* CMS not ready yet */ }
     }
   }
 
+  /* ═══════════════════════════════════════════
+     INIT — single observer for login detection
+     ═══════════════════════════════════════════ */
   function init() {
     initThemeToggle();
-    initLoginCustomization();
-    initHideViewToggles();
     initLivePreview();
     registerPreviewStyles();
-    // Retry preview style registration after CMS fully loads
     setTimeout(registerPreviewStyles, 3000);
+
+    // Single lightweight observer for login page detection
+    const mainObs = new MutationObserver(() => {
+      checkLoginPage();
+    });
+    mainObs.observe(document.body, { childList: true, subtree: true });
+
+    // Initial check
+    checkLoginPage();
   }
 
   if (document.readyState === 'loading') {
