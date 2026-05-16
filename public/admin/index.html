@@ -120,8 +120,18 @@
         gap: 16px !important;
       }
       
+      /* O wrapper individual de cada card (que causava o espaçamento enorme) */
+      main [class*="CardsGrid"] > * {
+        height: 120px !important; /* Trava a altura do item do grid */
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
       main a[class*="Card"] {
-        background-color: #0f172a !important;
+        background-color: #0f172a !important; /* Fundo do card em si */
         border-radius: 12px !important;
         border: 1px solid #1e293b !important;
         box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
@@ -131,7 +141,7 @@
         display: flex !important;
         flex-direction: row !important; /* Deita o card: Imagem na Esquerda, Texto Direita */
         align-items: stretch !important;
-        height: 120px !important; /* Altura fixa de item de lista */
+        height: 100% !important;
         width: 100% !important;
         max-width: 100% !important;
       }
@@ -141,43 +151,28 @@
         border-color: #06b6d4 !important;
       }
 
-      /* MATA O GRADIENTE BRANCO E POSICIONAMENTO ABSOLUTO */
-      main a[class*="Card"] div {
+      /* MATA ABSOLUTAMENTE QUALQUER GRADIENTE BRANCO E ESPAÇAMENTO DOS FILHOS */
+      main a[class*="Card"] * {
+        background: transparent !important;
         background-color: transparent !important;
         background-image: none !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
         position: relative !important;
         top: auto !important;
         bottom: auto !important;
         left: auto !important;
         right: auto !important;
-      }
-
-      /* Título do Card (Agora alinhado verticalmente à direita) */
-      main a[class*="Card"] h2 {
-        background-image: none !important;
-        background-color: transparent !important;
-        position: relative !important;
-        color: #f8fafc !important;
-        font-size: 1.1rem !important;
-        padding: 0 24px !important;
+        box-shadow: none !important;
+        border: none !important;
         margin: 0 !important;
-        display: flex !important;
-        align-items: center !important; /* Centraliza verticalmente o texto */
-        white-space: normal !important;
-        line-height: 1.4 !important;
-        flex-grow: 1 !important; /* Ocupa todo o resto do card */
+        padding: 0 !important;
       }
 
-      /* --- IMAGEM DO CARD (Agora é uma miniatura na esquerda) --- */
+      /* --- RESTAURA IMAGEM E TÍTULO COM ESTILOS PRÓPRIOS --- */
+      /* Imagem do Card (Miniatura na esquerda) */
       main a[class*="Card"] [class*="CardImage"] {
         width: 180px !important; /* Largura fixa da miniatura */
         height: 100% !important;
-        background-color: #020617 !important;
-        overflow: hidden !important;
+        background: #020617 !important;
         display: block !important;
         flex-shrink: 0 !important;
         border-right: 1px solid #1e293b !important; /* Linha sutil separando imagem do texto */
@@ -185,22 +180,29 @@
       main a[class*="Card"] img {
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover !important;
+        object-fit: cover !important; /* Preenche sem distorcer */
         object-position: center !important;
         display: block !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: relative !important;
       }
 
-      /* --- CORREÇÃO: REMOVER QUADRADOS BRANCOS ATRÁS DOS ITENS --- */
-      main li, main [class*="GridCard"], main [class*="GridItem"], main [class*="CardsGrid"] > div {
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
+      /* Título do Card (Agora alinhado verticalmente à direita) */
+      main a[class*="Card"] h2 {
+        color: #f8fafc !important;
+        font-size: 1.1rem !important;
+        padding: 0 24px !important;
+        display: flex !important;
+        align-items: center !important; /* Centraliza verticalmente o texto */
+        white-space: normal !important;
+        line-height: 1.4 !important;
+        flex-grow: 1 !important; /* Ocupa todo o resto do card */
       }
 
-      /* 6. List View (Para Coleções em formato de Lista) */
+      /* Ocultar visualmente as opções de lista/grid direto no CSS se possível */
+      [class*="ViewControls"] {
+        display: none !important;
+      }
+
+      /* 6. List View Nativo (Caso o Decap tente renderizar como lista simples) */
       main ul {
         padding: 0 !important;
         list-style: none !important;
