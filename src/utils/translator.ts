@@ -125,21 +125,35 @@ export function protectScientificTerms(): void {
       const part = parts[i];
       regex.lastIndex = 0;
       if (regex.test(part)) {
-        // This part is a protected term — wrap in notranslate span.
-        // Include adjacent spaces inside the span so Google Translate
-        // can't consume them when it wraps surrounding text in <font> tags.
+        // Protected term — wrap in notranslate span.
+        // ALWAYS include spaces inside the span to prevent Google Translate
+        // from collapsing whitespace when it wraps adjacent text in <font> tags.
         let prefix = '';
         let suffix = '';
-        // Steal trailing space from previous text part
-        if (i > 0 && parts[i - 1] && parts[i - 1].endsWith(' ')) {
-          parts[i - 1] = parts[i - 1].slice(0, -1);
+
+        if (i > 0) {
+          // Remove trailing space from previous part if it exists (avoid double)
+          if (parts[i - 1] && parts[i - 1].endsWith(' ')) {
+            parts[i - 1] = parts[i - 1].slice(0, -1);
+          }
+          // Always add a space before the term (unless start of text)
           prefix = ' ';
         }
-        // Steal leading space from next text part
-        if (i < parts.length - 1 && parts[i + 1] && parts[i + 1].startsWith(' ')) {
-          parts[i + 1] = parts[i + 1].slice(1);
-          suffix = ' ';
+
+        if (i < parts.length - 1) {
+          // Remove leading space from next part if it exists (avoid double)
+          if (parts[i + 1] && parts[i + 1].startsWith(' ')) {
+            parts[i + 1] = parts[i + 1].slice(1);
+          }
+          // Add space after, unless next part starts with punctuation
+          const next = parts[i + 1] || '';
+          if (/^[.,;:!?)}\]>—–\/]/.test(next.trimStart())) {
+            suffix = '';
+          } else {
+            suffix = ' ';
+          }
         }
+
         const span = document.createElement('span');
         span.className = 'notranslate';
         span.translate = false;
@@ -280,4 +294,65 @@ export function initTranslator(): void {
     script.async = true;
     document.head.appendChild(script);
   }
+
+  // 6. Apply correct translations to [data-i18n] elements
+  //    (header/footer are marked translate="no", so we handle them ourselves)
+  if (lang !== 'pt') {
+    translateUIElements(lang);
+  }
+}
+
+/**
+ * Translate structural UI elements (header, footer) that are marked
+ * with translate="no" and have data-i18n attributes.
+ * Uses the curated i18n.ts dictionary instead of Google Translate
+ * to avoid literal mistranslations (e.g. "Sobre" → "On" vs "About").
+ */
+export function translateUIElements(lang: string): void {
+  // Import the UI translations inline to avoid circular deps
+  // Map our lang codes to i18n.ts codes
+  const i18nLang = lang === 'zh-CN' ? 'zh' : lang;
+
+  // Fetch the UI dictionary dynamically
+  import('../utils/i18n').then(({ ui }) => {
+    const dict = (ui as Record<string, Record<string, string>>)[i18nLang];
+    if (!dict) return;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.i18n;
+      if (!key || !dict[key]) return;
+
+      const htmlEl = el as HTMLElement;
+
+      // For elements with children (like buttons with icons, or copyright with spans),
+      // we need to update only the text content, not destroy child elements
+      if (key === 'footer.copyright') {
+        // Special: copyright has a year + BINGO span, just set the full text
+        const year = new Date().getFullYear();
+        // Find the existing BINGO span if any
+        const bingoSpan = htmlEl.querySelector('.font-bingo');
+        if (bingoSpan) {
+          // Rebuild: © YEAR <span>BINGO</span> Telescope Consortium. Rights text.
+          const copyrightText = dict[key].replace('© BINGO', `© ${year} BINGO`).replace('BINGO', '');
+          const parts = copyrightText.split('©');
+          if (parts.length > 1) {
+            htmlEl.innerHTML = `© ${year} <span class="font-bingo notranslate">BINGO</span> ${dict[key].replace(/© BINGO /, '').replace('©', '')}`;
+          }
+        }
+        return;
+      }
+
+      // For the extensions button with a chevron SVG, update only the first text node
+      if (key === 'nav.extensions' && htmlEl.tagName === 'BUTTON') {
+        const textNode = Array.from(htmlEl.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+        if (textNode) {
+          textNode.textContent = dict[key] + ' ';
+        }
+        return;
+      }
+
+      // Standard case: simple text replacement
+      htmlEl.textContent = dict[key];
+    });
+  });
 }

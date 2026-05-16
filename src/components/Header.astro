@@ -11,27 +11,27 @@ const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL;
 
 const mainLinks = [
-  { href: `${base}`, label: t('nav.home') },
-  { href: `${base}about`, label: t('nav.about') },
-  { href: `${base}science`, label: t('nav.science') },
-  { href: `${base}instrumentation`, label: t('nav.instrumentation') },
+  { href: `${base}`, label: t('nav.home'), key: 'nav.home' },
+  { href: `${base}about`, label: t('nav.about'), key: 'nav.about' },
+  { href: `${base}science`, label: t('nav.science'), key: 'nav.science' },
+  { href: `${base}instrumentation`, label: t('nav.instrumentation'), key: 'nav.instrumentation' },
 ];
 
 const extensionLinks = [
-  { href: `${base}uirapuru`, label: t('nav.uirapuru') },
-  { href: `${base}abdus`, label: t('nav.abdus') },
-  { href: `${base}outreach`, label: t('nav.outreach') },
-  { href: `${base}location`, label: t('nav.location') },
+  { href: `${base}uirapuru`, label: t('nav.uirapuru'), key: 'nav.uirapuru' },
+  { href: `${base}abdus`, label: t('nav.abdus'), key: 'nav.abdus' },
+  { href: `${base}outreach`, label: t('nav.outreach'), key: 'nav.outreach' },
+  { href: `${base}location`, label: t('nav.location'), key: 'nav.location' },
 ];
 
 const secondaryLinks = [
-  { href: `${base}team`, label: t('nav.team') },
-  { href: `${base}news`, label: t('nav.news') },
-  { href: `${base}publications`, label: t('nav.publications') },
+  { href: `${base}team`, label: t('nav.team'), key: 'nav.team' },
+  { href: `${base}news`, label: t('nav.news'), key: 'nav.news' },
+  { href: `${base}publications`, label: t('nav.publications'), key: 'nav.publications' },
 ];
 ---
 
-<header id="site-header" class="fixed w-full top-0 z-50 transition-all duration-300" style="background: rgba(7, 13, 31, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(99, 102, 241, 0.08);">
+<header id="site-header" class="fixed w-full top-0 z-50 transition-all duration-300" translate="no" style="background: rgba(7, 13, 31, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(99, 102, 241, 0.08);">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
@@ -55,6 +55,7 @@ const secondaryLinks = [
           <a
             href={link.href}
             class="text-slate-300 hover:text-cyan-400 transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5"
+            data-i18n={link.key}
           >
             {link.label}
           </a>
@@ -65,6 +66,7 @@ const secondaryLinks = [
           <button
             class="text-slate-300 hover:text-cyan-400 transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5 inline-flex items-center gap-1"
             id="extensions-btn"
+            data-i18n="nav.extensions"
           >
             {t('nav.extensions')}
             <svg class="w-3.5 h-3.5 transition-transform duration-200" id="extensions-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,6 +79,7 @@ const secondaryLinks = [
                 <a
                   href={link.href}
                   class="block px-4 py-2.5 text-sm text-slate-300 hover:text-cyan-400 hover:bg-white/5 rounded-lg transition-colors"
+                  data-i18n={link.key}
                 >
                   {link.label}
                 </a>
@@ -89,6 +92,7 @@ const secondaryLinks = [
           <a
             href={link.href}
             class="text-slate-300 hover:text-cyan-400 transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/5"
+            data-i18n={link.key}
           >
             {link.label}
           </a>
@@ -129,18 +133,20 @@ const secondaryLinks = [
         <a
           href={link.href}
           class="block px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+          data-i18n={link.key}
         >
           {link.label}
         </a>
       ))}
 
       <div class="pt-2 pb-1">
-        <p class="px-4 text-xs font-semibold text-indigo-400/60 uppercase tracking-wider">{t('nav.extensions')}</p>
+        <p class="px-4 text-xs font-semibold text-indigo-400/60 uppercase tracking-wider" data-i18n="nav.extensions">{t('nav.extensions')}</p>
       </div>
       {extensionLinks.map((link) => (
         <a
           href={link.href}
           class="block px-4 py-2.5 rounded-lg text-base font-medium text-slate-400 hover:text-cyan-400 hover:bg-white/5 transition-colors pl-8"
+          data-i18n={link.key}
         >
           {link.label}
         </a>
@@ -151,6 +157,7 @@ const secondaryLinks = [
         <a
           href={link.href}
           class="block px-4 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
+          data-i18n={link.key}
         >
           {link.label}
         </a>

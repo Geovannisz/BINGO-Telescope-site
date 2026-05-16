@@ -3,11 +3,11 @@ const currentYear = new Date().getFullYear();
 const base = import.meta.env.BASE_URL;
 ---
 
-<footer class="relative mt-auto overflow-hidden" style="background: linear-gradient(180deg, #0f172a 0%, #070d1f 100%);">
+<footer class="relative mt-auto overflow-hidden" translate="no" style="background: linear-gradient(180deg, #0f172a 0%, #070d1f 100%);">
   <!-- Partners Bar -->
   <div class="partners-bar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-center text-xs text-slate-500 uppercase tracking-wider mb-4 font-medium">Financiadores e Parceiros</p>
+      <p class="text-center text-xs text-slate-500 uppercase tracking-wider mb-4 font-medium" data-i18n="footer.partners">Financiadores e Parceiros</p>
       <div class="w-full overflow-x-auto pb-4 custom-scrollbar">
         <div class="flex justify-center min-w-[1000px] lg:min-w-full">
           <img src={`${base}images/logos/Regua-de-logos-bco-1536x200.png`} alt="Logos dos parceiros e financiadores do BINGO" class="h-24 md:h-36 lg:h-48 w-auto object-contain" />
@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL;
               <span class="gradient-text-cyan font-bingo">BINGO</span><span class="text-slate-400 font-light ml-1">Telescope</span>
             </span>
           </a>
-          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+          <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n="footer.description">
             Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. Mapeando o universo em rádio para entender a energia escura.
           </p>
           <!-- Social Links -->
@@ -56,29 +56,29 @@ const base = import.meta.env.BASE_URL;
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;">O Projeto</h3>
+          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;" data-i18n="footer.project">O Projeto</h3>
           <ul class="space-y-2">
-            <li><a href={`${base}about`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Sobre</a></li>
-            <li><a href={`${base}science`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Ciência</a></li>
-            <li><a href={`${base}instrumentation`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Instrumentação</a></li>
-            <li><a href={`${base}location`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Localização</a></li>
-            <li><a href={`${base}team`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Equipe</a></li>
+            <li><a href={`${base}about`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.about">Sobre</a></li>
+            <li><a href={`${base}science`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.science">Ciência</a></li>
+            <li><a href={`${base}instrumentation`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.instrumentation">Instrumentação</a></li>
+            <li><a href={`${base}location`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.location">Localização</a></li>
+            <li><a href={`${base}team`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.team">Equipe</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;">Extensões</h3>
+          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;" data-i18n="footer.extensions">Extensões</h3>
           <ul class="space-y-2">
             <li><a href={`${base}uirapuru`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors"><span class="font-bingo">BINGO-Uirapuru</span></a></li>
             <li><a href={`${base}abdus`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors"><span class="font-bingo">BINGO-ABDUS</span></a></li>
-            <li><a href={`${base}outreach`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Divulgação Científica</a></li>
-            <li><a href={`${base}news`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Notícias</a></li>
-            <li><a href={`${base}publications`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors">Publicações</a></li>
+            <li><a href={`${base}outreach`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.outreach">Divulgação Científica</a></li>
+            <li><a href={`${base}news`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.news">Notícias</a></li>
+            <li><a href={`${base}publications`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.publications">Publicações</a></li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;">Contato</h3>
+          <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;" data-i18n="footer.contact">Contato</h3>
           <ul class="space-y-3 text-sm text-slate-400">
             <li class="flex items-center gap-2">
               <svg class="w-4 h-4 text-cyan-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -97,9 +97,9 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <div class="border-t border-indigo-500/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-slate-500 text-sm">
-          &copy; {currentYear} <span class="font-bingo">BINGO</span> Telescope Consortium. Todos os direitos reservados.
-        </p>
+         <p class="text-slate-500 text-sm" data-i18n="footer.copyright">
+           &copy; {currentYear} <span class="font-bingo">BINGO</span> Telescope Consortium. Todos os direitos reservados.
+         </p>
         <p class="mt-2 md:mt-0 text-slate-600 text-xs">
           Sucessor de <a href="https://bingotelescope.org" target="_blank" rel="noopener noreferrer" class="text-indigo-400/60 hover:text-cyan-400 transition-colors">bingotelescope.org</a>
         </p>
