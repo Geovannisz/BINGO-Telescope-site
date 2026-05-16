@@ -50,6 +50,7 @@ collections:
       - label: "Grupo de Trabalho (Stage)"
         name: "stage"
         widget: "select"
+        multiple: true
         options:
           - "Stage 0"
           - "Stage I"
@@ -58,8 +59,8 @@ collections:
           - "Stage IV"
           - "Stage V"
           - "Coordenação"
-        default: "Coordenação"
-        hint: "Stage do BINGO em que o pesquisador atua"
+        default: ["Coordenação"]
+        hint: "Stage(s) do BINGO em que o pesquisador atua (selecione um ou mais)"
 
       # ── Localização e Contato ──
       - {label: "Cidade / Estado / País", name: "city", widget: "string", required: false}
