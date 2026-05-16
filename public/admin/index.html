@@ -178,10 +178,18 @@
         position: relative !important;
       }
 
+      /* --- CORREÇÃO: REMOVER QUADRADOS BRANCOS ATRÁS DOS ITENS --- */
+      main li, main [class*="GridCard"], main [class*="GridItem"], main [class*="CardsGrid"] > div {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
       /* 6. List View (Para Coleções em formato de Lista) */
       main ul {
         padding: 0 !important;
         list-style: none !important;
+        background-color: transparent !important;
       }
       main ul > li > a {
         background-color: #0f172a !important;
@@ -261,9 +269,6 @@
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Aplica o Dark Mode também no Iframe de Preview (Lado direito do editor)
-      CMS.registerPreviewStyle("./preview.css");
-
       // Garante que o texto do botão de login original seja atualizado
       const observer = new MutationObserver(() => {
         const btns = document.querySelectorAll('button');
