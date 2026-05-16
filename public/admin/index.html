@@ -4,8 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BINGO Telescope — Content Manager</title>
+    <style>
+      /* Esconde o texto padrão do botão e coloca um novo */
+      button[class*="Button"] {
+        font-size: 0 !important;
+      }
+      button[class*="Button"]::after {
+        content: "Acessar Painel BINGO";
+        font-size: 16px !important;
+        visibility: visible;
+      }
+    </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Garante que o texto mude caso o CSS não pegue por causa de iframes/shadow DOM
+      const observer = new MutationObserver(() => {
+        const btns = document.querySelectorAll('button');
+        btns.forEach(btn => {
+          if (btn.textContent.includes('Login with GitHub')) {
+            btn.textContent = 'Acessar Painel BINGO';
+          }
+        });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
   </body>
 </html>
