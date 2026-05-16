@@ -67,9 +67,9 @@ const stagesArray = stage || [];
       )}
     </div>
     <!-- Member info -->
-    <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200">{name}</h3>
+    <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no">{name}</h3>
     <p class="text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">{role}</p>
-    <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2">{institution}</p>
+    <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2" translate="no">{institution}</p>
     <div class="flex flex-wrap justify-center gap-1.5 mt-2">
       {stagesArray.map((s) => {
         const sClass = stageColors[s] || 'bg-slate-500/15 text-slate-400 border-slate-500/30';

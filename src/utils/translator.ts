@@ -98,7 +98,7 @@ export function protectScientificTerms(): void {
         if (!parent) return NodeFilter.FILTER_REJECT;
         if (SKIP_TAGS[parent.tagName]) return NodeFilter.FILTER_REJECT;
         if (parent.classList?.contains('notranslate')) return NodeFilter.FILTER_REJECT;
-        if (parent.closest('[data-no-translate], .notranslate')) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('[data-no-translate], .notranslate, [translate="no"]')) return NodeFilter.FILTER_REJECT;
         const text = node.textContent || '';
         if (!text.trim()) return NodeFilter.FILTER_REJECT;
         // Only accept if it contains at least one protected term
@@ -297,9 +297,9 @@ export function initTranslator(): void {
 
   // 6. Apply correct translations to [data-i18n] elements
   //    (header/footer are marked translate="no", so we handle them ourselves)
-  if (lang !== 'pt') {
-    translateUIElements(lang);
-  }
+  // 6. Apply correct translations to [data-i18n] elements
+  //    (header/footer/hero are marked translate="no", so we handle them ourselves)
+  translateUIElements(lang);
 }
 
 /**
@@ -351,8 +351,15 @@ export function translateUIElements(lang: string): void {
         return;
       }
 
-      // Standard case: simple text replacement
-      htmlEl.textContent = dict[key];
+      // Standard case: text replacement, but we need to preserve the font-bingo span
+      // if the translated text contains BINGO.
+      const text = dict[key];
+      if (text.includes('BINGO')) {
+        // Basic replacement preserving BINGO styling and preventing Google Translate from touching it
+        htmlEl.innerHTML = text.replace(/BINGO(-ABDUS|-Uirapuru)?/g, match => `<span class="font-bingo notranslate">${match}</span>`);
+      } else {
+        htmlEl.textContent = text;
+      }
     });
   });
 }

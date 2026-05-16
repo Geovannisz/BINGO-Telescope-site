@@ -42,12 +42,12 @@ const base = import.meta.env.BASE_URL;
           {t('hero.badge')}
         </div>
 
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-[1.05] animate-fade-in-up delay-100" style="font-family: 'Outfit', sans-serif;">
-          <span class="text-white">Desvendando o</span><br>
-          <span class="gradient-text">Universo Escuro</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-[1.05] animate-fade-in-up delay-100" style="font-family: 'Outfit', sans-serif;" translate="no">
+          <span class="text-white" data-i18n="hero.title.line1">Desvendando o</span><br>
+          <span class="gradient-text" data-i18n="hero.title.line2">Universo Escuro</span>
         </h1>
 
-        <p class="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-light max-w-xl animate-fade-in-up delay-200">
+        <p class="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-light max-w-xl animate-fade-in-up delay-200" translate="no" data-i18n="hero.subtitle">
           {t('hero.subtitle')}
         </p>
 
@@ -55,6 +55,8 @@ const base = import.meta.env.BASE_URL;
           <a
             href={`${base}science`}
             class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 focus:outline-none transition-all duration-200 shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] hover:-translate-y-0.5"
+            translate="no"
+            data-i18n="hero.cta1"
           >
             {t('hero.cta1')}
             <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -62,6 +64,8 @@ const base = import.meta.env.BASE_URL;
           <a
             href={`${base}news`}
             class="inline-flex justify-center items-center px-8 py-4 border border-slate-600 text-base font-semibold rounded-xl text-white hover:bg-white/5 hover:border-indigo-500/40 focus:outline-none transition-all duration-200 backdrop-blur-sm"
+            translate="no"
+            data-i18n="hero.cta2"
           >
             {t('hero.cta2')}
           </a>
@@ -71,19 +75,19 @@ const base = import.meta.env.BASE_URL;
         <div class="mt-10 sm:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap gap-6 sm:gap-8 animate-fade-in-up delay-400">
           <div>
             <div class="text-2xl font-extrabold gradient-text-cyan" style="font-family: 'Outfit', sans-serif;">~40m</div>
-            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Espelhos</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" translate="no" data-i18n="hero.stat.mirrors">Espelhos</div>
           </div>
           <div>
             <div class="text-2xl font-extrabold gradient-text-cyan" style="font-family: 'Outfit', sans-serif;">28</div>
-            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Cornetas</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" translate="no" data-i18n="hero.stat.horns">Cornetas</div>
           </div>
           <div>
             <div class="text-2xl font-extrabold gradient-text-cyan" style="font-family: 'Outfit', sans-serif;">980–1260</div>
-            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">MHz</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" translate="no">MHz</div>
           </div>
           <div>
             <div class="text-2xl font-extrabold gradient-text-cyan" style="font-family: 'Outfit', sans-serif;">0.13–0.45</div>
-            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5">Redshift</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider mt-0.5" translate="no">Redshift</div>
           </div>
         </div>
       </div>

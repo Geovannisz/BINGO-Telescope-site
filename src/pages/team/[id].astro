@@ -60,9 +60,9 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
           )}
         </div>
         <div class="text-center md:text-left">
-          <h1 class="text-3xl sm:text-4xl font-black text-white mb-2" style="font-family: 'Outfit', sans-serif;">{d.name}</h1>
+          <h1 class="text-3xl sm:text-4xl font-black text-white mb-2" style="font-family: 'Outfit', sans-serif;" translate="no">{d.name}</h1>
           <p class="text-cyan-400 text-lg font-semibold mb-1">{d.role}</p>
-          <p class="text-slate-400 text-sm uppercase tracking-wider mb-3">{d.institution}</p>
+          <p class="text-slate-400 text-sm uppercase tracking-wider mb-3" translate="no">{d.institution}</p>
           <div class="flex flex-wrap gap-2 justify-center md:justify-start">
             {stagesArray.map((s: string) => {
               const sClass = stageColors[s] || '';

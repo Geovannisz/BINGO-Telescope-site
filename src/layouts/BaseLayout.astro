@@ -41,6 +41,40 @@ const base = import.meta.env.BASE_URL;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- NOTE: Netlify Identity Widget is loaded only in /admin/index.html, not globally.
          This avoids CORS errors on public pages while keeping the CMS functional. -->
+    <!-- Anti-FOUC for Translation: Prevent flash of untranslated content -->
+    <script>
+      (function() {
+        var match = document.cookie.match(/(^|;\s*)googtrans=([^;]+)/);
+        var lang = match ? decodeURIComponent(match[2]) : null;
+        if (lang && lang !== '/pt/pt' && lang !== '/auto/pt') {
+          var style = document.createElement('style');
+          style.id = 'anti-fouc-style';
+          style.innerHTML = 'html { background-color: #070d1f !important; } body { opacity: 0; }';
+          document.head.appendChild(style);
+          
+          var done = false;
+          function showBody() {
+            if (done) return;
+            done = true;
+            var s = document.getElementById('anti-fouc-style');
+            if (s) {
+              s.innerHTML = 'html { background-color: #070d1f !important; } body { transition: opacity 0.4s ease-in; opacity: 1; }';
+              setTimeout(function() { s.remove(); }, 500);
+            }
+          }
+
+          var observer = new MutationObserver(function() {
+            if (document.documentElement.classList.contains('translated-ltr') || document.documentElement.classList.contains('translated-rtl')) {
+              showBody();
+              observer.disconnect();
+            }
+          });
+          observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+          setTimeout(showBody, 1500); // fallback
+        }
+      })();
+    </script>
   </head>
   <body class="bg-cosmic text-slate-200 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-500/30">
     <Header lang={lang} />
@@ -84,6 +118,7 @@ const base = import.meta.env.BASE_URL;
                 if (!parent) return NodeFilter.FILTER_REJECT;
                 if (SKIP[parent.tagName]) return NodeFilter.FILTER_REJECT;
                 if (parent.classList?.contains('font-bingo')) return NodeFilter.FILTER_REJECT;
+                if (node.parentElement?.closest('[translate="no"]')) return NodeFilter.FILTER_REJECT;
                 if (node.textContent?.indexOf('BINGO') !== -1) return NodeFilter.FILTER_ACCEPT;
                 return NodeFilter.FILTER_REJECT;
               }
