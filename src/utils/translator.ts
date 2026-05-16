@@ -132,30 +132,35 @@ export function protectScientificTerms(): void {
         let suffix = '';
 
         if (i > 0) {
-          // Remove trailing space from previous part if it exists (avoid double)
-          if (parts[i - 1] && parts[i - 1].endsWith(' ')) {
-            parts[i - 1] = parts[i - 1].slice(0, -1);
+          // Always ensure space before the term, absorbing existing trailing space from previous text
+          let prev = parts[i - 1] || '';
+          const spaceMatch = prev.match(/\s+$/);
+          if (spaceMatch) {
+            parts[i - 1] = prev.slice(0, -spaceMatch[0].length);
           }
-          // Always add a space before the term (unless start of text)
           prefix = ' ';
         }
 
         if (i < parts.length - 1) {
-          // Remove leading space from next part if it exists (avoid double)
-          if (parts[i + 1] && parts[i + 1].startsWith(' ')) {
-            parts[i + 1] = parts[i + 1].slice(1);
-          }
-          // Add space after, unless next part starts with punctuation
-          const next = parts[i + 1] || '';
-          if (/^[.,;:!?)}\]>—–\/]/.test(next.trimStart())) {
-            suffix = '';
+          // Absorb punctuation and spaces into suffix so Google Translate doesn't mangle them
+          let next = parts[i + 1] || '';
+          const puncMatch = next.match(/^([.,;:!?)}\]>—–\/]+\s*|\s+)/);
+          if (puncMatch) {
+            const punc = puncMatch[0];
+            parts[i + 1] = next.slice(punc.length);
+            // Ensure suffix ends with a space if there's more text coming
+            suffix = punc.endsWith(' ') || parts[i + 1] === '' ? punc : punc + ' ';
           } else {
             suffix = ' ';
           }
         }
 
         const span = document.createElement('span');
-        span.className = 'notranslate';
+        if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
+          span.className = 'font-bingo notranslate';
+        } else {
+          span.className = 'notranslate';
+        }
         span.translate = false;
         span.textContent = prefix + part + suffix;
         frag.appendChild(span);

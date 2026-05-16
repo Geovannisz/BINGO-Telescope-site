@@ -58,8 +58,8 @@ const base = import.meta.env.BASE_URL;
             done = true;
             var s = document.getElementById('anti-fouc-style');
             if (s) {
-              s.innerHTML = 'html { background-color: #070d1f !important; } body { transition: opacity 0.4s ease-in; opacity: 1; }';
-              setTimeout(function() { s.remove(); }, 500);
+              s.innerHTML = 'html { background-color: #070d1f !important; } body { transition: opacity 0.5s ease-in; opacity: 1; }';
+              setTimeout(function() { s.remove(); }, 600);
             }
           }
 
@@ -105,59 +105,8 @@ const base = import.meta.env.BASE_URL;
           observer.observe(el);
         });
 
-        // 3. BINGO Brand Font Auto-Wrapper
-        // Also adds "notranslate" class so Google Translate skips BINGO terms
-        (function applyBingoFont() {
-          const SKIP: Record<string, number> = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, CODE: 1, PRE: 1, SVG: 1 };
-          const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            {
-              acceptNode(node: Text) {
-                const parent = node.parentElement;
-                if (!parent) return NodeFilter.FILTER_REJECT;
-                if (SKIP[parent.tagName]) return NodeFilter.FILTER_REJECT;
-                if (parent.classList?.contains('font-bingo')) return NodeFilter.FILTER_REJECT;
-                if (node.parentElement?.closest('[translate="no"]')) return NodeFilter.FILTER_REJECT;
-                if (node.textContent?.indexOf('BINGO') !== -1) return NodeFilter.FILTER_ACCEPT;
-                return NodeFilter.FILTER_REJECT;
-              }
-            }
-          );
-
-          const textNodes: Text[] = [];
-          while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
-
-          textNodes.forEach((textNode) => {
-            const parts = (textNode.textContent || '').split(/(BINGO-ABDUS|BINGO-Uirapuru|BINGO)/g);
-            if (parts.length <= 1) return;
-            const frag = document.createDocumentFragment();
-            for (let i = 0; i < parts.length; i++) {
-              const part = parts[i];
-              if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
-                let prefix = '';
-                let suffix = '';
-                if (i > 0) {
-                  if (parts[i - 1] && parts[i - 1].endsWith(' ')) parts[i - 1] = parts[i - 1].slice(0, -1);
-                  prefix = ' ';
-                }
-                if (i < parts.length - 1) {
-                  if (parts[i + 1] && parts[i + 1].startsWith(' ')) parts[i + 1] = parts[i + 1].slice(1);
-                  const next = parts[i + 1] || '';
-                  suffix = /^[.,;:!?)}\]>—–\/]/.test(next.trimStart()) ? '' : ' ';
-                }
-                const span = document.createElement('span');
-                span.className = 'font-bingo notranslate';
-                span.translate = false;
-                span.textContent = prefix + part + suffix;
-                frag.appendChild(span);
-              } else if (part) {
-                frag.appendChild(document.createTextNode(part));
-              }
-            }
-            textNode.parentNode?.replaceChild(frag, textNode);
-          });
-        })();
+        // 3. (applyBingoFont removed: now handled unified by translator.ts)
+        // This avoids double-processing of text nodes and conflicting space logic.
 
         // 4. Language Switcher Logic
         const currentLang = getStoredLang();
