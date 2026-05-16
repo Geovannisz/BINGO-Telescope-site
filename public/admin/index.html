@@ -5,14 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BINGO Telescope — Content Manager</title>
     <style>
-      /* Esconde o texto padrão do botão e coloca um novo */
-      button[class*="Button"] {
-        font-size: 0 !important;
+      /* --- TELA INICIAL (Login) --- */
+      button[class*="Button"] { font-size: 0 !important; }
+      button[class*="Button"]::after { content: "Acessar Painel BINGO"; font-size: 16px !important; visibility: visible; }
+
+      /* --- BINGO THEME PARA O DECAP CMS --- */
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+      
+      body, button, input, select, textarea, span, p, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', sans-serif !important;
       }
-      button[class*="Button"]::after {
-        content: "Acessar Painel BINGO";
-        font-size: 16px !important;
-        visibility: visible;
+
+      /* Topbar (Cabeçalho escuro cósmico) */
+      [class*="AppHeader"] {
+        background-color: #020617 !important;
+        border-bottom: 2px solid #06b6d4 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
+      }
+      [class*="AppHeader"] * {
+        color: #f8fafc !important;
+      }
+
+      /* Sidebar (Menu lateral escuro) */
+      [class*="SidebarContainer"] {
+        background-color: #0f172a !important;
+        border-right: 1px solid #1e293b !important;
+      }
+      [class*="SidebarHeading"] {
+        color: #22d3ee !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px !important;
+      }
+      [class*="SidebarNavLink"] {
+        color: #94a3b8 !important;
+        border-radius: 8px !important;
+        margin: 4px 8px !important;
+        padding-left: 12px !important;
+        transition: all 0.2s !important;
+      }
+      [class*="SidebarNavLink"]:hover, [class*="SidebarNavLinkActive"] {
+        background-color: rgba(34, 211, 238, 0.1) !important;
+        color: #22d3ee !important;
+        border-left: 4px solid #06b6d4 !important;
+      }
+
+      /* Fundo da Área Principal */
+      [class*="CollectionContainer"], main {
+        background-color: #f8fafc !important;
+      }
+
+      /* Cards das Listas (News, Team, etc) */
+      [class*="Card"] {
+        border-radius: 12px !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;
+        transition: transform 0.2s, box-shadow 0.2s !important;
+        background-color: #ffffff !important;
+      }
+      [class*="Card"]:hover {
+        transform: translateY(-3px) !important;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important;
+        border-color: #3b82f6 !important;
+      }
+      [class*="Card"] h2 {
+        color: #0f172a !important;
+        font-weight: 700 !important;
+      }
+
+      /* Botões de Ação (Publish, New, Save) */
+      [class*="button-default-primary"], [class*="button-default-info"], [class*="Button-button-default-primary"] {
+        background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%) !important;
+        border: none !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3) !important;
+        transition: transform 0.1s, opacity 0.2s !important;
+      }
+      [class*="button-default-primary"]:hover, [class*="button-default-info"]:hover, [class*="Button-button-default-primary"]:hover {
+        opacity: 0.9 !important;
+        transform: translateY(-1px) !important;
+      }
+      
+      /* Botões de Perigo (Delete) */
+      [class*="button-default-danger"] {
+        background: #ef4444 !important;
+        border-radius: 8px !important;
       }
     </style>
   </head>
