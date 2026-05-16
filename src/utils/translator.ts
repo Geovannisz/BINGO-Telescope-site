@@ -128,30 +128,21 @@ export function protectScientificTerms(): void {
         // Protected term — wrap in notranslate span.
         // ALWAYS include spaces inside the span to prevent Google Translate
         // from collapsing whitespace when it wraps adjacent text in <font> tags.
-        let prefix = '';
-        let suffix = '';
-
+        let prefix = ' ';
         if (i > 0) {
-          // Always ensure space before the term, absorbing existing trailing space from previous text
-          let prev = parts[i - 1] || '';
-          const spaceMatch = prev.match(/\s+$/);
-          if (spaceMatch) {
-            parts[i - 1] = prev.slice(0, -spaceMatch[0].length);
+          const prev = parts[i - 1] || '';
+          // No space if previous text ends with opening punctuation
+          if (prev.match(/[({[<—–\/]\s*$/)) {
+            prefix = '';
           }
-          prefix = ' ';
         }
 
+        let suffix = ' ';
         if (i < parts.length - 1) {
-          // Absorb punctuation and spaces into suffix so Google Translate doesn't mangle them
-          let next = parts[i + 1] || '';
-          const puncMatch = next.match(/^([.,;:!?)}\]>—–\/]+\s*|\s+)/);
-          if (puncMatch) {
-            const punc = puncMatch[0];
-            parts[i + 1] = next.slice(punc.length);
-            // Ensure suffix ends with a space if there's more text coming
-            suffix = punc.endsWith(' ') || parts[i + 1] === '' ? punc : punc + ' ';
-          } else {
-            suffix = ' ';
+          const next = parts[i + 1] || '';
+          // No space if next text starts with closing or terminal punctuation
+          if (next.match(/^\s*[.,;:!?)}\]>—–\/]/)) {
+            suffix = '';
           }
         }
 
