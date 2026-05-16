@@ -1,89 +1,93 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════
- *  BINGO Telescope — Client-Side Translator Engine
+ *  BINGO Telescope — Translation Engine (Google Translate Integration)
  * ═══════════════════════════════════════════════════════════════════════
  *
- *  This script runs on every page after DOMContentLoaded to translate
- *  visible text content from Portuguese into the user's chosen language.
+ *  Uses Google Translate Element (free, no API key) to translate the
+ *  entire page including dynamic CMS content. The default Google widget
+ *  is hidden and controlled programmatically via the custom language
+ *  switcher in the header.
  *
- *  Design decisions:
- *    - Uses a curated phrase dictionary (not machine translation) to
- *      ensure scientific accuracy and preserve untranslatable terms.
- *    - Walks the DOM tree and replaces matching text nodes.
- *    - Terms like BINGO, BAO, FRB, Stage 0-V, ABDUS, Uirapuru,
- *      Intensity Mapping, Crossed-Dragone, etc. are never translated.
- *    - Falls back to longest-match-first to handle overlapping phrases.
- *    - Persists user language choice in localStorage.
- *    - Translates <title> and meta description for better UX.
+ *  Scientific terms (BINGO, BAO, FRB, Stage 0-V, etc.) are protected
+ *  from translation by wrapping them in <span class="notranslate">.
  *
- *  This file is imported as an inline <script> in BaseLayout.astro.
+ *  Language preference is persisted in localStorage + googtrans cookie.
  * ═══════════════════════════════════════════════════════════════════════
  */
 
-import enDict from './translations/en';
-import zhDict from './translations/zh';
-
-type Lang = 'pt' | 'en' | 'zh';
+export type Lang = 'pt' | 'en' | 'zh-CN';
 
 const STORAGE_KEY = 'bingo-lang';
-const DICTIONARIES: Record<string, Record<string, string>> = { en: enDict, zh: zhDict };
 
-/** Tags whose text content should never be translated */
+/** Map our internal lang codes to Google Translate codes */
+const LANG_MAP: Record<string, string> = {
+  pt: 'pt',
+  en: 'en',
+  'zh-CN': 'zh-CN',
+  zh: 'zh-CN',
+};
+
+/**
+ * Scientific terms and proper nouns that must NEVER be translated.
+ * These will be wrapped in <span class="notranslate"> before
+ * Google Translate processes the page.
+ */
+const PROTECTED_TERMS = [
+  // Project names (order matters: longer first)
+  'BINGO-ABDUS', 'BINGO-Uirapuru', 'BINGO',
+  // Scientific acronyms
+  'BAO', 'FRB', 'FRBs', 'ΛCDM', 'ABDUS',
+  // Stage names
+  'Stage 0', 'Stage I', 'Stage II', 'Stage III', 'Stage IV', 'Stage V',
+  // Technical terms that should stay in English/original
+  'Intensity Mapping', 'Crossed-Dragone',
+  'Fast Radio Bursts', 'Fast Radio Burst',
+  // Instruments & projects
+  'FAST', 'Tianlai', 'LOFAR', 'SKARABs2', 'OSKAR', 'HFSS',
+  'Planck', 'LSST', 'Rubin', 'ASTRON',
+  // Technical acronyms
+  'RFI', 'HI', 'CMB', 'DM', 'LNA', 'FPGA', 'GPU', 'FFT',
+  'PCB', 'FWHM', 'PSF', 'BIS', 'PAF', 'PAFs',
+  // Scientific notation preserved
+  'w₀', 'wₐ', 'H₀', 'Tsys',
+  // Paper references
+  'Paper I', 'Paper II', 'Paper III', 'Paper IV', 'Paper V',
+  'Paper VI', 'Paper VII', 'Paper VIII', 'Paper IX', 'Paper X',
+  // Names that should not be translated
+  'Abdus Salam', 'Elcio Abdalla', 'Carlos Alexandre Wuensche',
+  'Duncan Lorimer', 'David Narkevic', 'Lorimer Burst',
+  'Sheldon Glashow', 'Steven Weinberg',
+  // Portuguese proper nouns to keep
+  'Uirapuru', 'Serra do Urubu', 'Aguiar',
+  // Institutions
+  'USP', 'INPE', 'UFCG', 'Fapesq', 'MCTI', 'Fapesp', 'Finep',
+  'Secties', 'Seap', 'ICTP',
+];
+
+/** Tags whose children should be skipped during term protection */
 const SKIP_TAGS: Record<string, boolean> = {
   SCRIPT: true, STYLE: true, NOSCRIPT: true, TEXTAREA: true,
   CODE: true, PRE: true, SVG: true, IFRAME: true, INPUT: true,
 };
 
-/** Patterns that should never be translated (scientific terms, proper nouns) */
-const PRESERVE_PATTERNS = [
-  /^BINGO(?:-ABDUS|-Uirapuru)?$/,
-  /^BAO$/,
-  /^FRB(?:s)?$/,
-  /^Stage\s+[0IV]+$/,
-  /^(?:Intensity Mapping|Crossed-Dragone|SKARABs2|FAST|Tianlai|LOFAR)$/i,
-  /^(?:HFSS|OSKAR|PCB|LNA|FPGA|GPU|FFT|RFI|HI|CMB|DM)$/,
-  /^(?:Planck|Hubble|Vela|LSST|Rubin)$/,
-  /^Paper\s+[IVXL]+$/,
-  /^(?:arXiv|DOI|ORCID|LinkedIn|ResearchGate|Lattes)$/i,
-  /^\d[\d.,\s°×%~≤≥±]*\s*(?:m|MHz|GHz|Hz|km|K|deg|arcmin|Mpc)?$/,
-  /^https?:\/\//,
-  /^[a-zA-Z0-9._%+-]+@/,
-];
-
-function shouldPreserve(text: string): boolean {
-  const trimmed = text.trim();
-  if (!trimmed || trimmed.length < 2) return true;
-  // Pure numbers/symbols
-  if (/^[\d\s.,;:!?°×%~≤≥±()\[\]{}–—·•→←↑↓⚡🔧🗺️🖥️🔬🎓🐦🏆📄💡]+$/.test(trimmed)) return true;
-  return PRESERVE_PATTERNS.some(p => p.test(trimmed));
+/**
+ * Build a regex that matches any protected term (longest first).
+ * Uses word boundaries where possible.
+ */
+function buildProtectionRegex(): RegExp {
+  const sorted = [...PROTECTED_TERMS].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  // Join with | and use non-capturing group
+  return new RegExp(`(${escaped.join('|')})`, 'g');
 }
 
 /**
- * Build a sorted list of phrases from dictionary, longest first.
- * This ensures "Oscilações Acústicas de Bárions" matches before "Bárions".
+ * Walk the DOM and wrap all occurrences of protected terms in
+ * <span class="notranslate"> so Google Translate skips them.
+ * This runs BEFORE Google Translate initializes.
  */
-function buildSortedPhrases(dict: Record<string, string>): [string, string][] {
-  return Object.entries(dict).sort((a, b) => b[0].length - a[0].length);
-}
-
-/**
- * Replace all occurrences of dictionary phrases within a text string.
- */
-function translateText(text: string, sortedPhrases: [string, string][]): string {
-  let result = text;
-  for (const [pt, translated] of sortedPhrases) {
-    if (result.includes(pt)) {
-      result = result.split(pt).join(translated);
-    }
-  }
-  return result;
-}
-
-/**
- * Walk the DOM tree and translate all visible text nodes.
- */
-function translateDOM(dict: Record<string, string>): void {
-  const sortedPhrases = buildSortedPhrases(dict);
+export function protectScientificTerms(): void {
+  const regex = buildProtectionRegex();
 
   const walker = document.createTreeWalker(
     document.body,
@@ -93,12 +97,14 @@ function translateDOM(dict: Record<string, string>): void {
         const parent = node.parentElement;
         if (!parent) return NodeFilter.FILTER_REJECT;
         if (SKIP_TAGS[parent.tagName]) return NodeFilter.FILTER_REJECT;
-        // Skip language switcher itself
-        if (parent.closest('#lang-switcher-menu, [data-no-translate]')) return NodeFilter.FILTER_REJECT;
+        if (parent.classList?.contains('notranslate')) return NodeFilter.FILTER_REJECT;
+        if (parent.closest('[data-no-translate], .notranslate')) return NodeFilter.FILTER_REJECT;
         const text = node.textContent || '';
         if (!text.trim()) return NodeFilter.FILTER_REJECT;
-        if (shouldPreserve(text)) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
+        // Only accept if it contains at least one protected term
+        regex.lastIndex = 0;
+        if (regex.test(text)) return NodeFilter.FILTER_ACCEPT;
+        return NodeFilter.FILTER_REJECT;
       },
     }
   );
@@ -106,57 +112,39 @@ function translateDOM(dict: Record<string, string>): void {
   const textNodes: Text[] = [];
   while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
 
-  for (const node of textNodes) {
-    const original = node.textContent || '';
-    const translated = translateText(original, sortedPhrases);
-    if (translated !== original) {
-      node.textContent = translated;
+  for (const textNode of textNodes) {
+    const text = textNode.textContent || '';
+    regex.lastIndex = 0;
+
+    // Split text by protected terms
+    const parts = text.split(regex);
+    if (parts.length <= 1) continue;
+
+    const frag = document.createDocumentFragment();
+    for (const part of parts) {
+      regex.lastIndex = 0;
+      if (regex.test(part)) {
+        // This part is a protected term — wrap in notranslate span
+        const span = document.createElement('span');
+        span.className = 'notranslate';
+        span.translate = false;
+        span.textContent = part;
+        frag.appendChild(span);
+      } else if (part) {
+        frag.appendChild(document.createTextNode(part));
+      }
     }
+    textNode.parentNode?.replaceChild(frag, textNode);
   }
-
-  // Translate <title>
-  const title = document.querySelector('title');
-  if (title) {
-    title.textContent = translateText(title.textContent || '', sortedPhrases);
-  }
-
-  // Translate meta description
-  const metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
-  if (metaDesc?.content) {
-    metaDesc.content = translateText(metaDesc.content, sortedPhrases);
-  }
-
-  // Translate alt attributes on images
-  document.querySelectorAll('img[alt]').forEach((img) => {
-    const el = img as HTMLImageElement;
-    if (el.alt) {
-      el.alt = translateText(el.alt, sortedPhrases);
-    }
-  });
-
-  // Translate placeholder and title attributes
-  document.querySelectorAll('[title]').forEach((el) => {
-    const htmlEl = el as HTMLElement;
-    if (htmlEl.title && !htmlEl.closest('#lang-switcher-menu, [data-no-translate]')) {
-      htmlEl.title = translateText(htmlEl.title, sortedPhrases);
-    }
-  });
 }
 
 /**
- * Set the lang attribute on <html> to reflect the active language.
+ * Get the stored language preference.
  */
-function setDocumentLang(lang: Lang): void {
-  document.documentElement.lang = lang;
-}
-
-/**
- * Get the stored language preference, or default to 'pt'.
- */
-export function getStoredLang(): Lang {
+export function getStoredLang(): string {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY) as Lang | null;
-    if (stored && (stored === 'pt' || stored === 'en' || stored === 'zh')) {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && ['pt', 'en', 'zh-CN'].includes(stored)) {
       return stored;
     }
   } catch { /* localStorage unavailable */ }
@@ -166,34 +154,115 @@ export function getStoredLang(): Lang {
 /**
  * Store the language preference.
  */
-export function setStoredLang(lang: Lang): void {
+export function setStoredLang(lang: string): void {
   try {
     localStorage.setItem(STORAGE_KEY, lang);
   } catch { /* localStorage unavailable */ }
 }
 
 /**
- * Apply translation to the current page.
- * Always reloads to ensure clean translation from the PT source.
- * The initTranslator() will apply the correct language on next load.
+ * Set the googtrans cookie that Google Translate reads.
  */
-export function applyTranslation(lang: Lang): void {
-  setStoredLang(lang);
-  window.location.reload();
+function setGoogTransCookie(targetLang: string): void {
+  if (targetLang === 'pt') {
+    // Clear cookie to show original content
+    document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
+    document.cookie = `googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=.${location.hostname}`;
+  } else {
+    const val = `/pt/${LANG_MAP[targetLang] || targetLang}`;
+    document.cookie = `googtrans=${val};path=/;`;
+    document.cookie = `googtrans=${val};path=/;domain=.${location.hostname}`;
+  }
 }
 
 /**
- * Initialize the translator on page load.
- * Called from BaseLayout's inline script.
+ * Trigger Google Translate to switch language by manipulating
+ * the hidden select element that GTE creates.
+ */
+function triggerGoogleTranslate(targetLang: string): void {
+  const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+  if (combo) {
+    combo.value = LANG_MAP[targetLang] || targetLang;
+    combo.dispatchEvent(new Event('change'));
+  }
+}
+
+/**
+ * Switch language: save preference, set cookie, trigger translation.
+ */
+export function switchLanguage(lang: string): void {
+  const current = getStoredLang();
+  if (lang === current) return;
+
+  setStoredLang(lang);
+  setGoogTransCookie(lang);
+
+  if (lang === 'pt') {
+    // Restore to Portuguese: clear translation and reload
+    // Google Translate doesn't have a clean "restore" API, reload is cleanest
+    window.location.reload();
+  } else {
+    // Try to trigger directly first
+    const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+    if (combo) {
+      triggerGoogleTranslate(lang);
+    } else {
+      // Google Translate not loaded yet, reload to let it init with cookie
+      window.location.reload();
+    }
+  }
+}
+
+/**
+ * Initialize the translation system.
+ * Called from BaseLayout on DOMContentLoaded.
+ *
+ * 1. Protects scientific terms from translation
+ * 2. Sets the googtrans cookie before GTE loads
+ * 3. Loads the Google Translate Element script
  */
 export function initTranslator(): void {
   const lang = getStoredLang();
-  setDocumentLang(lang);
 
+  // 1. Protect scientific terms BEFORE Google Translate loads
+  protectScientificTerms();
+
+  // 2. Set cookie so GTE auto-translates on load
   if (lang !== 'pt') {
-    const dict = DICTIONARIES[lang];
-    if (dict) {
-      translateDOM(dict);
-    }
+    setGoogTransCookie(lang);
+  }
+
+  // 3. Set html lang attribute
+  document.documentElement.lang = lang === 'zh-CN' ? 'zh' : lang;
+
+  // 4. Create hidden container for Google Translate widget
+  let container = document.getElementById('google_translate_element');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'google_translate_element';
+    container.style.display = 'none';
+    document.body.appendChild(container);
+  }
+
+  // 5. Define the callback and load GTE script
+  (window as any).googleTranslateElementInit = function () {
+    new (window as any).google.translate.TranslateElement(
+      {
+        pageLanguage: 'pt',
+        includedLanguages: 'en,pt,zh-CN',
+        autoDisplay: false,
+        layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
+      },
+      'google_translate_element'
+    );
+  };
+
+  // Load the script (only once)
+  if (!document.getElementById('google-translate-script')) {
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
   }
 }

@@ -1,4 +1,4 @@
----
+﻿---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -9,7 +9,7 @@ interface Props {
   lang?: 'pt' | 'en' | 'zh';
 }
 
-const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. Radiotelescópio em Aguiar, Paraíba, Brasil.", lang = 'pt' } = Astro.props;
+const { title, description = "BINGO Telescope - Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. RadiotelescÃ³pio em Aguiar, ParaÃ­ba, Brasil.", lang = 'pt' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -22,7 +22,7 @@ const base = import.meta.env.BASE_URL;
     <meta name="generator" content={Astro.generator} />
     <title>{title} | BINGO Telescope</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="BINGO, telescope, radio telescope, BAO, baryon acoustic oscillations, intensity mapping, dark energy, hydrogen, 21cm, cosmology, Paraíba, Brazil, FRB, fast radio bursts, ABDUS, Uirapuru" />
+    <meta name="keywords" content="BINGO, telescope, radio telescope, BAO, baryon acoustic oscillations, intensity mapping, dark energy, hydrogen, 21cm, cosmology, ParaÃ­ba, Brazil, FRB, fast radio bursts, ABDUS, Uirapuru" />
 
     <!-- Open Graph -->
     <meta property="og:title" content={`${title} | BINGO Telescope`} />
@@ -49,13 +49,13 @@ const base = import.meta.env.BASE_URL;
     </main>
     <Footer />
 
-    <!-- Translator module (processes before DOMContentLoaded visual paint) -->
+    <!-- Translator module -->
     <script>
-      import { initTranslator, applyTranslation, getStoredLang } from '../utils/translator';
+      import { initTranslator, switchLanguage, getStoredLang } from '../utils/translator';
 
-      // Run translator as early as possible after DOM is ready
+      // Run as early as possible after DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. Apply translation first (before BINGO font wrapper, so text is final)
+        // 1. Protect scientific terms + load Google Translate
         initTranslator();
 
         // 2. Scroll-triggered animations via IntersectionObserver
@@ -72,8 +72,9 @@ const base = import.meta.env.BASE_URL;
         });
 
         // 3. BINGO Brand Font Auto-Wrapper
+        // Also adds "notranslate" class so Google Translate skips BINGO terms
         (function applyBingoFont() {
-          const SKIP_TAGS: Record<string, number> = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, CODE: 1, PRE: 1, SVG: 1 };
+          const SKIP: Record<string, number> = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, CODE: 1, PRE: 1, SVG: 1 };
           const walker = document.createTreeWalker(
             document.body,
             NodeFilter.SHOW_TEXT,
@@ -81,7 +82,7 @@ const base = import.meta.env.BASE_URL;
               acceptNode(node: Text) {
                 const parent = node.parentElement;
                 if (!parent) return NodeFilter.FILTER_REJECT;
-                if (SKIP_TAGS[parent.tagName]) return NodeFilter.FILTER_REJECT;
+                if (SKIP[parent.tagName]) return NodeFilter.FILTER_REJECT;
                 if (parent.classList?.contains('font-bingo')) return NodeFilter.FILTER_REJECT;
                 if (node.textContent?.indexOf('BINGO') !== -1) return NodeFilter.FILTER_ACCEPT;
                 return NodeFilter.FILTER_REJECT;
@@ -99,7 +100,8 @@ const base = import.meta.env.BASE_URL;
             parts.forEach((part) => {
               if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
                 const span = document.createElement('span');
-                span.className = 'font-bingo';
+                span.className = 'font-bingo notranslate';
+                span.translate = false;
                 span.textContent = part;
                 frag.appendChild(span);
               } else if (part) {
@@ -112,7 +114,7 @@ const base = import.meta.env.BASE_URL;
 
         // 4. Language Switcher Logic
         const currentLang = getStoredLang();
-        const langLabels: Record<string, string> = { pt: 'PT', en: 'EN', zh: '中文' };
+        const langLabels: Record<string, string> = { pt: 'PT', en: 'EN', 'zh-CN': 'ä¸­æ–‡' };
 
         // Desktop switcher
         const langBtn = document.getElementById('lang-switcher-btn');
@@ -168,9 +170,9 @@ const base = import.meta.env.BASE_URL;
         // Handle desktop language option clicks
         document.querySelectorAll('.lang-option').forEach((btn) => {
           btn.addEventListener('click', () => {
-            const lang = (btn as HTMLElement).dataset.lang as 'pt' | 'en' | 'zh';
+            const lang = (btn as HTMLElement).dataset.lang;
             if (lang && lang !== currentLang) {
-              applyTranslation(lang);
+              switchLanguage(lang);
             }
           });
         });
@@ -178,9 +180,9 @@ const base = import.meta.env.BASE_URL;
         // Handle mobile language button clicks
         document.querySelectorAll('.mobile-lang-btn').forEach((btn) => {
           btn.addEventListener('click', () => {
-            const lang = (btn as HTMLElement).dataset.lang as 'pt' | 'en' | 'zh';
+            const lang = (btn as HTMLElement).dataset.lang;
             if (lang && lang !== currentLang) {
-              applyTranslation(lang);
+              switchLanguage(lang);
             }
           });
         });

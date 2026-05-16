@@ -30,6 +30,33 @@
   letter-spacing: 0.04em;
 }
 
+/* ===== Google Translate — Hide Default Widget & Branding =====
+   The translation is controlled programmatically via our custom
+   language switcher. All Google UI chrome is hidden. */
+.goog-te-banner-frame,
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-te-menu-value,
+.goog-te-gadget,
+#google_translate_element {
+  display: none !important;
+}
+body {
+  top: 0 !important; /* Google Translate adds top offset — prevent it */
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+/* Prevent Google's iframe from adding a top bar */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+iframe.goog-te-menu-frame {
+  box-shadow: none !important;
+}
+
 /* ===== Custom Animations ===== */
 @keyframes fade-in-up {
   from {
