@@ -54,16 +54,23 @@
       }
 
       /* 3. Main Content (FULL DARK) */
-      main {
-        background-color: #020617 !important; /* Fundo hiper escuro */
+      /* Força o fundo escuro em todas as camadas globais */
+      html, body, #nc-root, #nc-root > div, [class*="AppWrap"], [class*="MainContainer"], main {
+        background-color: #020617 !important;
       }
-      main > div > div:first-child {
-        border-bottom: 1px solid #1e293b !important;
+      
+      /* Remove a maldita caixa branca do topo (Search bar e Título) */
+      main > div, main > div > div, main > div > div > div, [class*="CollectionTop"] {
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
       }
+
       main h1, main h2 {
-        color: #f8fafc !important; /* Títulos brancos */
+        color: #f8fafc !important;
         font-weight: 700 !important;
       }
+      
       /* Textos e botões de filtro na cor cinza claro */
       main span, main label, main p {
         color: #cbd5e1 !important;
@@ -73,6 +80,18 @@
       }
       main svg:hover {
         color: #22d3ee !important;
+      }
+
+      /* Inputs (Search bar) */
+      main input {
+        background-color: #0f172a !important;
+        color: #f8fafc !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 8px !important;
+        padding: 8px 16px !important;
+      }
+      main input::placeholder {
+        color: #64748b !important;
       }
 
       /* 4. Primary Buttons ("New Notícias", "Publish") */
@@ -91,47 +110,62 @@
         box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4) !important;
       }
 
-      /* 5. Cards (Grid View) - Totalmente Escuros */
+      /* 5. Cards (Grid View) - Totalmente Escuros e Sem Sobreposição */
       main a[class*="Card"] {
         background-color: #0f172a !important;
         border-radius: 12px !important;
         border: 1px solid #1e293b !important;
         box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
         transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
-        padding: 0 !important; /* Zera padding para a imagem colar nas bordas */
-        overflow: hidden !important; /* Corta qualquer vazamento */
+        padding: 0 !important;
+        overflow: hidden !important;
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: column !important; /* Força imagem em cima, texto embaixo */
+        justify-content: flex-start !important;
       }
       main a[class*="Card"]:hover {
         transform: translateY(-4px) !important;
         box-shadow: 0 12px 24px rgba(0,0,0,0.8) !important;
         border-color: #06b6d4 !important;
       }
-      /* Remove blocos brancos internos e padroniza o título */
-      main a[class*="Card"] > div {
+
+      /* MATA O GRADIENTE BRANCO E O POSICIONAMENTO ABSOLUTO DO DECAP CMS */
+      main a[class*="Card"] div {
         background-color: transparent !important;
+        background-image: none !important; /* Destrói o gradiente branco */
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
         margin: 0 !important;
+        position: relative !important; /* Remove absolute */
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
       }
+
+      /* Título do Card (Agora fica certinho embaixo da imagem) */
       main a[class*="Card"] h2 {
+        background-image: none !important;
+        background-color: transparent !important;
+        position: relative !important;
         color: #f8fafc !important;
         font-size: 1.1rem !important;
         padding: 16px !important;
         margin: 0 !important;
+        white-space: normal !important; /* Permite o texto quebrar em várias linhas */
+        line-height: 1.4 !important;
+        min-height: 60px !important;
       }
 
       /* --- FIX DEFINITIVO DAS IMAGENS NOS CARDS --- */
       main a[class*="Card"] [class*="CardImage"] {
         width: 100% !important;
-        height: 180px !important; /* Força uma altura fixa e elegante */
+        height: 180px !important; /* Força uma altura fixa para a capa */
         background-color: #020617 !important;
-        margin: 0 !important;
-        padding: 0 !important;
         overflow: hidden !important;
         display: block !important;
+        flex-shrink: 0 !important; /* Impede a imagem de ser esmagada */
       }
       main a[class*="Card"] img {
         width: 100% !important;
@@ -140,6 +174,8 @@
         object-position: center !important;
         display: block !important;
         margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
       }
 
       /* 6. List View (Para Coleções em formato de Lista) */
