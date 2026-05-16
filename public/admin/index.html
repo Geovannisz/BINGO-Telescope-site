@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BINGO Telescope — Content Manager</title>
     <style>
-      /* --- BINGO THEME PARA O DECAP CMS --- */
+      /* --- BINGO THEME (FULL DARK MODE) PARA O DECAP CMS --- */
       @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
       
       body, button, input, select, textarea {
@@ -19,14 +19,13 @@
         box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
       }
       header a, header button, header span, header svg {
-        color: #e2e8f0 !important;
+        color: #f8fafc !important;
       }
-      /* Corrige as linhas ciano do header */
       header a[class*="active"] {
         box-shadow: inset 0 -3px 0 #06b6d4 !important;
       }
 
-      /* 2. Sidebar */
+      /* 2. Sidebar (Menu Lateral) */
       aside {
         background-color: #0f172a !important;
         border-right: 1px solid rgba(34, 211, 238, 0.1) !important;
@@ -42,34 +41,38 @@
         border-radius: 8px !important;
         margin: 4px 12px !important;
         transition: all 0.2s ease !important;
-        background-color: transparent !important; /* Força remover fundo branco */
+        background-color: transparent !important;
       }
       aside a:hover {
         background-color: rgba(34, 211, 238, 0.1) !important;
         color: #22d3ee !important;
       }
-      /* Item ativo na Sidebar */
       aside a[aria-current="page"], aside a[class*="active"] {
         background-color: rgba(34, 211, 238, 0.15) !important;
         color: #22d3ee !important;
         border-left: 3px solid #06b6d4 !important;
       }
 
-      /* 3. Main Area */
+      /* 3. Main Content (FULL DARK) */
       main {
-        background-color: #f8fafc !important;
+        background-color: #020617 !important; /* Fundo hiper escuro */
       }
       main > div > div:first-child {
-        border-bottom: none !important;
+        border-bottom: 1px solid #1e293b !important;
       }
-      main h1 {
-        color: #0f172a !important;
+      main h1, main h2 {
+        color: #f8fafc !important; /* Títulos brancos */
         font-weight: 700 !important;
       }
-
-      /* Toggles e botões secundários em cinza */
-      main span[class*="IconWrapper"], main span[class*="Toggle"] {
-        color: #64748b !important;
+      /* Textos e botões de filtro na cor cinza claro */
+      main span, main label, main p {
+        color: #cbd5e1 !important;
+      }
+      main svg {
+        color: #94a3b8 !important;
+      }
+      main svg:hover {
+        color: #22d3ee !important;
       }
 
       /* 4. Primary Buttons ("New Notícias", "Publish") */
@@ -88,30 +91,79 @@
         box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4) !important;
       }
 
-      /* 5. Cards */
+      /* 5. Cards (Grid View) - Totalmente Escuros */
       main a[class*="Card"] {
-        background-color: #ffffff !important;
+        background-color: #0f172a !important;
         border-radius: 12px !important;
-        border: 1px solid #e2e8f0 !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
+        border: 1px solid #1e293b !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
         transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s !important;
-        padding: 16px !important;
+        padding: 0 !important; /* Zera padding para a imagem colar nas bordas */
+        overflow: hidden !important; /* Corta qualquer vazamento */
+        display: flex !important;
+        flex-direction: column !important;
       }
       main a[class*="Card"]:hover {
         transform: translateY(-4px) !important;
-        box-shadow: 0 12px 20px rgba(0,0,0,0.1) !important;
-        border-color: #3b82f6 !important;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.8) !important;
+        border-color: #06b6d4 !important;
       }
-      /* Remove o fundo branco interno bizarro dos cards */
+      /* Remove blocos brancos internos e padroniza o título */
       main a[class*="Card"] > div {
         background-color: transparent !important;
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
+        margin: 0 !important;
       }
       main a[class*="Card"] h2 {
-        color: #1e293b !important;
-        font-weight: 700 !important;
+        color: #f8fafc !important;
+        font-size: 1.1rem !important;
+        padding: 16px !important;
+        margin: 0 !important;
+      }
+
+      /* --- FIX DEFINITIVO DAS IMAGENS NOS CARDS --- */
+      main a[class*="Card"] [class*="CardImage"] {
+        width: 100% !important;
+        height: 180px !important; /* Força uma altura fixa e elegante */
+        background-color: #020617 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        display: block !important;
+      }
+      main a[class*="Card"] img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* A mágica: preenche perfeitamente sem distorcer e corta os excessos */
+        object-position: center !important;
+        display: block !important;
+        margin: 0 !important;
+      }
+
+      /* 6. List View (Para Coleções em formato de Lista) */
+      main ul {
+        padding: 0 !important;
+        list-style: none !important;
+      }
+      main ul > li > a {
+        background-color: #0f172a !important;
+        border: 1px solid #1e293b !important;
+        border-radius: 8px !important;
+        padding: 16px !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+        color: #f8fafc !important;
+        font-weight: 500 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important;
+        transition: all 0.2s ease !important;
+        text-decoration: none !important;
+      }
+      main ul > li > a:hover {
+        border-color: #06b6d4 !important;
+        transform: translateX(4px) !important;
+        background-color: #1e293b !important;
       }
     </style>
   </head>
