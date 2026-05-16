@@ -1,7 +1,7 @@
 ---
 name: Geovanni Fernandes Garcia
 role: Mestrando
-institution: Universidade de São Paulo
+institution: Universidade de São Paulo (USP)
 photo: /images/uploads/eu.jpg
 stage:
   - Stage 0
