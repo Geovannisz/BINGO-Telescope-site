@@ -9,6 +9,9 @@ const newsCollection = defineCollection({
     author: z.string().default('BINGO Team'),
     image: z.string().optional(),
     summary: z.string(),
+    audience: z.string().optional(),
+    topic: z.string().optional(),
+    country: z.string().optional(),
   }),
 });
 
