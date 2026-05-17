@@ -27,6 +27,26 @@ const imageUrl = entry.data.image?.startsWith('/')
         <div class="flex items-center gap-4 text-slate-400 text-sm">
           <span>Por {entry.data.author}</span>
         </div>
+
+        {(entry.data.topic || entry.data.audience || entry.data.country) && (
+          <div class="flex flex-wrap gap-2 mt-4">
+            {entry.data.topic && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                Tópico: {entry.data.topic}
+              </span>
+            )}
+            {entry.data.audience && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                Público: {entry.data.audience}
+              </span>
+            )}
+            {entry.data.country && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                País: {entry.data.country}
+              </span>
+            )}
+          </div>
+        )}
       </div>
 
       {imageUrl && (
@@ -35,9 +55,19 @@ const imageUrl = entry.data.image?.startsWith('/')
         </div>
       )}
 
-      <div class="prose prose-invert prose-cyan max-w-none prose-img:rounded-xl prose-a:text-cyan-400 hover:prose-a:text-cyan-300">
+      <div class="prose prose-invert prose-cyan max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-cyan-400 hover:prose-a:text-cyan-300">
         <Content />
       </div>
+
+      <script define:vars={{ base }}>
+        // Fix markdown image paths for GitHub Pages subpaths
+        document.querySelectorAll('.prose img').forEach((img) => {
+          const src = img.getAttribute('src');
+          if (src && src.startsWith('/') && !src.startsWith(base)) {
+            img.setAttribute('src', base + src.slice(1));
+          }
+        });
+      </script>
 
       <div class="mt-16 pt-8 border-t border-slate-800">
         <a href={`${base}news`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">

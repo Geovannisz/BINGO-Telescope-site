@@ -22,6 +22,9 @@ collections:
       - {label: "Autor", name: "author", widget: "string", default: "BINGO Team"}
       - {label: "Imagem de Capa", name: "image", widget: "image", required: false}
       - {label: "Resumo Curto (1 a 2 linhas)", name: "summary", widget: "string"}
+      - {label: "Público-alvo", name: "audience", widget: "string", required: false}
+      - {label: "Tópico", name: "topic", widget: "string", required: false}
+      - {label: "País", name: "country", widget: "string", required: false}
       - {label: "Corpo da Notícia", name: "body", widget: "markdown"}
 
   - name: "team"
