@@ -5,7 +5,7 @@ institution: Universidade de São Paulo (USP)
 photo: /images/team/elcio-abdalla.jpg
 stage:
   - Coordenação
-city: São Paulo, SP, Brasil
+city: São Paulo / SP / Brasil
 area: Física Teórica, Cosmologia Observacional
 email: eabdalla@if.usp.br
 lattes: http://lattes.cnpq.br/6256541728060383
