@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      use_cloud:
+        description: 'Emergência: Usar Nuvem do GitHub (ubuntu-latest)?'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -16,7 +21,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ${{ github.event.inputs.use_cloud == 'true' && 'ubuntu-latest' || 'self-hosted' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,7 +44,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ${{ github.event.inputs.use_cloud == 'true' && 'ubuntu-latest' || 'self-hosted' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
