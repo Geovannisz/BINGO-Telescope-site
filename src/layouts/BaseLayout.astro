@@ -111,14 +111,17 @@ const base = import.meta.env.BASE_URL;
         // 4. Language Switcher Logic
         const currentLang = getStoredLang();
         const langLabels: Record<string, string> = { pt: 'PT', en: 'EN', 'zh-CN': 'ZH' };
+        const langFlags: Record<string, string> = { pt: '🇧🇷', en: '🇬🇧', 'zh-CN': '🇨🇳' };
 
         // Desktop switcher
         const langBtn = document.getElementById('lang-switcher-btn');
         const langMenu = document.getElementById('lang-switcher-menu');
         const langLabel = document.getElementById('lang-switcher-label');
+        const langFlag = document.getElementById('lang-switcher-flag');
         const langChevron = document.getElementById('lang-chevron');
 
         if (langLabel) langLabel.textContent = langLabels[currentLang] || 'PT';
+        if (langFlag) langFlag.textContent = langFlags[currentLang] || '🇧🇷';
 
         // Mark current language as active
         document.querySelectorAll('.lang-option').forEach((btn) => {
