@@ -132,6 +132,31 @@ const base = import.meta.env.BASE_URL;
         const langFlag = document.getElementById('lang-switcher-flag');
         const langChevron = document.getElementById('lang-chevron');
 
+        // Blink logic for first access on home page
+        const isHomePage = nativeMeta && nativeMeta.getAttribute('content') === 'index';
+        if (isHomePage && !localStorage.getItem('bingo-lang-hint')) {
+          if (langBtn) {
+            langBtn.style.transition = 'all 0.8s ease';
+            let blinks = 0;
+            const blinkInterval = setInterval(() => {
+              if (blinks % 2 === 0) {
+                langBtn.style.boxShadow = '0 0 15px rgba(34, 211, 238, 0.4)';
+                langBtn.style.borderColor = 'rgba(34, 211, 238, 0.6)';
+              } else {
+                langBtn.style.boxShadow = 'none';
+                langBtn.style.borderColor = '';
+              }
+              blinks++;
+              if (blinks > 5) { // 3 full pulses
+                clearInterval(blinkInterval);
+                langBtn.style.boxShadow = '';
+                langBtn.style.borderColor = '';
+                localStorage.setItem('bingo-lang-hint', 'true');
+              }
+            }, 800);
+          }
+        }
+
         if (langLabel) langLabel.textContent = langLabels[currentLang] || 'PT';
         if (langFlag) langFlag.textContent = langFlags[currentLang] || '🇧🇷';
 

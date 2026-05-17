@@ -219,7 +219,7 @@ export function getStoredLang(): string {
       return stored;
     }
   } catch { /* localStorage unavailable */ }
-  return 'pt';
+  return 'en';
 }
 
 /**
