@@ -15,7 +15,7 @@ linkedin: https://www.linkedin.com/in/umgeovanni
 bio: Mestrando em Física pelo Instituto de Física da Universidade de São Paulo
   (IF-USP), com bacharelado em Física pela mesma instituição (2023) e formação
   complementar com disciplinas do bacharelado em Astronomia (IAG-USP).
-  Atualmente, atua na segunda fase do projeto BINGO, denominada BINGO/ABDUS, com
+  Atualmente, atua na segunda fase do projeto BINGO, denominada BINGO-ABDUS, com
   pesquisa focada na otimização da configuração espacial dos phased-arrays para
   as estações remotas, visando a observação de fontes transientes (FRBs) e o
   mapeamento de hidrogênio neutro até o redshift 2. Paralelamente à pesquisa
@@ -46,7 +46,7 @@ memorable_experience: O desenvolvimento do "Gerador de Layouts de Antenas
   principal do grupo para gerar e testar geometrias das estações do telescópio
   foi extremamente gratificante.
 project_title: Otimização de arranjos de antenas Vivaldi para as estações do
-  telescópio BINGO/ABDUS.
+  telescópio BINGO-ABDUS.
 project_description: Eu estudo a melhor forma de organizar as antenas do
   telescópio no chão. Diferente de um telescópio de lente única, o BINGO/ABDUS
   usará várias estações (formadas por dezenas de antenas menores) espalhadas
@@ -67,8 +67,8 @@ project_importance: Sem essa otimização geométrica, os dados do BINGO sofreri
   telescópio de encontrar as FRBs e mapear a estrutura do Universo com precisão
   sub-arcsegundo.
 project_methods: A metodologia mescla simulações eletromagnéticas completas
-  utilizando o Ansys HFSS , engenharia de software computacional com o
-  desenvolvimento do Gerador de Layouts em arquitetura web , e simulações
+  utilizando o Ansys HFSS, engenharia de software computacional com o
+  desenvolvimento do Gerador de Layouts em arquitetura web, e simulações
   interferométricas avançadas de síntese de abertura processadas em GPU
   utilizando o pipeline do software OSKAR.
 project_results: A demonstração de que a quebra da regularidade através da
@@ -120,7 +120,7 @@ books_chapters: Sou muito ativo na divulgação científica. Sou criador do cana
   membros) e sou criador/professor do "Curso Online de Física".
 groups_labs: Faço parte do Instituto de Física da USP (IFUSP) e sou membro
   oficial da colaboração internacional do Telescópio BINGO, atuando fortemente
-  na Fase 2 do projeto (BINGO/ABDUS).
+  na Fase 2 do projeto (BINGO-ABDUS).
 future_projects: Pretendo aplicar a infraestrutura que construí no mestrado em
   um futuro doutorado, onde desejo utilizar Aprendizado de Máquina (Machine
   Learning) para criar algoritmos de deconvolução ainda mais avançados para o
