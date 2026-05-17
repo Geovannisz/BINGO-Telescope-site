@@ -239,7 +239,7 @@ const base = import.meta.env.BASE_URL;
         });
 
         // 4. Tilt 3D & Magnetic Glow
-        document.querySelectorAll('.glass-card, .glass-card-glow, .subproject-card, .info-card').forEach((card) => {
+        document.querySelectorAll('.glass-card, .glass-card-glow, .subproject-card, .info-card, .news-card, .team-card, .btn-magnetic, .btn-magnetic-secondary').forEach((card) => {
           card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;

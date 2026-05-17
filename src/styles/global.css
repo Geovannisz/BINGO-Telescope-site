@@ -277,7 +277,7 @@ iframe.goog-te-menu-frame {
 }
 
 /* ===== Glass Card ===== */
-.glass-card {
+.glass-card, .news-card, .team-card {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(148, 163, 184, 0.1);
@@ -287,7 +287,7 @@ iframe.goog-te-menu-frame {
   transform: perspective(1200px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) translateY(var(--translate-y, 0px));
   transform-style: preserve-3d;
 }
-.glass-card:hover {
+.glass-card:hover, .news-card:hover, .team-card:hover {
   background: rgba(15, 23, 42, 0.8);
   border-color: rgba(34, 211, 238, 0.2);
   box-shadow: 0 0 30px rgba(34, 211, 238, 0.08);
@@ -521,7 +521,9 @@ iframe.goog-te-menu-frame {
 .glass-card::before, 
 .glass-card-glow::before, 
 .subproject-card::before, 
-.info-card::before {
+.info-card::before,
+.news-card::before,
+.team-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -540,7 +542,66 @@ iframe.goog-te-menu-frame {
 .glass-card:hover::before, 
 .glass-card-glow:hover::before, 
 .subproject-card:hover::before, 
-.info-card:hover::before {
+.info-card:hover::before,
+.news-card:hover::before,
+.team-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Magnetic Pulsar Buttons ===== */
+.btn-magnetic, .btn-magnetic-secondary {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.btn-magnetic:hover, .btn-magnetic-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Photon sweep (follows mouse inside button) */
+.btn-magnetic::before, .btn-magnetic-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+.btn-magnetic::before {
+  background: radial-gradient(80px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.8), transparent 40%);
+}
+
+.btn-magnetic-secondary::before {
+  background: radial-gradient(100px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(34,211,238,0.5), transparent 40%);
+}
+
+.btn-magnetic:hover::before, .btn-magnetic-secondary:hover::before {
+  opacity: 1;
+}
+
+/* Pulsar border effect */
+.btn-magnetic::after, .btn-magnetic-secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(34,211,238,0.5), rgba(99,102,241,0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+}
+
+.btn-magnetic:hover::after, .btn-magnetic-secondary:hover::after {
   opacity: 1;
 }
 
