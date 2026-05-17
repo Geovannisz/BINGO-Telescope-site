@@ -550,6 +550,72 @@ iframe.goog-te-menu-frame {
 
 
 
+/* ===== Cosmic Buttons (Pure CSS, High Performance) ===== */
+.btn-cosmic {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #22d3ee 0%, #6366f1 100%);
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.25);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+
+/* Hover Gradient Shift */
+.btn-cosmic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #06b6d4 0%, #4f46e5 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.btn-cosmic:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.5);
+}
+
+.btn-cosmic:hover::before {
+  opacity: 1;
+}
+
+/* Shine Sweep Effect */
+.btn-cosmic::after, .btn-cosmic-outline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: left 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  z-index: 1;
+}
+
+.btn-cosmic:hover::after, .btn-cosmic-outline:hover::after {
+  left: 200%;
+}
+
+/* Secondary Button */
+.btn-cosmic-outline {
+  position: relative;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+
+.btn-cosmic-outline:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.8);
+  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.25), inset 0 0 20px rgba(34, 211, 238, 0.15);
+}
+
 /* ===== Feature icon container ===== */
 .feature-icon {
   width: 3.5rem;
