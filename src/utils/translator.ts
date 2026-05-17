@@ -150,10 +150,27 @@ export function protectScientificTerms(): void {
           span.className = 'notranslate';
           span.translate = false;
           
-          // Pad with spaces to counteract Google Translate's space-eating at notranslate boundaries.
-          // HTML will naturally collapse any double spaces if Google Translate doesn't eat them.
-          const prefixSpace = (i > 0 && /\s$/.test(parts[i - 1])) ? ' ' : '';
-          const suffixSpace = (i < parts.length - 1 && /^\s/.test(parts[i + 1])) ? ' ' : '';
+          let prefixSpace = '';
+          if (i > 0 && /\s$/.test(parts[i - 1])) {
+            prefixSpace = ' ';
+          } else if (i === 0) {
+            // Check adjacent DOM nodes if isolated in an element (like <strong>)
+            const prev = textNode.previousSibling || textNode.parentElement?.previousSibling;
+            if (prev && prev.nodeType === Node.TEXT_NODE && /\s$/.test(prev.textContent || '')) {
+              prefixSpace = ' ';
+            }
+          }
+
+          let suffixSpace = '';
+          if (i < parts.length - 1 && /^\s/.test(parts[i + 1])) {
+            suffixSpace = ' ';
+          } else if (i === parts.length - 1) {
+            // Check adjacent DOM nodes if isolated in an element (like <strong>)
+            const next = textNode.nextSibling || textNode.parentElement?.nextSibling;
+            if (next && next.nodeType === Node.TEXT_NODE && /^\s/.test(next.textContent || '')) {
+              suffixSpace = ' ';
+            }
+          }
           
           if (isSubproject || (isQuote && part.includes('BINGO'))) {
             // Apply font-bingo to the word BINGO inside the untranslated block
