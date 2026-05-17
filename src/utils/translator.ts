@@ -32,9 +32,21 @@ const LANG_MAP: Record<string, string> = {
  * These will be wrapped in <span class="notranslate"> before
  * Google Translate processes the page.
  */
+const SUBPROJECTS = [
+  'BINGO: Esperança no Espaço'
+];
+
+const BRAND_TERMS = [
+  'BINGO-ABDUS', 'BINGO-Uirapuru', 'BINGO'
+];
+
+const HERO_TERMS = [
+  'Science', 'News', 'Mirrors', 'Horns', 'Redshift', 'Dark Energy', 'Baryon Acoustic Oscillations'
+];
+
 const PROTECTED_TERMS = [
-  // Project names (order matters: longer first)
-  'BINGO-ABDUS', 'BINGO-Uirapuru', 'BINGO',
+  ...SUBPROJECTS,
+  ...BRAND_TERMS,
   // Scientific acronyms
   'BAO', 'FRB', 'FRBs', 'ΛCDM', 'ABDUS',
   // Stage names
@@ -77,6 +89,10 @@ const SKIP_TAGS: Record<string, boolean> = {
 function buildProtectionRegex(): RegExp {
   const sorted = [...PROTECTED_TERMS].sort((a, b) => b.length - a.length);
   const escaped = sorted.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  
+  // Match quoted strings to prevent them from being translated
+  escaped.push('"[^"]+"', '“[^”]+”');
+  
   // Join with | and use non-capturing group
   return new RegExp(`(${escaped.join('|')})`, 'g');
 }
@@ -127,18 +143,35 @@ export function protectScientificTerms(): void {
       if (regex.test(part)) {
         const span = document.createElement('span');
         
-        // Check if the term needs the BINGO font
-        if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
+        const isQuote = part.startsWith('"') || part.startsWith('“');
+        const isSubproject = SUBPROJECTS.includes(part);
+
+        if (isQuote || isSubproject || HERO_TERMS.includes(part)) {
+          span.className = 'notranslate';
+          span.translate = false;
+          
+          // Pad with spaces to counteract Google Translate's space-eating at notranslate boundaries.
+          // HTML will naturally collapse any double spaces if Google Translate doesn't eat them.
+          const prefixSpace = (i > 0 && /\s$/.test(parts[i - 1])) ? ' ' : '';
+          const suffixSpace = (i < parts.length - 1 && /^\s/.test(parts[i + 1])) ? ' ' : '';
+          
+          if (isSubproject || (isQuote && part.includes('BINGO'))) {
+            // Apply font-bingo to the word BINGO inside the untranslated block
+            const innerHTML = part.replace(/BINGO/g, '<span class="font-bingo">BINGO</span>');
+            span.innerHTML = prefixSpace + innerHTML + suffixSpace;
+          } else {
+            span.textContent = prefixSpace + part + suffixSpace;
+          }
+        } else if (BRAND_TERMS.includes(part)) {
+          // Normal BINGO terms (without notranslate)
           span.className = 'font-bingo';
+          span.textContent = part;
         } else {
-          // We apply a semantic class instead of 'notranslate'.
-          // Forcing acronyms into 'notranslate' destroys the sentence context for the neural AI,
-          // causing it to eat spaces and drop punctuation (like the 'HIElectron' bug).
-          // Google Translate natively preserves acronyms and proper names without breaking them.
+          // Normal scientific terms (without notranslate)
           span.className = 'scientific-term';
+          span.textContent = part;
         }
         
-        span.textContent = part;
         frag.appendChild(span);
       } else if (part) {
         frag.appendChild(document.createTextNode(part));
