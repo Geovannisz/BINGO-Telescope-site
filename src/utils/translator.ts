@@ -93,9 +93,6 @@ function buildProtectionRegex(): RegExp {
   const sorted = [...PROTECTED_TERMS].sort((a, b) => b.length - a.length);
   const escaped = sorted.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
   
-  // Match quoted strings to prevent them from being translated
-  escaped.push('"[^"]+"', '“[^”]+”');
-  
   // Join with | and use non-capturing group
   return new RegExp(`(${escaped.join('|')})`, 'g');
 }
@@ -145,11 +142,9 @@ export function protectScientificTerms(): void {
       regex.lastIndex = 0;
       if (regex.test(part)) {
         const span = document.createElement('span');
-        
-        const isQuote = part.startsWith('"') || part.startsWith('“');
         const isSubproject = SUBPROJECTS.includes(part);
 
-        if (isQuote || isSubproject || HERO_TERMS.includes(part)) {
+        if (isSubproject || HERO_TERMS.includes(part)) {
           span.className = 'notranslate';
           span.translate = false;
           
@@ -183,7 +178,7 @@ export function protectScientificTerms(): void {
             }
           }
           
-          if (isSubproject || (isQuote && part.includes('BINGO'))) {
+          if (isSubproject) {
             // Apply font-bingo to the word BINGO inside the untranslated block
             const innerHTML = tokenizedPart.replace(/BINGO/g, '<span class="font-bingo">BINGO</span>');
             span.innerHTML = prefixSpace + innerHTML + suffixSpace;
