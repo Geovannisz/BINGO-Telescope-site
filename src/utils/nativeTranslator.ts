@@ -76,7 +76,18 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
 
       // Use innerHTML to support rich content (bold, links, etc.)
       (el as HTMLElement).innerHTML = translation;
+      
+      // Protect this element from Google Translate
+      el.classList.add('notranslate');
+      el.setAttribute('translate', 'no');
     });
+
+    // Check if the page needs Google Translate for dynamic parts (e.g. News cards)
+    if (document.querySelector('[data-dynamic-translate]')) {
+      const { initTranslator } = await import('./translator');
+      initTranslator();
+      return; // Anti-FOUC script will reveal body when GTE finishes
+    }
   } catch (err) {
     console.warn('[BINGO i18n] Failed to load native translations:', err);
   }
