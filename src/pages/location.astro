@@ -10,9 +10,9 @@ const base = import.meta.env.BASE_URL;
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <p class="section-label">Localização</p>
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Localização do <span class="gradient-text-cyan">BINGO</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Serra do Urubu, Aguiar, Paraíba — Brasil. Uma localização excepcionalmente silenciosa em radiofrequência, escolhida criteriosamente para observações cosmológicas de alta precisão.</p>
+        <p class="section-label" data-t="header.label">Localização</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">Localização do <span class="gradient-text-cyan">BINGO</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Serra do Urubu, Aguiar, Paraíba — Brasil. Uma localização excepcionalmente silenciosa em radiofrequência, escolhida criteriosamente para observações cosmológicas de alta precisão.</p>
       </div>
     </div>
   </div>
@@ -28,8 +28,8 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Por que <span class="gradient-text-cyan">Aguiar</span>, Paraíba?</h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="why.title">Por que <span class="gradient-text-cyan">Aguiar</span>, Paraíba?</h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="why.intro">
             A localização do BINGO foi selecionada após extensas campanhas de medição de RFI (Radio Frequency Interference) em múltiplos locais candidatos no Nordeste brasileiro. A Serra do Urubu, no município de Aguiar, destacou-se como a melhor opção.
           </p>
           <ul class="space-y-4 text-slate-300 text-sm">
@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL;
               <div class="feature-icon shrink-0" style="width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;">
                 <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
               </div>
-              <div>
+              <div data-t="why.rfi">
                 <strong class="text-white">Baixíssima RFI:</strong> A Serra do Urubu apresenta níveis excepcionalmente baixos de interferência eletromagnética — essencial para detectar o sinal de HI cosmológico, que é ~100.000 vezes mais fraco que os foregrounds galácticos. A baixa população e a ausência de torres celulares próximas criam um "oásis de silêncio" em rádio.
               </div>
             </li>
@@ -45,7 +45,7 @@ const base = import.meta.env.BASE_URL;
               <div class="feature-icon shrink-0" style="width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;">
                 <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
               </div>
-              <div>
+              <div data-t="why.latitude">
                 <strong class="text-white">Latitude ideal (~7°S):</strong> Permite observações do hemisfério sul celestial, cobrindo regiões complementares a surveys do hemisfério norte. A declinação observada (~-15°) cobre uma região rica em estrutura de larga escala e com boa sobreposição com dados do Planck e LSST.
               </div>
             </li>
@@ -53,7 +53,7 @@ const base = import.meta.env.BASE_URL;
               <div class="feature-icon shrink-0" style="width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;">
                 <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
               </div>
-              <div>
+              <div data-t="why.topography">
                 <strong class="text-white">Topografia natural:</strong> A elevação (~500m) e o relevo montanhoso da Serra do Urubu fornecem blindagem natural contra RFI de fontes terrestres nos vales circundantes, funcionando como uma "muralha" natural.
               </div>
             </li>
@@ -61,7 +61,7 @@ const base = import.meta.env.BASE_URL;
               <div class="feature-icon shrink-0" style="width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;">
                 <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
               </div>
-              <div>
+              <div data-t="why.access">
                 <strong class="text-white">Acessibilidade logística:</strong> Apesar da remota, a Serra do Urubu é acessível via rodovia a partir de Campina Grande (~350 km) e João Pessoa (~450 km), permitindo transporte de equipamentos pesados e visitas técnicas regulares.
               </div>
             </li>
@@ -71,7 +71,7 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Google Maps embed -->
       <div class="mb-16 animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Localização no Mapa</h2>
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="map.title">Localização no Mapa</h2>
         <div class="section-divider"></div>
         <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl mt-8" style="height: 400px;">
           <iframe
@@ -89,7 +89,7 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Construction photos -->
       <div class="mb-16">
-        <h2 class="text-2xl font-bold text-white mb-8 text-center animate-on-scroll" style="font-family: 'Outfit', sans-serif;">Infraestrutura no Site</h2>
+        <h2 class="text-2xl font-bold text-white mb-8 text-center animate-on-scroll" style="font-family: 'Outfit', sans-serif;" data-t="infra.title">Infraestrutura no Site</h2>
         <div class="section-divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
           <div class="glass-card-glow overflow-hidden animate-on-scroll">
@@ -97,8 +97,8 @@ const base = import.meta.env.BASE_URL;
               <img src={`${base}images/site-construction/casa-de-comando.jpg`} alt="Casa de Comando do BINGO em Aguiar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-bold text-white mb-2">Casa de Comando</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">Edificação concluída que abrigará os receptores, backend digital, servidores de armazenamento de dados, sistemas de refrigeração e o centro de controle das operações do telescópio. Projetada com blindagem eletromagnética para não gerar RFI.</p>
+              <h3 class="text-lg font-bold text-white mb-2" data-t="command.title">Casa de Comando</h3>
+              <p class="text-slate-400 text-sm leading-relaxed" data-t="command.desc">Edificação concluída que abrigará os receptores, backend digital, servidores de armazenamento de dados, sistemas de refrigeração e o centro de controle das operações do telescópio. Projetada com blindagem eletromagnética para não gerar RFI.</p>
             </div>
           </div>
           <div class="glass-card-glow overflow-hidden animate-on-scroll">
@@ -106,8 +106,8 @@ const base = import.meta.env.BASE_URL;
               <img src={`${base}images/site-construction/Figura_canteiro.jpg`} alt="Canteiro de obras do BINGO" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="p-6">
-              <h3 class="text-lg font-bold text-white mb-2">Canteiro de Obras e Fundações</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">Vista do terreno preparado na Serra do Urubu com as fundações concretadas para a instalação da estrutura metálica dos espelhos. O terreno foi nivelado e compactado para suportar as cargas da estrutura de ~40 metros.</p>
+              <h3 class="text-lg font-bold text-white mb-2" data-t="construction.title">Canteiro de Obras e Fundações</h3>
+              <p class="text-slate-400 text-sm leading-relaxed" data-t="construction.desc">Vista do terreno preparado na Serra do Urubu com as fundações concretadas para a instalação da estrutura metálica dos espelhos. O terreno foi nivelado e compactado para suportar as cargas da estrutura de ~40 metros.</p>
             </div>
           </div>
         </div>
@@ -122,14 +122,14 @@ const base = import.meta.env.BASE_URL;
             </div>
           </div>
           <div class="md:w-1/2">
-            <h2 class="text-xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Impacto na <span class="text-amber-400">Comunidade Local</span></h2>
-            <p class="text-slate-300 leading-relaxed mb-4">
+            <h2 class="text-xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="impact.title">Impacto na <span class="text-amber-400">Comunidade Local</span></h2>
+            <p class="text-slate-300 leading-relaxed mb-4" data-t="impact.p1">
               O projeto BINGO não apenas contribui para a ciência global, mas também transforma a comunidade local de Aguiar e região. A instalação de infraestrutura de telecomunicações, incluindo <strong class="text-cyan-400">internet de alta velocidade via fibra óptica</strong>, beneficia centenas de famílias que antes não tinham acesso à internet.
             </p>
-            <p class="text-slate-300 leading-relaxed mb-4">
+            <p class="text-slate-300 leading-relaxed mb-4" data-t="impact.p2">
               A presença do telescópio estimula o <strong class="text-white">turismo científico</strong>, atrai pesquisadores e estudantes para a região, e cria oportunidades de emprego na construção, manutenção e operação do observatório. Trabalhadores locais foram capacitados em técnicas de construção especializadas.
             </p>
-            <p class="text-slate-300 leading-relaxed">
+            <p class="text-slate-300 leading-relaxed" data-t="impact.p3">
               O BINGO também promove parcerias com escolas locais e organizações comunitárias, levando palestras sobre astronomia, oficinas educacionais e observações astronômicas — plantando sementes de curiosidade científica em uma nova geração.
             </p>
           </div>
@@ -140,7 +140,7 @@ const base = import.meta.env.BASE_URL;
       <div class="mt-12 text-center animate-on-scroll">
         <div class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-slate-300">
           <svg class="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span class="font-mono text-sm">7°02'S, 38°16'W — Serra do Urubu, Aguiar — Paraíba, Brasil — Altitude ~500m</span>
+          <span class="font-mono text-sm" data-t="coords">7°02'S, 38°16'W — Serra do Urubu, Aguiar — Paraíba, Brasil — Altitude ~500m</span>
         </div>
       </div>
     </div>

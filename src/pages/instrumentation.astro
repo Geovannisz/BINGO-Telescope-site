@@ -11,9 +11,9 @@ const base = import.meta.env.BASE_URL;
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <p class="section-label">Instrumentação</p>
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Instrumentação do <span class="gradient-text-cyan">Telescópio</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Design engenhoso com dois espelhos de ~40m, 28 cornetas corrugadas e receptores de última geração — projetado para detectar o fraco sinal cosmológico do hidrogênio neutro com precisão sem precedentes.</p>
+        <p class="section-label" data-t="header.label">Instrumentação</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">Instrumentação do <span class="gradient-text-cyan">Telescópio</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Design engenhoso com dois espelhos de ~40m, 28 cornetas corrugadas e receptores de última geração — projetado para detectar o fraco sinal cosmológico do hidrogênio neutro com precisão sem precedentes.</p>
       </div>
     </div>
   </div>
@@ -24,24 +24,24 @@ const base = import.meta.env.BASE_URL;
       <!-- Concept Section -->
       <div class="mb-16 animate-on-scroll">
         <div class="glass-card-glow p-8">
-          <p class="section-label text-left">Abordagem Observacional</p>
-          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">Single-Dish vs Interferometria</h2>
+          <p class="section-label text-left" data-t="concept.label">Abordagem Observacional</p>
+          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="concept.title">Single-Dish vs Interferometria</h2>
           <div class="md:flex gap-12 items-center">
             <div class="md:w-3/5">
-              <p class="text-slate-300 leading-relaxed mb-4">
+              <p class="text-slate-300 leading-relaxed mb-4" data-t="concept.p1">
                 O radiotelescópio BINGO privilegia um conceito complementar aos radiotelescópios interferométricos tradicionais: ele utilizará, para um mesmo sistema refletor, <strong class="text-cyan-400">muitos detectores (cornetas) no plano focal</strong>. Em geral, interferômetros são compostos por vários refletores espalhados com apenas um ou poucos detectores em cada plano focal.
               </p>
-              <p class="text-slate-300 leading-relaxed mb-4">
+              <p class="text-slate-300 leading-relaxed mb-4" data-t="concept.p2">
                 Telescópios single-dish multi-beam como o BINGO têm uma vantagem clara no <strong class="text-white">custo de fabricação e manutenção</strong>, além do fato de que o processamento de dados é inerentemente mais simples. A desvantagem óbvia é que a área de coleta de um interferômetro e a sua consequente resolução angular são geralmente muito maiores.
               </p>
-              <p class="text-slate-300 leading-relaxed">
+              <p class="text-slate-300 leading-relaxed" data-t="concept.p3">
                 Este design é extremamente eficiente para o Mapeamento de Intensidade (Intensity Mapping), onde o objetivo não é resolver galáxias individuais com alta resolução (o que demandaria um interferômetro gigante), mas sim mapear as flutuações de densidade do gás em grandes escalas no universo com altíssima sensibilidade a brilhos de superfície difusos.
               </p>
             </div>
             <div class="md:w-2/5 mt-8 md:mt-0">
               <div class="rounded-xl overflow-hidden border border-indigo-500/15">
                 <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full h-auto bg-slate-900" />
-                <p class="text-xs text-slate-400 text-center py-2 bg-slate-800/80">Arranjo conceitual dos módulos de cornetas do BINGO</p>
+                <p class="text-xs text-slate-400 text-center py-2 bg-slate-800/80" data-t="concept.caption">Arranjo conceitual dos módulos de cornetas do BINGO</p>
               </div>
             </div>
           </div>
@@ -59,57 +59,57 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <p class="section-label text-left">Design Óptico</p>
-          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Arranjo Óptico <span class="gradient-text-cyan">Crossed-Dragone</span></h2>
-          <p class="text-slate-300 leading-relaxed mb-6">
+          <p class="section-label text-left" data-t="optics.label">Design Óptico</p>
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="optics.title">Arranjo Óptico <span class="gradient-text-cyan">Crossed-Dragone</span></h2>
+          <p class="text-slate-300 leading-relaxed mb-6" data-t="optics.p1">
             O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de 40m com um espelho secundário hiperbólico de 36m dispostos em ângulo cruzado. Esta configuração minimiza lóbulos laterais e spillover, e foi escolhida por produzir um campo de visão amplo com distorções mínimas.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-6">
+          <p class="text-slate-300 leading-relaxed mb-6" data-t="optics.p2">
             O telescópio opera em modo de <strong class="text-white">trânsito</strong>, sem partes móveis — ele fica fixo, apontado para uma faixa do céu (declinação ~-15°), e varre o céu conforme a Terra gira. Isso simplifica enormemente a engenharia mecânica, elimina vibrações e instabilidades de apontamento, e garante observações extremamente estáveis.
           </p>
           
-          <h3 class="text-xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Parâmetros e Características</h3>
+          <h3 class="text-xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="params.title">Parâmetros e Características</h3>
           <div class="overflow-x-auto rounded-lg border border-indigo-500/20 bg-slate-800/40">
             <table class="w-full text-sm text-left text-slate-300">
               <tbody class="divide-y divide-indigo-500/20">
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Refletor Primário</td>
-                  <td class="px-4 py-3">Paraboloide fora de eixo (off-axis), 40m de diâmetro</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.primary">Refletor Primário</td>
+                  <td class="px-4 py-3" data-t="params.primary.val">Paraboloide fora de eixo (off-axis), 40m de diâmetro</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Refletor Secundário</td>
-                  <td class="px-4 py-3">Hiperboloide fora de eixo (off-axis), 36m de diâmetro</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.secondary">Refletor Secundário</td>
+                  <td class="px-4 py-3" data-t="params.secondary.val">Hiperboloide fora de eixo (off-axis), 36m de diâmetro</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Distância Focal Efetiva</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.focal">Distância Focal Efetiva</td>
                   <td class="px-4 py-3">63.2 m</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">FWHM (Resolução)</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.fwhm">FWHM (Resolução)</td>
                   <td class="px-4 py-3">0.67° (~40 arcmin)</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Número de Cornetas</td>
-                  <td class="px-4 py-3">28 (polarização dupla/circular)</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.horns">Número de Cornetas</td>
+                  <td class="px-4 py-3" data-t="params.horns.val">28 (polarização dupla/circular)</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Dimensões da Corneta</td>
-                  <td class="px-4 py-3">Abertura: 1.9 m | Comprimento: 4.3 m</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.dimensions">Dimensões da Corneta</td>
+                  <td class="px-4 py-3" data-t="params.dimensions.val">Abertura: 1.9 m | Comprimento: 4.3 m</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Área Coberta no Céu</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.sky">Área Coberta no Céu</td>
                   <td class="px-4 py-3">~5300 a 6000 deg²</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Temperatura do Sistema</td>
-                  <td class="px-4 py-3">70 K (não-criogênico)</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.tsys">Temperatura do Sistema</td>
+                  <td class="px-4 py-3" data-t="params.tsys.val">70 K (não-criogênico)</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Banda de Frequência</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.freq">Banda de Frequência</td>
                   <td class="px-4 py-3">980 – 1260 MHz</td>
                 </tr>
                 <tr class="hover:bg-slate-700/30 transition-colors">
-                  <td class="px-4 py-3 font-medium text-white">Intervalo de Redshift</td>
+                  <td class="px-4 py-3 font-medium text-white" data-t="params.redshift">Intervalo de Redshift</td>
                   <td class="px-4 py-3">0.13 – 0.45</td>
                 </tr>
               </tbody>
@@ -126,15 +126,15 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <p class="section-label text-left">Receptores</p>
-          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">Cornetas Corrugadas <span class="gradient-text-cyan">(Horns)</span></h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="section-label text-left" data-t="horns.label">Receptores</p>
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="horns.title">Cornetas Corrugadas <span class="gradient-text-cyan">(Horns)</span></h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="horns.p1">
             O plano focal do BINGO acomodará um arranjo de <strong class="text-cyan-400">28 cornetas corrugadas</strong> de feixe duplo, organizadas em 4 colunas × 7 linhas. Cada corneta é uma peça de engenharia de precisão, com corrugações internas cuidadosamente projetadas para produzir um diagrama de radiação altamente simétrico e com baixíssima polarização cruzada.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="horns.p2">
             As cornetas foram otimizadas para operar na banda de <strong class="text-white">960–1280 MHz</strong>, com uma largura de banda de ~30% — um desafio significativo de engenharia para cornetas broadband. O protótipo foi fabricado e testado extensivamente, com resultados excelentes publicados em Wuensche et al. (2019).
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="horns.p3">
             O campo de visão instantâneo do arranjo é de aproximadamente <strong class="text-cyan-400">14.75° × 6°</strong>, permitindo cobrir uma faixa substancial do céu a cada passagem sideral. A disposição das cornetas foi simulada extensivamente (Paper III) para maximizar a cobertura do plano focal e minimizar spillover e cross-talk entre elementos adjacentes.
           </p>
         </div>
@@ -143,20 +143,20 @@ const base = import.meta.env.BASE_URL;
       <!-- Horn Structure Diagram -->
       <div class="mb-16 animate-on-scroll">
         <div class="glass-card-glow p-8">
-          <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Torre de Cornetas</h2>
+          <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="tower.title">Torre de Cornetas</h2>
           <div class="section-divider"></div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="rounded-xl overflow-hidden border border-indigo-500/15">
               <img src={`${base}images/horns/horns_side.png`} alt="Diagrama da torre de cornetas com 28 cornetas" class="w-full h-auto" />
             </div>
             <div>
-              <p class="text-slate-300 leading-relaxed mb-4">
+              <p class="text-slate-300 leading-relaxed mb-4" data-t="tower.p1">
                 A torre de cornetas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta com precisão milimétrica de posicionamento.
               </p>
-              <p class="text-slate-300 leading-relaxed mb-4">
+              <p class="text-slate-300 leading-relaxed mb-4" data-t="tower.p2">
                 A disposição foi extensivamente simulada (Paper III) para maximizar a cobertura do plano focal enquanto minimiza spillover e cross-talk entre as cornetas adjacentes. A separação entre cornetas foi otimizada para produzir feixes que se sobrepõem minimamente, garantindo cobertura uniforme da faixa observada.
               </p>
-              <p class="text-slate-300 leading-relaxed">
+              <p class="text-slate-300 leading-relaxed" data-t="tower.p3">
                 Cada corneta alimenta um receptor de polarização dupla (ortogonal), fornecendo 56 canais de dados independentes para o pipeline de processamento.
               </p>
             </div>
@@ -170,12 +170,12 @@ const base = import.meta.env.BASE_URL;
           <div class="rounded-xl overflow-hidden border border-indigo-500/15 mb-6">
             <img src={`${base}images/phased-array/prototype_white_background.png`} alt="Protótipo de antena phased-array Vivaldi" class="w-full h-48 object-contain bg-white p-2" />
           </div>
-          <p class="section-label text-left">BINGO-ABDUS</p>
-          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Antenas Phased-Array Vivaldi</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+          <p class="section-label text-left" data-t="paf.label">BINGO-ABDUS</p>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;" data-t="paf.title">Antenas Phased-Array Vivaldi</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3" data-t="paf.p1">
             Para a fase BINGO-ABDUS, está em desenvolvimento um sistema de <strong class="text-cyan-400">antenas phased-array</strong> baseadas em elementos Vivaldi (tapered slot antennas). Estas antenas são uma alternativa compacta e escalável às cornetas tradicionais, permitindo formar múltiplos feixes simultaneamente por beamforming digital.
           </p>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="paf.p2">
             Os protótipos de tiles 4×4 são fabricados em PCB (printed circuit board) e validados comparando medições experimentais em câmara anecóica com simulações eletromagnéticas via HFSS e OSKAR. O design Vivaldi oferece largura de banda instantânea superior a 3:1 (300–1400 MHz), cobrindo toda a faixa expandida do BINGO-ABDUS.
           </p>
         </div>
@@ -183,12 +183,12 @@ const base = import.meta.env.BASE_URL;
           <div class="rounded-xl overflow-hidden border border-indigo-500/15 mb-6">
             <img src={`${base}images/phased-array/tile_in_measure_room_2.png`} alt="Tile Vivaldi em câmara anecóica" class="w-full h-48 object-cover" />
           </div>
-          <p class="section-label text-left">Validação</p>
-          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Câmara Anecóica e Medições</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+          <p class="section-label text-left" data-t="validation.label">Validação</p>
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;" data-t="validation.title">Câmara Anecóica e Medições</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3" data-t="validation.p1">
             Os tiles são caracterizados em câmara anecóica para validar o diagrama de radiação (beam pattern), ganho, eficiência de abertura, e resposta em frequência, comparando medições experimentais com simulações eletromagnéticas full-wave.
           </p>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="validation.p2">
             O processo de validação inclui medição de padrão copolar e cross-polar em múltiplas frequências, análise de acoplamento mútuo entre elementos do array, e verificação da capacidade de steering do feixe por beamforming digital — essencial para a capacidade multi-beam do BINGO-ABDUS.
           </p>
         </div>
@@ -200,8 +200,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Receptores</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;" data-t="receivers.title">Receptores</h3>
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="receivers.desc">
             Receptores de alta sensibilidade operam em temperatura ambiente, utilizando LNAs (Low Noise Amplifiers) para captar o fraco sinal do HI cosmológico. Durante a varredura (drift scan), um ponto no céu cruza o feixe de uma corneta por <strong class="text-white">≈ 2,7 minutos por dia</strong>. O sistema mede a radiação tanto em <strong class="text-cyan-400">intensidade quanto em polarização circular</strong>, mantendo a temperatura de sistema (Tsys) abaixo de 70K.
           </p>
         </div>
@@ -209,8 +209,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Backend Digital</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;" data-t="backend.title">Backend Digital</h3>
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="backend.desc">
             O processamento dos sinais é realizado por placas <strong class="text-cyan-400">SKARABs2</strong>, que atuam como os backends digitais do BINGO. Este sistema possui a capacidade nominal de processar <strong class="text-white">16.384 canais FFT</strong> para converter os sinais analógicos, digitalizando e filtrando os dados a uma altíssima taxa temporal, essencial para mapeamento cosmológico e detecção de transientes.
           </p>
         </div>
@@ -218,8 +218,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;">Mitigação de RFI</h3>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold text-white mb-3" style="font-family: 'Outfit', sans-serif;" data-t="rfi.title">Mitigação de RFI</h3>
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="rfi.desc">
             A interferência de radiofrequência (RFI) é o maior desafio técnico para detecção de HI cosmológico. O corte inferior de frequência em <strong class="text-cyan-400">980 MHz</strong> foi escolhido especificamente para minimizar a interferência de sinais de telefonia celular (banda de 700–956 MHz). Além da localização remota em Aguiar, o BINGO emprega filtros de hardware, algoritmos de RFI flagging em tempo real, e técnicas de subspace projection para remover contaminação sem distorcer o sinal cósmico.
           </p>
         </div>

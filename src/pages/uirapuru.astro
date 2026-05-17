@@ -13,9 +13,9 @@ const base = import.meta.env.BASE_URL;
         <div class="flex items-center gap-4 mb-6">
           <img src={`${base}images/uirapuru/Logos-modificados-BINGO-Uirapuru.png`} alt="Logo BINGO-Uirapuru" class="h-16 w-auto" />
         </div>
-        <p class="section-label">Extensão</p>
+        <p class="section-label" data-t="header.label">Extensão</p>
         <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;"><span class="font-bingo">BINGO-<span class="text-amber-400">Uirapuru</span></span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Radiotelescópio protótipo na UFCG — testbed para receptores, software de processamento e futura rede de outriggers para detecção e localização de Fast Radio Bursts.</p>
+        <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Radiotelescópio protótipo na UFCG — testbed para receptores, software de processamento e futura rede de outriggers para detecção e localização de Fast Radio Bursts.</p>
       </div>
     </div>
   </div>
@@ -31,15 +31,15 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <p class="section-label text-left">Visão Geral</p>
-          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;">O que é o Uirapuru?</h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="section-label text-left" data-t="overview.label">Visão Geral</p>
+          <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="overview.title">O que é o Uirapuru?</h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="overview.p1">
             O <strong class="text-amber-400">Uirapuru</strong> é um radiotelescópio construído a partir do protótipo da antena corneta corrugada do Radiotelescópio BINGO. Localizado na <strong class="text-white">UFCG (Universidade Federal de Campina Grande)</strong>, Campus de Campina Grande, próximo ao LabMet do Departamento de Engenharia Elétrica (7°12'41.9"S 35°54'29.5"W).
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="overview.p2">
             Com alinhamento norte-sul e capacidade de movimento manual em elevação, o Uirapuru é uma réplica em escala real da corneta que será utilizada no telescópio principal. Ele opera na mesma faixa de frequência (960–1280 MHz) e utiliza a mesma geometria de corrugações otimizadas.
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="overview.p3">
             A instalação do Uirapuru foi realizada em 2020 e desde então tem sido usado continuamente para desenvolvimento e validação de hardware, software e técnicas observacionais que serão empregadas no BINGO principal.
           </p>
         </div>
@@ -51,11 +51,11 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
-          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;">Objetivo Principal — Testbed</h2>
-          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;" data-t="testbed.title">Objetivo Principal — Testbed</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3" data-t="testbed.p1">
             Servir como testbed completo para o desenvolvimento e validação de todos os componentes que serão usados no Radiotelescópio BINGO: receptores de baixo ruído, backend digital, software de aquisição de dados, pipeline de calibração e algoritmos de RFI mitigation.
           </p>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="testbed.p2">
             A corneta foi otimizada para operar entre 960 MHz e 1280 MHz com largura de banda de ~30%. O Uirapuru permite testar a resposta eletromagnética em condições reais (espaço aberto), incluindo efeitos de temperatura ambiente, vento, e contaminação de RFI urbana que servem como estresse-teste para os algoritmos de mitigação.
           </p>
         </div>
@@ -63,11 +63,11 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;">Rede de Outriggers para FRBs</h2>
-          <p class="text-slate-300 text-sm leading-relaxed mb-3">
+          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;" data-t="outrigger.title">Rede de Outriggers para FRBs</h2>
+          <p class="text-slate-300 text-sm leading-relaxed mb-3" data-t="outrigger.p1">
             O Uirapuru será parte integral da <strong class="text-white">rede de outriggers do BINGO Interferometry System (BIS)</strong>, conforme proposto no Paper IX. Junto com o telescópio principal em Aguiar e outros radiotelescópios menores espalhados pelo Nordeste, formará uma rede interferométrica dedicada à detecção e localização precisa de Fast Radio Bursts.
           </p>
-          <p class="text-slate-300 text-sm leading-relaxed">
+          <p class="text-slate-300 text-sm leading-relaxed" data-t="outrigger.p2">
             A baseline entre Campina Grande (~500 km de Aguiar) fornecerá resolução angular de arco-minutos, essencial para identificar as galáxias hospedeiras das FRBs e usar suas medidas de dispersão como sondas cosmológicas.
           </p>
         </div>
@@ -75,34 +75,34 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Other objectives -->
       <div class="glass-card-glow p-8 mb-16 animate-on-scroll">
-        <h2 class="text-xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">Objetivos Adicionais</h2>
+        <h2 class="text-xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="objectives.title">Objetivos Adicionais</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
             <div>
-              <p class="text-white font-medium text-sm mb-1">Validação da resposta eletromagnética</p>
-              <p class="text-slate-400 text-xs">Testar a corneta BINGO em espaço aberto, comparando medições reais com simulações de câmara anecóica e modelos computacionais.</p>
+              <p class="text-white font-medium text-sm mb-1" data-t="obj.em.title">Validação da resposta eletromagnética</p>
+              <p class="text-slate-400 text-xs" data-t="obj.em.desc">Testar a corneta BINGO em espaço aberto, comparando medições reais com simulações de câmara anecóica e modelos computacionais.</p>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
             <div>
-              <p class="text-white font-medium text-sm mb-1">Formação de recursos humanos</p>
-              <p class="text-slate-400 text-xs">Treinamento de estudantes de graduação e pós-graduação da UFCG e outras universidades em técnicas de rádio-astronomia observacional.</p>
+              <p class="text-white font-medium text-sm mb-1" data-t="obj.hr.title">Formação de recursos humanos</p>
+              <p class="text-slate-400 text-xs" data-t="obj.hr.desc">Treinamento de estudantes de graduação e pós-graduação da UFCG e outras universidades em técnicas de rádio-astronomia observacional.</p>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
             <div>
-              <p class="text-white font-medium text-sm mb-1">Monitoramento de pulsares</p>
-              <p class="text-slate-400 text-xs">Acoplamento futuro de refletores para aumentar a área efetiva, permitindo monitoramento de pulsares brilhantes como Vela (PSR J0835-4510).</p>
+              <p class="text-white font-medium text-sm mb-1" data-t="obj.pulsar.title">Monitoramento de pulsares</p>
+              <p class="text-slate-400 text-xs" data-t="obj.pulsar.desc">Acoplamento futuro de refletores para aumentar a área efetiva, permitindo monitoramento de pulsares brilhantes como Vela (PSR J0835-4510).</p>
             </div>
           </div>
           <div class="flex items-start gap-3">
             <svg class="w-5 h-5 text-amber-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
             <div>
-              <p class="text-white font-medium text-sm mb-1">Desenvolvimento de backend digital</p>
-              <p class="text-slate-400 text-xs">Teste e otimização do sistema de aquisição de dados, channelization, integração temporal e detecção de transientes em tempo real.</p>
+              <p class="text-white font-medium text-sm mb-1" data-t="obj.backend.title">Desenvolvimento de backend digital</p>
+              <p class="text-slate-400 text-xs" data-t="obj.backend.desc">Teste e otimização do sistema de aquisição de dados, channelization, integração temporal e detecção de transientes em tempo real.</p>
             </div>
           </div>
         </div>
@@ -111,14 +111,14 @@ const base = import.meta.env.BASE_URL;
       <!-- Name inspiration -->
       <div class="glass-card p-8 md:p-12 animate-on-scroll" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(7, 13, 31, 0.8) 100%); border-color: rgba(245, 158, 11, 0.12);">
         <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;">🐦 Inspiração para o Nome</h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;" data-t="name.title">🐦 Inspiração para o Nome</h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="name.p1">
             O <em class="text-white">uirapuru</em> é um pássaro lendário que habita a Floresta Amazônica, famoso por seu canto extraordinariamente melodioso — é frequentemente chamado de <strong class="text-amber-400">"pássaro-da-corneta"</strong> por suas vocalizações flauteadas. Segundo a mitologia indígena, quem ouve seu canto terá um desejo realizado.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="name.p2">
             <strong class="text-white">Uirapuru</strong> é uma palavra da família linguística Tupi-Guarani, formada pela junção de <em>uira</em> (pássaro) e <em>puru</em> (pequeno, esguio). O Tupi-Guarani é uma das maiores famílias linguísticas da América do Sul, falada historicamente pelos povos originários da Paraíba e estados vizinhos.
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="name.p3">
             A escolha do nome é uma homenagem à biodiversidade brasileira, aos povos tradicionais do Nordeste, e ao formato icônico da corneta do telescópio — que lembra justamente a "corneta" do pássaro. Assim como o uirapuru é raro e precioso na floresta, o sinal cosmológico de 21cm é um "canto" raro e valioso que o telescópio busca captar.
           </p>
         </div>

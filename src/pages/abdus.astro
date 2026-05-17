@@ -13,10 +13,10 @@ const base = import.meta.env.BASE_URL;
         <div class="flex items-center gap-4 mb-6">
           <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="h-16 w-auto" />
         </div>
-        <p class="section-label">Extensão</p>
+        <p class="section-label" data-t="header.label">Extensão</p>
         <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;"><span class="font-bingo">BINGO-<span class="gradient-text-cyan">ABDUS</span></span></h1>
-        <p class="mt-4 text-xl text-slate-300 font-light">Advanced BINGO Dark Universe Studies</p>
-        <p class="mt-4 text-lg leading-8 text-slate-400">Consórcio internacional para desvendar o setor escuro do universo, expandindo o alcance do BINGO até z ~ 2.1 em colaboração com ASTRON e Observatório de Nançay.</p>
+        <p class="mt-4 text-xl text-slate-300 font-light" data-t="header.subtitle">Advanced BINGO Dark Universe Studies</p>
+        <p class="mt-4 text-lg leading-8 text-slate-400" data-t="header.desc">Consórcio internacional para desvendar o setor escuro do universo, expandindo o alcance do BINGO até z ~ 2.1 em colaboração com ASTRON e Observatório de Nançay.</p>
       </div>
     </div>
   </div>
@@ -27,13 +27,13 @@ const base = import.meta.env.BASE_URL;
       <!-- Main description -->
       <div class="max-w-4xl mx-auto mb-16 animate-on-scroll">
         <div class="glass-card-glow p-8 md:p-12">
-          <p class="text-slate-300 leading-relaxed mb-4 text-lg">
+          <p class="text-slate-300 leading-relaxed mb-4 text-lg" data-t="main.p1">
             O telescópio BINGO iniciou uma nova fase com o <strong class="text-white">BINGO-ABDUS</strong>. O nome do consórcio homenageia o grande físico <strong class="text-cyan-400">Abdus Salam</strong>, ganhador do Prêmio Nobel de Física de 1979 por sua contribuição à unificação das forças eletromagnética e fraca, e funciona como acrônimo para <em>Advanced BINGO Dark Universe Studies</em>.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="main.p2">
             É um projeto ambicioso resultante de uma colaboração expandida entre o BINGO (Brasil e China), o <strong class="text-white">Netherlands Institute for Radio Astronomy (ASTRON)</strong> e o <strong class="text-white">Observatório de Nançay</strong> (Station de Radioastronomie de Nançay, França). Esta parceria traz expertise de classe mundial em phased-array feeds, interferometria de longa baseline e processamento de sinais de rádio.
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="main.p3">
             O BINGO-ABDUS visa expandir dramaticamente o alcance do BINGO, observando sinais de rádio de até <strong class="text-cyan-400">z ~ 2.1</strong> — correspondendo a sinais emitidos quando o universo tinha apenas ~25% de sua idade atual — e cobrindo uma fração muito maior do céu com resolução angular melhorada.
           </p>
         </div>
@@ -45,43 +45,43 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Redshift Expandido (z ~ 2.1)</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Observações até z ~ 2.1, cobrindo mais de 10 bilhões de anos de história cósmica adicional. Isso permite mapear BAO em épocas jamais acessadas por intensity mapping, quando a Energia Escura começou a dominar a expansão cósmica.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="redshift.title">Redshift Expandido (z ~ 2.1)</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="redshift.desc">Observações até z ~ 2.1, cobrindo mais de 10 bilhões de anos de história cósmica adicional. Isso permite mapear BAO em épocas jamais acessadas por intensity mapping, quando a Energia Escura começou a dominar a expansão cósmica.</p>
         </div>
         <div class="glass-card-glow p-8 animate-on-scroll">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">FRBs e Pulsares</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Detecção e localização de Fast Radio Bursts e monitoramento de pulsares com a rede interferométrica expandida. A capacidade multi-beam do phased-array permite observar múltiplas direções simultaneamente, aumentando drasticamente a taxa de detecção.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="frb.title">FRBs e Pulsares</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="frb.desc">Detecção e localização de Fast Radio Bursts e monitoramento de pulsares com a rede interferométrica expandida. A capacidade multi-beam do phased-array permite observar múltiplas direções simultaneamente, aumentando drasticamente a taxa de detecção.</p>
         </div>
         <div class="glass-card-glow p-8 animate-on-scroll">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Buracos Negros Primordiais</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Investigação de Buracos Negros Primordiais (PBHs) como candidatos a matéria escura através de lensing gravitacional do sinal de HI. O alcance expandido em redshift é crucial para distinguir PBHs de flutuações estatísticas normais.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="pbh.title">Buracos Negros Primordiais</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="pbh.desc">Investigação de Buracos Negros Primordiais (PBHs) como candidatos a matéria escura através de lensing gravitacional do sinal de HI. O alcance expandido em redshift é crucial para distinguir PBHs de flutuações estatísticas normais.</p>
         </div>
         <div class="glass-card-glow p-8 animate-on-scroll">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Phased-Array Technology</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Substituição das cornetas tradicionais por antenas phased-array Vivaldi, permitindo beamforming digital, formação de múltiplos feixes simultâneos, e cobertura de frequência contínua de 300 MHz a 1400 MHz.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="paf.title">Phased-Array Technology</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="paf.desc">Substituição das cornetas tradicionais por antenas phased-array Vivaldi, permitindo beamforming digital, formação de múltiplos feixes simultâneos, e cobertura de frequência contínua de 300 MHz a 1400 MHz.</p>
         </div>
         <div class="glass-card-glow p-8 animate-on-scroll">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Operações Conjuntas</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Sinergia com grandes radiotelescópios como o FAST (China, 500m) e o Tianlai (China), permitindo cross-correlação de dados, calibração cruzada e cobertura do céu complementar no hemisfério norte.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="joint.title">Operações Conjuntas</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="joint.desc">Sinergia com grandes radiotelescópios como o FAST (China, 500m) e o Tianlai (China), permitindo cross-correlação de dados, calibração cruzada e cobertura do céu complementar no hemisfério norte.</p>
         </div>
         <div class="glass-card-glow p-8 animate-on-scroll">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Tensão H₀</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Constrains independentes sobre a constante de Hubble (H₀), contribuindo para resolver a discrepância entre medidas locais (Cepheidas/SNe) e cósmicas (CMB), um dos problemas mais urgentes da cosmologia.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="h0.title">Tensão H₀</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="h0.desc">Constrains independentes sobre a constante de Hubble (H₀), contribuindo para resolver a discrepância entre medidas locais (Cepheidas/SNe) e cósmicas (CMB), um dos problemas mais urgentes da cosmologia.</p>
         </div>
       </div>
 
@@ -93,11 +93,11 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <h3 class="text-xl font-bold text-white mb-4">Arquitetura Phased-Array</h3>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <h3 class="text-xl font-bold text-white mb-4" data-t="arch.title">Arquitetura Phased-Array</h3>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="arch.p1">
             A principal revolução tecnológica do BINGO-ABDUS é a transição das cornetas corrugadas tradicionais para uma densa matriz de antenas <strong class="text-cyan-400">Phased-Array (PAFs)</strong>. Esta arquitetura permite sintetizar digitalmente múltiplos feixes simultâneos no céu, maximizando a área de mapeamento a cada instante.
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="arch.p2">
             Com o processamento avançado de beamforming, o sistema cobre uma ampla e contínua banda de frequência (300 MHz a 1400 MHz), tornando o BINGO-ABDUS um dos instrumentos mais sensíveis e versáteis do hemisfério sul para a exploração do universo escuro e mapeamento de transientes.
           </p>
         </div>
@@ -105,7 +105,7 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Partners -->
       <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Parceiros do Consórcio</h2>
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="partners.title">Parceiros do Consórcio</h2>
         <div class="section-divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div class="flex flex-col items-center">
@@ -113,21 +113,21 @@ const base = import.meta.env.BASE_URL;
               <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="BINGO Logo" class="h-20 w-auto object-contain drop-shadow-md" />
             </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">BINGO</h3>
-            <p class="text-slate-400 text-sm">Brasil & China — Universidade de São Paulo (USP), INPE, UFCG, universidades chinesas</p>
+            <p class="text-slate-400 text-sm" data-t="partners.bingo">Brasil & China — Universidade de São Paulo (USP), INPE, UFCG, universidades chinesas</p>
           </div>
           <div class="flex flex-col items-center">
             <div class="h-24 flex items-center justify-center mb-4 bg-white/10 p-4 rounded-xl">
               <img src={`${base}images/abdus/astron-logo.svg`} alt="ASTRON Logo" class="h-12 w-auto object-contain drop-shadow" />
             </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">ASTRON</h3>
-            <p class="text-slate-400 text-sm">Netherlands Institute for Radio Astronomy — Expertise em phased-array feeds e LOFAR</p>
+            <p class="text-slate-400 text-sm" data-t="partners.astron">Netherlands Institute for Radio Astronomy — Expertise em phased-array feeds e LOFAR</p>
           </div>
           <div class="flex flex-col items-center">
             <div class="h-24 flex items-center justify-center mb-4 bg-white/90 p-4 rounded-xl">
               <img src={`${base}images/abdus/nancay-logo.svg`} alt="Nançay Observatory Logo" class="h-16 w-auto object-contain" />
             </div>
             <h3 class="text-lg font-bold text-cyan-400 mb-2">Observatório de Nançay</h3>
-            <p class="text-slate-400 text-sm">Station de Radioastronomie de Nançay — França — Expertise em HI surveys e interferometria</p>
+            <p class="text-slate-400 text-sm" data-t="partners.nancay">Station de Radioastronomie de Nançay — França — Expertise em HI surveys e interferometria</p>
           </div>
         </div>
       </div>
@@ -135,11 +135,11 @@ const base = import.meta.env.BASE_URL;
       <!-- Abdus Salam tribute -->
       <div class="mt-16 glass-card p-8 md:p-12 animate-on-scroll">
         <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;">🏆 Homenagem a Abdus Salam</h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <h2 class="text-xl font-bold text-amber-400 mb-4" style="font-family: 'Outfit', sans-serif;" data-t="tribute.title">🏆 Homenagem a Abdus Salam</h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="tribute.p1">
             <strong class="text-white">Mohammad Abdus Salam</strong> (1926–1996) foi um físico teórico paquistanês, laureado com o Prêmio Nobel de Física de 1979 (compartilhado com Sheldon Glashow e Steven Weinberg) pela contribuição à teoria da unificação eletrofraca — a teoria que unifica as forças eletromagnética e fraca nuclear.
           </p>
-          <p class="text-slate-300 leading-relaxed">
+          <p class="text-slate-300 leading-relaxed" data-t="tribute.p2">
             Salam foi um defensor incansável da ciência nos países em desenvolvimento e fundou o International Centre for Theoretical Physics (ICTP) em Trieste, Itália, em 1964. O nome BINGO-ABDUS homenageia seu legado de colaboração científica internacional e excelência, valores que estão no coração deste consórcio.
           </p>
         </div>

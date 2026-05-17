@@ -10,9 +10,9 @@ const base = import.meta.env.BASE_URL;
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <p class="section-label">Extensão</p>
-        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;">Divulgação <span class="text-amber-400">Científica</span></h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia na Paraíba e além.</p>
+        <p class="section-label" data-t="header.label">Extensão</p>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">Divulgação <span class="text-amber-400">Científica</span></h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia na Paraíba e além.</p>
       </div>
     </div>
   </div>
@@ -32,15 +32,15 @@ const base = import.meta.env.BASE_URL;
             </div>
           </div>
           <div class="md:w-2/3">
-            <h2 class="text-3xl font-bold text-white mb-2" style="font-family: 'Outfit', sans-serif;">BINGO: <span class="text-amber-400">Esperança no Espaço</span></h2>
-            <p class="text-slate-500 text-sm mb-6 uppercase tracking-wider font-medium">Projeto de Extensão e Inclusão Social</p>
-            <p class="text-slate-300 leading-relaxed mb-4">
+            <h2 class="text-3xl font-bold text-white mb-2" style="font-family: 'Outfit', sans-serif;" data-t="esperanca.title">BINGO: <span class="text-amber-400">Esperança no Espaço</span></h2>
+            <p class="text-slate-500 text-sm mb-6 uppercase tracking-wider font-medium" data-t="esperanca.subtitle">Projeto de Extensão e Inclusão Social</p>
+            <p class="text-slate-300 leading-relaxed mb-4" data-t="esperanca.p1">
               O projeto <strong class="text-amber-400">“BINGO: Esperança no Espaço”</strong> é uma iniciativa pioneira que une a divulgação científica à ressocialização de apenados. Nascida em 2020, durante a pandemia da Covid-19, a ação é fruto de um Acordo de Protocolo formalizado entre a Secretaria de Ciência, Tecnologia, Inovação e Ensino Superior (Secties) e a Secretaria de Estado da Administração Penitenciária da Paraíba (Seap). O programa permite que internos da Cadeia Pública de Esperança construam telescópios e, em troca, tenham suas penas reduzidas e participem de aulas de astronomia.
             </p>
-            <p class="text-slate-300 leading-relaxed mb-4">
+            <p class="text-slate-300 leading-relaxed mb-4" data-t="esperanca.p2">
               Os telescópios são construídos utilizando materiais reaproveitados, como cabos de vassoura, tubos de PVC e outros itens, conectando a população carcerária à imensidão do universo. Toda a produção artesanal do projeto é doada para escolas públicas, servindo como ferramenta educacional e prática de observação astronômica para milhares de crianças e jovens em espaços coletivos.
             </p>
-            <p class="text-slate-300 leading-relaxed">
+            <p class="text-slate-300 leading-relaxed" data-t="esperanca.p3">
               Apoiado firmemente pelo Governo do Estado da Paraíba — que investiu cerca de <strong class="text-white">R$ 1,2 milhão</strong> no primeiro ciclo do projeto para aquisição de materiais e fomento científico —, o projeto consolida a face social do Telescópio BINGO. Vale destacar que o BINGO não apenas promove a educação, mas é a principal parceria estratégica Brasil-China na ciência hoje, financiado por entidades de peso como Fapesq, MCTI, Fapesp e Finep.
             </p>
           </div>
@@ -53,8 +53,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Educação e Capacitação</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2" data-t="education.title">Educação e Capacitação</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="education.desc">
             Formação de estudantes de graduação e pós-graduação em rádio-astronomia, cosmologia observacional e engenharia de radiofrequência. O BINGO é um laboratório vivo para mais de 30 alunos em universidades brasileiras, desenvolvendo teses e dissertações sobre todos os aspectos do projeto.
           </p>
         </div>
@@ -62,8 +62,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Impacto Comunitário</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2" data-t="community.title">Impacto Comunitário</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="community.desc">
             A construção do BINGO em Aguiar traz desenvolvimento tecnológico e econômico para uma das regiões mais carentes do Brasil. A instalação de infraestrutura de telecomunicações e internet, capacitação técnica de trabalhadores locais, e o potencial de turismo científico estão transformando a região.
           </p>
         </div>
@@ -71,8 +71,8 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1)); border-color: rgba(245, 158, 11, 0.15);">
             <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2m5 2V2m5 2V2M3 20h18a2 2 0 002-2V8a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2zM3 10h18"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Palestras e Workshops</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-lg font-bold text-white mb-2" data-t="workshops.title">Palestras e Workshops</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="workshops.desc">
             A equipe BINGO organiza regularmente palestras em escolas, universidades e eventos públicos sobre astronomia, cosmologia e o projeto BINGO. Workshops hands-on de construção de radiotelescópios simples e observações astronômicas guiadas complementam as atividades educacionais.
           </p>
         </div>
@@ -80,48 +80,48 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Social Impact -->
       <div class="glass-card-glow p-8 md:p-12 mb-16 animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Impacto Social do Projeto BINGO</h2>
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="impact.title">Impacto Social do Projeto BINGO</h2>
         <div class="section-divider"></div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 class="text-lg font-semibold text-amber-400 mb-3">Na Comunidade de Aguiar</h3>
+            <h3 class="text-lg font-semibold text-amber-400 mb-3" data-t="impact.aguiar.title">Na Comunidade de Aguiar</h3>
             <ul class="space-y-3 text-slate-300 text-sm">
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Instalação de internet banda larga na zona rural, beneficiando centenas de famílias</span>
+                <span data-t="impact.aguiar.1">Instalação de internet banda larga na zona rural, beneficiando centenas de famílias</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Geração de empregos locais na construção e futura operação do telescópio</span>
+                <span data-t="impact.aguiar.2">Geração de empregos locais na construção e futura operação do telescópio</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Capacitação técnica de trabalhadores locais em construção civil e elétrica</span>
+                <span data-t="impact.aguiar.3">Capacitação técnica de trabalhadores locais em construção civil e elétrica</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Potencial de turismo científico, atraindo visitantes para a região</span>
+                <span data-t="impact.aguiar.4">Potencial de turismo científico, atraindo visitantes para a região</span>
               </li>
             </ul>
           </div>
           <div>
-            <h3 class="text-lg font-semibold text-amber-400 mb-3">Na Educação e Ciência</h3>
+            <h3 class="text-lg font-semibold text-amber-400 mb-3" data-t="impact.education.title">Na Educação e Ciência</h3>
             <ul class="space-y-3 text-slate-300 text-sm">
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Mais de 30 alunos de pós-graduação com teses e dissertações vinculadas ao BINGO</span>
+                <span data-t="impact.education.1">Mais de 30 alunos de pós-graduação com teses e dissertações vinculadas ao BINGO</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>10+ artigos publicados em revistas internacionais de alto impacto (A&A)</span>
+                <span data-t="impact.education.2">10+ artigos publicados em revistas internacionais de alto impacto (A&A)</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Parcerias com universidades de 7+ países, promovendo intercâmbio científico</span>
+                <span data-t="impact.education.3">Parcerias com universidades de 7+ países, promovendo intercâmbio científico</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-amber-400 mt-1">•</span>
-                <span>Desenvolvimento de tecnologia nacional em rádio-astronomia e instrumentação</span>
+                <span data-t="impact.education.4">Desenvolvimento de tecnologia nacional em rádio-astronomia e instrumentação</span>
               </li>
             </ul>
           </div>
@@ -130,7 +130,7 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Video presentation -->
       <div class="max-w-3xl mx-auto animate-on-scroll">
-        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;">Conheça o Projeto BINGO</h2>
+        <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="video.title">Conheça o Projeto BINGO</h2>
         <div class="section-divider"></div>
         <div class="video-container animate-glow mt-8">
           <iframe
