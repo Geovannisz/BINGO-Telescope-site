@@ -153,10 +153,17 @@ export function protectScientificTerms(): void {
           span.className = 'notranslate';
           span.translate = false;
           
+          // Replace internal spaces with non-breaking spaces (\u00A0).
+          // This tricks Google Translate's neural engine into treating the entire block
+          // as a single continuous noun token, preventing it from severing the
+          // surrounding sentence grammar into hallucinated disconnected clauses.
+          const tokenizedPart = part.replace(/ /g, '\u00A0');
+          
           let prefixSpace = '';
-          if (i > 0 && /\s$/.test(parts[i - 1])) {
-            prefixSpace = ' ';
-          } else if (i === 0) {
+          if (parts[i - 1].length > 0) {
+            if (/\s$/.test(parts[i - 1])) prefixSpace = ' ';
+          } else {
+            // Term is at the very beginning of the text node.
             // Check adjacent DOM nodes if isolated in an element (like <strong>)
             const prev = textNode.previousSibling || textNode.parentElement?.previousSibling;
             if (prev && prev.nodeType === Node.TEXT_NODE && /\s$/.test(prev.textContent || '')) {
@@ -165,9 +172,10 @@ export function protectScientificTerms(): void {
           }
 
           let suffixSpace = '';
-          if (i < parts.length - 1 && /^\s/.test(parts[i + 1])) {
-            suffixSpace = ' ';
-          } else if (i === parts.length - 1) {
+          if (parts[i + 1].length > 0) {
+            if (/^\s/.test(parts[i + 1])) suffixSpace = ' ';
+          } else {
+            // Term is at the very end of the text node.
             // Check adjacent DOM nodes if isolated in an element (like <strong>)
             const next = textNode.nextSibling || textNode.parentElement?.nextSibling;
             if (next && next.nodeType === Node.TEXT_NODE && /^\s/.test(next.textContent || '')) {
@@ -177,10 +185,10 @@ export function protectScientificTerms(): void {
           
           if (isSubproject || (isQuote && part.includes('BINGO'))) {
             // Apply font-bingo to the word BINGO inside the untranslated block
-            const innerHTML = part.replace(/BINGO/g, '<span class="font-bingo">BINGO</span>');
+            const innerHTML = tokenizedPart.replace(/BINGO/g, '<span class="font-bingo">BINGO</span>');
             span.innerHTML = prefixSpace + innerHTML + suffixSpace;
           } else {
-            span.textContent = prefixSpace + part + suffixSpace;
+            span.textContent = prefixSpace + tokenizedPart + suffixSpace;
           }
         } else if (BRAND_TERMS.includes(part)) {
           // Normal BINGO terms (without notranslate)
