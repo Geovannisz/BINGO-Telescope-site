@@ -6,6 +6,9 @@ author: BINGO Team
 image: /images/uploads/reproducaogovernodapb.png
 summary: Estrutura será montada em Aguiar e faz parte de um projeto
   internacional com previsão de conclusão em 2026.
+audience: Acadêmicos, Público em geral, Funcionários do governo
+topic: Construção
+country: Brasil
 ---
 
 
