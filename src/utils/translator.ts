@@ -129,13 +129,13 @@ export function protectScientificTerms(): void {
         
         // Check if the term needs the BINGO font
         if (part === 'BINGO' || part === 'BINGO-ABDUS' || part === 'BINGO-Uirapuru') {
-          // IMPORTANT: We DO NOT use 'notranslate' here.
-          // Applying 'notranslate' blocks Google Translate from reading the sentence fluidly.
           span.className = 'font-bingo';
         } else {
-          // For multi-word English hero terms, we DO use notranslate.
-          span.className = 'notranslate';
-          span.translate = false;
+          // We apply a semantic class instead of 'notranslate'.
+          // Forcing acronyms into 'notranslate' destroys the sentence context for the neural AI,
+          // causing it to eat spaces and drop punctuation (like the 'HIElectron' bug).
+          // Google Translate natively preserves acronyms and proper names without breaking them.
+          span.className = 'scientific-term';
         }
         
         span.textContent = part;
