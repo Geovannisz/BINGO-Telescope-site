@@ -82,6 +82,9 @@ const base = import.meta.env.BASE_URL;
     </script>
   </head>
   <body class="bg-cosmic text-slate-200 font-sans min-h-screen flex flex-col antialiased selection:bg-cyan-500/30">
+    <!-- Noise Overlay (Film Grain) -->
+    <div class="fixed inset-0 z-[9999] opacity-[0.035] pointer-events-none mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+
     <Header lang={lang} />
     <main class="flex-grow pt-20"> <!-- pt-20 to account for fixed header -->
       <slot />
@@ -232,6 +235,33 @@ const base = import.meta.env.BASE_URL;
                 switchLanguage(lang);
               }
             }
+          });
+        });
+
+        // 4. Tilt 3D & Magnetic Glow
+        document.querySelectorAll('.glass-card, .glass-card-glow, .subproject-card, .info-card').forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Set coordinates for the radial gradient glow
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+
+            // Calculate 3D tilt (max 4 degrees)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+            
+            card.style.setProperty('--rotate-x', `${rotateX}deg`);
+            card.style.setProperty('--rotate-y', `${rotateY}deg`);
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.setProperty('--rotate-x', '0deg');
+            card.style.setProperty('--rotate-y', '0deg');
           });
         });
       });
