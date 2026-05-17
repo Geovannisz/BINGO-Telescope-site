@@ -33,11 +33,14 @@ const LANG_MAP: Record<string, string> = {
  * Google Translate processes the page.
  */
 const SUBPROJECTS = [
-  'BINGO: Esperança no Espaço'
+  'BINGO: Esperança no Espaço',
+  'Esperança no Espaço',
+  'BINGO-ABDUS',
+  'BINGO-Uirapuru'
 ];
 
 const BRAND_TERMS = [
-  'BINGO-ABDUS', 'BINGO-Uirapuru', 'BINGO'
+  'BINGO'
 ];
 
 const HERO_TERMS = [
