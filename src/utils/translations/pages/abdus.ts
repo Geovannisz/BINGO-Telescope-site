@@ -1,0 +1,46 @@
+const abdus: Record<string, { en: string; zh: string }> = {
+  'header.label': { en: 'Extension', zh: '延伸' },
+  'header.subtitle': { en: 'Advanced BINGO Dark Universe Studies', zh: 'Advanced BINGO Dark Universe Studies' },
+  'header.desc': { en: 'International consortium to unravel the dark sector of the universe, extending BINGO\'s reach to z\u00a0~\u00a02.1 in collaboration with ASTRON and Nançay Observatory.', zh: '国际联合体致力于揭示宇宙暗物质领域的奥秘，与ASTRON和Nançay天文台合作将BINGO的探测范围扩展至z~2.1。' },
+  'main.p1': {
+    en: 'The BINGO telescope has entered a new phase with <strong class="text-white">BINGO-ABDUS</strong>. The consortium name honors the great physicist <strong class="text-cyan-400">Abdus Salam</strong>, winner of the 1979 Nobel Prize in Physics for his contribution to the unification of electromagnetic and weak forces, and serves as an acronym for <em>Advanced BINGO Dark Universe Studies</em>.',
+    zh: 'BINGO望远镜以<strong class="text-white">BINGO-ABDUS</strong>开启了新阶段。联合体名称致敬伟大的物理学家<strong class="text-cyan-400">Abdus Salam</strong>——他因对电磁力与弱力统一的贡献荣获1979年诺贝尔物理学奖——同时也是<em>Advanced BINGO Dark Universe Studies</em>的缩写。',
+  },
+  'main.p2': {
+    en: 'It is an ambitious project resulting from an expanded collaboration between BINGO (Brazil and China), the <strong class="text-white">Netherlands Institute for Radio Astronomy (ASTRON)</strong>, and the <strong class="text-white">Nançay Observatory</strong> (Station de Radioastronomie de Nançay, France). This partnership brings world-class expertise in phased-array feeds, long-baseline interferometry, and radio signal processing.',
+    zh: '这是一个雄心勃勃的项目，源自BINGO（巴西和中国）、<strong class="text-white">荷兰射电天文研究所（ASTRON）</strong>和<strong class="text-white">Nançay天文台</strong>（Station de Radioastronomie de Nançay，法国）之间的扩展合作。该合作带来了相控阵馈源、长基线干涉测量和射电信号处理方面的世界级专业技术。',
+  },
+  'main.p3': {
+    en: 'BINGO-ABDUS aims to dramatically expand BINGO\'s reach, observing radio signals up to <strong class="text-cyan-400">z\u00a0~\u00a02.1</strong> — corresponding to signals emitted when the universe was only ~25% of its current age — and covering a much larger fraction of the sky with improved angular resolution.',
+    zh: 'BINGO-ABDUS旨在大幅扩展BINGO的探测范围，观测高达<strong class="text-cyan-400">z~2.1</strong>的射电信号——对应宇宙年龄仅为当前约25%时发出的信号——并以更高的角分辨率覆盖更大的天区。',
+  },
+  'redshift.title': { en: 'Extended Redshift (z\u00a0~\u00a02.1)', zh: '扩展红移（z~2.1）' },
+  'redshift.desc': { en: 'Observations up to z\u00a0~\u00a02.1, covering more than 10 billion years of additional cosmic history. This allows mapping BAO at epochs never before accessed by intensity mapping, when Dark Energy began to dominate cosmic expansion.', zh: '观测延伸至z~2.1，覆盖超过100亿年的额外宇宙历史。这使得在Intensity Mapping从未触及的时期绘制BAO成为可能——那是暗能量开始主导宇宙膨胀的时代。' },
+  'frb.title': { en: 'FRBs and Pulsars', zh: 'FRB与脉冲星' },
+  'frb.desc': { en: 'Detection and localization of Fast Radio Bursts and pulsar monitoring with the expanded interferometric network. The multi-beam capability of the phased-array allows observing multiple directions simultaneously, drastically increasing the detection rate.', zh: '利用扩展的干涉网络探测和定位快速射电暴并监测脉冲星。相控阵的多波束能力可同时观测多个方向，大幅提高探测率。' },
+  'pbh.title': { en: 'Primordial Black Holes', zh: '原初黑洞' },
+  'pbh.desc': { en: 'Investigation of Primordial Black Holes (PBHs) as dark matter candidates through gravitational lensing of the HI signal. The extended redshift reach is crucial for distinguishing PBHs from normal statistical fluctuations.', zh: '通过HI信号的引力透镜效应研究原初黑洞（PBH）作为暗物质候选者的可能性。扩展的红移范围对于区分PBH与正常统计涨落至关重要。' },
+  'paf.title': { en: 'Phased-Array Technology', zh: '相控阵技术' },
+  'paf.desc': { en: 'Replacement of traditional corrugated horns with Vivaldi phased-array antennas, enabling digital beamforming, simultaneous multiple beam formation, and continuous frequency coverage from 300\u00a0MHz to 1400\u00a0MHz.', zh: '用Vivaldi相控阵天线替代传统波纹馈源，实现数字波束成形、同时多波束形成以及300 MHz至1400 MHz的连续频率覆盖。' },
+  'joint.title': { en: 'Joint Operations', zh: '联合观测' },
+  'joint.desc': { en: 'Synergy with major radio telescopes such as FAST (China, 500\u00a0m) and Tianlai (China), enabling data cross-correlation, cross-calibration, and complementary northern hemisphere sky coverage.', zh: '与FAST（中国，500米）和天籁（中国）等大型射电望远镜协同工作，实现数据交叉相关、交叉校准和北半球互补天区覆盖。' },
+  'h0.title': { en: 'H₀ Tension', zh: 'H₀张力' },
+  'h0.desc': { en: 'Independent constraints on the Hubble constant (H₀), contributing to resolving the discrepancy between local (Cepheids/SNe) and cosmic (CMB) measurements, one of the most pressing problems in cosmology.', zh: '对哈勃常数（H₀）的独立约束，有助于解决局部测量（造父变星/超新星）和宇宙测量（CMB）之间的差异——这是宇宙学最紧迫的问题之一。' },
+  'arch.title': { en: 'Phased-Array Architecture', zh: '相控阵架构' },
+  'arch.p1': {
+    en: 'The main technological revolution of BINGO-ABDUS is the transition from traditional corrugated horns to a dense matrix of <strong class="text-cyan-400">Phased-Array (PAFs)</strong> antennas. This architecture allows digitally synthesizing multiple simultaneous beams on the sky, maximizing the mapping area at each instant.',
+    zh: 'BINGO-ABDUS的核心技术革命是从传统波纹馈源过渡到密集的<strong class="text-cyan-400">相控阵（PAF）</strong>天线矩阵。这种架构可以在天空中数字合成多个同时波束，最大化每个时刻的制图面积。',
+  },
+  'arch.p2': { en: 'With advanced beamforming processing, the system covers a wide and continuous frequency band (300\u00a0MHz to 1400\u00a0MHz), making BINGO-ABDUS one of the most sensitive and versatile instruments in the southern hemisphere for dark universe exploration and transient mapping.', zh: '凭借先进的波束成形处理，系统覆盖宽且连续的频段（300 MHz至1400 MHz），使BINGO-ABDUS成为南半球最灵敏和最具多功能性的暗宇宙探测和瞬变源制图仪器之一。' },
+  'partners.title': { en: 'Consortium Partners', zh: '联合体合作伙伴' },
+  'partners.bingo': { en: 'Brazil & China — University of São Paulo (USP), INPE, UFCG, Chinese universities', zh: '巴西与中国——圣保罗大学（USP）、INPE、UFCG、中国高校' },
+  'partners.astron': { en: 'Netherlands Institute for Radio Astronomy — Expertise in phased-array feeds and LOFAR', zh: '荷兰射电天文研究所——相控阵馈源和LOFAR专业技术' },
+  'partners.nancay': { en: 'Station de Radioastronomie de Nançay — France — Expertise in HI surveys and interferometry', zh: 'Station de Radioastronomie de Nançay——法国——HI巡天和干涉测量专业技术' },
+  'tribute.title': { en: '🏆 Tribute to Abdus Salam', zh: '🏆 致敬Abdus Salam' },
+  'tribute.p1': {
+    en: '<strong class="text-white">Mohammad Abdus Salam</strong> (1926–1996) was a Pakistani theoretical physicist, awarded the 1979 Nobel Prize in Physics (shared with Sheldon Glashow and Steven Weinberg) for his contribution to electroweak unification theory — the theory that unifies the electromagnetic and weak nuclear forces.',
+    zh: '<strong class="text-white">Mohammad Abdus Salam</strong>（1926–1996）是一位巴基斯坦理论物理学家，因对电弱统一理论的贡献（与Sheldon Glashow和Steven Weinberg共同）荣获1979年诺贝尔物理学奖——该理论统一了电磁力和弱核力。',
+  },
+  'tribute.p2': { en: 'Salam was a tireless advocate for science in developing countries and founded the International Centre for Theoretical Physics (ICTP) in Trieste, Italy, in 1964. The name BINGO-ABDUS honors his legacy of international scientific collaboration and excellence, values at the heart of this consortium.', zh: 'Salam是发展中国家科学事业的不懈倡导者，于1964年在意大利Trieste创建了国际理论物理中心（ICTP）。BINGO-ABDUS之名致敬他在国际科学合作和卓越方面的遗产——这些价值观正是本联合体的核心。' },
+};
+export default abdus;

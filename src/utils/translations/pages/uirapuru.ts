@@ -1,0 +1,41 @@
+const uirapuru: Record<string, { en: string; zh: string }> = {
+  'header.label': { en: 'Extension', zh: '延伸' },
+  'header.desc': { en: 'Prototype radio telescope at UFCG — testbed for receivers, data processing software, and future outrigger network for Fast Radio Burst detection and localization.', zh: 'UFCG的原型射电望远镜——接收机、数据处理软件和未来Fast Radio Burst探测与定位outrigger网络的测试平台。' },
+  'overview.label': { en: 'Overview', zh: '概览' },
+  'overview.title': { en: 'What is Uirapuru?', zh: '什么是Uirapuru？' },
+  'overview.p1': {
+    en: '<strong class="text-amber-400">Uirapuru</strong> is a radio telescope built from the prototype of the BINGO corrugated horn antenna. Located at <strong class="text-white">UFCG (Federal University of Campina Grande)</strong>, Campina Grande campus, near the LabMet of the Electrical Engineering Department (7°12\'41.9"S 35°54\'29.5"W).',
+    zh: '<strong class="text-amber-400">Uirapuru</strong>是一台利用BINGO波纹馈源天线原型建造的射电望远镜。位于<strong class="text-white">UFCG（坎皮纳格兰德联邦大学）</strong>Campina Grande校区，电气工程系LabMet附近（7°12\'41.9"S 35°54\'29.5"W）。',
+  },
+  'overview.p2': { en: 'With a north-south alignment and manual elevation adjustment capability, Uirapuru is a full-scale replica of the horn that will be used in the main telescope. It operates in the same frequency range (960–1280\u00a0MHz) and uses the same optimized corrugation geometry.', zh: 'Uirapuru采用南北对准方式，具有手动俯仰调节能力，是主望远镜馈源的全尺寸复制品。它工作于相同的频率范围（960–1280 MHz），使用相同的优化波纹几何结构。' },
+  'overview.p3': { en: 'Uirapuru was installed in 2020 and has since been used continuously for development and validation of hardware, software, and observational techniques that will be employed in the main BINGO telescope.', zh: 'Uirapuru于2020年安装，此后一直用于持续开发和验证将应用于BINGO主望远镜的硬件、软件和观测技术。' },
+  'testbed.title': { en: 'Primary Objective — Testbed', zh: '主要目标——测试平台' },
+  'testbed.p1': { en: 'Serve as a complete testbed for the development and validation of all components that will be used in the BINGO Radio Telescope: low-noise receivers, digital backend, data acquisition software, calibration pipeline, and RFI mitigation algorithms.', zh: '作为BINGO射电望远镜所有组件开发和验证的完整测试平台：低噪声接收机、数字后端、数据采集软件、校准pipeline和RFI消除算法。' },
+  'testbed.p2': { en: 'The horn was optimized to operate between 960\u00a0MHz and 1280\u00a0MHz with ~30% bandwidth. Uirapuru allows testing the electromagnetic response under real conditions (open space), including ambient temperature, wind effects, and urban RFI contamination that serve as stress tests for mitigation algorithms.', zh: '馈源经过优化，工作于960 MHz至1280 MHz，带宽约30%。Uirapuru可在真实条件（开放空间）下测试电磁响应，包括环境温度、风效应和城市RFI污染，作为消除算法的压力测试。' },
+  'outrigger.title': { en: 'Outrigger Network for FRBs', zh: 'FRB探测Outrigger网络' },
+  'outrigger.p1': {
+    en: 'Uirapuru will be an integral part of the <strong class="text-white">BINGO Interferometry System (BIS) outrigger network</strong>, as proposed in Paper IX. Together with the main telescope in Aguiar and other smaller radio telescopes spread across the Northeast, it will form an interferometric network dedicated to the detection and precise localization of Fast Radio Bursts.',
+    zh: 'Uirapuru将成为<strong class="text-white">BINGO Interferometry System（BIS）outrigger网络</strong>的重要组成部分，如Paper IX所述。它将与Aguiar的主望远镜和分布在东北部的其他小型射电望远镜一起，组成专门用于探测和精确定位快速射电暴的干涉网络。',
+  },
+  'outrigger.p2': { en: 'The baseline between Campina Grande (~500\u00a0km from Aguiar) will provide arc-minute angular resolution, essential for identifying FRB host galaxies and using their dispersion measures as cosmological probes.', zh: 'Campina Grande到Aguiar约500公里的基线将提供角分级角分辨率，对于识别FRB宿主星系及利用其色散量作为宇宙学探针至关重要。' },
+  'objectives.title': { en: 'Additional Objectives', zh: '其他目标' },
+  'obj.em.title': { en: 'Electromagnetic response validation', zh: '电磁响应验证' },
+  'obj.em.desc': { en: 'Test the BINGO horn in open space, comparing real measurements with anechoic chamber simulations and computational models.', zh: '在开放空间测试BINGO馈源，将实测结果与微波暗室模拟和计算模型进行比较。' },
+  'obj.hr.title': { en: 'Human resource training', zh: '人才培养' },
+  'obj.hr.desc': { en: 'Training undergraduate and graduate students from UFCG and other universities in observational radio astronomy techniques.', zh: '培训UFCG和其他大学的本科生和研究生掌握观测射电天文学技术。' },
+  'obj.pulsar.title': { en: 'Pulsar monitoring', zh: '脉冲星监测' },
+  'obj.pulsar.desc': { en: 'Future coupling of reflectors to increase effective area, enabling monitoring of bright pulsars such as Vela (PSR J0835-4510).', zh: '未来耦合反射镜以增大有效面积，实现对明亮脉冲星（如Vela / PSR J0835-4510）的监测。' },
+  'obj.backend.title': { en: 'Digital backend development', zh: '数字后端开发' },
+  'obj.backend.desc': { en: 'Testing and optimization of the data acquisition system, channelization, temporal integration, and real-time transient detection.', zh: '数据采集系统、信道化、时间积分和实时瞬变源探测的测试与优化。' },
+  'name.title': { en: '🐦 Name Inspiration', zh: '🐦 名称的由来' },
+  'name.p1': {
+    en: 'The <em class="text-white">uirapuru</em> is a legendary bird inhabiting the Amazon Rainforest, famous for its extraordinarily melodious song — often called the <strong class="text-amber-400">"horn bird"</strong> for its flute-like vocalizations. According to indigenous mythology, whoever hears its song will have a wish granted.',
+    zh: '<em class="text-white">Uirapuru</em>是一种栖息于亚马逊雨林的传奇鸟类，以其非凡悦耳的鸣叫闻名——因笛声般的叫声常被称为<strong class="text-amber-400">"号角鸟"</strong>。根据原住民神话，听到它歌声的人将实现一个愿望。',
+  },
+  'name.p2': {
+    en: '<strong class="text-white">Uirapuru</strong> is a word from the Tupi-Guarani language family, formed by joining <em>uira</em> (bird) and <em>puru</em> (small, slender). Tupi-Guarani is one of the largest language families in South America, historically spoken by the indigenous peoples of Paraíba and neighboring states.',
+    zh: '<strong class="text-white">Uirapuru</strong>是Tupi-Guarani语族的词汇，由<em>uira</em>（鸟）和<em>puru</em>（小巧、纤细）组合而成。Tupi-Guarani是南美洲最大的语族之一，历史上为Paraíba及邻近州的原住民所使用。',
+  },
+  'name.p3': { en: 'The name choice pays homage to Brazilian biodiversity, the traditional peoples of the Northeast, and the iconic shape of the telescope horn — which resembles the bird\'s "horn." Just as the uirapuru is rare and precious in the forest, the cosmological 21\u00a0cm signal is a rare and valuable "song" that the telescope seeks to capture.', zh: '该名称向巴西的生物多样性、东北部传统民族以及望远镜馈源的标志性形状致敬——其外形酷似鸟的"号角"。正如uirapuru在森林中稀有而珍贵，宇宙学21厘米信号也是望远镜寻求捕获的稀有而宝贵的"歌声"。' },
+};
+export default uirapuru;

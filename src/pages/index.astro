@@ -9,7 +9,7 @@ const latestNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.va
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Home" nativeI18n pageId="index">
   <Hero />
 
   <!-- Features Section — with CMB Planck background -->
@@ -18,12 +18,12 @@ const base = import.meta.env.BASE_URL;
     <div class="bg-overlay"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-        <p class="section-label">Visão Geral</p>
+        <p class="section-label" data-t="overview.label">Visão Geral</p>
         <div class="section-divider"></div>
-        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;">
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="overview.title">
           Uma Janela para o Universo Primitivo
         </p>
-        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto">
+        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto" data-t="overview.desc">
           O telescópio BINGO foi projetado para medir Oscilações Acústicas de Bárions (BAO) no universo em rádio-frequências, ajudando a desvendar os mistérios da Energia Escura e mapeando a distribuição de hidrogênio neutro em grandes volumes cósmicos.
         </p>
       </div>
@@ -34,8 +34,8 @@ const base = import.meta.env.BASE_URL;
           <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20">
             <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Oscilações Acústicas de Bárions" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Mapeamento BAO</h3>
-          <p class="text-slate-400 text-sm">Medindo a distribuição de hidrogênio neutro em 21cm para entender a taxa de expansão do universo e a natureza da Energia Escura — fornecendo uma "régua padrão" cósmica independente.</p>
+          <h3 class="text-xl font-bold text-white mb-3" data-t="bao.title">Mapeamento BAO</h3>
+          <p class="text-slate-400 text-sm" data-t="bao.desc">Medindo a distribuição de hidrogênio neutro em 21cm para entender a taxa de expansão do universo e a natureza da Energia Escura — fornecendo uma "régua padrão" cósmica independente.</p>
         </div>
 
         <!-- FRBs Card -->
@@ -43,8 +43,8 @@ const base = import.meta.env.BASE_URL;
           <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20">
             <img src={`${base}images/uirapuru/uirapuru_horn.png`} alt="Antena Outrigger Uirapuru para Transientes" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">FRBs & Transientes</h3>
-          <p class="text-slate-400 text-sm">Detectando Fast Radio Bursts — explosões de milissegundos de ondas de rádio vindas de bilhões de anos-luz — e pulsares com o sistema interferométrico BIS.</p>
+          <h3 class="text-xl font-bold text-white mb-3" data-t="frb.title">FRBs &amp; Transientes</h3>
+          <p class="text-slate-400 text-sm" data-t="frb.desc">Detectando Fast Radio Bursts — explosões de milissegundos de ondas de rádio vindas de bilhões de anos-luz — e pulsares com o sistema interferométrico BIS.</p>
         </div>
 
         <!-- ABDUS Card -->
@@ -52,8 +52,8 @@ const base = import.meta.env.BASE_URL;
           <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20 flex items-center justify-center bg-white/5">
             <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-32 h-32 object-contain" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Consórcio BINGO-ABDUS</h3>
-          <p class="text-slate-400 text-sm">Operações conjuntas com observatórios globais como FAST e Tianlai, expandindo o alcance até z ~ 2.1 e investigando Buracos Negros Primordiais.</p>
+          <h3 class="text-xl font-bold text-white mb-3" data-t="abdus.title">Consórcio BINGO-ABDUS</h3>
+          <p class="text-slate-400 text-sm" data-t="abdus.desc">Operações conjuntas com observatórios globais como FAST e Tianlai, expandindo o alcance até z ~ 2.1 e investigando Buracos Negros Primordiais.</p>
         </div>
       </div>
     </div>
@@ -70,19 +70,19 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
         <div class="md:w-1/2">
-          <p class="section-label">Sobre o Projeto</p>
-          <h2 class="text-3xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">O que é o <span class="gradient-text-cyan">BINGO</span>?</h2>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="section-label" data-t="about.label">Sobre o Projeto</p>
+          <h2 class="text-3xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="about.title">O que é o <span class="gradient-text-cyan">BINGO</span>?</h2>
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="about.p1">
             O <strong class="text-white">BINGO</strong> (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador localizado na Serra do Urubu, em Aguiar, Paraíba. Projetado para realizar o primeiro mapeamento de BAO em frequências de rádio, ele utiliza a técnica de <strong class="text-cyan-400">Intensity Mapping</strong> da linha de 21cm do hidrogênio neutro.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-4">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="about.p2">
             Com dois espelhos de ~40m em configuração Crossed-Dragone e 28 cornetas corrugadas no plano focal, o BINGO opera entre 980 e 1260 MHz — correspondendo a sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual.
           </p>
-          <p class="text-slate-300 leading-relaxed mb-6">
+          <p class="text-slate-300 leading-relaxed mb-6" data-t="about.p3">
             É um projeto liderado pelo Brasil (USP, INPE, UFCG) em colaboração internacional com China, Reino Unido, França, Holanda e África do Sul, reunindo mais de 60 pesquisadores.
           </p>
           <a href={`${base}about`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-            Saiba mais sobre o projeto
+            <span data-t="about.link">Saiba mais sobre o projeto</span>
             <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
@@ -96,9 +96,9 @@ const base = import.meta.env.BASE_URL;
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%);"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
-        <p class="section-label">Status Atual</p>
+        <p class="section-label" data-t="status.label">Status Atual</p>
         <div class="section-divider"></div>
-        <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;">Fase de Montagem e Comissionamento</h2>
+        <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="status.title">Fase de Montagem e Comissionamento</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
@@ -106,22 +106,22 @@ const base = import.meta.env.BASE_URL;
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Estrutura Principal</h3>
-          <p class="text-slate-400 text-sm">A estrutura metálica dos espelhos, fabricada na China, foi enviada ao Brasil e está sendo montada no site em Aguiar, Paraíba. A casa de comando e infraestrutura de apoio estão concluídas.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="status.structure.title">Estrutura Principal</h3>
+          <p class="text-slate-400 text-sm" data-t="status.structure.desc">A estrutura metálica dos espelhos, fabricada na China, foi enviada ao Brasil e está sendo montada no site em Aguiar, Paraíba. A casa de comando e infraestrutura de apoio estão concluídas.</p>
         </div>
         <div class="glass-card-glow p-8">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Receptores e Backend</h3>
-          <p class="text-slate-400 text-sm">Receptores de baixo ruído e o backend digital baseado em FPGAs/GPUs estão em fase de integração e testes. O BINGO-Uirapuru na UFCG serve como testbed para validação contínua.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="status.receivers.title">Receptores e Backend</h3>
+          <p class="text-slate-400 text-sm" data-t="status.receivers.desc">Receptores de baixo ruído e o backend digital baseado em FPGAs/GPUs estão em fase de integração e testes. O BINGO-Uirapuru na UFCG serve como testbed para validação contínua.</p>
         </div>
         <div class="glass-card-glow p-8">
           <div class="feature-icon mb-4">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2">Primeiras Observações</h3>
-          <p class="text-slate-400 text-sm">O telescópio está previsto para iniciar as primeiras medições científicas em 2026. A fase de comissionamento incluirá calibração, validação do beam pattern e testes de sensibilidade.</p>
+          <h3 class="text-lg font-bold text-white mb-2" data-t="status.obs.title">Primeiras Observações</h3>
+          <p class="text-slate-400 text-sm" data-t="status.obs.desc">O telescópio está previsto para iniciar as primeiras medições científicas em 2026. A fase de comissionamento incluirá calibração, validação do beam pattern e testes de sensibilidade.</p>
         </div>
       </div>
     </div>
@@ -136,15 +136,15 @@ const base = import.meta.env.BASE_URL;
       <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 animate-on-scroll">
         <div class="stat-item">
           <div class="stat-number">~40m</div>
-          <div class="stat-label">Diâmetro dos Espelhos</div>
+          <div class="stat-label" data-t="stats.mirrors">Diâmetro dos Espelhos</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">28</div>
-          <div class="stat-label">Cornetas no Plano Focal</div>
+          <div class="stat-label" data-t="stats.horns">Cornetas no Plano Focal</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">10+</div>
-          <div class="stat-label">Publicações Científicas</div>
+          <div class="stat-label" data-t="stats.publications">Publicações Científicas</div>
         </div>
         <div class="stat-item flex flex-col items-center">
           <div class="flex justify-center gap-1 sm:gap-1.5 mb-2 flex-wrap">
@@ -157,7 +157,7 @@ const base = import.meta.env.BASE_URL;
             <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-5 sm:h-6 w-auto rounded shadow" title="África do Sul" />
           </div>
           <div class="stat-number text-xl sm:text-2xl mt-1">7+</div>
-          <div class="stat-label">Países Colaboradores</div>
+          <div class="stat-label" data-t="stats.countries">Países Colaboradores</div>
         </div>
       </div>
     </div>
@@ -167,10 +167,10 @@ const base = import.meta.env.BASE_URL;
   <section class="py-16 sm:py-24 bg-cosmic-alt">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 animate-on-scroll">
-        <p class="section-label">Extensões</p>
+        <p class="section-label" data-t="ext.label">Extensões</p>
         <div class="section-divider"></div>
-        <p class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;">Além do Telescópio</p>
-        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">O BINGO é mais que um telescópio — é um ecossistema de ciência, tecnologia e impacto social que se estende por múltiplas frentes de pesquisa e ação comunitária.</p>
+        <p class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="ext.title">Além do Telescópio</p>
+        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto" data-t="ext.desc">O BINGO é mais que um telescópio — é um ecossistema de ciência, tecnologia e impacto social que se estende por múltiplas frentes de pesquisa e ação comunitária.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -185,7 +185,7 @@ const base = import.meta.env.BASE_URL;
               <img src={`${base}images/uirapuru/Logos-modificados-BINGO-Uirapuru.png`} alt="Logo Uirapuru" class="h-8 w-auto" />
             </div>
             <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">BINGO-Uirapuru</h3>
-            <p class="text-slate-400 text-sm">Radiotelescópio protótipo na UFCG, testbed para receptores e futura rede de outriggers para detecção e localização de FRBs.</p>
+            <p class="text-slate-400 text-sm" data-t="ext.uirapuru.desc">Radiotelescópio protótipo na UFCG, testbed para receptores e futura rede de outriggers para detecção e localização de FRBs.</p>
           </div>
         </a>
 
@@ -196,7 +196,7 @@ const base = import.meta.env.BASE_URL;
           </div>
           <div class="card-content">
             <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">BINGO-ABDUS</h3>
-            <p class="text-slate-400 text-sm">Advanced BINGO Dark Universe Studies — expandindo fronteiras em colaboração com ASTRON e Observatório de Nançay, alcançando z ~ 2.1.</p>
+            <p class="text-slate-400 text-sm" data-t="ext.abdus.desc">Advanced BINGO Dark Universe Studies — expandindo fronteiras em colaboração com ASTRON e Observatório de Nançay, alcançando z ~ 2.1.</p>
           </div>
         </a>
 
@@ -206,8 +206,8 @@ const base = import.meta.env.BASE_URL;
             <img src={`${base}images/outreach/projeto-esperanca-no-espaco-1024x320.png`} alt="Projeto Esperança no Espaço" class="w-full h-full !object-contain" />
           </div>
           <div class="card-content">
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">Esperança no Espaço</h3>
-            <p class="text-slate-400 text-sm">Projeto de divulgação científica e inclusão social na Paraíba — construção de telescópios com materiais reciclados e popularização da astronomia.</p>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors" data-t="ext.esperanca.title">Esperança no Espaço</h3>
+            <p class="text-slate-400 text-sm" data-t="ext.esperanca.desc">Projeto de divulgação científica e inclusão social na Paraíba — construção de telescópios com materiais reciclados e popularização da astronomia.</p>
           </div>
         </a>
       </div>
@@ -219,11 +219,11 @@ const base = import.meta.env.BASE_URL;
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-end mb-12 animate-on-scroll">
         <div>
-          <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;">Últimas Atualizações</h2>
-          <p class="mt-3 text-lg text-slate-400">Acompanhe os avanços do projeto.</p>
+          <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="news.title">Últimas Atualizações</h2>
+          <p class="mt-3 text-lg text-slate-400" data-t="news.subtitle">Acompanhe os avanços do projeto.</p>
         </div>
         <a href={`${base}news`} class="hidden md:flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
-          Ver todas
+          <span data-t="news.viewall">Ver todas</span>
           <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
@@ -244,7 +244,7 @@ const base = import.meta.env.BASE_URL;
 
       <div class="mt-8 text-center md:hidden">
         <a href={`${base}news`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
-          Ver todas as atualizações
+          <span data-t="news.viewall.mobile">Ver todas as atualizações</span>
           <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
