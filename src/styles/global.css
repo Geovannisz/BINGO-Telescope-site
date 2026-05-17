@@ -548,62 +548,7 @@ iframe.goog-te-menu-frame {
   opacity: 1;
 }
 
-/* ===== Magnetic Pulsar Buttons ===== */
-.btn-magnetic, .btn-magnetic-secondary {
-  position: relative;
-  overflow: hidden;
-  transform: translateY(0);
-}
 
-.btn-magnetic:hover, .btn-magnetic-secondary:hover {
-  transform: translateY(-2px);
-}
-
-/* Photon sweep (follows mouse inside button) */
-.btn-magnetic::before, .btn-magnetic-secondary::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 10;
-  mix-blend-mode: overlay;
-}
-
-.btn-magnetic::before {
-  background: radial-gradient(80px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(255,255,255,0.8), transparent 40%);
-}
-
-.btn-magnetic-secondary::before {
-  background: radial-gradient(100px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(34,211,238,0.5), transparent 40%);
-}
-
-.btn-magnetic:hover::before, .btn-magnetic-secondary:hover::before {
-  opacity: 1;
-}
-
-/* Pulsar border effect */
-.btn-magnetic::after, .btn-magnetic-secondary::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 2px;
-  background: linear-gradient(135deg, rgba(34,211,238,0.5), rgba(99,102,241,0.5));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s;
-  animation: pulse-ring 2s infinite;
-  pointer-events: none;
-}
-
-.btn-magnetic:hover::after, .btn-magnetic-secondary:hover::after {
-  opacity: 1;
-}
 
 /* ===== Feature icon container ===== */
 .feature-icon {
