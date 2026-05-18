@@ -32,6 +32,7 @@ collections:
     folder: "src/content/team"
     create: true
     slug: "{{slug}}"
+    identifier_field: "name"
     fields:
       # ── Informações Básicas (obrigatórias) ──
       - {label: "Nome Completo", name: "name", widget: "string", hint: "Nome completo do pesquisador"}
@@ -75,28 +76,28 @@ collections:
       - {label: "ResearchGate (URL)", name: "researchgate", widget: "string", required: false}
 
       # ── Trajetória ──
-      - {label: "Bio Curta", name: "bio", widget: "text", required: false, hint: "Breve descrição profissional (2-3 frases)"}
-      - {label: "Como começou o interesse pela pesquisa?", name: "interest_origin", widget: "text", required: false}
-      - {label: "Motivação para estudar essa área", name: "motivation", widget: "text", required: false}
+      - {label: "Bio Curta", name: "bio", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false, hint: "Breve descrição profissional (2-3 frases)"}
+      - {label: "Como começou o interesse pela pesquisa?", name: "interest_origin", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Motivação para estudar essa área", name: "motivation", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
       - {label: "Tempo de pesquisa", name: "years_researching", widget: "string", required: false, hint: "Ex: 5 anos, Desde 2019"}
-      - {label: "Principais linhas de pesquisa", name: "research_lines", widget: "text", required: false}
-      - {label: "Experiência marcante na trajetória científica", name: "memorable_experience", widget: "text", required: false}
+      - {label: "Principais linhas de pesquisa", name: "research_lines", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Experiência marcante na trajetória científica", name: "memorable_experience", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
 
       # ── Pesquisa Atual ──
       - {label: "Título do projeto ou pesquisa", name: "project_title", widget: "string", required: false}
-      - {label: "Descrição da pesquisa (forma simples)", name: "project_description", widget: "text", required: false}
-      - {label: "Problema que a pesquisa busca resolver", name: "project_problem", widget: "text", required: false}
-      - {label: "Importância da pesquisa", name: "project_importance", widget: "text", required: false}
-      - {label: "Métodos utilizados", name: "project_methods", widget: "text", required: false}
-      - {label: "Resultados ou descobertas até agora", name: "project_results", widget: "text", required: false}
-      - {label: "Desafios enfrentados", name: "project_challenges", widget: "text", required: false}
+      - {label: "Descrição da pesquisa (forma simples)", name: "project_description", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Problema que a pesquisa busca resolver", name: "project_problem", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Importância da pesquisa", name: "project_importance", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Métodos utilizados", name: "project_methods", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Resultados ou descobertas até agora", name: "project_results", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Desafios enfrentados", name: "project_challenges", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
 
       # ── Divulgação Científica ──
-      - {label: "Explique sua pesquisa para leigos", name: "explain_simple", widget: "text", required: false}
-      - {label: "Maior curiosidade sobre seu tema", name: "biggest_curiosity", widget: "text", required: false}
-      - {label: "Mito ou informação errada comum", name: "common_myth", widget: "text", required: false}
-      - {label: "Descoberta científica mais impressionante", name: "impressive_discovery", widget: "text", required: false}
-      - {label: "Conselho para quem quer seguir carreira científica", name: "career_advice", widget: "text", required: false}
+      - {label: "Explique sua pesquisa para leigos", name: "explain_simple", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Maior curiosidade sobre seu tema", name: "biggest_curiosity", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Mito ou informação errada comum", name: "common_myth", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Descoberta científica mais impressionante", name: "impressive_discovery", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Conselho para quem quer seguir carreira científica", name: "career_advice", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
 
       # ── Produção Científica ──
       - label: "Artigos e Publicações"
@@ -109,9 +110,9 @@ collections:
           - {label: "Data", name: "date", widget: "datetime", required: false}
           - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
           - {label: "Resumo", name: "summary", widget: "text", required: false}
-      - {label: "Livros ou capítulos", name: "books_chapters", widget: "text", required: false}
-      - {label: "Grupos, laboratórios ou projetos", name: "groups_labs", widget: "text", required: false}
-      - {label: "Projetos futuros a destacar", name: "future_projects", widget: "text", required: false}
+      - {label: "Livros ou capítulos", name: "books_chapters", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Grupos, laboratórios ou projetos", name: "groups_labs", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
+      - {label: "Projetos futuros a destacar", name: "future_projects", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
 
       # ── Autorização ──
       - {label: "Autoriza uso de informações e imagens?", name: "authorized", widget: "boolean", default: true}

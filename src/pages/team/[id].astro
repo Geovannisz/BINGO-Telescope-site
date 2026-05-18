@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const team = await getCollection('team');
@@ -37,6 +38,8 @@ const hasResearch = d.project_title || d.project_description || d.project_proble
 const hasOutreach = d.explain_simple || d.biggest_curiosity || d.common_myth || d.impressive_discovery || d.career_advice;
 const hasPublications = (d.publications && d.publications.length > 0) || d.published_articles || d.books_chapters || d.groups_labs || d.future_projects;
 const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
+
+const renderMd = (text: string | undefined) => text ? marked.parse(text) : '';
 ---
 
 <BaseLayout title={d.name}>
@@ -82,7 +85,7 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
       {/* ── Bio ── */}
       {d.bio && (
         <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
-          <p class="text-slate-300 leading-relaxed text-lg">{d.bio}</p>
+          <div class="text-slate-300 leading-relaxed text-lg space-y-4 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.bio)}></div>
         </div>
       )}
 
@@ -104,11 +107,11 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
             <span class="gradient-text-cyan">Trajetória</span> Acadêmica
           </h2>
           <div class="space-y-6">
-            {d.interest_origin && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Como começou o interesse</h3><p class="text-slate-300 leading-relaxed">{d.interest_origin}</p></div>}
-            {d.motivation && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Motivação</h3><p class="text-slate-300 leading-relaxed">{d.motivation}</p></div>}
+            {d.interest_origin && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Como começou o interesse</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.interest_origin)}></div></div>}
+            {d.motivation && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Motivação</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.motivation)}></div></div>}
             {d.years_researching && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Tempo de pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.years_researching}</p></div>}
-            {d.research_lines && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Linhas de pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.research_lines}</p></div>}
-            {d.memorable_experience && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Experiência marcante</h3><p class="text-slate-300 leading-relaxed">{d.memorable_experience}</p></div>}
+            {d.research_lines && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Linhas de pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.research_lines)}></div></div>}
+            {d.memorable_experience && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Experiência marcante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.memorable_experience)}></div></div>}
           </div>
         </div>
       )}
@@ -121,12 +124,12 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
           </h2>
           {d.project_title && <h3 class="text-xl font-semibold text-white mb-4 border-l-4 border-cyan-500 pl-4">{d.project_title}</h3>}
           <div class="space-y-6">
-            {d.project_description && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Sobre a pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.project_description}</p></div>}
-            {d.project_problem && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Problema investigado</h3><p class="text-slate-300 leading-relaxed">{d.project_problem}</p></div>}
-            {d.project_importance && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Importância</h3><p class="text-slate-300 leading-relaxed">{d.project_importance}</p></div>}
-            {d.project_methods && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Métodos</h3><p class="text-slate-300 leading-relaxed">{d.project_methods}</p></div>}
-            {d.project_results && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Resultados</h3><p class="text-slate-300 leading-relaxed">{d.project_results}</p></div>}
-            {d.project_challenges && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Desafios</h3><p class="text-slate-300 leading-relaxed">{d.project_challenges}</p></div>}
+            {d.project_description && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Sobre a pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_description)}></div></div>}
+            {d.project_problem && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Problema investigado</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_problem)}></div></div>}
+            {d.project_importance && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Importância</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_importance)}></div></div>}
+            {d.project_methods && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Métodos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_methods)}></div></div>}
+            {d.project_results && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Resultados</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_results)}></div></div>}
+            {d.project_challenges && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Desafios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_challenges)}></div></div>}
           </div>
         </div>
       )}
@@ -138,11 +141,11 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
             <span class="gradient-text-cyan">Divulgação</span> Científica
           </h2>
           <div class="space-y-6">
-            {d.explain_simple && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Pesquisa em palavras simples</h3><p class="text-slate-300 leading-relaxed italic">"{d.explain_simple}"</p></div>}
-            {d.biggest_curiosity && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Curiosidade</h3><p class="text-slate-300 leading-relaxed">{d.biggest_curiosity}</p></div>}
-            {d.common_myth && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Mitos comuns</h3><p class="text-slate-300 leading-relaxed">{d.common_myth}</p></div>}
-            {d.impressive_discovery && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Descoberta impressionante</h3><p class="text-slate-300 leading-relaxed">{d.impressive_discovery}</p></div>}
-            {d.career_advice && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Conselho profissional</h3><p class="text-slate-300 leading-relaxed">💡 {d.career_advice}</p></div>}
+            {d.explain_simple && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Pesquisa em palavras simples</h3><div class="text-slate-300 leading-relaxed italic space-y-2 [&_strong]:font-bold [&_em]:text-cyan-200" set:html={renderMd(`"${d.explain_simple}"`)}></div></div>}
+            {d.biggest_curiosity && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Curiosidade</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.biggest_curiosity)}></div></div>}
+            {d.common_myth && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Mitos comuns</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.common_myth)}></div></div>}
+            {d.impressive_discovery && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Descoberta impressionante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.impressive_discovery)}></div></div>}
+            {d.career_advice && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Conselho profissional</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(`💡 ${d.career_advice}`)}></div></div>}
           </div>
         </div>
       )}
@@ -177,9 +180,9 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
               </div>
             )}
             {d.published_articles && !d.publications && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Artigos publicados</h3><p class="text-slate-300 leading-relaxed whitespace-pre-line">{d.published_articles}</p></div>}
-            {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><p class="text-slate-300 leading-relaxed">{d.books_chapters}</p></div>}
-            {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><p class="text-slate-300 leading-relaxed">{d.groups_labs}</p></div>}
-            {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><p class="text-slate-300 leading-relaxed">{d.future_projects}</p></div>}
+            {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.books_chapters)}></div></div>}
+            {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.groups_labs)}></div></div>}
+            {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.future_projects)}></div></div>}
           </div>
         </div>
       )}
