@@ -209,11 +209,7 @@ const stages = [
             {group.description && <p class="text-slate-400 text-sm mt-1">{group.description}</p>}
             <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500 mt-3"></div>
           </div>
-          <div class={`grid gap-4 sm:gap-6 lg:gap-8 ${
-            group.role === 'Coordenador Geral'
-              ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-2 max-w-2xl'
-              : 'grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-          }`}>
+          <div class="grid gap-4 sm:gap-6 lg:gap-8 justify-center" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 320px));">
             {group.members.map((member) => (
               <TeamMember
                 name={member.data.name}
