@@ -26,11 +26,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (Cloud - com cache)
+        if: github.event.inputs.use_cloud == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
+
+      - name: Setup Node.js (Local - sem cache de rede)
+        if: github.event.inputs.use_cloud != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - name: Install dependencies
         run: npm ci
