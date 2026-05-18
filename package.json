@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.1.1",
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@types/marked": "^5.0.2",
+    "husky": "^9.1.7",
     "typescript": "^6.0.3"
   }
 }

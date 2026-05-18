@@ -59,7 +59,7 @@ const imageUrl = entry.data.image?.startsWith('/')
         <Content />
       </div>
 
-      <script define:vars={{ base }}>
+      <script is:inline define:vars={{ base }}>
         // Fix markdown image paths for GitHub Pages subpaths
         document.querySelectorAll('.prose img').forEach((img) => {
           const src = img.getAttribute('src');

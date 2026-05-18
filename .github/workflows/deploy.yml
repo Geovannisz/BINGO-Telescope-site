@@ -26,18 +26,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js (Cloud - com cache)
-        if: github.event.inputs.use_cloud == 'true'
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
 
-      - name: Setup Node.js (Local - sem cache de rede)
-        if: github.event.inputs.use_cloud != 'true'
-        uses: actions/setup-node@v4
+      - name: Cache Astro modules
+        uses: actions/cache@v4
         with:
-          node-version: 22
+          path: |
+            node_modules
+            .astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
 
       - name: Install dependencies
         run: npm ci

@@ -1,4 +1,5 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro:schema';
 import { glob } from 'astro/loaders';
 
 const newsCollection = defineCollection({
@@ -69,6 +70,10 @@ const teamCollection = defineCollection({
     career_advice: z.string().optional(),
 
     /* ── Publications ── */
+    publications: z.array(z.object({
+      title: z.string(),
+      link: z.string().optional()
+    })).optional(),
     published_articles: z.string().optional(),
     books_chapters: z.string().optional(),
     groups_labs: z.string().optional(),
