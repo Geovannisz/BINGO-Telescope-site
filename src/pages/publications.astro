@@ -3,7 +3,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const allPubs = await getCollection('publications');
-const sortedPubs = allPubs.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const allTeam = await getCollection('team');
+
+const teamPubs: any[] = [];
+allTeam.forEach(member => {
+  if (member.data.publications && member.data.publications.length > 0) {
+    member.data.publications.forEach((pub: any, index: number) => {
+      if (pub.title) {
+        teamPubs.push({
+          id: `team-${member.id}-${index}`,
+          collection: 'publications',
+          data: {
+            title: pub.title,
+            authors: pub.authors || member.data.name,
+            date: pub.date ? new Date(pub.date) : new Date(),
+            link: pub.link,
+            summary: pub.summary
+          }
+        });
+      }
+    });
+  }
+});
+
+const combinedPubs = [...allPubs, ...teamPubs];
+const sortedPubs = combinedPubs.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout title="Publicações">
