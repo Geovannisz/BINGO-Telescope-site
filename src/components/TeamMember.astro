@@ -45,6 +45,27 @@ const stageColors: Record<string, string> = {
   'Coordenação': 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30',
 };
 const stagesArray = stage || [];
+
+/* Helper to abbreviate middle names to save space */
+function abbreviateName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/);
+  if (parts.length <= 2) return fullName;
+  
+  const first = parts[0];
+  const last = parts[parts.length - 1];
+  
+  const middles = parts.slice(1, -1).map(m => {
+    const lower = m.toLowerCase();
+    if (['de', 'da', 'do', 'dos', 'das', 'e'].includes(lower)) {
+       return lower;
+    }
+    return m.charAt(0).toUpperCase() + '.';
+  });
+  
+  return [first, ...middles, last].join(' ');
+}
+
+const displayName = abbreviateName(name);
 ---
 
 <a href={`${base}team/${slug}/`} class="group block">
@@ -67,7 +88,7 @@ const stagesArray = stage || [];
       )}
     </div>
     <!-- Member info -->
-    <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no">{name}</h3>
+    <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no" title={name}>{displayName}</h3>
     <p class="text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">{role}</p>
     <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2" translate="no">{institution}</p>
     <div class="flex flex-wrap justify-center gap-1.5 mt-2">
