@@ -194,6 +194,12 @@ const base = import.meta.env.BASE_URL;
         dragging: true
       });
 
+      // Add Satellite TileLayer
+      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri',
+        maxZoom: 17
+      }).addTo(map);
+
       // Fetch Paraíba GeoJSON from IBGE
       fetch('https://servicodados.ibge.gov.br/api/v3/malhas/estados/25?formato=application/vnd.geo+json')
         .then(res => res.json())
@@ -201,9 +207,9 @@ const base = import.meta.env.BASE_URL;
           const pbLayer = L.geoJSON(data, {
             style: {
               color: '#22d3ee',
-              weight: 2,
+              weight: 3,
               fillColor: '#0ea5e9',
-              fillOpacity: 0.15,
+              fillOpacity: 0.05,
               className: 'pb-border-glow'
             }
           }).addTo(map);
@@ -229,11 +235,17 @@ const base = import.meta.env.BASE_URL;
 
       // Markers
       // BINGO: Aguiar, Paraíba
-      L.marker([-7.041, -38.268], {icon: bingoIcon}).bindPopup('<b style="color:#0f172a">Telescópio BINGO</b><br>Serra do Urubu, Aguiar, PB').addTo(map);
+      L.marker([-7.041, -38.268], {icon: bingoIcon})
+        .bindTooltip('<b style="color:#0f172a; font-family: Outfit, sans-serif;">Telescópio BINGO</b>', {permanent: true, direction: 'right', className: 'custom-tooltip', offset: [5, 0]})
+        .addTo(map);
       // Campina Grande
-      L.marker([-7.2307, -35.8811], {icon: cityIcon}).bindPopup('<b style="color:#0f172a">Campina Grande</b><br>UFCG / BINGO-Uirapuru').addTo(map);
+      L.marker([-7.2307, -35.8811], {icon: cityIcon})
+        .bindTooltip('<b style="color:#0f172a; font-family: Outfit, sans-serif;">Campina Grande</b>', {permanent: true, direction: 'right', className: 'custom-tooltip', offset: [5, 0]})
+        .addTo(map);
       // João Pessoa
-      L.marker([-7.1153, -34.8610], {icon: cityIcon}).bindPopup('<b style="color:#0f172a">João Pessoa</b><br>Capital da Paraíba').addTo(map);
+      L.marker([-7.1153, -34.8610], {icon: cityIcon})
+        .bindTooltip('<b style="color:#0f172a; font-family: Outfit, sans-serif;">João Pessoa</b>', {permanent: true, direction: 'right', className: 'custom-tooltip', offset: [5, 0]})
+        .addTo(map);
 
       // Custom Ctrl+Scroll logic
       const mapContainer = document.getElementById('paraiba-map-container');
