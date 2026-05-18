@@ -254,21 +254,33 @@ const base = import.meta.env.BASE_URL;
       ctrlMessage.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(15, 23, 42, 0.9); color: #cbd5e1; padding: 12px 24px; border-radius: 8px; z-index: 1000; font-family: Outfit, sans-serif; pointer-events: none; opacity: 0; transition: opacity 0.3s; border: 1px solid rgba(99, 102, 241, 0.3); font-size: 14px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);';
       mapContainer.appendChild(ctrlMessage);
 
+      // Listen for Ctrl key down/up on the whole window for instant response
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Control' || e.key === 'Meta') {
+          map.scrollWheelZoom.enable();
+        }
+      });
+      window.addEventListener('keyup', (e) => {
+        if (e.key === 'Control' || e.key === 'Meta') {
+          map.scrollWheelZoom.disable();
+        }
+      });
+
       let scrollTimeout;
+      // Use capture: true to intercept the wheel event BEFORE Leaflet processes it
       mapContainer.addEventListener('wheel', (e) => {
         if (!e.ctrlKey && !e.metaKey) {
-          // Show message if ctrl is NOT pressed
+          // Show message if ctrl is NOT pressed and force disable map zoom (failsafe for stuck keys)
           map.scrollWheelZoom.disable();
           ctrlMessage.style.opacity = '1';
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => { ctrlMessage.style.opacity = '0'; }, 1500);
         } else {
-          // Allow zoom if ctrl IS pressed
+          // Force enable if ctrl IS pressed (failsafe for missed keydown)
           map.scrollWheelZoom.enable();
           ctrlMessage.style.opacity = '0';
-          e.preventDefault();
         }
-      }, { passive: false });
+      }, { capture: true, passive: false });
 
       // Add custom styles for the map
       const style = document.createElement('style');
