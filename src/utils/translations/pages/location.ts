@@ -1,7 +1,7 @@
 const location: Record<string, { en: string; zh: string }> = {
   'header.label': { en: 'Location', zh: '位置' },
   'header.title': { en: 'Location of <span class="gradient-text-cyan">BINGO</span>', zh: '<span class="gradient-text-cyan">BINGO</span>的位置' },
-  'header.desc': { en: 'Serra do Urubu, Aguiar, Paraíba — Brazil. An exceptionally radio-quiet location, carefully selected for high-precision cosmological observations.', zh: 'Serra do Urubu，Aguiar，Paraíba——巴西。一个射电环境极其安静的地点，经过精心选择用于高精度宇宙学观测。' },
+  'header.desc': { en: 'Serra do Urubu, Aguiar, Paraíba — Brasil. An exceptionally radio-quiet location, carefully selected for high-precision cosmological observations.', zh: 'Serra do Urubu，Aguiar, Paraíba — Brasil。一个射电环境极其安静的地点，经过精心选择用于高精度宇宙学观测。' },
   'why.title': { en: 'Why <span class="gradient-text-cyan">Aguiar</span>, Paraíba?', zh: '为什么选择<span class="gradient-text-cyan">Aguiar</span>（Paraíba）？' },
   'why.intro': { en: 'The location of BINGO was selected after extensive RFI (Radio Frequency Interference) measurement campaigns at multiple candidate sites in northeastern Brazil. Serra do Urubu, in the municipality of Aguiar, stood out as the best option.', zh: 'BINGO的选址经过在巴西东北部多个候选地点进行的大量RFI（射电频率干扰）测量后确定。Aguiar市的Serra do Urubu脱颖而出成为最佳选择。' },
   'why.rfi': {

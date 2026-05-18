@@ -73,7 +73,7 @@ const PROTECTED_TERMS = [
   'Duncan Lorimer', 'David Narkevic', 'Lorimer Burst',
   'Sheldon Glashow', 'Steven Weinberg',
   // Portuguese proper nouns to keep
-  'Uirapuru', 'Serra do Urubu', 'Aguiar',
+  'Uirapuru', 'Serra do Urubu', 'Aguiar, Paraíba — Brasil', 'Aguiar, Paraíba', 'Aguiar', 'Paraíba', 'Brasil',
   // Institutions
   'USP', 'INPE', 'UFCG', 'Fapesq', 'MCTI', 'Fapesp', 'Finep',
   'Secties', 'Seap', 'ICTP',
@@ -233,11 +233,9 @@ function setGoogTransCookie(targetLang: string): void {
   if (targetLang === 'pt') {
     // Clear cookie to show original content
     document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
-    document.cookie = `googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;domain=.${location.hostname}`;
   } else {
     const val = `/pt/${LANG_MAP[targetLang] || targetLang}`;
     document.cookie = `googtrans=${val};path=/;`;
-    document.cookie = `googtrans=${val};path=/;domain=.${location.hostname}`;
   }
 }
 
