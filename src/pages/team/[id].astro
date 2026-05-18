@@ -32,10 +32,21 @@ const stageColors: Record<string, string> = {
 const stagesArray = d.stage || [];
 
 /* Helper: only render a section if at least one field has content */
+const isMeaningfulValue = (value: unknown) => {
+  if (value instanceof Date) return !Number.isNaN(value.valueOf());
+  if (typeof value === 'string') return value.trim().length > 0;
+  return false;
+};
+
+const publications = Array.isArray(d.publications) ? d.publications : [];
+const normalizedPublications = publications.filter((pub) =>
+  pub && typeof pub === 'object' && Object.values(pub).some(isMeaningfulValue)
+);
+
 const hasTrajectory = d.interest_origin || d.motivation || d.years_researching || d.research_lines || d.memorable_experience;
 const hasResearch = d.project_title || d.project_description || d.project_problem || d.project_importance || d.project_methods || d.project_results || d.project_challenges;
 const hasOutreach = d.explain_simple || d.biggest_curiosity || d.common_myth || d.impressive_discovery || d.career_advice;
-const hasPublications = d.published_articles || d.books_chapters || d.groups_labs || d.future_projects;
+const hasPublications = normalizedPublications.length > 0 || d.books_chapters || d.groups_labs || d.future_projects;
 const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
 ---
 
@@ -154,7 +165,27 @@ const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
             <span class="gradient-text-cyan">Produção</span> Científica
           </h2>
           <div class="space-y-6">
-            {d.published_articles && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Artigos publicados</h3><p class="text-slate-300 leading-relaxed whitespace-pre-line">{d.published_articles}</p></div>}
+            {normalizedPublications.length > 0 && (
+              <div>
+                <h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Artigos publicados</h3>
+                <ul class="space-y-2">
+                  {normalizedPublications.map((pub) => {
+                    const title = pub.title?.trim() || pub.link?.trim() || 'Artigo sem título';
+                    return (
+                      <li class="text-slate-300 leading-relaxed">
+                        {pub.link ? (
+                          <a href={pub.link} target="_blank" rel="noopener" class="text-cyan-400 hover:underline">
+                            {title}
+                          </a>
+                        ) : (
+                          <span>{title}</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
             {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><p class="text-slate-300 leading-relaxed">{d.books_chapters}</p></div>}
             {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><p class="text-slate-300 leading-relaxed">{d.groups_labs}</p></div>}
             {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><p class="text-slate-300 leading-relaxed">{d.future_projects}</p></div>}

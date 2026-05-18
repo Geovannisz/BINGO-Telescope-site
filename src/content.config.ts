@@ -69,7 +69,13 @@ const teamCollection = defineCollection({
     career_advice: z.string().optional(),
 
     /* ── Publications ── */
-    published_articles: z.string().optional(),
+    publications: z.array(z.object({
+      title: z.string().optional(),
+      authors: z.string().optional(),
+      date: z.union([z.date(), z.string()]).optional(),
+      link: z.string().optional(),
+      summary: z.string().optional(),
+    })).optional(),
     books_chapters: z.string().optional(),
     groups_labs: z.string().optional(),
     future_projects: z.string().optional(),

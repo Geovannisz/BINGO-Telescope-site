@@ -10,6 +10,15 @@
     "lattes": "http://lattes.cnpq.br/0000000000000000",
     "orcid": "https://orcid.org/0000-0000-0000-0000",
     "bio": "Breve descrição profissional do pesquisador em 2-3 frases.",
+    "publications": [
+      {
+        "title": "Título da Publicação",
+        "authors": "A. Autor, B. Coautor",
+        "date": "2025-01-10T12:00:00Z",
+        "link": "https://doi.org/10.0000/exemplo",
+        "summary": "Resumo breve da publicação."
+      }
+    ],
     "authorized": true
   },
   {

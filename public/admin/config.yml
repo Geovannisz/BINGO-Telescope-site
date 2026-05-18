@@ -99,7 +99,18 @@ collections:
       - {label: "Conselho para quem quer seguir carreira científica", name: "career_advice", widget: "text", required: false}
 
       # ── Produção Científica ──
-      - {label: "Artigos publicados (links)", name: "published_articles", widget: "text", required: false}
+      - label: "Publicações (adicionar artigo)"
+        name: "publications"
+        widget: "list"
+        required: false
+        summary: "{{fields.title}}"
+        hint: "Use o botão + para adicionar uma publicação completa quando houver."
+        fields:
+          - {label: "Título", name: "title", widget: "string", required: false}
+          - {label: "Autores", name: "authors", widget: "string", required: false}
+          - {label: "Data", name: "date", widget: "datetime", required: false}
+          - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
+          - {label: "Resumo", name: "summary", widget: "text", required: false}
       - {label: "Livros ou capítulos", name: "books_chapters", widget: "text", required: false}
       - {label: "Grupos, laboratórios ou projetos", name: "groups_labs", widget: "text", required: false}
       - {label: "Projetos futuros a destacar", name: "future_projects", widget: "text", required: false}

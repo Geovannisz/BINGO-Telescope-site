@@ -30,7 +30,7 @@
         'bio','interest_origin','motivation','years_researching','research_lines','memorable_experience',
         'project_title','project_description','project_problem','project_importance','project_methods','project_results','project_challenges',
         'explain_simple','biggest_curiosity','common_myth','impressive_discovery','career_advice',
-        'published_articles','books_chapters','groups_labs','future_projects',
+        'publications','books_chapters','groups_labs','future_projects',
         'authorized','credit_name'
       ],
       hasBody: false
@@ -59,23 +59,74 @@
     if (!m) return { meta: {}, body: text };
     const meta = {};
     let currentKey = null;
+    let currentListItem = null;
+
+    const parseValue = (raw) => {
+      let val = raw.trim();
+      if (val === '""' || val === "''") return '';
+      if (val === 'true') return true;
+      if (val === 'false') return false;
+      if (val.startsWith('"') && val.endsWith('"')) return val.slice(1, -1);
+      if (val.startsWith("'") && val.endsWith("'")) return val.slice(1, -1);
+      return val;
+    };
+
     m[1].split(/\r?\n/).forEach(line => {
       const kv = line.match(/^(\w[\w_]*):\s*(.*)$/);
       if (kv) {
         currentKey = kv[1];
-        let val = kv[2].trim();
-        if (val === '""' || val === "''") val = '';
-        else if (val === 'true') val = true;
-        else if (val === 'false') val = false;
-        else if (/^\d{4}-\d{2}-\d{2}T/.test(val)) { /* keep as string */ }
-        else if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1,-1);
-        else if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1,-1);
-        meta[currentKey] = val;
-      } else if (currentKey && /^\s+/.test(line)) {
+        currentListItem = null;
+        const val = kv[2].trim();
+        if (val === '') {
+          meta[currentKey] = [];
+          return;
+        }
+        if (/^\d{4}-\d{2}-\d{2}T/.test(val)) {
+          meta[currentKey] = val;
+          return;
+        }
+        meta[currentKey] = parseValue(val);
+        return;
+      }
+
+      if (currentKey && /^\s*-\s+/.test(line)) {
+        const itemRaw = line.replace(/^\s*-\s+/, '');
+        const itemMatch = itemRaw.match(/^(\w[\w_]*):\s*(.*)$/);
+        if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
+        if (itemMatch) {
+          currentListItem = {};
+          currentListItem[itemMatch[1]] = parseValue(itemMatch[2]);
+          meta[currentKey].push(currentListItem);
+        } else {
+          currentListItem = null;
+          meta[currentKey].push(parseValue(itemRaw));
+        }
+        return;
+      }
+
+      if (currentKey && currentListItem && /^\s+/.test(line)) {
+        const nested = line.trim().match(/^(\w[\w_]*):\s*(.*)$/);
+        if (nested) {
+          currentListItem[nested[1]] = parseValue(nested[2]);
+        }
+        return;
+      }
+
+      if (currentKey && /^\s+/.test(line)) {
         meta[currentKey] = (meta[currentKey] || '') + ' ' + line.trim();
       }
     });
     return { meta, body: m[2].trim() };
+  }
+
+  function formatYamlValue(value) {
+    if (value instanceof Date) return value.toISOString();
+    if (typeof value === 'boolean') return value ? 'true' : 'false';
+    const s = String(value);
+    if (s.includes(':') || s.includes('#') || s.includes('"') || s.includes('\n') || /^\d/.test(s) && !(/^\d{4}-\d{2}-\d{2}/.test(s))) {
+      return `"${s.replace(/"/g, '\\"')}"`;
+    }
+    return s;
   }
 
   function toFrontmatter(obj, body) {
@@ -84,8 +135,24 @@
       if (v === undefined || v === null || v === '') continue;
       if (typeof v === 'boolean') { lines.push(`${k}: ${v}`); continue; }
       if (Array.isArray(v)) {
+        const filtered = v.filter(item => item !== undefined && item !== null && item !== '');
+        if (filtered.length === 0) continue;
         lines.push(`${k}:`);
-        v.forEach(i => lines.push(`  - "${i}"`));
+        const isObjectList = filtered.some(item => typeof item === 'object' && !Array.isArray(item) && !(item instanceof Date));
+        if (!isObjectList) {
+          filtered.forEach(i => lines.push(`  - ${formatYamlValue(i)}`));
+        } else {
+          filtered.forEach((item) => {
+            if (!item || typeof item !== 'object') return;
+            const entries = Object.entries(item).filter(([, val]) => val !== undefined && val !== null && val !== '');
+            if (entries.length === 0) return;
+            const [firstKey, firstVal] = entries[0];
+            lines.push(`  - ${firstKey}: ${formatYamlValue(firstVal)}`);
+            entries.slice(1).forEach(([entryKey, entryVal]) => {
+              lines.push(`    ${entryKey}: ${formatYamlValue(entryVal)}`);
+            });
+          });
+        }
         continue;
       }
       const s = String(v);
