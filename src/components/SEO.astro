@@ -27,7 +27,7 @@ const imageURL = new URL(image, Astro.site || Astro.url.origin);
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "BINGO Telescope Consortium",
+  "name": "BINGO Telescope",
   "url": Astro.site ? Astro.site.toString() : Astro.url.origin,
   "logo": new URL("/BINGO-Logo-ico.png", Astro.site || Astro.url.origin).toString(),
   "sameAs": [
