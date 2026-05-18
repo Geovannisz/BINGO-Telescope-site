@@ -98,9 +98,17 @@ function buildProtectionRegex(): RegExp {
 }
 
 /**
- * Walk the DOM and wrap all occurrences of protected terms in
- * <span class="notranslate"> so Google Translate skips them.
- * This runs BEFORE Google Translate initializes.
+ * Traverses the DOM to isolate and shield scientific terminology from Google Translate.
+ * It strictly wraps occurrences of terms defined in `PROTECTED_TERMS` within 
+ * `<span class="notranslate">` elements.
+ * 
+ * Crucially, it replaces standard spaces with non-breaking spaces (`\u00A0`) inside
+ * the protected spans. This tricks Google Translate's neural engine into treating 
+ * multi-word scientific names (like "Baryon Acoustic Oscillations") as single, 
+ * indivisible tokens, preventing severe sentence fragmentation or hallucinated 
+ * grammatical re-orderings across the DOM boundary.
+ * 
+ * This function must run **before** the Google Translate element initializes.
  */
 export function protectScientificTerms(): void {
   const regex = buildProtectionRegex();

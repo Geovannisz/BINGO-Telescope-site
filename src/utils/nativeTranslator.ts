@@ -15,10 +15,16 @@
  * ═══════════════════════════════════════════════════════════════════════
  */
 
-import { translateUIElements } from './translator';
+import { translateUIElements, initTranslator } from './translator';
 
 const STORAGE_KEY = 'bingo-lang';
 
+/**
+ * Retrieves the currently stored language preference from localStorage.
+ * Defaults to 'en' if no preference is found or if localStorage is unavailable.
+ *
+ * @returns {string} The active language code ('pt', 'en', or 'zh-CN').
+ */
 export function getStoredLang(): string {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -30,14 +36,18 @@ export function getStoredLang(): string {
 }
 
 /**
- * Initialize native translation for a fixed page.
- * Dynamically imports the translations for the given page to keep
- * the initial bundle small.
+ * Initializes native translation for a specific, fixed page.
+ * Dynamically imports the translation definitions for the given page to keep
+ * the initial javascript bundle size optimal. Replaces DOM elements containing
+ * `data-t` attributes with their localized counterparts.
+ *
+ * @param {string} pageId - The identifier for the current page (e.g., 'location', 'about').
+ * @returns {Promise<void>} A promise that resolves when the page translation completes.
  */
 export async function initNativeTranslator(pageId: string): Promise<void> {
   const lang = getStoredLang();
 
-  // Set html lang attribute
+  // Set html lang attribute for accessibility and browser behavior
   const langAttr = lang === 'zh-CN' ? 'zh' : lang;
   document.documentElement.lang = langAttr;
 
@@ -45,17 +55,18 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
   // These use data-i18n and are handled by the existing i18n.ts system
   translateUIElements(lang);
 
-  // If Portuguese, content is already correct — nothing else to do
+  // If the selected language is Portuguese, the original content is displayed.
+  // We simply reveal the body content immediately.
   if (lang === 'pt') {
     revealBody();
     return;
   }
 
-  // Map lang codes to translation keys
+  // Map internal lang codes to their translation keys
   const langKey = lang === 'zh-CN' ? 'zh' : lang;
 
   try {
-    // Dynamic import to avoid loading all translations on every page
+    // Dynamic import of page-specific translations to minimize payload
     const { pageTranslations } = await import('./translations/pages');
     const pageTrans = pageTranslations[pageId];
     if (!pageTrans) {
@@ -63,7 +74,7 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
       return;
     }
 
-    // Replace all data-t elements
+    // Process and translate all elements tagged with data-t
     document.querySelectorAll('[data-t]').forEach((el) => {
       const key = (el as HTMLElement).dataset.t;
       if (!key) return;
@@ -74,19 +85,19 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
       const translation = entry[langKey as 'en' | 'zh'];
       if (!translation) return;
 
-      // Use innerHTML to support rich content (bold, links, etc.)
+      // Use innerHTML to inject rich text formatting seamlessly
       (el as HTMLElement).innerHTML = translation;
       
-      // Protect this element from Google Translate
+      // Mark element to bypass Google Translate processing
       el.classList.add('notranslate');
       el.setAttribute('translate', 'no');
     });
 
-    // Check if the page needs Google Translate for dynamic parts (e.g. News cards)
+    // Sub-pages with mixed content (e.g., native layout + dynamic news feed) 
+    // will trigger the Google Translate engine strictly for untranslated elements.
     if (document.querySelector('[data-dynamic-translate]')) {
-      const { initTranslator } = await import('./translator');
       initTranslator();
-      return; // Anti-FOUC script will reveal body when GTE finishes
+      return; // Anti-FOUC script will reveal body when GTE finishes its job
     }
   } catch (err) {
     console.warn('[BINGO i18n] Failed to load native translations:', err);
@@ -96,8 +107,9 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
 }
 
 /**
- * Remove the anti-FOUC opacity:0 style if present.
- * For native translation this is instant (no Google Translate delay).
+ * Removes the anti-FOUC (Flash of Unstyled Content) opacity:0 style safely.
+ * Since native translation happens locally, the transition is near-instant,
+ * bypassing the usual Google Translate delay footprint.
  */
 function revealBody(): void {
   const style = document.getElementById('anti-fouc-style');
