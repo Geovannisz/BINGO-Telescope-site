@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import sitemap from '@astrojs/sitemap';
 
 // Auto-detect GitHub Actions so the workflow file never needs to be modified.
 const isGitHubActions = process.env.GITHUB_ACTIONS === 'true';
@@ -10,6 +11,7 @@ const base = (process.env.BASE_PATH ?? (isGitHubActions ? '/BINGO-Telescope-site
 export default defineConfig({
   site,
   base,
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },

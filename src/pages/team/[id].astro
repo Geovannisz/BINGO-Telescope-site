@@ -40,9 +40,26 @@ const hasPublications = (d.publications && d.publications.length > 0) || d.publi
 const hasLinks = d.email || d.lattes || d.orcid || d.linkedin || d.researchgate;
 
 const renderMd = (text: string | undefined) => text ? marked.parse(text) : '';
+
+// Generate Person Schema.org JSON-LD
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": d.name,
+  "jobTitle": d.role,
+  "affiliation": {
+    "@type": "Organization",
+    "name": d.institution || "BINGO Telescope"
+  },
+  "url": `${Astro.site ? Astro.site.toString().replace(/\/$/, '') : Astro.url.origin}/team/${member.id}`,
+  ...(photoSrc && { "image": new URL(photoSrc, Astro.site || Astro.url.origin).toString() }),
+  ...(d.email && { "email": d.email }),
+  "sameAs": [d.linkedin, d.lattes, d.orcid, d.researchgate].filter(Boolean)
+};
 ---
 
 <BaseLayout title={d.name}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;">
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.1;`}></div>
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>

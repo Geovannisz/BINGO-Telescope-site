@@ -70,6 +70,32 @@ const articleSchema = article ? {
   "datePublished": publishDate ? new Date(publishDate).toISOString() : undefined,
 } : null;
 
+// Generate BreadcrumbList
+const pathParts = Astro.url.pathname.split('/').filter(p => p !== '' && p !== 'BINGO-Telescope-site');
+const breadcrumbItems = pathParts.map((part, index) => {
+  const url = `${Astro.site ? Astro.site.toString().replace(/\/$/, '') : Astro.url.origin}/${pathParts.slice(0, index + 1).join('/')}`;
+  return {
+    "@type": "ListItem",
+    "position": index + 2, // 1 is Home
+    "name": part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+    "item": url
+  };
+});
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": Astro.site ? Astro.site.toString() : Astro.url.origin
+    },
+    ...breadcrumbItems
+  ]
+};
+
 // Hreflang alternates: BINGO supports EN, PT, ZH via translation
 const locales = ['en', 'pt', 'zh-CN'];
 ---
@@ -78,6 +104,9 @@ const locales = ['en', 'pt', 'zh-CN'];
 <title>{title} | BINGO Telescope</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="theme-color" content="#070d1f" />
+<link rel="apple-touch-icon" href={`${Astro.site ? Astro.site.toString().replace(/\/$/, '') : Astro.url.origin}/BINGO-Logo-ico.png`} />
 
 <!-- Language Alternates for SEO -->
 {locales.map((locale) => (
@@ -108,6 +137,7 @@ const locales = ['en', 'pt', 'zh-CN'];
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 {articleSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 )}

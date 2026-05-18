@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Block Google from translating natively so we avoid duplicate indexing of translate tool paths
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://bingotelescope.com/sitemap-index.xml
