@@ -30,7 +30,10 @@ const combinedPubs = [...allPubs, ...teamPubs];
 const sortedPubs = combinedPubs.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Publicações">
+<BaseLayout 
+  title="Publicações"
+  description="Artigos científicos, teses e relatórios técnicos produzidos pelo consórcio BINGO, com publicações focadas em rádio-astronomia e cosmologia na Astronomy & Astrophysics (A&A)."
+>
   <div class="relative py-16 sm:py-20 overflow-hidden section-bg-image" style="min-height: 30vh;">
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">

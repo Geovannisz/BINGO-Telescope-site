@@ -26,13 +26,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (Cloud - com cache)
+        if: github.event.inputs.use_cloud == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
 
-      - name: Cache Astro modules
+      - name: Setup Node.js (Local - sem cache de rede)
+        if: github.event.inputs.use_cloud != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache Astro modules (Cloud only)
+        if: github.event.inputs.use_cloud == 'true'
         uses: actions/cache@v4
         with:
           path: |
