@@ -218,6 +218,7 @@ const base = import.meta.env.BASE_URL;
           
           // Fit map to the whole consortium
           map.fitBounds(consortiumLayer.getBounds(), { padding: [20, 20] });
+          map.setZoom(map.getZoom() + 1);
         })
         .catch(err => console.error('Erro ao carregar mapa do consórcio:', err));
 
