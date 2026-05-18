@@ -1,5 +1,5 @@
 ---
-name: Prof. Dr. Elcio Abdalla
+name: Elcio Abdalla
 role: Coordenador Geral
 institution: Universidade de São Paulo (USP)
 photo: /images/team/elcio-abdalla.jpg
