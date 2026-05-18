@@ -182,24 +182,15 @@ const base = import.meta.env.BASE_URL;
   </div>
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css" type="text/css">
-  
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="https://unpkg.com/leaflet-gesture-handling"></script>
 
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       if (!window.L) return;
 
       const map = L.map('paraiba-map', {
-        gestureHandling: true,
-        gestureHandlingOptions: {
-          text: {
-            touch: "Use dois dedos para mover o mapa",
-            scroll: "Use Ctrl + Scroll para ampliar o mapa",
-            scrollMac: "Use \u2318 + Scroll para ampliar o mapa"
-          }
-        },
+        scrollWheelZoom: false, // Disabled by default, enabled on Ctrl
+        dragging: !L.Browser.mobile, // Prevent scroll trapping on mobile
         zoomControl: true
       });
 
@@ -255,6 +246,29 @@ const base = import.meta.env.BASE_URL;
       L.marker([-7.1153, -34.8610], {icon: cityIcon})
         .bindTooltip('<div class="custom-tooltip-content">João Pessoa</div>', {permanent: true, direction: 'right', className: 'custom-tooltip-container', offset: [5, -5]})
         .addTo(map);
+
+      // Custom Ctrl+Scroll logic
+      const mapContainer = document.getElementById('paraiba-map-container');
+      const ctrlMessage = document.createElement('div');
+      ctrlMessage.innerHTML = 'Use <b>Ctrl + Scroll</b> para dar zoom no mapa';
+      ctrlMessage.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(15, 23, 42, 0.9); color: #cbd5e1; padding: 12px 24px; border-radius: 8px; z-index: 1000; font-family: Outfit, sans-serif; pointer-events: none; opacity: 0; transition: opacity 0.3s; border: 1px solid rgba(99, 102, 241, 0.3); font-size: 14px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);';
+      mapContainer.appendChild(ctrlMessage);
+
+      let scrollTimeout;
+      mapContainer.addEventListener('wheel', (e) => {
+        if (!e.ctrlKey && !e.metaKey) {
+          // Show message if ctrl is NOT pressed
+          map.scrollWheelZoom.disable();
+          ctrlMessage.style.opacity = '1';
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => { ctrlMessage.style.opacity = '0'; }, 1500);
+        } else {
+          // Allow zoom if ctrl IS pressed
+          map.scrollWheelZoom.enable();
+          ctrlMessage.style.opacity = '0';
+          e.preventDefault();
+        }
+      }, { passive: false });
 
       // Add custom styles for the map
       const style = document.createElement('style');
