@@ -48,8 +48,15 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
   const lang = getStoredLang();
 
   // Set html lang attribute for accessibility and browser behavior
-  const langAttr = lang === 'zh-CN' ? 'zh' : lang;
-  document.documentElement.lang = langAttr;
+  // Note: If the page has dynamic components that rely on Google Translate,
+  // we do NOT set the lang attribute immediately for non-PT languages,
+  // because GTE needs to see the original page language ('pt') to trigger translation.
+  // GTE will automatically update the html lang attribute when it finishes.
+  const hasDynamic = !!document.querySelector('[data-dynamic-translate]');
+  if (!hasDynamic || lang === 'pt') {
+    const langAttr = lang === 'zh-CN' ? 'zh' : lang;
+    document.documentElement.lang = langAttr;
+  }
 
   // Translate structural UI elements (header, footer, hero)
   // These use data-i18n and are handled by the existing i18n.ts system

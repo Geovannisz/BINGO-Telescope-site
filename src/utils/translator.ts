@@ -305,7 +305,13 @@ export function initTranslator(): void {
   }
 
   // 3. Set html lang attribute
-  document.documentElement.lang = lang === 'zh-CN' ? 'zh' : lang;
+  // Note: For target languages other than 'pt', we do NOT set document.documentElement.lang
+  // here before Google Translate loads. Doing so would trick the Google Translate Element
+  // into thinking the page is already in the target language, causing it to skip translating.
+  // GTE will automatically set the html lang attribute once it finishes translating.
+  if (lang === 'pt') {
+    document.documentElement.lang = 'pt';
+  }
 
   // 4. Create hidden container for Google Translate widget
   let container = document.getElementById('google_translate_element');
