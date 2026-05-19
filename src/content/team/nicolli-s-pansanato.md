@@ -13,20 +13,20 @@ lattes: https://lattes.cnpq.br/9868018279903822
 bio: Estudante de iniciação científica da Universidade de São Paulo. Tem
   experiência na área de Física, com ênfase em análise de dados aplicada a
   radioastronomia.
-interest_origin: Meu interesse pela pesquisa começou aos 10 anos,quando uma
-  professora pediu que nós, alunos, fizéssemos uma pequena pesquisasobre buracos
-  negros. A partir daí, me apaixonei por assuntos sobre astronomia,cosmologia e
-  física. Durante a adolescência, sempre gostei de pesquisar eanotar o que
-  considerava interessante sobre esses temas.
+interest_origin: Meu interesse pela pesquisa começou aos 10 anos, quando uma
+  professora pediu que nós, alunos, fizéssemos uma pequena pesquisa sobre
+  buracos negros. A partir daí, me apaixonei por assuntos sobre astronomia,
+  cosmologia e física. Durante a adolescência, sempre gostei de pesquisar e
+  anotar o que considerava interessante sobre esses temas.
 motivation: Após eu ingressar no projeto BINGO, quando estava no início da
-  graduaçãoe não tinha experiência para saber com o que especificamente queria
+  graduação e não tinha experiência para saber com o que especificamente queria
   estudar,segui a área que foi sugerida para mim, na época – radioastronomia e
-  análise dedados – e acabei me afeiçoando a este trabalho.
+  análise de dados – e acabei me afeiçoando a este trabalho.
 years_researching: Desde 2022.
-research_lines: Minha principal linha de pesquisa no momentoenvolve
+research_lines: Minha principal linha de pesquisa no momento envolve
   processamentos de sinais em radioastronomia.
-memorable_experience: Acredito ter sido umevento – o "*2024 USTC International
-  Students Summer Camp*" – do qualtive a oportunidade de participar, pois pude
+memorable_experience: Acredito ter sido um evento – o "*2024 USTC International
+  Students Summer Camp*" – do qual tive a oportunidade de participar, pois pude
   passar 1 mês na Universidade de Ciência e Tecnologia da China. Isso foi
   marcante principalmente porque, quando eu estava no ensino médio, não
   imaginava que a ciência poderia me trazer oportunidades e experiências como
