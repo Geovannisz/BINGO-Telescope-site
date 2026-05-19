@@ -1,5 +1,5 @@
 ---
-name: Nicolli S. Pansanato
+name: Nicolli Soares Pansanato
 role: Iniciação Científica
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/nicolli.jpg
