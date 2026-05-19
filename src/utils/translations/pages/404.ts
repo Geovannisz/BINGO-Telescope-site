@@ -8,8 +8,8 @@ const error404: Record<string, { en: string; zh: string }> = {
     zh: '您正在寻找的页面未找到。它可能已被移动、删除或被黑洞吞噬。'
   },
   '404.btn': {
-    en: 'Return to Base (Home)',
-    zh: '返回基地 (首页)'
+    en: 'Return to Home',
+    zh: '返回首页'
   }
 };
 export default error404;
