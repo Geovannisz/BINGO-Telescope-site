@@ -238,12 +238,33 @@ export function setStoredLang(lang: string): void {
  * Set the googtrans cookie that Google Translate reads.
  */
 function setGoogTransCookie(targetLang: string): void {
+  const host = window.location.hostname;
+  const parts = host.split('.');
+  
   if (targetLang === 'pt') {
-    // Clear cookie to show original content
-    document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;';
+    // Clear cookie at all possible levels to make sure GTE is fully reset
+    const cookieBase = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+    
+    document.cookie = `${cookieBase}path=/;`;
+    document.cookie = `${cookieBase}path=/;domain=.${host};`;
+    document.cookie = `${cookieBase}path=/;domain=${host};`;
+    
+    if (parts.length >= 2) {
+      const mainDomain = `.${parts.slice(-2).join('.')}`;
+      document.cookie = `${cookieBase}path=/;domain=${mainDomain};`;
+    }
   } else {
     const val = `/pt/${LANG_MAP[targetLang] || targetLang}`;
+    
+    // Set cookie at all possible levels to ensure GTE picks it up and overrides any old domain-level cookies
     document.cookie = `googtrans=${val};path=/;`;
+    document.cookie = `googtrans=${val};path=/;domain=.${host};`;
+    document.cookie = `googtrans=${val};path=/;domain=${host};`;
+    
+    if (parts.length >= 2) {
+      const mainDomain = `.${parts.slice(-2).join('.')}`;
+      document.cookie = `googtrans=${val};path=/;domain=${mainDomain};`;
+    }
   }
 }
 
@@ -286,6 +307,23 @@ export function switchLanguage(lang: string): void {
 }
 
 /**
+ * Removes the anti-FOUC (Flash of Unstyled Content) opacity:0 style safely.
+ * Since native translation happens locally, the transition is near-instant,
+ * bypassing the GTE delay footprint.
+ */
+function revealBody(): void {
+  const style = document.getElementById('anti-fouc-style');
+  if (style) {
+    document.body.style.transition = 'opacity 0.3s ease-in';
+    document.body.style.opacity = '1';
+    setTimeout(() => {
+      style.remove();
+      document.body.style.transition = '';
+    }, 400);
+  }
+}
+
+/**
  * Initialize the translation system.
  * Called from BaseLayout on DOMContentLoaded.
  *
@@ -299,9 +337,11 @@ export function initTranslator(): void {
   // 1. Protect scientific terms BEFORE Google Translate loads
   protectScientificTerms();
 
-  // 2. Set cookie so GTE auto-translates on load
+  // 2. Set or clear cookie defensively so GTE auto-translates on load
   if (lang !== 'pt') {
     setGoogTransCookie(lang);
+  } else {
+    setGoogTransCookie('pt');
   }
 
   // 3. Set html lang attribute
@@ -313,7 +353,19 @@ export function initTranslator(): void {
     document.documentElement.lang = 'pt';
   }
 
-  // 4. Create hidden container for Google Translate widget
+  // 4. Apply correct translations to [data-i18n] elements
+  //    (header/footer/hero are marked translate="no", so we handle them ourselves)
+  translateUIElements(lang);
+
+  // 5. If the selected language is Portuguese, GTE is NOT needed.
+  //    We exit early to prevent GTE from loading and potentially auto-translating.
+  //    Also instantly reveal the page body.
+  if (lang === 'pt') {
+    revealBody();
+    return;
+  }
+
+  // 6. Create hidden container for Google Translate widget
   let container = document.getElementById('google_translate_element');
   if (!container) {
     container = document.createElement('div');
@@ -322,7 +374,7 @@ export function initTranslator(): void {
     document.body.appendChild(container);
   }
 
-  // 5. Define the callback and load GTE script
+  // 7. Define the callback and load GTE script
   (window as any).googleTranslateElementInit = function () {
     new (window as any).google.translate.TranslateElement(
       {
@@ -343,12 +395,6 @@ export function initTranslator(): void {
     script.async = true;
     document.head.appendChild(script);
   }
-
-  // 6. Apply correct translations to [data-i18n] elements
-  //    (header/footer are marked translate="no", so we handle them ourselves)
-  // 6. Apply correct translations to [data-i18n] elements
-  //    (header/footer/hero are marked translate="no", so we handle them ourselves)
-  translateUIElements(lang);
 }
 
 /**
