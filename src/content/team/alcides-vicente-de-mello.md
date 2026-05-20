@@ -11,14 +11,14 @@ area: Cosmologia e Astrofísica
 email: alcidesvm@usp.br
 lattes: http://lattes.cnpq.br/7613768315749942
 bio: Doutorando pela Universidade de São Paulo (USP), instituição onde também
-  obteve o título de mestre. Possui uma base técnica multidisciplinar
-  consolidada pelo Serviço Nacional de Aprendizagem Industrial (SENAI), com
-  formações em Mecatrônica, Logística e Montagem de Estruturas Metálicas. Na
-  pesquisa acadêmica, dedica-se à área de cosmologia teórica, com foco na
-  análise de perturbações cosmológicas e no estudo das interações entre matéria
-  escura e energia escura. Integra ativamente o projeto do radiotelescópio
-  BINGO, atuando no setor de instrumentação astronômica voltada exclusivamente
-  para a tecnologia do backend digital DH-1, mantendo pesquisa e colaboração
+  obteve o título de mestre. Possui uma base técnica multidisciplinar pelo
+  Serviço Nacional de Aprendizagem Industrial (SENAI), com formações em
+  Mecatrônica, Logística e Montagem de Estruturas Metálicas. Na pesquisa
+  acadêmica, dedica-se à área de cosmologia teórica, com foco na análise de
+  perturbações cosmológicas e no estudo das interações entre matéria escura e
+  energia escura. Integra ativamente o projeto do radiotelescópio BINGO, atuando
+  no setor de instrumentação astronômica voltada exclusivamente para a
+  tecnologia do backend digital DH-1, mantendo pesquisa e colaboração
   internacional conjunta com o Shanghai Astronomical Observatory (SHAO). Possui
   experiência em métodos e análises numéricas, utilizando a linguagem Python
   para a modelagem de sistemas, resolução de equações diferenciais e rotinas de
