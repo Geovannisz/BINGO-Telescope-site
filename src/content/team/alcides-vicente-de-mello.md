@@ -24,7 +24,7 @@ bio: Doutorando pela Universidade de São Paulo (USP), instituição onde també
   para a modelagem de sistemas, resolução de equações diferenciais e rotinas de
   simulação MCMC.
 interest_origin: Desde criança eu gostava de assuntos sobre o universo, mas se
-  intensificou quando euganhei meu telescópio aos 15 anos de idade, e dali
+  intensificou quando eu ganhei meu telescópio aos 15 anos de idade, e dali
   comecei a estudar assuntos ligados à matéria escura e à energia escura.
 motivation: Conhecer o desconhecido.
 years_researching: Na pós-graduação, desde 2023.
