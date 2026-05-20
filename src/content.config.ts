@@ -6,7 +6,7 @@ const newsCollection = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
   schema: z.object({
     title: z.string(),
-    date: z.date(),
+    date: z.coerce.date(),
     author: z.string().default('BINGO Team'),
     image: z.string().optional(),
     summary: z.string(),
@@ -100,7 +100,7 @@ const publicationsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     authors: z.string(),
-    date: z.date(),
+    date: z.coerce.date(),
     link: z.string().optional(),
     summary: z.string().optional(),
     journal: z.string().optional(),
