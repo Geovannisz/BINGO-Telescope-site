@@ -25,6 +25,7 @@ const teamCollection = defineCollection({
       'Coordenador Geral',
       'Pesquisador Sênior',
       'Professor Associado',
+      'Professor Doutor',
       'Pós-doc',
       'Doutorando',
       'Mestrando',
