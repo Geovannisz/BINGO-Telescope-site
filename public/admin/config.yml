@@ -42,6 +42,7 @@ collections:
         options:
           - "Coordenador Geral"
           - "Pesquisador Sênior"
+          - "Professor Associado"
           - "Pós-doc"
           - "Doutorando"
           - "Mestrando"
