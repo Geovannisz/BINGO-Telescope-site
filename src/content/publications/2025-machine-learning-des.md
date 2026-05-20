@@ -1,11 +1,13 @@
 ---
 title: "Machine learning analysis of photometric data from the Dark Energy Survey"
-authors: "Elcio Abdalla, Filipe B Abdalla, Alessandro Marins, Amilcar Queiroz, Rafael M Ribeiro, Alex S C Souza"
+authors: "Elcio Abdalla, Filipe B. Abdalla, Alessandro Marins, Amilcar Queiroz, Rafael M. Ribeiro, Alex S. C. Souza"
 date: 2025-11-08T12:00:00Z
 link: "https://doi.org/10.1093/mnras/staf1341"
 journal: "Monthly Notices of the Royal Astronomical Society"
 volume: "544"
 issue: "2"
 pages: "1514–1529"
-summary: "Para recuperar parâmetros cosmológicos a partir de levantamentos fotométricos, precisamos estimar a distribuição do desvio para o vermelho (redshift) fotométrico no céu com excelente precisão. Usamos e aplicamos três métodos diferentes de aprendizado de máquina aos dados publicamente disponíveis do Dark Energy Survey Data Release 2 (DES DR2): (a) rede neural artificial para redshifts fotométricos (ANNz2); (b) processos gaussianos para redshifts fotométricos (GPz); e (c) Keras, uma interface de programação de aplicações de aprendizado profundo em python. Comparamos essas diferentes técnicas aplicadas a dados de treinamento obtidos a partir do levantamento Visible Multi-Object Spectrograph (VIMOS) Public Extragalactic Redshift Survey (VIPERS). Para lidar com a incompletude do catálogo VIPERS, utilizamos uma estrutura de dados de particionamento espacial (K-d Tree) para estimar a confiabilidade dos redshifts fotométricos obtidos. Construímos um catálogo que é robusto à falta de dados de treinamento em certas regiões do espaço de cores. Usamos os dados fotométricos para criar mapas de sobredensidade em função da distribuição de redshift para mais de 500 milhões de galáxias. Esses mapas dividem o céu em várias fatias de redshift semelhantes a camadas de cebola, que podem ser prontamente utilizadas para a estimação de parâmetros cosmológicos. Em cada fatia angular, criamos e apresentamos mapas da distribuição angular das galáxias nessa fatia, bem como uma estimativa da distribuição de redshift relacionada à distribuição de galáxias daquela fatia, a qual é recuperada a partir dos métodos de estimação de redshift. Obtemos uma subamostra de galáxias do DES que são bem compatíveis com a amostra do VIPERS, com uma precisão de redshift fotométrico com taxa de outliers catastróficos da ordem de 3 por cento."
+doi: "10.1093/mnras/staf1341"
+category: "ABDUS"
+summary: "Aplicação de três métodos de aprendizado de máquina (ANNz2, GPz, Keras) aos dados públicos do Dark Energy Survey Data Release 2 para estimativa de redshifts fotométricos. Utiliza dados de treinamento do VIPERS e uma estrutura K-d Tree para estimar confiabilidade. Constrói mapas de sobredensidade para mais de 500 milhões de galáxias com taxa de outliers catastróficos da ordem de 3 por cento."
 ---

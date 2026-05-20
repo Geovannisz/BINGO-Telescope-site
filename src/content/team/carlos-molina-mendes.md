@@ -101,8 +101,26 @@ career_advice: >-
   As habilidades desenvolvidas, como o pensamento crítico e a resolução de problemas complexos, são valiosas em qualquer lugar. Por fim, escolha um tema pelo qual você realmente se apaixone, pois, nos dias difíceis(e eles virão), é essa curiosidade genuína pelo funcionamento do universo que o manterá motivado.
 publications:
   - title: "Black-Hole Evaporation for Cosmological Observers"
+    authors: "Thiago de L. Campos, C. Molina, J. A. S. Lima"
+    date: "2025-11-30"
     link: "https://doi.org/10.3390/universe11120394"
+    journal: "Universe"
+    volume: "11"
+    issue: "12"
+    pages: "394"
+    doi: "10.3390/universe11120394"
+    category: "Colaboração"
+    summary: "Evaporação de buracos negros em espaço-tempo de Vaidya-de Sitter com observadores cosmológicos."
   - title: "Dynamical model for primordial black holes"
+    authors: "F. Ruiz, C. Molina, J. A. S. Lima"
+    date: "2020-12-04"
     link: "https://doi.org/10.1103/PhysRevD.102.123516"
+    journal: "Physical Review D"
+    volume: "102"
+    issue: "12"
+    pages: "123516"
+    doi: "10.1103/PhysRevD.102.123516"
+    category: "Colaboração"
+    summary: "Modelo dinâmico para buracos negros primordiais baseado na solução estendida de McVittie."
 authorized: true
 ---

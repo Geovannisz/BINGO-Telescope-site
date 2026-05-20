@@ -19,7 +19,16 @@ bio: Físico teórico e cosmólogo, o Prof. Dr. Elcio Abdalla é o líder e
   das principais parcerias estratégicas Brasil-China na ciência.
 publications:
   - title: "Machine learning analysis of photometric data from the Dark Energy Survey"
+    authors: "Elcio Abdalla, Filipe B. Abdalla, Alessandro Marins, Amilcar Queiroz, Rafael M. Ribeiro, Alex S. C. Souza"
+    date: "2025-11-08"
     link: "https://doi.org/10.1093/mnras/staf1341"
+    journal: "Monthly Notices of the Royal Astronomical Society"
+    volume: "544"
+    issue: "2"
+    pages: "1514–1529"
+    doi: "10.1093/mnras/staf1341"
+    category: "ABDUS"
+    summary: "Aplicação de métodos de machine learning (ANNz2, GPz, Keras) aos dados do DES DR2 para estimativa de redshifts fotométricos."
 authorized: true
 credit_name: ""
 ---
