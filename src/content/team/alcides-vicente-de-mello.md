@@ -37,12 +37,12 @@ project_title: "Estudo do Setor escuro: interação entre matéria escura e ener
 project_description: Atua de forma abrangente e integra frentes teóricas e
   instrumentais da física. No âmbito teórico, o foco recai sobre a cosmologia,
   investigando a fundo a interação entre a matéria escura e a energia escura.
-  Este estudo exige um tratamento matemático detalhado para a análise
-  deperturbações cosmológicas, englobando a derivação de modelos fundamentais
-  pormeio das equações de Klein-Gordon e de Friedmann. Paralelamente, no escopo
-  dainstrumentação astronômica, a sua atuação está vinculada ao projeto
-  doradiotelescópio BINGO, com o trabalho atual direcionado exclusivamente para
-  a pesquisa e desenvolvimento da tecnologia de backend digital DH-1.
+  Este estudo exige um tratamento matemático detalhado para a análise de
+  perturbações cosmológicas, englobando a derivação de modelos fundamentais por
+  meio das equações de Klein-Gordon e de Friedmann. Paralelamente, no escopo da
+  instrumentação astronômica, a sua atuação está vinculada ao projeto do
+  radiotelescópio BINGO, com o trabalho atual direcionado exclusivamente para a
+  pesquisa e desenvolvimento da tecnologia de backend digital DH-1.
 project_problem: A natureza da matéria escura e energia escura
 project_importance: Ao investigar a interação entre matéria e energia escura, o
   meu trabalho vai além do modelo padrão (Lambda-CDM), buscando compreender se e
