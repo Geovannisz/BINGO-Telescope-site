@@ -94,6 +94,10 @@ const publicationsCollection = defineCollection({
     date: z.date(),
     link: z.string().optional(),
     summary: z.string().optional(),
+    journal: z.string().optional(),
+    volume: z.string().optional(),
+    issue: z.string().optional(),
+    pages: z.string().optional(),
   }),
 });
 

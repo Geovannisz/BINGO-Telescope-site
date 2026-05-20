@@ -47,8 +47,7 @@ impressive_discovery: São muitas, desde a confirmação das ondas gravitacionai
 career_advice: Persistência. O caminho é árduo e não é fácil. Muitas coisas
   surgem, mas se for persistente, a Física se mostra muito bonita.
 publications:
-  - title: "Machine learning analysis of photometric data from the Dark Energy
-      Survey "
-    link: https://academic.oup.com/mnras/article/544/2/1514/8317173
+  - title: "Machine learning analysis of photometric data from the Dark Energy Survey"
+    link: "https://doi.org/10.1093/mnras/staf1341"
 authorized: true
 ---
