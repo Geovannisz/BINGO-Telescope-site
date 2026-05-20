@@ -93,7 +93,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
       </div>
 
       <!-- Stats bar -->
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl animate-fade-in-up notranslate" translate="no" style="animation-delay: 0.3s;">
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-[1fr_1fr_1fr_1.15fr] gap-4 max-w-2xl animate-fade-in-up notranslate" translate="no" style="animation-delay: 0.3s;">
         <div class="glass-card p-4 text-center">
           <div class="text-2xl sm:text-3xl font-bold gradient-text-cyan">{sortedPubs.length}</div>
           <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider" data-pub-t="ui.publications">Publicações</div>
@@ -106,7 +106,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
           <div class="text-2xl sm:text-3xl font-bold gradient-text-cyan">{uniqueJournals}</div>
           <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider" data-pub-t="ui.periodicos">Periódicos</div>
         </div>
-        <div class="glass-card p-4 text-center">
+        <div class="glass-card p-4 px-2 sm:px-3 text-center">
           <div class="text-xl sm:text-2xl font-bold gradient-text-cyan whitespace-nowrap px-1">{yearSpan}</div>
           <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider" data-pub-t="ui.periodo">Período</div>
         </div>
