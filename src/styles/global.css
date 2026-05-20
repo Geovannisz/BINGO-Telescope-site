@@ -13,6 +13,114 @@
   --color-brand-cosmic: #070d1f;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   DARK THEME HARDENING — Prevent black text on dark backgrounds
+   ═══════════════════════════════════════════════════════════════════
+   Problem: Some browsers/devices render text in black (system default)
+   when Tailwind classes fail to load, OS forces light colors, or
+   Google Translate wraps text in <font> tags with color attributes.
+
+   Solution: Multi-layer defense that guarantees light text on all
+   browsers, devices, and accessibility modes.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Layer 1: Tell every browser this is a dark-only site */
+:root,
+html {
+  color-scheme: dark only;
+}
+
+/* Layer 2: Explicit fallback colors on ALL base elements.
+   These fire BEFORE Tailwind utilities load, so even if Tailwind
+   fails or loads late, text is always visible. */
+html {
+  background-color: #070d1f;
+  color: #e2e8f0;
+}
+
+body {
+  background-color: #070d1f;
+  color: #e2e8f0;
+}
+
+/* Layer 3: Harden every common text element to inherit light color.
+   Browsers may override these with user-agent styles if no explicit
+   color is set. This guarantees they inherit from body instead. */
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+}
+
+p, span, div, li, td, th, dt, dd, label, legend, caption, figcaption,
+blockquote, cite, pre, code, em, strong, small, mark, del, ins, sub, sup,
+address, details, summary, article, section, aside, main, nav, footer, header {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* Layer 4: Form elements — browsers apply user-agent light backgrounds
+   and dark text to inputs/selects unless overridden explicitly. */
+input, textarea, select, button {
+  color: #e2e8f0;
+  background-color: rgba(15, 23, 42, 0.6);
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(148, 163, 184, 0.45);
+}
+
+select option {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Layer 5: Forced-Colors / Windows High-Contrast Mode.
+   When the OS enforces system colors, respect them gracefully
+   instead of fighting them — this is an accessibility mode. */
+@media (forced-colors: active) {
+  html, body {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  a {
+    color: LinkText;
+  }
+
+  button, input, select, textarea {
+    border: 1px solid ButtonBorder;
+  }
+
+  .gradient-text,
+  .gradient-text-cyan,
+  .section-label,
+  .stat-number {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: CanvasText;
+    background-clip: unset;
+    color: CanvasText;
+  }
+}
+
+/* Layer 6: Override prefers-color-scheme: light.
+   If a browser or extension queries this, ensure we NEVER flip to
+   light defaults. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: dark only;
+  }
+
+  html, body {
+    background-color: #070d1f;
+    color: #e2e8f0;
+  }
+}
+
 @font-face {
   font-family: 'Nasalization';
   src: url('/fonts/nasalization-rg.otf') format('opentype');
@@ -48,13 +156,27 @@ body {
   top: 0 !important; /* Google Translate adds top offset — prevent it */
 }
 
-/* Disable the white hover highlight on translated text */
+/* Disable the white hover highlight on translated text.
+   Google Translate wraps content in <font> tags with explicit
+   color="#000000" attributes. We must override with !important.
+   Using inherit ensures the translated text gets the parent's
+   light color rather than Google's injected black. */
 body .goog-text-highlight,
 body font,
-font font {
+font font,
+body font[color],
+font[color] {
   background-color: transparent !important;
   background: transparent !important;
   box-shadow: none !important;
+  color: inherit !important;
+}
+
+/* Catch nested Google Translate font tags at any depth */
+.translated-ltr font,
+.translated-rtl font,
+.translated-ltr font[color],
+.translated-rtl font[color] {
   color: inherit !important;
 }
 
