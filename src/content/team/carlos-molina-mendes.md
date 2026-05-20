@@ -100,9 +100,9 @@ career_advice: >-
 
   As habilidades desenvolvidas, como o pensamento crítico e a resolução de problemas complexos, são valiosas em qualquer lugar. Por fim, escolha um tema pelo qual você realmente se apaixone, pois, nos dias difíceis(e eles virão), é essa curiosidade genuína pelo funcionamento do universo que o manterá motivado.
 publications:
-  - title: Black-Hole Evaporation for Cosmological Observers
-    link: https://doi.org/10.3390/universe11120394
-  - title: Dynamical model for primordial black holes
-    link: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.102.123516
+  - title: "Black-Hole Evaporation for Cosmological Observers"
+    link: "https://doi.org/10.3390/universe11120394"
+  - title: "Dynamical model for primordial black holes"
+    link: "https://doi.org/10.1103/PhysRevD.102.123516"
 authorized: true
 ---
