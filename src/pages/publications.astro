@@ -88,12 +88,12 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
           Publicações <span class="gradient-text-cyan">Científicas</span>
         </h1>
         <p class="mt-6 text-lg leading-8 text-slate-300 max-w-2xl">
-          Artigos, teses e relatórios técnicos produzidos pelo consórcio BINGO, publicados principalmente na Astronomy & Astrophysics (A&A).
+          Artigos, teses e relatórios técnicos produzidos pelo consórcio BINGO.
         </p>
       </div>
 
       <!-- Stats bar -->
-      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl animate-fade-in-up notranslate" translate="no" style="animation-delay: 0.3s;">
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl animate-fade-in-up notranslate" translate="no" style="animation-delay: 0.3s;">
         <div class="glass-card p-4 text-center">
           <div class="text-2xl sm:text-3xl font-bold gradient-text-cyan">{sortedPubs.length}</div>
           <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider" data-pub-t="ui.publications">Publicações</div>
@@ -177,14 +177,6 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
               <svg class="pub-filter-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
 
-            <!-- Source filter -->
-            <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-source" class="pub-filter-select">
-                <option value="" data-pub-t="ui.all_sources">Todas as fontes</option>
-                <option value="collection" data-pub-t="source.collection">Coleção oficial</option>
-                <option value="team" data-pub-t="source.team">Membro da equipe</option>
-              </select>
-              <svg class="pub-filter-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
           </div>
 
@@ -359,7 +351,6 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
       const filterYear = document.getElementById('pub-filter-year') as HTMLSelectElement;
       const filterJournal = document.getElementById('pub-filter-journal') as HTMLSelectElement;
       const filterCategory = document.getElementById('pub-filter-category') as HTMLSelectElement;
-      const filterSource = document.getElementById('pub-filter-source') as HTMLSelectElement;
       const sortSelect = document.getElementById('pub-sort') as HTMLSelectElement;
       const clearFilters = document.getElementById('pub-clear-filters')!;
       const resultsCount = document.getElementById('pub-results-count')!;
@@ -389,7 +380,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
       });
 
       // ── FILTERS ──
-      [filterYear, filterJournal, filterCategory, filterSource].forEach(el => {
+      [filterYear, filterJournal, filterCategory].forEach(el => {
         el.addEventListener('change', () => {
           currentPage = 1;
           applyFilters();
@@ -409,7 +400,6 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
         filterYear.value = '';
         filterJournal.value = '';
         filterCategory.value = '';
-        filterSource.value = '';
         sortSelect.value = 'date-desc';
         currentPage = 1;
         applyFilters();
@@ -420,7 +410,6 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
         const year = filterYear.value;
         const journal = filterJournal.value.toLowerCase();
         const category = filterCategory.value;
-        const source = filterSource.value;
 
         let filtered = allCards.filter(card => {
           // Search
@@ -441,9 +430,6 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
 
           // Category filter
           if (category && card.dataset.category !== category) return false;
-
-          // Source filter
-          if (source && card.dataset.source !== source) return false;
 
           return true;
         });
@@ -506,7 +492,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}–${years[0]}` :
         }
 
         // Show/hide clear filters
-        const hasFilters = searchInput.value || filterYear.value || filterJournal.value || filterCategory.value || filterSource.value || sortSelect.value !== 'date-desc';
+        const hasFilters = searchInput.value || filterYear.value || filterJournal.value || filterCategory.value || sortSelect.value !== 'date-desc';
         clearFilters.classList.toggle('hidden', !hasFilters);
 
         // Render pagination
