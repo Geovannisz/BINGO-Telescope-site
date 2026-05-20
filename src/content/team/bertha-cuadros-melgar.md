@@ -9,16 +9,17 @@ city: Lorena, SP - Brasil
 area: Física Geral - Relatividade e Gravitação
 email: bertha@usp.br
 lattes: http://lattes.cnpq.br/6417216091455652
-bio: "Fez graduação em Física na Universidad Nacional de San Agustín (Perú),
+bio: "Fez graduação em Física na *Universidad Nacional de San Agustín* (Perú),
   mestrado e doutorado na Universidade de São Paulo (Brasil). Foi pesquisador
-  posdoutoral na Universidade de São Paulo (Brasil), na Universidad de Santiago
-  de Chile, na National Technical University of Athens (Grécia) e na Universidad
-  de Buenos Aires (Argentina). Foi docente a tempo parcial na Universidad de
-  Chile e na Universidad Nacional Andrés Bello (Chile). Atualmente é professora
-  doutora na Escola de Engenharia de Lorena da Universidade de Sao Paulo
-  (Brasil). Realiza pesquisas em Física Teórica, atuando nos temas seguintes:
-  Buracos Negros, Cosmologia de Branas, Modelos Alternativos de Gravitação em
-  2+1 e em N dimensões e Aplicações da Conjectura AdS/CFT."
+  posdoutoral na Universidade de São Paulo (Brasil), na *Universidad de Santiago
+  de Chile*, na *National Technical University of Athens* (Grécia) e na
+  *Universidad de Buenos Aires* (Argentina). Foi docente a tempo parcial na
+  *Universidad de Chile e na Universidad Nacional Andrés Bello* (Chile).
+  Atualmente é professora doutora na Escola de Engenharia de Lorena da
+  Universidade de Sao Paulo (Brasil). Realiza pesquisas em Física Teórica,
+  atuando nos temas seguintes: Buracos Negros, Cosmologia de Branas, Modelos
+  Alternativos de Gravitação em 2+1 e em N dimensões e Aplicações da Conjectura
+  AdS/CFT."
 interest_origin: Quando era criança, me interessei pela astronomia.
 motivation: Habilidade com a ferramenta matemática, curiosidade pela física
   teórica e pelo universo e a possibilidade de novas descobertas observacionais
@@ -127,7 +128,7 @@ publications:
     link: https://doi.org/10.1103/PhysRevD.111.024043
   - title: Black holes surrounded by massive vector fields in Kaluza-Klein gravity
     link: https://doi.org/10.1140/epjc/s10052-025-14253-3
-future_projects: Estamos trabalhando em alguns projetos querelacionem os modelos
-  teóricoscom as futuras descobertas do BINGO.
+future_projects: Estamos trabalhando em alguns projetos que relacionem os
+  modelos teóricos com as futuras descobertas do BINGO.
 authorized: true
 ---
