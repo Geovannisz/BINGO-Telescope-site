@@ -1,6 +1,6 @@
 ---
 name: Carlos Molina Mendes
-role: Pesquisador Sênior
+role: Professor Associado
 institution: Universidade de São Paulo (USP), Escola de Artes, Ciências e Humanidades (EACH)
 stage:
   - Stage IV
