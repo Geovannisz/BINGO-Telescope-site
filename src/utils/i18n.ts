@@ -177,6 +177,7 @@ export const roleTranslations = {
     // Singular roles
     'role.Coordenador Geral': 'Coordenador Geral',
     'role.Pesquisador Sênior': 'Pesquisador Sênior',
+    'role.Professor Titular': 'Professor Titular',
     'role.Professor Associado': 'Professor Associado',
     'role.Professor Doutor': 'Professor Doutor',
     'role.Pós-doc': 'Pós-doc',
@@ -188,6 +189,7 @@ export const roleTranslations = {
     // Plural labels
     'label.Coordenador Geral': 'Coordenação Geral',
     'label.Pesquisador Sênior': 'Pesquisadores Seniores',
+    'label.Professor Titular': 'Professores Titulares',
     'label.Professor Associado': 'Professores Associados',
     'label.Professor Doutor': 'Professores Doutores',
     'label.Pós-doc': 'Pós-Doutorandos',
@@ -199,6 +201,7 @@ export const roleTranslations = {
     // Descriptions
     'desc.Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
     'desc.Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
+    'desc.Professor Titular': 'Professores titulares de universidades e institutos de pesquisa parceiros',
     'desc.Professor Associado': 'Professores associados de universidades e institutos de pesquisa parceiros',
     'desc.Professor Doutor': 'Professores doutores de universidades e institutos de pesquisa parceiros',
     'desc.Pós-doc': 'Pesquisadores em estágio pós-doutoral',
@@ -212,6 +215,7 @@ export const roleTranslations = {
     // Singular roles
     'role.Coordenador Geral': 'General Coordinator',
     'role.Pesquisador Sênior': 'Senior Researcher',
+    'role.Professor Titular': 'Full Professor',
     'role.Professor Associado': 'Associate Professor',
     'role.Professor Doutor': 'Assistant Professor',
     'role.Pós-doc': 'Postdoc',
@@ -223,6 +227,7 @@ export const roleTranslations = {
     // Plural labels
     'label.Coordenador Geral': 'General Coordination',
     'label.Pesquisador Sênior': 'Senior Researchers',
+    'label.Professor Titular': 'Full Professors',
     'label.Professor Associado': 'Associate Professors',
     'label.Professor Doutor': 'Assistant Professors',
     'label.Pós-doc': 'Postdoctoral Researchers',
@@ -234,6 +239,7 @@ export const roleTranslations = {
     // Descriptions
     'desc.Coordenador Geral': 'Leadership and strategic direction of the BINGO project',
     'desc.Pesquisador Sênior': 'PhD researchers leading specific research lines',
+    'desc.Professor Titular': 'Full professors from partner universities and research institutes',
     'desc.Professor Associado': 'Associate professors from partner universities and research institutes',
     'desc.Professor Doutor': 'Assistant professors from partner universities and research institutes',
     'desc.Pós-doc': 'Researchers in postdoctoral stages',
@@ -247,6 +253,7 @@ export const roleTranslations = {
     // Singular roles
     'role.Coordenador Geral': '总协调人',
     'role.Pesquisador Sênior': '资深研究员',
+    'role.Professor Titular': '教授',
     'role.Professor Associado': '副教授',
     'role.Professor Doutor': '助理教授',
     'role.Pós-doc': '博士后',
@@ -258,6 +265,7 @@ export const roleTranslations = {
     // Plural labels
     'label.Coordenador Geral': '总协调',
     'label.Pesquisador Sênior': '资深研究员',
+    'label.Professor Titular': '教授',
     'label.Professor Associado': '副教授',
     'label.Professor Doutor': '助理教授',
     'label.Pós-doc': '博士后研究员',
@@ -269,6 +277,7 @@ export const roleTranslations = {
     // Descriptions
     'desc.Coordenador Geral': 'BINGO项目的领导与战略方向',
     'desc.Pesquisador Sênior': '领导特定研究方向 of BINGO 的博士研究人员',
+    'desc.Professor Titular': '来自合作大学及研究机构的教授',
     'desc.Professor Associado': '来自合作大学及研究机构的副教授',
     'desc.Professor Doutor': '来自合作大学及研究机构的助理教授',
     'desc.Pós-doc': '处于博士后阶段的研究人员',

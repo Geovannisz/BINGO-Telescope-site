@@ -24,6 +24,7 @@ const teamCollection = defineCollection({
     role: z.enum([
       'Coordenador Geral',
       'Pesquisador Sênior',
+      'Professor Titular',
       'Professor Associado',
       'Professor Doutor',
       'Pós-doc',
