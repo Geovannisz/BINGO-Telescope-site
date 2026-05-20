@@ -43,12 +43,12 @@ project_description: Atua de forma abrangente e integra frentes teóricas e
   instrumentação astronômica, a sua atuação está vinculada ao projeto do
   radiotelescópio BINGO, com o trabalho atual direcionado exclusivamente para a
   pesquisa e desenvolvimento da tecnologia de backend digital DH-1.
-project_problem: A natureza da matéria escura e energia escura
+project_problem: A natureza da matéria escura e energia escura.
 project_importance: Ao investigar a interação entre matéria e energia escura, o
-  meu trabalho vai além do modelo padrão (Lambda-CDM), buscando compreender se e
-  como ocorre a transferência de energia ou momento entre esses fluidos. Além
-  disso, a análise de perturbações cosmológicas é o que permite conectar essas
-  teorias abstratas com a realidade observável, pois descreve como as minúsculas
+  meu trabalho vai além do modelo padrão (Lambda-CDM), buscando compreender como
+  ocorre a transferência de energia ou momento entre esses fluidos. Além disso,
+  a análise de perturbações cosmológicas é o que permite conectar essas teorias
+  abstratas com a realidade observável, pois descreve como as minúsculas
   flutuações de densidade do universo primordial cresceram sob a ação da
   gravidade para formar as grandes estruturas que vemos hoje, como galáxias e
   aglomerados.
