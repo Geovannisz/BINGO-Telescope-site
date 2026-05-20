@@ -172,6 +172,105 @@ export const ui = {
   },
 } as const;
 
+export const roleTranslations = {
+  pt: {
+    // Singular roles
+    'role.Coordenador Geral': 'Coordenador Geral',
+    'role.Pesquisador Sênior': 'Pesquisador Sênior',
+    'role.Professor Associado': 'Professor Associado',
+    'role.Pós-doc': 'Pós-doc',
+    'role.Doutorando': 'Doutorando',
+    'role.Mestrando': 'Mestrando',
+    'role.Iniciação Científica': 'Iniciação Científica',
+    'role.Engenheiro': 'Engenheiro',
+    'role.Colaborador Externo': 'Colaborador Externo',
+    // Plural labels
+    'label.Coordenador Geral': 'Coordenação Geral',
+    'label.Pesquisador Sênior': 'Pesquisadores Seniores',
+    'label.Professor Associado': 'Professores Associados',
+    'label.Pós-doc': 'Pós-Doutorandos',
+    'label.Doutorando': 'Doutorandos',
+    'label.Mestrando': 'Mestrandos',
+    'label.Iniciação Científica': 'Iniciação Científica',
+    'label.Engenheiro': 'Engenheiros',
+    'label.Colaborador Externo': 'Colaboradores Externos',
+    // Descriptions
+    'desc.Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
+    'desc.Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
+    'desc.Professor Associado': 'Professores associados de universidades e institutos de pesquisa parceiros',
+    'desc.Pós-doc': 'Pesquisadores em estágio pós-doutoral',
+    'desc.Doutorando': 'Estudantes desenvolvendo teses de doutorado',
+    'desc.Mestrando': 'Estudantes desenvolvendo dissertações de mestrado',
+    'desc.Iniciação Científica': 'Estudantes de graduação em projetos de IC',
+    'desc.Engenheiro': 'Profissionais de engenharia e infraestrutura',
+    'desc.Colaborador Externo': 'Parceiros e colaboradores de outras instituições',
+  },
+  en: {
+    // Singular roles
+    'role.Coordenador Geral': 'General Coordinator',
+    'role.Pesquisador Sênior': 'Senior Researcher',
+    'role.Professor Associado': 'Associate Professor',
+    'role.Pós-doc': 'Postdoc',
+    'role.Doutorando': 'PhD Student',
+    'role.Mestrando': 'Master\'s Student',
+    'role.Iniciação Científica': 'Undergraduate Researcher',
+    'role.Engenheiro': 'Engineer',
+    'role.Colaborador Externo': 'External Collaborator',
+    // Plural labels
+    'label.Coordenador Geral': 'General Coordination',
+    'label.Pesquisador Sênior': 'Senior Researchers',
+    'label.Professor Associado': 'Associate Professors',
+    'label.Pós-doc': 'Postdoctoral Researchers',
+    'label.Doutorando': 'PhD Students',
+    'label.Mestrando': 'Master\'s Students',
+    'label.Iniciação Científica': 'Undergraduate Research',
+    'label.Engenheiro': 'Engineers',
+    'label.Colaborador Externo': 'External Collaborators',
+    // Descriptions
+    'desc.Coordenador Geral': 'Leadership and strategic direction of the BINGO project',
+    'desc.Pesquisador Sênior': 'PhD researchers leading specific research lines',
+    'desc.Professor Associado': 'Associate professors from partner universities and research institutes',
+    'desc.Pós-doc': 'Researchers in postdoctoral stages',
+    'desc.Doutorando': 'Students developing doctoral theses',
+    'desc.Mestrando': 'Students developing master\'s dissertations',
+    'desc.Iniciação Científica': 'Undergraduate students in scientific initiation projects',
+    'desc.Engenheiro': 'Engineering and infrastructure professionals',
+    'desc.Colaborador Externo': 'Partners and collaborators from other institutions',
+  },
+  zh: {
+    // Singular roles
+    'role.Coordenador Geral': '总协调人',
+    'role.Pesquisador Sênior': '资深研究员',
+    'role.Professor Associado': '副教授',
+    'role.Pós-doc': '博士后',
+    'role.Doutorando': '博士生',
+    'role.Mestrando': '硕士生',
+    'role.Iniciação Científica': '本科生研究员',
+    'role.Engenheiro': '工程师',
+    'role.Colaborador Externo': '外部合作者',
+    // Plural labels
+    'label.Coordenador Geral': '总协调',
+    'label.Pesquisador Sênior': '资深研究员',
+    'label.Professor Associado': '副教授',
+    'label.Pós-doc': '博士后研究员',
+    'label.Doutorando': '博士生',
+    'label.Mestrando': '硕士生',
+    'label.Iniciação Científica': '本科生科研',
+    'label.Engenheiro': '工程师',
+    'label.Colaborador Externo': '外部合作者',
+    // Descriptions
+    'desc.Coordenador Geral': 'BINGO项目的领导与战略方向',
+    'desc.Pesquisador Sênior': '领导特定研究方向 of BINGO 的博士研究人员',
+    'desc.Professor Associado': '来自合作大学及研究机构的副教授',
+    'desc.Pós-doc': '处于博士后阶段的研究人员',
+    'desc.Doutorando': '正在撰写博士论文的博士研究生',
+    'desc.Mestrando': '正在撰写硕士论文的硕士研究生',
+    'desc.Iniciação Científica': '参与科研启蒙项目的在读本科生',
+    'desc.Engenheiro': '工程与基础设施专业人员',
+    'desc.Colaborador Externo': '来自其他机构的合作伙伴和合作者',
+  }
+} as const;
+
 export type UiKey = keyof (typeof ui)[typeof defaultLang];
 
 /**

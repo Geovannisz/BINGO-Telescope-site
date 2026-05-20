@@ -409,7 +409,7 @@ export function translateUIElements(lang: string): void {
   const i18nLang = lang === 'zh-CN' ? 'zh' : lang;
 
   // Fetch the UI dictionary dynamically
-  import('../utils/i18n').then(({ ui }) => {
+  import('../utils/i18n').then(({ ui, roleTranslations }) => {
     const dict = (ui as Record<string, Record<string, string>>)[i18nLang];
     if (!dict) return;
 
@@ -454,6 +454,39 @@ export function translateUIElements(lang: string): void {
         htmlEl.innerHTML = text.replace(/BINGO(-ABDUS|-Uirapuru)?/g, match => `<span class="font-bingo notranslate">${match}</span>`);
       } else {
         htmlEl.textContent = text;
+      }
+    });
+
+    // Translate individual roles (Team Member cards & profile pages)
+    document.querySelectorAll('[data-role-t]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.roleT;
+      if (!key) return;
+      const dictKey = `role.${key}`;
+      const translation = (roleTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[dictKey];
+      if (translation) {
+        el.textContent = translation;
+      }
+    });
+
+    // Translate group labels (Section headers on team page)
+    document.querySelectorAll('[data-role-label-t]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.roleLabelT;
+      if (!key) return;
+      const dictKey = `label.${key}`;
+      const translation = (roleTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[dictKey];
+      if (translation) {
+        el.textContent = translation;
+      }
+    });
+
+    // Translate group descriptions (Section descriptions on team page)
+    document.querySelectorAll('[data-role-desc-t]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.roleDescT;
+      if (!key) return;
+      const dictKey = `desc.${key}`;
+      const translation = (roleTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[dictKey];
+      if (translation) {
+        el.textContent = translation;
       }
     });
   });
