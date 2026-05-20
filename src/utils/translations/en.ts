@@ -160,6 +160,7 @@ const en: Record<string, string> = {
   'Professores Titulares': 'Full Professors',
   'Professores Associados': 'Associate Professors',
   'Professores Doutores': 'Assistant Professors',
+  'Professores Titulares, Associados e Doutores': 'Full, Associate, and Assistant Professors',
   'Pós-Doutorandos': 'Postdoctoral Researchers',
   'Doutorandos': 'Doctoral Students',
   'Mestrandos': 'Master\'s Students',

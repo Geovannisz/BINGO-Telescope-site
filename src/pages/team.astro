@@ -17,9 +17,7 @@ const base = import.meta.env.BASE_URL;
 const roleOrder = [
   'Coordenador Geral',
   'Pesquisador Sênior',
-  'Professor Titular',
-  'Professor Associado',
-  'Professor Doutor',
+  'Professor Titular, Associado e Doutor',
   'Pós-doc',
   'Doutorando',
   'Mestrando',
@@ -31,9 +29,7 @@ const roleOrder = [
 const roleLabels: Record<string, string> = {
   'Coordenador Geral': 'Coordenação Geral',
   'Pesquisador Sênior': 'Pesquisadores Seniores',
-  'Professor Titular': 'Professores Titulares',
-  'Professor Associado': 'Professores Associados',
-  'Professor Doutor': 'Professores Doutores',
+  'Professor Titular, Associado e Doutor': 'Professores Titulares, Associados e Doutores',
   'Pós-doc': 'Pós-Doutorandos',
   'Doutorando': 'Doutorandos',
   'Mestrando': 'Mestrandos',
@@ -45,9 +41,7 @@ const roleLabels: Record<string, string> = {
 const roleDescriptions: Record<string, string> = {
   'Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
   'Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
-  'Professor Titular': 'Professores titulares de universidades e institutos de pesquisa parceiros',
-  'Professor Associado': 'Professores associados de universidades e institutos de pesquisa parceiros',
-  'Professor Doutor': 'Professores doutores de universidades e institutos de pesquisa parceiros',
+  'Professor Titular, Associado e Doutor': 'Professores titulares, associados e doutores de universidades e institutos de pesquisa parceiros',
   'Pós-doc': 'Pesquisadores em estágio pós-doutoral',
   'Doutorando': 'Estudantes desenvolvendo teses de doutorado',
   'Mestrando': 'Estudantes desenvolvendo dissertações de mestrado',
@@ -58,14 +52,26 @@ const roleDescriptions: Record<string, string> = {
 
 /* Group members by role */
 const grouped = roleOrder
-  .map(role => ({
-    role,
-    label: roleLabels[role] || role,
-    description: roleDescriptions[role] || '',
-    members: allTeam
-      .filter(m => m.data.role === role)
-      .sort((a, b) => a.data.name.localeCompare(b.data.name)),
-  }))
+  .map(role => {
+    let members;
+    if (role === 'Professor Titular, Associado e Doutor') {
+      const targetRoles = ['Professor Titular', 'Professor Associado', 'Professor Doutor'];
+      members = allTeam
+        .filter(m => targetRoles.includes(m.data.role))
+        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+    } else {
+      members = allTeam
+        .filter(m => m.data.role === role)
+        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+    }
+
+    return {
+      role,
+      label: roleLabels[role] || role,
+      description: roleDescriptions[role] || '',
+      members,
+    };
+  })
   .filter(g => g.members.length > 0);
 
 /* Working Groups data */

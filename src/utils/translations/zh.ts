@@ -161,6 +161,7 @@ const zh: Record<string, string> = {
   'Professores Titulares': '教授',
   'Professores Associados': '副教授',
   'Professores Doutores': '助理教授',
+  'Professores Titulares, Associados e Doutores': '教授、副教授与助理教授',
   'Pós-Doutorandos': '博士后研究员',
   'Doutorandos': '博士生',
   'Mestrandos': '硕士生',
