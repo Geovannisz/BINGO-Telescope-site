@@ -73,7 +73,16 @@ const teamCollection = defineCollection({
     /* ── Publications ── */
     publications: z.array(z.object({
       title: z.string(),
-      link: z.string().optional()
+      authors: z.string().optional(),
+      date: z.string().optional(),
+      link: z.string().optional(),
+      summary: z.string().optional(),
+      journal: z.string().optional(),
+      volume: z.string().optional(),
+      issue: z.string().optional(),
+      pages: z.string().optional(),
+      doi: z.string().optional(),
+      category: z.enum(['Série Principal', 'ABDUS', 'Colaboração', 'Tese', 'Outro']).optional(),
     })).optional(),
     published_articles: z.string().optional(),
     books_chapters: z.string().optional(),
@@ -98,6 +107,8 @@ const publicationsCollection = defineCollection({
     volume: z.string().optional(),
     issue: z.string().optional(),
     pages: z.string().optional(),
+    doi: z.string().optional(),
+    category: z.enum(['Série Principal', 'ABDUS', 'Colaboração', 'Tese', 'Outro']).optional(),
   }),
 });
 

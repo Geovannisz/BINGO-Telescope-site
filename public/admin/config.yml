@@ -107,10 +107,25 @@ collections:
         required: false
         fields:
           - {label: "Título", name: "title", widget: "string"}
-          - {label: "Autores", name: "authors", widget: "string", required: false}
+          - {label: "Autores", name: "authors", widget: "string", required: false, hint: "Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al."}
           - {label: "Data", name: "date", widget: "datetime", required: false}
           - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
+          - {label: "DOI (apenas o identificador)", name: "doi", widget: "string", required: false, hint: "Ex: 10.1051/0004-6361/202140883"}
           - {label: "Resumo", name: "summary", widget: "text", required: false}
+          - {label: "Periódico / Journal", name: "journal", widget: "string", required: false, hint: "Ex: Astronomy & Astrophysics"}
+          - {label: "Volume", name: "volume", widget: "string", required: false}
+          - {label: "Edição (Issue)", name: "issue", widget: "string", required: false}
+          - {label: "Páginas", name: "pages", widget: "string", required: false, hint: "Ex: 1514–1529"}
+          - label: "Categoria"
+            name: "category"
+            widget: "select"
+            required: false
+            options:
+              - "Série Principal"
+              - "ABDUS"
+              - "Colaboração"
+              - "Tese"
+              - "Outro"
       - {label: "Livros ou capítulos", name: "books_chapters", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
       - {label: "Grupos, laboratórios ou projetos", name: "groups_labs", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
       - {label: "Projetos futuros a destacar", name: "future_projects", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
@@ -129,4 +144,20 @@ collections:
       - {label: "Autores", name: "authors", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
       - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
+      - {label: "DOI (apenas o identificador)", name: "doi", widget: "string", required: false, hint: "Ex: 10.1051/0004-6361/202140883"}
       - {label: "Resumo", name: "summary", widget: "text", required: false}
+      - {label: "Periódico / Journal", name: "journal", widget: "string", required: false, hint: "Ex: Astronomy & Astrophysics, Monthly Notices of the Royal Astronomical Society"}
+      - {label: "Volume", name: "volume", widget: "string", required: false}
+      - {label: "Edição (Issue)", name: "issue", widget: "string", required: false}
+      - {label: "Páginas", name: "pages", widget: "string", required: false, hint: "Ex: A128, 1514–1529"}
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        required: false
+        options:
+          - "Série Principal"
+          - "ABDUS"
+          - "Colaboração"
+          - "Tese"
+          - "Outro"
+
