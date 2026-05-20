@@ -409,7 +409,7 @@ export function translateUIElements(lang: string): void {
   const i18nLang = lang === 'zh-CN' ? 'zh' : lang;
 
   // Fetch the UI dictionary dynamically
-  import('../utils/i18n').then(({ ui, roleTranslations }) => {
+  import('../utils/i18n').then(({ ui, roleTranslations, pubTranslations }) => {
     const dict = (ui as Record<string, Record<string, string>>)[i18nLang];
     if (!dict) return;
 
@@ -487,6 +487,26 @@ export function translateUIElements(lang: string): void {
       const translation = (roleTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[dictKey];
       if (translation) {
         el.textContent = translation;
+      }
+    });
+
+    // Translate publications page elements natively
+    document.querySelectorAll('[data-pub-t]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.pubT;
+      if (!key) return;
+      const translation = (pubTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[key];
+      if (translation) {
+        el.textContent = translation;
+      }
+    });
+
+    // Translate publications input placeholders natively
+    document.querySelectorAll('[data-pub-placeholder]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.pubPlaceholder;
+      if (!key) return;
+      const translation = (pubTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[key];
+      if (translation && el instanceof HTMLInputElement) {
+        el.placeholder = translation;
       }
     });
   });

@@ -271,6 +271,108 @@ export const roleTranslations = {
   }
 } as const;
 
+export const pubTranslations = {
+  pt: {
+    // Categories
+    'category.Série Principal': 'Série Principal',
+    'category.ABDUS': 'BINGO-ABDUS',
+    'category.Colaboração': 'Colaboração',
+    'category.Tese': 'Tese',
+    'category.Outro': 'Outro',
+    // Sources
+    'source.collection': 'Coleção oficial',
+    'source.team': 'Membro da equipe',
+    'source.badge.team': 'Equipe',
+    // UI elements
+    'ui.peer_reviewed': 'Peer-reviewed',
+    'ui.access': 'Acessar',
+    'ui.hover_summary': 'Passe o mouse para ver o resumo',
+    'ui.publications': 'Publicações',
+    'ui.periodicos': 'Periódicos',
+    'ui.periodo': 'Período',
+    'ui.results_suffix': 'publicações encontradas',
+    'ui.clear_filters': 'Limpar filtros',
+    'ui.no_pubs': 'Nenhuma publicação encontrada',
+    'ui.adjust_filters': 'Tente ajustar os filtros ou o termo de busca.',
+    'ui.search_placeholder': 'Buscar por título, autores, resumo ou periódico...',
+    'ui.all_years': 'Todos os anos',
+    'ui.all_journals': 'Todos os periódicos',
+    'ui.all_categories': 'Todas as categorias',
+    'ui.all_sources': 'Todas as fontes',
+    'ui.sort_recent': 'Mais recente',
+    'ui.sort_oldest': 'Mais antigo',
+    'ui.sort_title_asc': 'A → Z (título)',
+    'ui.sort_title_desc': 'Z → A (título)',
+    'ui.pagination_of': 'de',
+  },
+  en: {
+    // Categories
+    'category.Série Principal': 'Main Series',
+    'category.ABDUS': 'BINGO-ABDUS',
+    'category.Colaboração': 'Collaboration',
+    'category.Tese': 'Thesis',
+    'category.Outro': 'Other',
+    // Sources
+    'source.collection': 'Official collection',
+    'source.team': 'Team member',
+    'source.badge.team': 'Team',
+    // UI elements
+    'ui.peer_reviewed': 'Peer-reviewed',
+    'ui.access': 'Access',
+    'ui.hover_summary': 'Hover to reveal summary',
+    'ui.publications': 'Publications',
+    'ui.periodicos': 'Journals',
+    'ui.periodo': 'Period',
+    'ui.results_suffix': 'publications found',
+    'ui.clear_filters': 'Clear filters',
+    'ui.no_pubs': 'No publications found',
+    'ui.adjust_filters': 'Try adjusting your filters or search term.',
+    'ui.search_placeholder': 'Search by title, authors, summary or journal...',
+    'ui.all_years': 'All years',
+    'ui.all_journals': 'All journals',
+    'ui.all_categories': 'All categories',
+    'ui.all_sources': 'All sources',
+    'ui.sort_recent': 'Most recent',
+    'ui.sort_oldest': 'Oldest',
+    'ui.sort_title_asc': 'A → Z (title)',
+    'ui.sort_title_desc': 'Z → A (title)',
+    'ui.pagination_of': 'of',
+  },
+  zh: {
+    // Categories
+    'category.Série Principal': '主系列',
+    'category.ABDUS': 'BINGO-ABDUS',
+    'category.Colaboração': '学术合作',
+    'category.Tese': '学位论文',
+    'category.Outro': '其他',
+    // Sources
+    'source.collection': '官方馆藏',
+    'source.team': '团队成员',
+    'source.badge.team': '团队',
+    // UI elements
+    'ui.peer_reviewed': '同行评审',
+    'ui.access': '访问',
+    'ui.hover_summary': '悬停以显示摘要',
+    'ui.publications': '出版物',
+    'ui.periodicos': '学术期刊',
+    'ui.periodo': '时期',
+    'ui.results_suffix': '篇出版物被找到',
+    'ui.clear_filters': '清除筛选',
+    'ui.no_pubs': '未找到出版物',
+    'ui.adjust_filters': '请尝试调整筛选条件或搜索词。',
+    'ui.search_placeholder': '按标题、作者、摘要或学术期刊搜索...',
+    'ui.all_years': '所有年份',
+    'ui.all_journals': '所有期刊',
+    'ui.all_categories': '所有类别',
+    'ui.all_sources': '所有来源',
+    'ui.sort_recent': '最新发表',
+    'ui.sort_oldest': '最早发表',
+    'ui.sort_title_asc': 'A → Z (标题)',
+    'ui.sort_title_desc': 'Z → A (标题)',
+    'ui.pagination_of': '/',
+  },
+} as const;
+
 export type UiKey = keyof (typeof ui)[typeof defaultLang];
 
 /**
