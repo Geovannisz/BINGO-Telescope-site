@@ -100,27 +100,124 @@ career_advice: >-
 
   As habilidades desenvolvidas, como o pensamento crítico e a resolução de problemas complexos, são valiosas em qualquer lugar. Por fim, escolha um tema pelo qual você realmente se apaixone, pois, nos dias difíceis(e eles virão), é essa curiosidade genuína pelo funcionamento do universo que o manterá motivado.
 publications:
-  - title: "Black-Hole Evaporation for Cosmological Observers"
-    authors: "Thiago de L. Campos, C. Molina, J. A. S. Lima"
-    date: "2025-11-30"
-    link: "https://doi.org/10.3390/universe11120394"
-    journal: "Universe"
+  - pages: "394"
+    summary: Evaporação de buracos negros em espaço-tempo de Vaidya-de Sitter com
+      observadores cosmológicos.
+    authors: Thiago de L. Campos, C. Molina, J. A. S. Lima
+    date: 2025-11-30
+    journal: Universe
+    title: Black-Hole Evaporation for Cosmological Observers
+    issue: "12"
     volume: "11"
+    link: https://doi.org/10.3390/universe11120394
+    category: Colaboração
+    doi: 10.3390/universe11120394
+  - pages: "123516"
+    summary: Modelo dinâmico para buracos negros primordiais baseado na solução
+      estendida de McVittie.
+    authors: F. Ruiz, C. Molina, J. A. S. Lima
+    date: 2020-12-04
+    journal: Physical Review D
+    title: Dynamical model for primordial black holes
     issue: "12"
-    pages: "394"
-    doi: "10.3390/universe11120394"
-    category: "Colaboração"
-    summary: "Evaporação de buracos negros em espaço-tempo de Vaidya-de Sitter com observadores cosmológicos."
-  - title: "Dynamical model for primordial black holes"
-    authors: "F. Ruiz, C. Molina, J. A. S. Lima"
-    date: "2020-12-04"
-    link: "https://doi.org/10.1103/PhysRevD.102.123516"
-    journal: "Physical Review D"
     volume: "102"
-    issue: "12"
-    pages: "123516"
-    doi: "10.1103/PhysRevD.102.123516"
-    category: "Colaboração"
-    summary: "Modelo dinâmico para buracos negros primordiais baseado na solução estendida de McVittie."
+    link: https://doi.org/10.1103/PhysRevD.102.123516
+    category: Colaboração
+    doi: 10.1103/PhysRevD.102.123516
+  - title: Hawking atmosphere of anti-de Sitter black holes
+    link: https://doi.org/10.3390/universe12050141
+  - title: Black-hole thermodynamics from gauge freedom in extended Iyer-Wald
+      formalism
+    link: https://doi.org/10.3390/universe11070215
+  - title: Dynamical black holes and accretion-induced backreaction
+    authors: https://doi.org/10.3390/universe11070202
+  - title: Geodesic dynamics in brane-de Sitter wormholes
+    link: https://doi.org/10.1103/PhysRevD.111.104014
+  - authors: ""
+    link: https://doi.org/10.1103/PhysRevD.111.024043
+    title: Stability of the spacetime of a magnetized compact object
+  - title: Generating Kerr-anti-de Sitter thermodynamics
+    link: https://doi.org/10.1103/PhysRevD.110.024049
+  - title: Weyl conjecture and thermal radiation of finite systems
+    link: https://doi.org/10.1088/1751-8121/acb09b
+  - title: Classical-quantum correspondence for two-level pseudo-hermitian systems
+    link: https://doi.org/10.1103/PhysRevA.103.022201
+  - title: Dynamical analysis of null geodesics in brane-world spacetimes
+    link: https://doi.org/10.1103/PhysRevD.102.104051
+  - title: Extended quasilocal Thermodynamics of Schwarzchild-anti de Sitter black
+      holes
+    link: https://doi.org/10.1016/j.aop.2019.167954
+  - title: Thermodynamics of bosonic systems in anti-de Sitter spacetime
+    link: https://doi.org/10.1103/PhysRevD.99.084028
+  - title: Self-similar resistive circuits as fractal-like structures
+    link: https://doi.org/10.1590/1806-9126-RBEF-2017-0178
+  - title: A Hamiltonian approach for the Thermodynamics of AdS black holes
+    link: https://doi.org/10.1016/j.aop.2017.04.009
+  - title: A Second Quantized Approach to the Rabi Problem
+    link: https://doi.org/10.1007/s13538-017-0519-7
+  - title: Quasinormal modes of generalized Pöschl-Teller potentials
+    link: https://doi.org/10.1088/1361-6382/aa9428
+  - title: A Hamiltonian approach to Thermodynamics
+    link: https://doi.org/10.1016/j.aop.2016.07.004
+  - title: Electromagnetic perturbations in new brane world scenarios
+    link: https://doi.org/10.1103/PhysRevD.93.124068
+  - title: A construção de um litofone em uma abordagem interdisciplinar
+    link: https://doi.org/10.20396/td.v10i3.8637343
+  - title: Cosmological black holes and white holes with time-dependent mass
+    link: https://doi.org/10.1103/PhysRevD.91.084043
+  - title: Thermodynamics of quantum photon spheres
+    link: https://doi.org/10.1103/PhysRevD.90.104025
+  - title: Deformations of the vacuum solutions of general relativity subjected to
+      linear constraints
+    link: https://doi.org/10.1103/PhysRevD.88.127501
+  - title: Violão e guitarra como ferramentas para o ensino de física
+    link: "https://doi.org/10.1590/S1806-11172013000200027 "
+  - title: Rotating black holes in a Randall-Sundrum brane with a cosmological
+      constant
+    link: https://doi.org/10.1103/PhysRevD.86.124047
+  - title: Wormholes in de Sitter branes
+    link: https://doi.org/10.1103/PhysRevD.86.024015
+  - title: Isotropic extensions of the vacuum solutions in general relativity
+    link: https://doi.org/10.1103/PhysRevD.84.104013
+  - title: Black holes and wormholes in AdS branes
+    link: https://doi.org/10.1103/PhysRevD.82.044029
+  - title: Gravitational signature of Schwarzschild black holes in dynamical
+      Chern-Simons gravity
+    link: https://doi.org/10.1103/PhysRevD.81.124021
+  - title: Perturbations of black p-branes
+    link: https://doi.org/10.1103/PhysRevD.81.064001
+  - title: Stability, causality, and quasinormal modes of cosmic strings and cylinders
+    link: https://doi.org/10.1103/PhysRevD.81.044003
+  - title: Gravitational quasinormal modes of AdS black branes in d spacetime
+      dimensions
+    link: https://doi.org/10.1088/1126-6708/2009/09/117
+  - title: On two-dimensional quasitopological field theories
+    link: https://doi.org/10.1142/S0217751X09047624
+  - title: "Quasinormal modes of black holes in anti-de Sitter space: A numerical
+      study of the eikonal limit"
+    link: https://doi.org/10.1103/PhysRevD.80.024024
+  - title: Late time tails of the massive vector field in a black hole background
+    link: https://doi.org/10.1103/PhysRevD.75.084004
+  - title: Stability and thermodynamics of brane black holes
+    link: https://doi.org/10.1016/j.nuclphysb.2006.06.017
+  - title: Ringing wormholes
+    link: https://doi.org/10.1103/PhysRevD.71.124009
+  - title: Scalar field evolution in Gauss-Bonnet black holes
+    link: https://doi.org/10.1103/PhysRevD.72.084006
+  - title: Field propagation in de Sitter black holes
+    link: https://doi.org/10.1103/PhysRevD.69.104013
+  - title: Quasinormal behavior of massless scalar field perturbation in
+      Reissner-Nordström anti-de Sitter spacetimes
+    link: https://doi.org/10.1103/PhysRevD.70.064025
+  - title: Unitary quantum physics with time-space noncommutativity
+    link: https://doi.org/10.1088/1126-6708/2004/10/072
+  - title: Quasinormal modes of d-dimensional spherical black holes with a near
+      extreme cosmological constant
+    link: https://doi.org/10.1103/PhysRevD.68.064007
+  - title: Evolution of a massless scalar field in Reissner-Nordström anti-de Sitter
+      spacetimes
+    link: https://doi.org/10.1103/PhysRevD.63.084001
+  - title: Screening in three-dimensional QED with arbitrary fermion mass
+    link: https://doi.org/10.1007/s100520000468
 authorized: true
 ---
