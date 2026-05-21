@@ -1,13 +1,13 @@
 ---
-title: Geodesic dynamics in brane-de Sitter wormholes
-authors: Carlos Molina Mendes
-date: 2026-05-21T18:06:09.455Z
-link: https://doi.org/10.1103/PhysRevD.111.104014
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
+title: "Geodesic dynamics in brane-de Sitter wormholes"
+authors: "W. S. Klën, R. C. Barboza, C. Molina"
+date: 2025-05-06T12:00:00Z
+link: "https://doi.org/10.1103/PhysRevD.111.104014"
+doi: "10.1103/PhysRevD.111.104014"
+summary: "Dinâmica geodésica em wormholes de brane-de Sitter, investigando trajetórias de partículas massivas e fótons em buracos de minhoca imersos em branas com constante cosmológica positiva. Analisa a travessabilidade e a estabilidade orbital."
+journal: "Physical Review D"
+volume: "111"
+issue: "10"
 pages: ""
-category: Outro
+category: "Colaboração"
 ---

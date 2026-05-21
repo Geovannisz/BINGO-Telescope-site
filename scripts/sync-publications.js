@@ -20,7 +20,13 @@ function slugify(text) {
 }
 
 function normalizeTitle(title) {
-  return title.toLowerCase().trim().replace(/\s+/g, ' ');
+  return title
+    .toLowerCase()
+    .trim()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // remove diacritical marks
+    .replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-') // normalize all unicode dashes to hyphen
+    .replace(/\s+/g, ' ');
 }
 
 function runSync() {
