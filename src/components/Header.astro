@@ -44,7 +44,7 @@ const isActive = (href: string) => {
   return cleanPathname === cleanHref || cleanPathname.startsWith(cleanHref + '/');
 };
 
-const isExtensionActive = extensionLinks.some(link => link.href !== `${base}location` && isActive(link.href));
+const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location' && isActive(link.href));
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 pt-4 px-4 sm:px-6 lg:px-8" translate="no">
