@@ -1,7 +1,7 @@
 ---
 title: Black-hole thermodynamics from gauge freedom in extended Iyer-Wald formalism
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:53:08.231Z
+date: 2026-05-21T18:02:33.187Z
 link: https://doi.org/10.3390/universe11070215
 doi: ""
 summary: ""
