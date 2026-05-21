@@ -39,6 +39,7 @@ const zh: Record<string, string> = {
   'Acompanhe os avanços do projeto.': '关注项目最新进展。',
   'Ver todas': '查看全部',
   'Ver todas as atualizações': '查看全部动态',
+  'Explorar': '探索',
   'Espelhos': '反射镜',
   'Cornetas': '馈源',
 

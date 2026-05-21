@@ -18,42 +18,47 @@ const base = import.meta.env.BASE_URL;
     <div class="bg-overlay"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
-        <p class="section-label" data-t="overview.label">Visão Geral</p>
+        <div class="flex justify-center mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            <span data-t="overview.label">Visão Geral</span>
+          </span>
+        </div>
         <div class="section-divider"></div>
-        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="overview.title">
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl gradient-text-cyan" style="font-family: 'Outfit', sans-serif;" data-t="overview.title">
           Uma Janela para o Universo Primitivo
         </p>
-        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto" data-t="overview.desc">
+        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto leading-relaxed" data-t="overview.desc">
           O telescópio BINGO foi projetado para medir Oscilações Acústicas de Bárions (BAO) no universo em rádio-frequências, ajudando a desvendar os mistérios da Energia Escura e mapeando a distribuição de hidrogênio neutro em grandes volumes cósmicos.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- BAO Card -->
-        <div class="glass-card-glow p-8 text-center animate-on-scroll">
-          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20">
-            <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Oscilações Acústicas de Bárions" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+        <div class="glass-card-glow p-8 text-center animate-on-scroll group">
+          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20 group-hover:border-cyan-500/30 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.12)]">
+            <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Oscilações Acústicas de Bárions" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" data-t="bao.title">Mapeamento BAO</h3>
-          <p class="text-slate-400 text-sm" data-t="bao.desc">Medindo a distribuição de hidrogênio neutro em 21cm para entender a taxa de expansão do universo e a natureza da Energia Escura — fornecendo uma "régua padrão" cósmica independente.</p>
+          <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300" data-t="bao.title">Mapeamento BAO</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="bao.desc">Medindo a distribuição de hidrogênio neutro em 21cm para entender a taxa de expansão do universo e a natureza da Energia Escura — fornecendo uma "régua padrão" cósmica independente.</p>
         </div>
 
         <!-- FRBs Card -->
-        <div class="glass-card-glow p-8 text-center animate-on-scroll">
-          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20">
-            <img src={`${base}images/uirapuru/uirapuru_horn.png`} alt="Antena Outrigger Uirapuru para Transientes" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+        <div class="glass-card-glow p-8 text-center animate-on-scroll group">
+          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20 group-hover:border-cyan-500/30 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.12)]">
+            <img src={`${base}images/uirapuru/uirapuru_horn.png`} alt="Antena Outrigger Uirapuru para Transientes" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" data-t="frb.title">FRBs &amp; Transientes</h3>
-          <p class="text-slate-400 text-sm" data-t="frb.desc">Detectando Fast Radio Bursts — explosões de milissegundos de ondas de rádio vindas de bilhões de anos-luz — e pulsares com o sistema interferométrico BIS.</p>
+          <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300" data-t="frb.title">FRBs &amp; Transientes</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="frb.desc">Detectando Fast Radio Bursts — explosões de milissegundos de ondas de rádio vindas de bilhões de anos-luz — e pulsares com o sistema interferométrico BIS.</p>
         </div>
 
         <!-- ABDUS Card -->
-        <div class="glass-card-glow p-8 text-center animate-on-scroll">
-          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20 flex items-center justify-center bg-white/5">
-            <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-32 h-32 object-contain" />
+        <div class="glass-card-glow p-8 text-center animate-on-scroll group">
+          <div class="w-full h-40 rounded-xl overflow-hidden mb-6 border border-indigo-500/20 flex items-center justify-center bg-white/5 group-hover:border-cyan-500/30 transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.12)]">
+            <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-32 h-32 object-contain group-hover:scale-110 transition-transform duration-500" />
           </div>
-          <h3 class="text-xl font-bold text-white mb-3" data-t="abdus.title">Consórcio BINGO-ABDUS</h3>
-          <p class="text-slate-400 text-sm" data-t="abdus.desc">Operações conjuntas com observatórios globais como FAST e Tianlai, expandindo o alcance até z ~ 2.1 e investigando Buracos Negros Primordiais.</p>
+          <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300" data-t="abdus.title">Consórcio BINGO-ABDUS</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="abdus.desc">Operações conjuntas com observatórios globais como FAST e Tianlai, expandindo o alcance até z ~ 2.1 e investigando Buracos Negros Primordiais.</p>
         </div>
       </div>
     </div>
@@ -65,12 +70,18 @@ const base = import.meta.env.BASE_URL;
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex gap-16 items-center animate-on-scroll">
         <div class="md:w-1/2 mb-10 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5">
-            <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="Render artístico do Telescópio BINGO" class="w-full h-auto" />
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5 relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-indigo-500/10 to-cyan-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="Render artístico do Telescópio BINGO" class="w-full h-auto relative z-10 rounded-2xl" />
           </div>
         </div>
         <div class="md:w-1/2">
-          <p class="section-label" data-t="about.label">Sobre o Projeto</p>
+          <div class="flex mb-5">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span data-t="about.label">Sobre o Projeto</span>
+            </span>
+          </div>
           <h2 class="text-3xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="about.title">O que é o <span class="gradient-text-cyan">BINGO</span>?</h2>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="about.p1">
             O <strong class="text-white">BINGO</strong> (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador localizado na Serra do Urubu, em Aguiar, Paraíba. Projetado para realizar o primeiro mapeamento de BAO em frequências de rádio, ele utiliza a técnica de <strong class="text-cyan-400">Intensity Mapping</strong> da linha de 21cm do hidrogênio neutro.
@@ -81,9 +92,9 @@ const base = import.meta.env.BASE_URL;
           <p class="text-slate-300 leading-relaxed mb-6" data-t="about.p3">
             É um projeto liderado pelo Brasil (USP, INPE, UFCG) em colaboração internacional com China, Reino Unido, França, Holanda e África do Sul, reunindo mais de 60 pesquisadores.
           </p>
-          <a href={`${base}about`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+          <a href={`${base}about`} class="group/link inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-all duration-300 px-5 py-2.5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)]">
             <span data-t="about.link">Saiba mais sobre o projeto</span>
-            <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
       </div>
@@ -96,80 +107,100 @@ const base = import.meta.env.BASE_URL;
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.85) 0%, rgba(15, 23, 42, 0.9) 100%);"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
-        <p class="section-label" data-t="status.label">Status Atual</p>
+        <div class="flex justify-center mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span data-t="status.label">Status Atual</span>
+          </span>
+        </div>
         <div class="section-divider"></div>
-        <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="status.title">Fase de Montagem e Comissionamento</h2>
+        <h2 class="text-3xl font-extrabold sm:text-4xl gradient-text-cyan" style="font-family: 'Outfit', sans-serif;" data-t="status.title">Fase de Montagem e Comissionamento</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-on-scroll">
-        <div class="glass-card-glow p-8">
-          <div class="feature-icon mb-4">
+        <!-- Structure Card -->
+        <div class="glass-card-glow p-8 group relative overflow-hidden">
+          <div class="feature-icon mb-5 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-t="status.structure.title">Estrutura Principal</h3>
-          <p class="text-slate-400 text-sm" data-t="status.structure.desc">A estrutura metálica dos espelhos, fabricada na China, foi enviada ao Brasil e está sendo montada no site em Aguiar, Paraíba. A casa de comando e infraestrutura de apoio estão concluídas.</p>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300" data-t="status.structure.title">Estrutura Principal</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="status.structure.desc">A estrutura metálica dos espelhos, fabricada na China, foi enviada ao Brasil e está sendo montada no site em Aguiar, Paraíba. A casa de comando e infraestrutura de apoio estão concluídas.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/0 to-transparent group-hover:via-cyan-500/60 transition-all duration-500"></div>
         </div>
-        <div class="glass-card-glow p-8">
-          <div class="feature-icon mb-4">
+        <!-- Receivers Card -->
+        <div class="glass-card-glow p-8 group relative overflow-hidden">
+          <div class="feature-icon mb-5 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-t="status.receivers.title">Receptores e Backend</h3>
-          <p class="text-slate-400 text-sm" data-t="status.receivers.desc">Receptores de baixo ruído e o backend digital baseado em FPGAs/GPUs estão em fase de integração e testes. O BINGO-Uirapuru na UFCG serve como testbed para validação contínua.</p>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300" data-t="status.receivers.title">Receptores e Backend</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="status.receivers.desc">Receptores de baixo ruído e o backend digital baseado em FPGAs/GPUs estão em fase de integração e testes. O BINGO-Uirapuru na UFCG serve como testbed para validação contínua.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-indigo-500/0 to-transparent group-hover:via-indigo-500/60 transition-all duration-500"></div>
         </div>
-        <div class="glass-card-glow p-8">
-          <div class="feature-icon mb-4">
+        <!-- First Light Card -->
+        <div class="glass-card-glow p-8 group relative overflow-hidden">
+          <div class="feature-icon mb-5 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300">
             <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-lg font-bold text-white mb-2" data-t="status.obs.title">Primeiras Observações</h3>
-          <p class="text-slate-400 text-sm" data-t="status.obs.desc">O telescópio está previsto para iniciar as primeiras medições científicas em 2026. A fase de comissionamento incluirá calibração, validação do beam pattern e testes de sensibilidade.</p>
+          <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors duration-300" data-t="status.obs.title">Primeiras Observações</h3>
+          <p class="text-slate-400 text-sm leading-relaxed" data-t="status.obs.desc">O telescópio está previsto para iniciar as primeiras medições científicas em 2026. A fase de comissionamento incluirá calibração, validação do beam pattern e testes de sensibilidade.</p>
+          <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500/0 to-transparent group-hover:via-cyan-500/60 transition-all duration-500"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Stats Section — with Planck CMB background -->
-  <section class="py-12 sm:py-16 relative overflow-hidden section-bg-image border-y border-indigo-500/10">
+  <section class="py-14 sm:py-20 relative overflow-hidden section-bg-image border-y border-indigo-500/10">
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/1567217436969-Planck_CMB_Rectangular_2k-background.jpg'); opacity: 0.1;`}></div>
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.8) 0%, rgba(7, 13, 31, 0.9) 100%);"></div>
     <div class="starfield"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 animate-on-scroll">
-        <div class="stat-item">
-          <div class="stat-number notranslate" translate="no">~40m</div>
-          <div class="stat-label" data-t="stats.mirrors">Diâmetro dos Espelhos</div>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-on-scroll">
+        <!-- Mirrors -->
+        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
+          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">~40m</div>
+          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.mirrors">Diâmetro dos Espelhos</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number notranslate" translate="no">28</div>
-          <div class="stat-label" data-t="stats.horns">Cornetas no Plano Focal</div>
+        <!-- Horns -->
+        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
+          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">28</div>
+          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.horns">Cornetas no Plano Focal</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number notranslate" translate="no">100+</div>
-          <div class="stat-label" data-t="stats.publications">Publicações Científicas</div>
+        <!-- Publications -->
+        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
+          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">100+</div>
+          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.publications">Publicações Científicas</div>
         </div>
-        <div class="stat-item flex flex-col items-center">
-          <div class="flex justify-center gap-1 sm:gap-1.5 mb-2 flex-wrap">
-            <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="Brasil" />
-            <img src="https://flagcdn.com/cn.svg" alt="China" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="China" />
-            <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="Reino Unido" />
-            <img src="https://flagcdn.com/fr.svg" alt="França" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="França" />
-            <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="Holanda" />
-            <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow" title="África do Sul" />
+        <!-- Countries -->
+        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)] flex flex-col items-center justify-center">
+          <div class="flex justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap">
+            <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Brasil" />
+            <img src="https://flagcdn.com/cn.svg" alt="China" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="China" />
+            <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Reino Unido" />
+            <img src="https://flagcdn.com/fr.svg" alt="França" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="França" />
+            <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Holanda" />
+            <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="África do Sul" />
           </div>
-          <div class="stat-number text-xl sm:text-2xl mt-1 notranslate" translate="no">6+</div>
-          <div class="stat-label" data-t="stats.countries">Países Colaboradores</div>
+          <div class="stat-number text-xl sm:text-2xl mt-1 notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">6+</div>
+          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.countries">Países Colaboradores</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Extensions Section -->
-  <section class="py-16 sm:py-24 bg-cosmic-alt">
+  <section class="py-16 sm:py-24 bg-cosmic-alt relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 animate-on-scroll">
-        <p class="section-label" data-t="ext.label">Extensões</p>
+        <div class="flex justify-center mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            <span data-t="ext.label">Extensões</span>
+          </span>
+        </div>
         <div class="section-divider"></div>
-        <p class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="ext.title">Além do Telescópio</p>
-        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto" data-t="ext.desc">O BINGO é mais que um telescópio — é um ecossistema de ciência, tecnologia e impacto social que se estende por múltiplas frentes de pesquisa e ação comunitária.</p>
+        <p class="text-3xl font-extrabold sm:text-4xl gradient-text-cyan" style="font-family: 'Outfit', sans-serif;" data-t="ext.title">Além do Telescópio</p>
+        <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed" data-t="ext.desc">O BINGO é mais que um telescópio — é um ecossistema de ciência, tecnologia e impacto social que se estende por múltiplas frentes de pesquisa e ação comunitária.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -177,14 +208,18 @@ const base = import.meta.env.BASE_URL;
         <a href={`${base}uirapuru`} class="subproject-card group animate-on-scroll">
           <div class="card-image">
             <img src={`${base}images/uirapuru/BINGO-Uirapuru-1024x1024.jpg`} alt="Radiotelescópio BINGO-Uirapuru na UFCG" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#070d1f] via-[#070d1f]/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070d1f] via-[#070d1f]/30 to-transparent"></div>
           </div>
           <div class="card-content">
             <div class="flex items-center gap-2 mb-2">
               <img src={`${base}images/uirapuru/Logos-modificados-BINGO-Uirapuru.png`} alt="Logo Uirapuru" class="h-8 w-auto" />
             </div>
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors notranslate" translate="no">BINGO-Uirapuru</h3>
-            <p class="text-slate-400 text-sm" data-t="ext.uirapuru.desc">Radiotelescópio protótipo na UFCG, testbed para receptores e futura rede de outriggers para detecção e localização de FRBs.</p>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300 notranslate" translate="no">BINGO-Uirapuru</h3>
+            <p class="text-slate-400 text-sm leading-relaxed" data-t="ext.uirapuru.desc">Radiotelescópio protótipo na UFCG, testbed para receptores e futura rede de outriggers para detecção e localização de FRBs.</p>
+            <div class="mt-4 flex items-center text-cyan-400/70 text-xs font-medium group-hover:text-cyan-400 transition-colors duration-300">
+              <span data-t="about.link.explore">Explorar</span>
+              <svg class="ml-1.5 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
           </div>
         </a>
 
@@ -194,8 +229,12 @@ const base = import.meta.env.BASE_URL;
             <img src={`${base}images/abdus/Logos-modificados-BINGO-ABDUS.png`} alt="Logo BINGO-ABDUS" class="w-full h-full !object-contain" />
           </div>
           <div class="card-content">
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors notranslate" translate="no">BINGO-ABDUS</h3>
-            <p class="text-slate-400 text-sm" data-t="ext.abdus.desc">Advanced BINGO Dark Universe Studies — expandindo fronteiras em colaboração com ASTRON e Observatório de Nançay, alcançando z ~ 2.1.</p>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300 notranslate" translate="no">BINGO-ABDUS</h3>
+            <p class="text-slate-400 text-sm leading-relaxed" data-t="ext.abdus.desc">Advanced BINGO Dark Universe Studies — expandindo fronteiras em colaboração com ASTRON e Observatório de Nançay, alcançando z ~ 2.1.</p>
+            <div class="mt-4 flex items-center text-cyan-400/70 text-xs font-medium group-hover:text-cyan-400 transition-colors duration-300">
+              <span data-t="about.link.explore">Explorar</span>
+              <svg class="ml-1.5 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
           </div>
         </a>
 
@@ -205,8 +244,12 @@ const base = import.meta.env.BASE_URL;
             <img src={`${base}images/outreach/projeto-esperanca-no-espaco-1024x320.png`} alt="Projeto Esperança no Espaço" class="w-full h-full !object-contain" />
           </div>
           <div class="card-content">
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors" data-t="ext.esperanca.title">Esperança no Espaço</h3>
-            <p class="text-slate-400 text-sm" data-t="ext.esperanca.desc">Projeto de divulgação científica e inclusão social na Paraíba — construção de telescópios com materiais reciclados e popularização da astronomia.</p>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors duration-300" data-t="ext.esperanca.title">Esperança no Espaço</h3>
+            <p class="text-slate-400 text-sm leading-relaxed" data-t="ext.esperanca.desc">Projeto de divulgação científica e inclusão social na Paraíba — construção de telescópios com materiais reciclados e popularização da astronomia.</p>
+            <div class="mt-4 flex items-center text-amber-400/70 text-xs font-medium group-hover:text-amber-400 transition-colors duration-300">
+              <span data-t="about.link.explore">Explorar</span>
+              <svg class="ml-1.5 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </div>
           </div>
         </a>
       </div>
@@ -214,16 +257,22 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <!-- News Section -->
-  <section class="py-16 sm:py-24 bg-cosmic border-t border-indigo-500/10">
+  <section class="py-16 sm:py-24 bg-cosmic relative overflow-hidden border-t border-indigo-500/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-end mb-12 animate-on-scroll">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4 animate-on-scroll">
         <div>
+          <div class="flex mb-5">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+              <span data-t="news.label">Notícias</span>
+            </span>
+          </div>
           <h2 class="text-3xl font-extrabold text-white sm:text-4xl" style="font-family: 'Outfit', sans-serif;" data-t="news.title">Últimas Atualizações</h2>
           <p class="mt-3 text-lg text-slate-400" data-t="news.subtitle">Acompanhe os avanços do projeto.</p>
         </div>
-        <a href={`${base}news`} class="hidden md:flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+        <a href={`${base}news`} class="hidden md:inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-all duration-300 px-5 py-2.5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] group/btn">
           <span data-t="news.viewall">Ver todas</span>
-          <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg class="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
 
@@ -241,10 +290,10 @@ const base = import.meta.env.BASE_URL;
         ))}
       </div>
 
-      <div class="mt-8 text-center md:hidden">
-        <a href={`${base}news`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium">
+      <div class="mt-10 text-center md:hidden">
+        <a href={`${base}news`} class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium transition-all duration-300 px-5 py-2.5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 hover:border-cyan-500/40 group/btn">
           <span data-t="news.viewall.mobile">Ver todas as atualizações</span>
-          <svg class="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg class="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
     </div>

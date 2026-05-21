@@ -38,6 +38,7 @@ const en: Record<string, string> = {
   'Acompanhe os avanços do projeto.': 'Follow the progress of the project.',
   'Ver todas': 'View all',
   'Ver todas as atualizações': 'View all updates',
+  'Explorar': 'Explore',
   'Espelhos': 'Mirrors',
   'Cornetas': 'Horns',
 
