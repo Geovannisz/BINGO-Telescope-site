@@ -1,7 +1,7 @@
 ---
 title: Perturbations of black p-branes
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:43:42.568Z
+date: 2026-05-21T17:53:08.235Z
 link: https://doi.org/10.1103/PhysRevD.81.064001
 doi: ""
 summary: ""

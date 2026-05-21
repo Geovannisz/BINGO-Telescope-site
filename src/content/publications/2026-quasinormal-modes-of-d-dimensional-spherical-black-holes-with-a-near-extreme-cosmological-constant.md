@@ -3,7 +3,7 @@ title: >-
   Quasinormal modes of d-dimensional spherical black holes with a near extreme
   cosmological constant
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:43:42.568Z
+date: 2026-05-21T17:53:08.236Z
 link: https://doi.org/10.1103/PhysRevD.68.064007
 doi: ""
 summary: ""
