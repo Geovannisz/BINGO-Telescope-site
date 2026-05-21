@@ -30,8 +30,8 @@ const index: Record<string, { en: string; zh: string }> = {
     zh: '<strong class="text-white">BINGO</strong>（Baryon Acoustic Oscillations from Integrated Neutral Gas Observations）是一台创新的射电望远镜，位于Paraíba州Aguiar市的Serra do Urubu。它旨在利用中性氢21厘米谱线的<strong class="text-cyan-400">Intensity Mapping</strong>技术，实现首次射电频率BAO巡天。',
   },
   'about.p2': {
-    en: 'With two ~40\u00a0m mirrors in a Crossed-Dragone configuration and 28 corrugated horns in the focal plane, BINGO operates between 980 and 1260\u00a0MHz — corresponding to HI signals emitted when the universe was between 72% and 88% of its current age.',
-    zh: 'BINGO采用Crossed-Dragone构型的两面约40米反射镜和焦平面上的28个波纹馈源，工作频率为980至1260 MHz——对应宇宙年龄为当前72%至88%时发出的HI信号。',
+    en: 'With two massive ~40\u00a0m mirrors in a Crossed-Dragone configuration and 28 corrugated horns in the focal plane, BINGO operates between 980 and 1260\u00a0MHz. As a "transit" telescope with no moving parts, it provides extreme structural and pointing stability — ideal for detecting the faint HI signal emitted when the universe was between 72% and 88% of its current age.',
+    zh: 'BINGO采用Crossed-Dragone构型的两面巨大的（约40米）反射镜和焦平面上的28个波纹馈源，工作频率为980至1260 MHz。作为一台没有移动部件的“中天”望远镜，它提供了极高的结构和指向稳定性——非常适合探测宇宙年龄为当前72%至88%时发出的微弱HI信号。',
   },
   'about.p3': {
     en: 'It is a project led by Brazil (USP, INPE, UFCG) in international collaboration with China, the United Kingdom, France, the Netherlands, and South Africa, bringing together more than 60 researchers.',

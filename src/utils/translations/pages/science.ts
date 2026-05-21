@@ -16,6 +16,10 @@ const science: Record<string, { en: string; zh: string }> = {
     en: 'This distance works as a <strong class="text-white">"cosmic standard ruler"</strong>: we know its real size, so by measuring how it appears at different cosmic epochs, we can precisely calculate the expansion rate of the universe and the properties of the Dark Energy that accelerates it.',
     zh: '这一距离充当<strong class="text-white">"宇宙标准尺"</strong>：我们已知其真实大小，因此通过测量它在不同宇宙时期的表观大小，就能精确计算宇宙膨胀速率以及加速膨胀的暗能量的性质。',
   },
+  'bao.p4': {
+    en: 'To capture such a faint and delicate cosmological signal, BINGO uses a transit design with no moving parts. This extreme structural stability reduces vibrations and spurious noise, being fundamental for the success of Radio Cosmology measurements.',
+    zh: '为了捕获如此微弱精细的宇宙学信号，BINGO采用了无运动部件的凝视设计。这种极高的结构稳定性减少了振动和杂散噪声，是射电宇宙学测量成功的关键。',
+  },
   'im.label': { en: 'Observational Technique', zh: '观测技术' },
   'im.title': { en: 'Intensity Mapping at <span class="gradient-text-cyan">21\u00a0cm</span>', zh: '<span class="gradient-text-cyan">21厘米</span>强度映射' },
   'im.p1': {

@@ -7,8 +7,8 @@ const about: Record<string, { en: string; zh: string }> = {
   },
   'mission.title': { en: 'Mission and Objectives', zh: '使命与目标' },
   'mission.p1': {
-    en: 'Conceived in the early 2010s as a collaborative international project, BINGO aims to achieve the <strong class="text-cyan-400">first detection of Baryon Acoustic Oscillations (BAO) at radio frequencies</strong>, using the innovative Intensity Mapping technique of the 21\u00a0cm emission line of neutral hydrogen (HI).',
-    zh: 'BINGO于2010年代初作为国际合作项目构想而生，旨在利用中性氢（HI）21厘米发射线的Intensity Mapping创新技术，实现<strong class="text-cyan-400">射电频率首次重子声学振荡（BAO）探测</strong>。',
+    en: 'Conceived in the early 2010s as a collaborative international project, BINGO aims to achieve the <strong class="text-cyan-400">first detection of Baryon Acoustic Oscillations (BAO) at radio frequencies</strong>, using the innovative Intensity Mapping technique of the 21\u00a0cm emission line of neutral hydrogen (HI). This approach stands out for its <strong class="text-white">exceptional cost-effectiveness</strong>, allowing the rapid and efficient scanning of vast cosmic volumes.',
+    zh: 'BINGO于2010年代初作为国际合作项目构想而生，旨在利用中性氢（HI）21厘米发射线的Intensity Mapping创新技术，实现<strong class="text-cyan-400">射电频率首次重子声学振荡（BAO）探测</strong>。这种方法因其<strong class="text-white">卓越的成本效益</strong>而脱颖而出，能够快速高效地扫描广阔的宇宙体积。',
   },
   'mission.p2': {
     en: 'Operating in the 980\u00a0MHz to 1260\u00a0MHz range, BINGO will cover the redshift interval 0.127\u00a0≤\u00a0z\u00a0≤\u00a00.449 — corresponding to signals emitted when the universe was between 72% and 88% of its current age. This mapping will provide an <strong class="text-white">independent standard ruler</strong> to measure the expansion of the universe.',
@@ -30,6 +30,10 @@ const about: Record<string, { en: string; zh: string }> = {
   'consortium.p3': {
     en: 'The telescope is being built at <strong class="text-cyan-400">Serra do Urubu, in Aguiar, Paraíba</strong> — a region chosen for its extremely low radio frequency interference (RFI), ideal latitude (~7°S) for southern hemisphere observations, and natural topography that provides additional shielding against electromagnetic noise.',
     zh: '望远镜正在<strong class="text-cyan-400">Paraíba州Aguiar市Serra do Urubu</strong>建造——该地区因其极低的射电频率干扰（RFI）、适于南半球观测的理想纬度（约7°S）以及天然地形提供的额外电磁噪声屏蔽而被选中。',
+  },
+  'consortium.p4': {
+    en: 'Beyond its massive scientific potential, BINGO represents a strong <strong class="text-white">hub of development and regional impact</strong> in the Paraíba hinterland. The project includes efforts to build a modern <strong class="text-cyan-400">Astronomy Museum</strong>, aiming to encourage scientific tourism, local youth education, and accessible science outreach in Northeast Brazil.',
+    zh: '除了其巨大的科学潜力外，BINGO还代表了Paraíba内陆地区一个强大的<strong class="text-white">发展和区域影响中心</strong>。该项目包括努力建立一座现代化的<strong class="text-cyan-400">天文博物馆</strong>，旨在鼓励科学旅游、当地青年教育以及在巴西东北部开展无障碍科学普及。',
   },
   'leadership.title': { en: 'Scientific Leadership', zh: '科学领导' },
   'leadership.p1': {

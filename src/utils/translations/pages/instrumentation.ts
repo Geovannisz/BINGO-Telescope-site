@@ -20,8 +20,8 @@ const instrumentation: Record<string, { en: string; zh: string }> = {
   'optics.label': { en: 'Optical Design', zh: '光学设计' },
   'optics.title': { en: 'Optical Configuration <span class="gradient-text-cyan">Crossed-Dragone</span>', zh: '光学构型 <span class="gradient-text-cyan">Crossed-Dragone</span>' },
   'optics.p1': {
-    en: 'BINGO uses a two-mirror design in a <strong class="text-cyan-400">Crossed-Dragone</strong> configuration, an optical geometry that combines a 40\u00a0m parabolic primary mirror with a 36\u00a0m hyperbolic secondary mirror arranged at a crossed angle. This configuration minimizes sidelobes and spillover, and was chosen for producing a wide field of view with minimal distortions.',
-    zh: 'BINGO采用<strong class="text-cyan-400">Crossed-Dragone</strong>双反射镜设计，这种光学几何结构将40米抛物面主镜与36米双曲面副镜以交叉角度排列。该构型最大限度减少旁瓣和溢出效应，以最小畸变产生宽视场。',
+    en: 'BINGO uses a two-mirror design in a <strong class="text-cyan-400">Crossed-Dragone</strong> configuration, an optical geometry that combines a 40\u00a0m parabolic primary mirror with a 36\u00a0m hyperbolic secondary mirror arranged at a crossed angle. This impressive structure with no moving parts minimizes sidelobes and spillover, which is essential to mitigate terrestrial contamination and guarantee the extreme stability necessary to observe the cosmos.',
+    zh: 'BINGO采用<strong class="text-cyan-400">Crossed-Dragone</strong>双反射镜设计，这种光学几何结构将40米抛物面主镜与36米双曲面副镜以交叉角度排列。这一令人印象深刻的无运动部件结构最大限度地减少了旁瓣和溢出效应，这对于减轻地面污染和保证观测宇宙所需的极高稳定性至关重要。',
   },
   'optics.p2': {
     en: 'The telescope operates in <strong class="text-white">transit</strong> mode, with no moving parts — it remains fixed, pointing at a strip of sky (declination ~-15°), and scans the sky as Earth rotates. This greatly simplifies mechanical engineering, eliminates vibrations and pointing instabilities, and ensures extremely stable observations.',
