@@ -214,10 +214,12 @@ const base = import.meta.env.BASE_URL;
               langMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
               langMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
               langChevron.style.transform = '';
+              langBtn.setAttribute('aria-expanded', 'false');
             } else {
               langMenu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
               langMenu.classList.add('opacity-100', 'visible', 'translate-y-0');
               langChevron.style.transform = 'rotate(180deg)';
+              langBtn.setAttribute('aria-expanded', 'true');
             }
           });
 
@@ -225,6 +227,21 @@ const base = import.meta.env.BASE_URL;
             langMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
             langMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
             if (langChevron) langChevron.style.transform = '';
+            langBtn.setAttribute('aria-expanded', 'false');
+          });
+
+          // Close dropdown on Escape key
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              const isOpen = !langMenu.classList.contains('invisible');
+              if (isOpen) {
+                langMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                langMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                if (langChevron) langChevron.style.transform = '';
+                langBtn.setAttribute('aria-expanded', 'false');
+                langBtn.focus();
+              }
+            }
           });
         }
 
