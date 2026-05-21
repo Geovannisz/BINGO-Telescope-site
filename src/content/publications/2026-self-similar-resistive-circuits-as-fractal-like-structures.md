@@ -1,7 +1,7 @@
 ---
 title: Self-similar resistive circuits as fractal-like structures
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:06:40.586Z
+date: 2026-05-21T17:15:50.517Z
 link: https://doi.org/10.1590/1806-9126-RBEF-2017-0178
 doi: ""
 summary: ""

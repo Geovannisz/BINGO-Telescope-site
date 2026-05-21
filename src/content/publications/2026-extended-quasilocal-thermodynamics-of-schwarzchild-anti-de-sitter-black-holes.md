@@ -1,7 +1,7 @@
 ---
 title: Extended quasilocal Thermodynamics of Schwarzchild-anti de Sitter black holes
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:06:40.585Z
+date: 2026-05-21T17:15:50.515Z
 link: https://doi.org/10.1016/j.aop.2019.167954
 doi: ""
 summary: ""

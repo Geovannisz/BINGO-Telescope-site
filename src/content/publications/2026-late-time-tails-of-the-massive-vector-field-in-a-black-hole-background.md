@@ -1,7 +1,7 @@
 ---
 title: Late time tails of the massive vector field in a black hole background
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:06:40.600Z
+date: 2026-05-21T17:15:50.525Z
 link: https://doi.org/10.1103/PhysRevD.75.084004
 doi: ""
 summary: ""
