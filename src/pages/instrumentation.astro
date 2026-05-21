@@ -23,29 +23,38 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Concept Section -->
       <div class="mb-16 animate-on-scroll">
-        <div class="glass-card-glow p-8">
-          <p class="section-label text-left" data-t="concept.label">Abordagem Observacional</p>
-          <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="concept.title">Single-Dish vs Interferometria</h2>
-          <div class="md:flex gap-12 items-center">
-            <div class="md:w-3/5 flex flex-col justify-center">
-              <p class="text-slate-300 leading-relaxed mb-4" data-t="concept.p1">
+        <div class="glass-card-glow p-8 md:p-10">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-stretch">
+            
+            <!-- Left Column: Title and Content -->
+            <div class="col-span-1 md:col-span-7 flex flex-col justify-center">
+              <div class="mb-6">
+                <p class="section-label text-left" data-t="concept.label">Abordagem Observacional</p>
+                <h2 class="text-3xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="concept.title">Single-Dish vs Interferometria</h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full"></div>
+              </div>
+              
+              <p class="text-slate-300 leading-relaxed mb-5" data-t="concept.p1">
                 O radiotelescópio BINGO privilegia um conceito complementar aos radiotelescópios interferométricos tradicionais: ele utilizará, para um mesmo sistema refletor, <strong class="text-cyan-400">muitos detectores (cornetas) no plano focal</strong>. Em geral, interferômetros são compostos por vários refletores espalhados com apenas um ou poucos detectores em cada plano focal.
               </p>
-              <p class="text-slate-300 leading-relaxed mb-4" data-t="concept.p2">
+              <p class="text-slate-300 leading-relaxed mb-5" data-t="concept.p2">
                 Telescópios single-dish multi-beam como o BINGO têm uma vantagem clara no <strong class="text-white">custo de fabricação e manutenção</strong>, além do fato de que o processamento de dados é inerentemente mais simples. A desvantagem óbvia é que a área de coleta de um interferômetro e a sua consequente resolução angular são geralmente muito maiores.
               </p>
               <p class="text-slate-300 leading-relaxed" data-t="concept.p3">
                 Este design é extremamente eficiente para o Mapeamento de Intensidade (Intensity Mapping), onde o objetivo não é resolver galáxias individuais com alta resolução (o que demandaria um interferômetro gigante), mas sim mapear as flutuações de densidade do gás em grandes escalas no universo com altíssima sensibilidade a brilhos de superfície difusos.
               </p>
             </div>
-            <div class="md:w-2/5 mt-8 md:mt-0">
-              <div class="rounded-xl overflow-hidden border border-indigo-500/15 flex flex-col bg-slate-900/50">
-                <div class="p-4 flex justify-center items-center">
-                  <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full max-h-[400px] object-contain invert hue-rotate-180 brightness-110" />
+
+            <!-- Right Column: Image -->
+            <div class="col-span-1 md:col-span-5 flex flex-col mt-4 md:mt-0">
+              <div class="rounded-xl overflow-hidden border border-indigo-500/15 flex flex-col bg-gradient-to-b from-white/5 to-transparent h-full">
+                <div class="p-6 flex justify-center items-center flex-grow">
+                  <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full h-full max-h-[450px] object-contain invert hue-rotate-180 brightness-110 drop-shadow-2xl" />
                 </div>
                 <p class="text-xs text-slate-400 text-center py-2 bg-slate-800/80 border-t border-indigo-500/15" data-t="concept.caption">Arranjo conceitual dos módulos de cornetas do BINGO</p>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
