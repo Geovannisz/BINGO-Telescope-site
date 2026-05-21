@@ -26,8 +26,8 @@ const base = import.meta.env.BASE_URL;
         <div class="glass-card-glow p-8">
           <p class="section-label text-left" data-t="concept.label">Abordagem Observacional</p>
           <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="concept.title">Single-Dish vs Interferometria</h2>
-          <div class="md:flex gap-12 items-center">
-            <div class="md:w-3/5">
+          <div class="md:flex gap-12 items-stretch">
+            <div class="md:w-3/5 flex flex-col justify-center">
               <p class="text-slate-300 leading-relaxed mb-4" data-t="concept.p1">
                 O radiotelescópio BINGO privilegia um conceito complementar aos radiotelescópios interferométricos tradicionais: ele utilizará, para um mesmo sistema refletor, <strong class="text-cyan-400">muitos detectores (cornetas) no plano focal</strong>. Em geral, interferômetros são compostos por vários refletores espalhados com apenas um ou poucos detectores em cada plano focal.
               </p>
@@ -39,8 +39,8 @@ const base = import.meta.env.BASE_URL;
               </p>
             </div>
             <div class="md:w-2/5 mt-8 md:mt-0">
-              <div class="rounded-xl overflow-hidden border border-indigo-500/15">
-                <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full h-auto bg-slate-900" />
+              <div class="rounded-xl overflow-hidden border border-indigo-500/15 h-full flex flex-col">
+                <img src={`${base}images/telescope/horn_modules.png`} alt="Módulos de cornetas do BINGO e arranjo conceitual" class="w-full flex-grow object-cover bg-slate-900" />
                 <p class="text-xs text-slate-400 text-center py-2 bg-slate-800/80" data-t="concept.caption">Arranjo conceitual dos módulos de cornetas do BINGO</p>
               </div>
             </div>
@@ -49,20 +49,20 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <!-- Optical Design -->
-      <div class="md:flex gap-12 items-start mb-16 animate-on-scroll">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 mb-6">
-            <img src={`${base}images/telescope/BINGO_model_2.jpeg`} alt="BINGO - Arranjo óptico Crossed-Dragone" class="w-full h-auto" />
+      <div class="md:flex gap-12 items-stretch mb-16 animate-on-scroll">
+        <div class="md:w-1/2 mb-8 md:mb-0 flex flex-col gap-6">
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 flex-1">
+            <img src={`${base}images/telescope/BINGO_model_2.jpeg`} alt="BINGO - Arranjo óptico Crossed-Dragone" class="w-full h-full object-cover" />
           </div>
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
-            <img src={`${base}images/telescope/optical_design_scheme.jpeg`} alt="Esquema do design óptico do BINGO com ângulos de orientação" class="w-full h-auto bg-white/5" />
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 flex-1">
+            <img src={`${base}images/telescope/optical_design_scheme.jpeg`} alt="Esquema do design óptico do BINGO com ângulos de orientação" class="w-full h-full object-cover bg-white/5" />
           </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex flex-col justify-center">
           <p class="section-label text-left" data-t="optics.label">Design Óptico</p>
           <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="optics.title">Arranjo Óptico <span class="gradient-text-cyan">Crossed-Dragone</span></h2>
           <p class="text-slate-300 leading-relaxed mb-6" data-t="optics.p1">
-            O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de 40m com um espelho secundário hiperbólico de 36m dispostos em ângulo cruzado. Esta configuração minimiza lóbulos laterais e spillover, e foi escolhida por produzir um campo de visão amplo com distorções mínimas.
+            O BINGO utiliza um design de dois espelhos em configuração <strong class="text-cyan-400">Crossed-Dragone</strong>, uma geometria óptica que combina um espelho primário parabólico de 40m com um espelho secundário hiperbólico de 36m dispostos em ângulo cruzado. Esta impressionante estrutura sem partes móveis minimiza lóbulos laterais e spillover, essencial para mitigar contaminações terrestres e garantir a extrema estabilidade necessária para observar o cosmos.
           </p>
           <p class="text-slate-300 leading-relaxed mb-6" data-t="optics.p2">
             O telescópio opera em modo de <strong class="text-white">trânsito</strong>, sem partes móveis — ele fica fixo, apontado para uma faixa do céu (declinação ~-15°), e varre o céu conforme a Terra gira. Isso simplifica enormemente a engenharia mecânica, elimina vibrações e instabilidades de apontamento, e garante observações extremamente estáveis.
@@ -119,13 +119,13 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <!-- Horns -->
-      <div class="md:flex gap-12 items-center flex-row-reverse mb-16 animate-on-scroll">
+      <div class="md:flex gap-12 items-stretch flex-row-reverse mb-16 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15">
-            <img src={`${base}images/horns/horns.png`} alt="Arranjo focal de cornetas do BINGO" class="w-full h-auto" />
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 h-full">
+            <img src={`${base}images/horns/horns.png`} alt="Arranjo focal de cornetas do BINGO" class="w-full h-full object-cover" />
           </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex flex-col justify-center">
           <p class="section-label text-left" data-t="horns.label">Receptores</p>
           <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="horns.title">Cornetas Corrugadas <span class="gradient-text-cyan">(Horns)</span></h2>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="horns.p1">
@@ -145,11 +145,11 @@ const base = import.meta.env.BASE_URL;
         <div class="glass-card-glow p-8">
           <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="tower.title">Torre de Cornetas</h2>
           <div class="section-divider"></div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div class="rounded-xl overflow-hidden border border-indigo-500/15 col-span-1">
-              <img src={`${base}images/horns/horns_side.png`} alt="Diagrama da torre de cornetas com 28 cornetas" class="w-full h-auto" />
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 col-span-1 h-full">
+              <img src={`${base}images/horns/horns_side.png`} alt="Diagrama da torre de cornetas com 28 cornetas" class="w-full h-full object-cover" />
             </div>
-            <div class="col-span-2">
+            <div class="col-span-2 flex flex-col justify-center">
               <p class="text-slate-300 leading-relaxed mb-4" data-t="tower.p1">
                 A torre de cornetas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta com precisão milimétrica de posicionamento.
               </p>

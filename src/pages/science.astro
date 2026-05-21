@@ -23,13 +23,13 @@ const base = import.meta.env.BASE_URL;
 
       <!-- ==================== BAO SECTION ==================== -->
       <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
-        <div class="md:flex gap-12 items-center">
+        <div class="md:flex gap-12 items-stretch">
           <div class="md:w-1/2 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
-              <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Visualização de Oscilações Acústicas de Bárions" class="w-full h-auto" />
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 h-full">
+              <img src={`${base}images/backgrounds/baryon-acoustic-oscilations-background.jpg`} alt="Visualização de Oscilações Acústicas de Bárions" class="w-full h-full object-cover" />
             </div>
           </div>
-          <div class="md:w-1/2">
+          <div class="md:w-1/2 flex flex-col justify-center">
             <p class="section-label text-left" data-t="bao.label">Cosmologia</p>
             <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="bao.title">Oscilações Acústicas de <span class="gradient-text-cyan">Bárions</span> (BAO)</h2>
             <p class="text-slate-300 leading-relaxed mb-4" data-t="bao.p1">
@@ -38,8 +38,11 @@ const base = import.meta.env.BASE_URL;
             <p class="text-slate-300 leading-relaxed mb-4" data-t="bao.p2">
               Quando o universo esfriou o suficiente para que os átomos se formassem (a chamada <strong class="text-white">era da recombinação</strong>), essas ondas "congelaram" instantaneamente. A distância que elas percorreram — aproximadamente <strong class="text-cyan-400">~150 Megaparsecs (490 milhões de anos-luz)</strong> — ficou permanentemente gravada na distribuição da matéria, como rugas no tecido do cosmos.
             </p>
-            <p class="text-slate-300 leading-relaxed" data-t="bao.p3">
+            <p class="text-slate-300 leading-relaxed mb-4" data-t="bao.p3">
               Esta distância funciona como uma <strong class="text-white">"régua padrão" cósmica</strong>: conhecemos seu tamanho real, então ao medir como ela aparenta em diferentes épocas cósmicas, podemos calcular com precisão a taxa de expansão do universo e as propriedades da Energia Escura que a acelera.
+            </p>
+            <p class="text-slate-300 leading-relaxed" data-t="bao.p4">
+              Para captar um sinal cosmológico tão fraco e delicado, o BINGO utiliza um design de trânsito sem partes móveis. Essa extrema estabilidade estrutural reduz vibrações e ruídos espúrios, sendo fundamental para o sucesso das medições na Rádio Cosmologia.
             </p>
           </div>
         </div>
@@ -47,13 +50,13 @@ const base = import.meta.env.BASE_URL;
 
       <!-- ==================== 21cm / INTENSITY MAPPING ==================== -->
       <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
-        <div class="md:flex gap-12 items-center flex-row-reverse">
+        <div class="md:flex gap-12 items-stretch flex-row-reverse">
           <div class="md:w-1/3 mb-8 md:mb-0">
-            <div class="rounded-xl overflow-hidden border border-indigo-500/15 flex justify-center items-center aspect-[3/4]">
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 flex justify-center items-center h-full">
               <img src={`${base}images/backgrounds/cmb_planck-background.png`} alt="Mapeamento de Intensidade" class="w-full h-full object-cover opacity-80" style="transform: rotate(-90deg) scale(1.4);" />
             </div>
           </div>
-          <div class="md:w-2/3">
+          <div class="md:w-2/3 flex flex-col justify-center">
             <p class="section-label text-left" data-t="im.label">Técnica Observacional</p>
             <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="im.title">Mapeamento de Intensidade de <span class="gradient-text-cyan">21cm</span></h2>
             <p class="text-slate-300 leading-relaxed mb-4" data-t="im.p1">
@@ -74,8 +77,8 @@ const base = import.meta.env.BASE_URL;
 
       <!-- ==================== PIPELINE & SIMULATIONS ==================== -->
       <div class="glass-card-glow p-8 md:p-12 animate-on-scroll">
-        <div class="md:flex gap-12 items-center">
-          <div class="md:w-1/2 mb-8 md:mb-0">
+        <div class="md:flex gap-12 items-stretch">
+          <div class="md:w-1/2 mb-8 md:mb-0 flex flex-col justify-center">
             <p class="section-label text-left" data-t="pipeline.label">Análise de Dados</p>
             <h2 class="text-2xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="pipeline.title">Pipeline & <span class="gradient-text-cyan">Simulações</span></h2>
             <p class="text-slate-300 leading-relaxed mb-4" data-t="pipeline.p1">
@@ -86,8 +89,8 @@ const base = import.meta.env.BASE_URL;
             </p>
           </div>
           <div class="md:w-1/2">
-            <div class="rounded-xl overflow-hidden border border-indigo-500/15">
-              <img src={`${base}images/backgrounds/wmap_cmb-background.png`} alt="Simulação e análise de dados cósmicos" class="w-full h-auto opacity-90" />
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 h-full">
+              <img src={`${base}images/backgrounds/wmap_cmb-background.png`} alt="Simulação e análise de dados cósmicos" class="w-full h-full object-cover opacity-90" />
             </div>
           </div>
         </div>
@@ -156,13 +159,13 @@ const base = import.meta.env.BASE_URL;
           </div>
 
           <!-- BINGO and FRBs -->
-          <div class="glass-card p-8 md:flex gap-12 items-center">
+          <div class="glass-card p-8 md:flex gap-12 items-stretch">
             <div class="md:w-1/3 mb-8 md:mb-0">
-              <div class="rounded-xl overflow-hidden border border-indigo-500/15">
-                <img src={`${base}images/uirapuru/uirapuru_horn.png`} alt="Antena Outrigger Uirapuru para detecção de FRBs" class="w-full h-auto" />
+              <div class="rounded-xl overflow-hidden border border-indigo-500/15 h-full">
+                <img src={`${base}images/uirapuru/uirapuru_horn.png`} alt="Antena Outrigger Uirapuru para detecção de FRBs" class="w-full h-full object-cover" />
               </div>
             </div>
-            <div class="md:w-2/3">
+            <div class="md:w-2/3 flex flex-col justify-center">
               <h3 class="text-xl font-bold text-white mb-4" data-t="frb.bingo.title">O Papel do BINGO na Detecção de FRBs e Transientes</h3>
               <p class="text-slate-300 leading-relaxed mb-4" data-t="frb.bingo.p1">
                 Com seu vasto campo de visão (~14.75° × 6°) e alta sensibilidade temporal, o BINGO é uma excelente plataforma para detectar FRBs. O <strong class="text-cyan-400">BINGO Interferometry System (BIS)</strong>, proposto no Paper IX, utilizará uma rede de outriggers — antenas menores de 4–6 metros espalhadas geograficamente — para localizar precisamente as fontes de FRBs no céu.

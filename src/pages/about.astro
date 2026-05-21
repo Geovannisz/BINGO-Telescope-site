@@ -24,13 +24,13 @@ const base = import.meta.env.BASE_URL;
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
       <!-- Mission and Objectives -->
-      <div class="md:flex gap-12 items-center mb-20 animate-on-scroll">
+      <div class="md:flex gap-12 items-stretch mb-20 animate-on-scroll">
         <div class="md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5">
-            <img src={`${base}images/BINGO-construcao.jpg`} alt="Construção do Telescópio BINGO" class="w-full h-auto" />
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5 h-full">
+            <img src={`${base}images/BINGO-construcao.jpg`} alt="Construção do Telescópio BINGO" class="w-full h-full object-cover" />
           </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex flex-col justify-center">
           <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3" style="font-family: 'Outfit', sans-serif;">
             <div class="feature-icon">
               <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
@@ -38,7 +38,7 @@ const base = import.meta.env.BASE_URL;
             <span data-t="mission.title">Missão e Objetivos</span>
           </h2>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="mission.p1">
-            Concebido no início da década de 2010 como um projeto colaborativo internacional, o BINGO visa realizar a <strong class="text-cyan-400">primeira detecção de Oscilações Acústicas de Bárions (BAO) em frequências de rádio</strong>, utilizando a técnica inovadora de Intensity Mapping da linha de emissão de 21cm do hidrogênio neutro (HI).
+            Concebido no início da década de 2010 como um projeto colaborativo internacional, o BINGO visa realizar a <strong class="text-cyan-400">primeira detecção de Oscilações Acústicas de Bárions (BAO) em frequências de rádio</strong>, utilizando a técnica inovadora de Intensity Mapping da linha de emissão de 21cm do hidrogênio neutro (HI). Esta abordagem se destaca pelo seu <strong class="text-white">excepcional custo-benefício</strong>, permitindo varrer vastos volumes do cosmos de forma rápida e eficiente.
           </p>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="mission.p2">
             Operando na faixa de 980 MHz a 1260 MHz, o BINGO cobrirá o intervalo de redshift 0.127 ≤ z ≤ 0.449 — correspondendo a sinais emitidos quando o universo tinha entre 72% e 88% de sua idade atual. Este mapeamento fornecerá uma <strong class="text-white">régua padrão independente</strong> para medir a expansão do universo.
@@ -56,7 +56,7 @@ const base = import.meta.env.BASE_URL;
             <div id="paraiba-map" class="w-full h-full z-0 absolute inset-0"></div>
           </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex flex-col justify-center">
           <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3" style="font-family: 'Outfit', sans-serif;">
             <div class="feature-icon">
               <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
@@ -77,8 +77,11 @@ const base = import.meta.env.BASE_URL;
           <p class="text-slate-300 leading-relaxed mb-4" data-t="consortium.p2">
             A <strong class="text-white">China</strong> é parceira crucial, contribuindo com fabricação de componentes estruturais e expertise em engenharia de radiotelescópios. O <strong class="text-white">Reino Unido</strong> (Manchester, UCL), a <strong class="text-white">França</strong> (Observatório de Paris, Nançay) e a <strong class="text-white">Holanda</strong> (ASTRON) contribuem com design de receptores, processamento de sinais e expertise em interferometria.
           </p>
-          <p class="text-slate-300 leading-relaxed" data-t="consortium.p3">
+          <p class="text-slate-300 leading-relaxed mb-4" data-t="consortium.p3">
             O telescópio está sendo construído na <strong class="text-cyan-400">Serra do Urubu, em Aguiar, Paraíba</strong> — uma região escolhida por sua baixíssima interferência de radiofrequência (RFI), latitude ideal (~7°S) para observações do hemisfério sul, e topografia natural que oferece proteção adicional contra ruído eletromagnético.
+          </p>
+          <p class="text-slate-300 leading-relaxed" data-t="consortium.p4">
+            Além do enorme potencial científico, o BINGO representa um forte <strong class="text-white">polo de desenvolvimento e impacto regional</strong> no sertão paraibano. O projeto inclui esforços para a construção de um moderno <strong class="text-cyan-400">Museu de Astronomia</strong>, visando incentivar o turismo científico, a educação de jovens locais e a divulgação científica e acessível no Nordeste do Brasil.
           </p>
         </div>
       </div>

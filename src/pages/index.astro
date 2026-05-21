@@ -63,20 +63,20 @@ const base = import.meta.env.BASE_URL;
   <section class="py-16 sm:py-24 bg-cosmic relative overflow-hidden">
     <div class="starfield"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="md:flex gap-16 items-center animate-on-scroll">
+      <div class="md:flex gap-16 items-stretch animate-on-scroll">
         <div class="md:w-1/2 mb-10 md:mb-0">
-          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5">
-            <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="Render artístico do Telescópio BINGO" class="w-full h-auto" />
+          <div class="rounded-2xl overflow-hidden border border-indigo-500/15 shadow-2xl shadow-cyan-500/5 h-full">
+            <img src={`${base}images/telescope/BINGO_13-768x432.png`} alt="Render artístico do Telescópio BINGO" class="w-full h-full object-cover" />
           </div>
         </div>
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 flex flex-col justify-center">
           <p class="section-label" data-t="about.label">Sobre o Projeto</p>
           <h2 class="text-3xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;" data-t="about.title">O que é o <span class="gradient-text-cyan">BINGO</span>?</h2>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="about.p1">
             O <strong class="text-white">BINGO</strong> (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) é um radiotelescópio inovador localizado na Serra do Urubu, em Aguiar, Paraíba. Projetado para realizar o primeiro mapeamento de BAO em frequências de rádio, ele utiliza a técnica de <strong class="text-cyan-400">Intensity Mapping</strong> da linha de 21cm do hidrogênio neutro.
           </p>
           <p class="text-slate-300 leading-relaxed mb-4" data-t="about.p2">
-            Com dois espelhos de ~40m em configuração Crossed-Dragone e 28 cornetas corrugadas no plano focal, o BINGO opera entre 980 e 1260 MHz — correspondendo a sinais de HI emitidos quando o universo tinha entre 72% e 88% de sua idade atual.
+            Com dois espelhos de dimensões massivas (~40m) em configuração Crossed-Dragone e 28 cornetas corrugadas no plano focal, o BINGO opera entre 980 e 1260 MHz. Como um telescópio de "trânsito" sem partes móveis, ele confere extrema estabilidade estrutural e de apontamento — ideal para detectar o tênue sinal de HI emitido quando o universo tinha entre 72% e 88% de sua idade atual.
           </p>
           <p class="text-slate-300 leading-relaxed mb-6" data-t="about.p3">
             É um projeto liderado pelo Brasil (USP, INPE, UFCG) em colaboração internacional com China, Reino Unido, França, Holanda e África do Sul, reunindo mais de 60 pesquisadores.
