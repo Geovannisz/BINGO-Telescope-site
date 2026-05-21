@@ -3,7 +3,7 @@ title: >-
   Evolution of a massless scalar field in Reissner-Nordström anti-de Sitter
   spacetimes
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.527Z
+date: 2026-05-21T17:43:42.569Z
 link: https://doi.org/10.1103/PhysRevD.63.084001
 doi: ""
 summary: ""

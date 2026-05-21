@@ -1,13 +1,13 @@
 ---
-title: A Hamiltonian approach to Thermodynamics
-authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.519Z
-link: https://doi.org/10.1016/j.aop.2016.07.004
-doi: ""
-summary: ""
-journal: ""
-volume: ""
+title: "A Hamiltonian approach to Thermodynamics"
+authors: "M.C. Baldiotti, R. Fresneda, C. Molina"
+date: 2016-10-01T12:00:00Z
+link: "https://doi.org/10.1016/j.aop.2016.07.004"
+doi: "10.1016/j.aop.2016.07.004"
+summary: "Desenvolvimento de uma abordagem hamiltoniana para a termodinâmica clássica, em que as equações de estado surgem como equações de Hamilton em um espaço de fases termodinâmico. Apresenta a formulação variacional e discute a geometria do espaço termodinâmico."
+journal: "Annals of Physics"
+volume: "373"
 issue: ""
-pages: ""
-category: Outro
+pages: "245-256"
+category: "Colaboração"
 ---

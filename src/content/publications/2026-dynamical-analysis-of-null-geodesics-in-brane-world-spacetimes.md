@@ -1,13 +1,13 @@
 ---
-title: Dynamical analysis of null geodesics in brane-world spacetimes
-authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.515Z
-link: https://doi.org/10.1103/PhysRevD.102.104051
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
+title: "Dynamical analysis of null geodesics in brane-world spacetimes"
+authors: "W. S. Klën, C. Molina"
+date: 2020-11-18T12:00:00Z
+link: "https://doi.org/10.1103/PhysRevD.102.104051"
+doi: "10.1103/PhysRevD.102.104051"
+summary: "Análise dinâmica de geodésicas nulas em espaços-tempo de brane worlds, investigando a propagação de luz e as propriedades ópticas de buracos negros em cenários de dimensões extras. Estuda a influência da dimensão extra na deflexão da luz e nas órbitas de fótons."
+journal: "Physical Review D"
+volume: "102"
+issue: "10"
 pages: ""
-category: Outro
+category: "Colaboração"
 ---

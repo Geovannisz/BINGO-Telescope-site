@@ -1,13 +1,13 @@
 ---
-title: On two-dimensional quasitopological field theories
-authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.525Z
-link: https://doi.org/10.1142/S0217751X09047624
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
-pages: ""
-category: Outro
+title: "ON TWO-DIMENSIONAL QUASITOPOLOGICAL FIELD THEORIES"
+authors: "P. TEOTONIO-SOBRINHO, C. MOLINA, N. YOKOMIZO"
+date: 2009-12-30T12:00:00Z
+link: "https://doi.org/10.1142/S0217751X09047624"
+doi: "10.1142/S0217751X09047624"
+summary: "Teorias de campo quasitopológicas bidimensionais, desenvolvendo o formalismo matemático e as propriedades de invariância dessas teorias. Explora a conexão com teorias topológicas e a classificação de fases quânticas da matéria."
+journal: "International Journal of Modern Physics A"
+volume: "24"
+issue: "32"
+pages: "6105-6121"
+category: "Colaboração"
 ---

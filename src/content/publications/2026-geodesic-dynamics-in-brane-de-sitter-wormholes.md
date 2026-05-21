@@ -1,7 +1,7 @@
 ---
 title: Geodesic dynamics in brane-de Sitter wormholes
 authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.513Z
+date: 2026-05-21T17:43:42.565Z
 link: https://doi.org/10.1103/PhysRevD.111.104014
 doi: ""
 summary: ""

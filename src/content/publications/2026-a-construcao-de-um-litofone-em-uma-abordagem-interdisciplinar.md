@@ -1,13 +1,13 @@
 ---
-title: A construção de um litofone em uma abordagem interdisciplinar
-authors: Carlos Molina Mendes
-date: 2026-05-21T17:15:50.519Z
-link: https://doi.org/10.20396/td.v10i3.8637343
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
-pages: ""
-category: Outro
+title: "A construção de um litofone em uma abordagem interdisciplinar"
+authors: "Arlino Camargo Livério Junior, Eduardo Matos Santos, Adriana Pedrosa Biscaia Tufaile, Alberto Tufaile, Carlos Molina Mendes, Rosely Aparecida Liguori Imbernon"
+date: 2015-06-23T12:00:00Z
+link: "https://doi.org/10.20396/td.v10i3.8637343"
+doi: "10.20396/td.v10i3.8637343"
+summary: "Construção de um litofone — instrumento musical de pedras — como recurso didático interdisciplinar, integrando geociências, física acústica e música para o ensino de ciências. Descreve a seleção mineralógica das rochas, a análise de frequências e a aplicação pedagógica do instrumento."
+journal: "Terrae Didatica"
+volume: "10"
+issue: "3"
+pages: "283"
+category: "Colaboração"
 ---
