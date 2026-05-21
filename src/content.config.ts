@@ -76,7 +76,7 @@ const teamCollection = defineCollection({
     publications: z.array(z.object({
       title: z.string(),
       authors: z.string().optional(),
-      date: z.string().optional(),
+      date: z.union([z.string(), z.date()]).optional(),
       link: z.string().optional(),
       summary: z.string().optional(),
       journal: z.string().optional(),
