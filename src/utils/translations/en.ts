@@ -39,6 +39,7 @@ const en: Record<string, string> = {
   'Ver todas': 'View all',
   'Ver todas as atualizações': 'View all updates',
   'Explorar': 'Explore',
+  'Ler mais': 'Read more',
   'Espelhos': 'Mirrors',
   'Cornetas': 'Horns',
 

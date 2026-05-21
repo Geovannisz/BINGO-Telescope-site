@@ -84,6 +84,7 @@ const index: Record<string, { en: string; zh: string }> = {
   'news.viewall.mobile': { en: 'View all updates', zh: '查看全部动态' },
   'about.link.explore': { en: 'Explore', zh: '探索' },
   'news.label': { en: 'News', zh: '新闻' },
+  'news.readmore': { en: 'Read more', zh: '阅读更多' },
   'hero.video.caption': { en: 'BINGO Project presentation video', zh: 'BINGO项目介绍视频' },
 };
 export default index;

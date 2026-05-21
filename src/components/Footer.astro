@@ -3,7 +3,7 @@ const currentYear = new Date().getFullYear();
 const base = import.meta.env.BASE_URL;
 ---
 
-<footer class="relative mt-auto overflow-hidden" translate="no" style="background: linear-gradient(180deg, #0f172a 0%, #070d1f 100%);">
+<footer role="contentinfo" class="relative mt-auto overflow-hidden" translate="no" style="background: linear-gradient(180deg, #0f172a 0%, #070d1f 100%);">
   <!-- Partners Bar -->
   <div class="partners-bar">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,6 +55,7 @@ const base = import.meta.env.BASE_URL;
           </div>
         </div>
 
+        <nav aria-label="Footer navigation">
         <div>
           <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;" data-i18n="footer.project">O Projeto</h3>
           <ul class="space-y-2">
@@ -94,6 +95,7 @@ const base = import.meta.env.BASE_URL;
             </li>
           </ul>
         </div>
+        </nav>
       </div>
 
       <div class="border-t border-indigo-500/10 pt-8 flex justify-center items-center">

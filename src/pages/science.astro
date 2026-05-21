@@ -11,7 +11,12 @@ const base = import.meta.env.BASE_URL;
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <p class="section-label" data-t="header.label">Ciência</p>
+        <div class="flex mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            <span data-t="header.label">Ciência</span>
+          </span>
+        </div>
         <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">Ciência do <span class="gradient-text-cyan">BINGO</span></h1>
         <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Explorando o cosmos através da Rádio Cosmologia, do mapeamento de intensidade do hidrogênio neutro, e da detecção de fenômenos transientes como Fast Radio Bursts.</p>
       </div>

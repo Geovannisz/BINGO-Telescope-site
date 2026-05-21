@@ -1458,3 +1458,69 @@ h1, h2, h3 {
     padding: 0.0625rem 0.375rem;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ACCESSIBILITY ENHANCEMENTS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ===== Skip Navigation Link ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 24px;
+  background: #070d1f;
+  color: #22d3ee;
+  border: 2px solid #22d3ee;
+  border-radius: 0 0 12px 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.3s ease;
+  font-family: "Outfit", sans-serif;
+}
+.skip-link:focus {
+  top: 0;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(34, 211, 238, 0.4);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: #fff;
+}
+
+/* ===== Focus Visible for Cosmic Buttons ===== */
+.btn-cosmic:focus-visible,
+.btn-cosmic-outline:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+/* ===== Reduced Motion Preference ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-glow,
+  .animate-float {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

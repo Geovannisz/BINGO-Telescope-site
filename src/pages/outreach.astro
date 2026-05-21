@@ -10,7 +10,12 @@ const base = import.meta.env.BASE_URL;
     <div class="starfield"></div>
     <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
       <div class="max-w-3xl animate-fade-in-up">
-        <p class="section-label" data-t="header.label">Extensão</p>
+        <div class="flex mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-500/10 border border-amber-500/20 shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <span data-t="header.label">Extensão</span>
+          </span>
+        </div>
         <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">Divulgação <span class="text-amber-400">Científica</span></h1>
         <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">Levando a ciência do BINGO para a sociedade — educação, inclusão social e popularização da astronomia na Paraíba e além.</p>
       </div>

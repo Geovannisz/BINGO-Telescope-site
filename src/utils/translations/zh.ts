@@ -40,6 +40,7 @@ const zh: Record<string, string> = {
   'Ver todas': '查看全部',
   'Ver todas as atualizações': '查看全部动态',
   'Explorar': '探索',
+  'Ler mais': '阅读更多',
   'Espelhos': '反射镜',
   'Cornetas': '馈源',
 
