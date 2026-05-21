@@ -144,18 +144,24 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Horn Structure Diagram -->
       <div class="mb-16 animate-on-scroll">
-        <div class="glass-card-glow p-8">
-          <h2 class="text-2xl font-bold text-white mb-6 text-center" style="font-family: 'Outfit', sans-serif;" data-t="tower.title">Torre de Cornetas</h2>
-          <div class="section-divider"></div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div class="rounded-xl overflow-hidden border border-indigo-500/15 col-span-1 bg-white/5 flex justify-center items-center p-4">
-              <img src={`${base}images/horns/horns_side.png`} alt="Diagrama da torre de cornetas com 28 cornetas" class="w-full max-h-[400px] object-contain invert hue-rotate-180 opacity-90 drop-shadow-lg" />
+        <div class="glass-card-glow p-8 md:p-10">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-stretch">
+            <!-- Left Column: Image -->
+            <div class="rounded-xl overflow-hidden border border-indigo-500/15 col-span-1 md:col-span-5 bg-gradient-to-b from-white/5 to-transparent flex justify-center items-center p-6">
+              <img src={`${base}images/horns/horns_side.png`} alt="Diagrama da torre de cornetas com 28 cornetas" class="w-full h-full max-h-[450px] object-contain invert hue-rotate-180 opacity-90 drop-shadow-2xl" />
             </div>
-            <div class="col-span-2 flex flex-col justify-center">
-              <p class="text-slate-300 leading-relaxed mb-4" data-t="tower.p1">
+            
+            <!-- Right Column: Title and Content -->
+            <div class="col-span-1 md:col-span-7 flex flex-col justify-center">
+              <div class="mb-6">
+                <h2 class="text-3xl font-bold text-white mb-4" style="font-family: 'Outfit', sans-serif;" data-t="tower.title">Torre de Cornetas</h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full"></div>
+              </div>
+              
+              <p class="text-slate-300 leading-relaxed mb-5" data-t="tower.p1">
                 A torre de cornetas acomoda 28 cornetas em uma configuração otimizada de 4 colunas × 7 linhas. Cada coluna é uma estrutura metálica independente que suporta 7 antenas corneta com precisão milimétrica de posicionamento.
               </p>
-              <p class="text-slate-300 leading-relaxed mb-4" data-t="tower.p2">
+              <p class="text-slate-300 leading-relaxed mb-5" data-t="tower.p2">
                 A disposição foi extensivamente simulada (Paper III) para maximizar a cobertura do plano focal enquanto minimiza spillover e cross-talk entre as cornetas adjacentes. A separação entre cornetas foi otimizada para produzir feixes que se sobrepõem minimamente, garantindo cobertura uniforme da faixa observada.
               </p>
               <p class="text-slate-300 leading-relaxed" data-t="tower.p3">
