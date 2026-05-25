@@ -1,6 +1,6 @@
 ---
 name: Alisson Teles Cavalcanti
-role: Pesquisador Sênior
+role: Colaborador Externo
 institution: Universidaade Federal de Campina Grande (UFCG)
 photo: /images/uploads/whatsapp-image-2026-05-25-at-12.15.05.jpeg
 stage:
