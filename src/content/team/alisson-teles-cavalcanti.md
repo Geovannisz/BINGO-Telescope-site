@@ -15,11 +15,11 @@ bio: Atualmente, é colaborador do Laboratório de Metrologia da Universidade
   Possui experiência na área de Engenharia Elétrica, com ênfase em
   Telecomunicações.
 interest_origin: Meu pai, o músico Gabmar Cavalcanti (*in memoriam*),me ensinou
-  tanto na minha profissão (música) como me inspirou a gostar
-  dastelecomunicações. Ele era radioamador, e desde cedo o modo como ele
-  conversavacom os amigos, utilizando um rádio, chamava a minha atenção.
-motivation: Após me estabelecer profissionalmente, veio odesejo de graduar-me em
-  engenharia elétrica, já que não consegui na época “natural”.
+  tanto na minha profissão (música) como me inspirou a gostar das
+  telecomunicações. Ele era radioamador, e desde cedo o modo como ele conversava
+  com os amigos, utilizando um rádio, chamava a minha atenção.
+motivation: Após me estabelecer profissionalmente, veio o desejo de graduar-me
+  em engenharia elétrica, já que não consegui na época “natural”.
 years_researching: Desde 2022.
 research_lines: Basicamente telecomunicações e eletromagnetismo.
 project_title: Montagem e instalação de um radiômetro para o Radiotelescópio BINGO
@@ -27,12 +27,12 @@ project_description: Todo radiotelescópio tem um dispositivo que permite recebe
   os sinais que vêm de sua antena e tratá-los, aumentando sua intensidade,
   filtrando ruídos e sinais indesejados e outras operações. É o chamado
   “radiômetro”. Minha pesquisa objetivou o desenvolvimento de duas das peças
-  deste radiômetro, vitais para seu funcionamento, cujo desenvolvimentodeve ser
+  deste radiômetro, vitais para seu funcionamento, cujo desenvolvimento deve ser
   sob medida para as suas necessidades específicas.
-project_problem: O tipo de radiômetro que o BINGO adota requer acriação de um
+project_problem: O tipo de radiômetro que o BINGO adota requer a criação de um
   dispositivo sob medida chamado “Acoplador Híbrido de 180º”. Este dispositivo
   precisava ser pequeno e com faixa de atuação ampla dentro dos limites do
-  BINGO. A pesquisa basicamente envolveu a busca por técnicas deconstrução que
+  BINGO. A pesquisa basicamente envolveu a busca por técnicas de construção que
   permitissem a sua miniaturização. Posteriormente, após atingidos estes
   objetivos, o dispositivo foi a base para a construção de outro dispositivo
   chamado “*Phase shifter*” ou “chaveador de fase”, e ambos hoje estão
@@ -54,7 +54,7 @@ biggest_curiosity: "As telecomunicações fazem parte da minha vida. Sou
   vindos de fora da Terra, isso me possibilitou descobrir uma área fascinante e
   que, para minha surpresa, teve a colaboração de um radioamador quando foi
   descoberta: Grote Reber, W9GFZ, considerado o pai da radioastronomia."
-common_myth: A de que o universo se resume àquilo quenossos olhos conseguem enxergar.
+common_myth: A de que o universo se resume àquilo que nossos olhos conseguem enxergar.
 career_advice: "No meu caso, minha experiência prática como radioamador me
   permitiu poder trabalhar numa área que jamais imaginei que pudesse,
   especialmente pelo fato de ainda estar na graduação. Noto que meus colegas na
