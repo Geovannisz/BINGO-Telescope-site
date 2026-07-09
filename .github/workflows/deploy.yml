@@ -5,8 +5,8 @@ on:
     branches: [ main ]
   workflow_dispatch:
     inputs:
-      use_cloud:
-        description: 'Emergência: Usar Nuvem do GitHub (ubuntu-latest)?'
+      use_local:
+        description: 'Usar Runner Local do PC (self-hosted)? (Ative apenas se a cota da nuvem acabar)'
         type: boolean
         default: false
 
@@ -21,26 +21,26 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ${{ github.event.inputs.use_cloud == 'true' && 'ubuntu-latest' || 'self-hosted' }}
+    runs-on: ${{ github.event.inputs.use_local == 'true' && 'self-hosted' || 'ubuntu-latest' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js (Cloud - com cache)
-        if: github.event.inputs.use_cloud == 'true'
+        if: github.event.inputs.use_local != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
 
       - name: Setup Node.js (Local - sem cache de rede)
-        if: github.event.inputs.use_cloud != 'true'
+        if: github.event.inputs.use_local == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Cache Astro modules (Cloud only)
-        if: github.event.inputs.use_cloud == 'true'
+        if: github.event.inputs.use_local != 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -76,7 +76,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ${{ github.event.inputs.use_cloud == 'true' && 'ubuntu-latest' || 'self-hosted' }}
+    runs-on: ${{ github.event.inputs.use_local == 'true' && 'self-hosted' || 'ubuntu-latest' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
