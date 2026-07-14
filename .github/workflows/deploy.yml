@@ -39,14 +39,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Cache node_modules (Cloud only)
-        id: cache-npm
-        if: github.event.inputs.use_local != 'true'
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
       - name: Cache Astro build output (Cloud only)
         if: github.event.inputs.use_local != 'true'
         uses: actions/cache@v4
@@ -60,7 +52,6 @@ jobs:
             ${{ runner.os }}-astro-
 
       - name: Install dependencies
-        if: steps.cache-npm.outputs.cache-hit != 'true' || github.event.inputs.use_local == 'true'
         run: npm ci
 
       - name: Build Astro site
