@@ -1,5 +1,6 @@
 ---
 name: Luciano Barosi
+gender: Masculino
 role: Professor Titular
 institution: Universidade Federal De Campina Grande (UFCG)
 photo: /images/uploads/whatsapp-image-2026-07-06-at-23.43.37.jpeg

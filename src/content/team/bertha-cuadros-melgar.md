@@ -1,5 +1,6 @@
 ---
 name: Bertha Cuadros-Melgar
+gender: Feminino
 role: Professor Doutor
 institution: Universidade de São Paulo (USP), Escola de Engenharia de Lorena (USP).
 photo: /images/uploads/whatsapp-image-2026-05-19-at-18.30.59.jpeg

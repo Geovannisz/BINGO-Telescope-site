@@ -1,5 +1,6 @@
 ---
 name: Alcides Vicente de Mello
+gender: Masculino
 role: Doutorando
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/alcides.jpg

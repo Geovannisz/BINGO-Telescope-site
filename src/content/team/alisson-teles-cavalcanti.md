@@ -1,5 +1,6 @@
 ---
 name: Alisson Teles Cavalcanti
+gender: Masculino
 role: Colaborador Externo
 institution: Universidaade Federal de Campina Grande (UFCG)
 photo: /images/uploads/whatsapp-image-2026-05-25-at-12.15.05.jpeg

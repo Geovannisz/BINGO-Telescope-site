@@ -36,6 +36,12 @@ collections:
     fields:
       # ── Informações Básicas (obrigatórias) ──
       - {label: "Nome Completo", name: "name", widget: "string", hint: "Nome completo do pesquisador"}
+      - label: "Gênero"
+        name: "gender"
+        widget: "select"
+        options: ["Masculino", "Feminino"]
+        required: false
+        hint: "Opcional. Se for Feminino, o título (cargo) será adaptado automaticamente no site."
       - label: "Cargo/Função"
         name: "role"
         widget: "select"

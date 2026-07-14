@@ -1,5 +1,6 @@
 ---
 name: Daniel Catalayu Passile
+gender: Masculino
 role: Doutorando
 institution: Instituto de Física da USP
 photo: /images/uploads/daniel.jpg

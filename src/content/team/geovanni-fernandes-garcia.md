@@ -1,5 +1,6 @@
 ---
 name: Geovanni Fernandes Garcia
+gender: Masculino
 role: Mestrando
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/eu.jpg

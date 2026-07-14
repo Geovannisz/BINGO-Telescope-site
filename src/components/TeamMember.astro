@@ -22,10 +22,28 @@ interface Props {
   photo?: string;
   stage?: string[];
   slug: string;
+  gender?: string;
 }
 
-const { name, role, institution, photo, stage, slug } = Astro.props;
+const { name, role, institution, photo, stage, slug, gender } = Astro.props;
 const base = import.meta.env.BASE_URL;
+
+/* Gender-based role translation for Portuguese UI */
+let displayRole = role;
+if (gender === 'Feminino') {
+  const femaleRoles: Record<string, string> = {
+    'Coordenador Geral': 'Coordenadora Geral',
+    'Pesquisador Sênior': 'Pesquisadora Sênior',
+    'Professor Titular': 'Professora Titular',
+    'Professor Associado': 'Professora Associada',
+    'Professor Doutor': 'Professora Doutora',
+    'Doutorando': 'Doutoranda',
+    'Mestrando': 'Mestranda',
+    'Engenheiro': 'Engenheira',
+    'Colaborador Externo': 'Colaboradora Externa'
+  };
+  displayRole = femaleRoles[role] || role;
+}
 
 /* If photo path is provided but doesn't start with http or base, prepend base */
 const photoSrc = photo
@@ -89,7 +107,7 @@ const displayName = abbreviateName(name);
     </div>
     <!-- Member info -->
     <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no" title={name}>{displayName}</h3>
-    <p class="notranslate text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2" translate="no" data-role-t={role}>{role}</p>
+    <p class="notranslate text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2" translate="no" data-role-t={role}>{displayRole}</p>
     <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2" translate="no">{institution}</p>
     <div class="flex flex-wrap justify-center gap-1.5 mt-2">
       {stagesArray.map((s) => {

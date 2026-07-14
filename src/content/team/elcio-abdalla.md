@@ -1,5 +1,6 @@
 ---
 name: Elcio Abdalla
+gender: Masculino
 role: Coordenador Geral
 institution: Universidade de São Paulo (USP)
 photo: /images/team/elcio-abdalla.jpg

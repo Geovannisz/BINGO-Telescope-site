@@ -1,5 +1,6 @@
 ---
 name: Nicolli Soares Pansanato
+gender: Feminino
 role: Iniciação Científica
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/nicolli.jpg

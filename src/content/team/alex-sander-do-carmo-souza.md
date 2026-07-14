@@ -1,5 +1,6 @@
 ---
 name: Alex Sander do Carmo Souza
+gender: Masculino
 role: Mestrando
 institution: " Instituto de Física da USP"
 photo: /images/uploads/whatsapp-image-2026-05-19-at-17.02.02.jpeg

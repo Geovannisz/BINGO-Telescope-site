@@ -21,6 +21,7 @@ const teamCollection = defineCollection({
   schema: z.object({
     /* ── Basic Info ── */
     name: z.string(),
+    gender: z.enum(['Masculino', 'Feminino']).optional(),
     role: z.enum([
       'Coordenador Geral',
       'Pesquisador Sênior',

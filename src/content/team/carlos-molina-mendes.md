@@ -1,5 +1,6 @@
 ---
 name: Carlos Molina Mendes
+gender: Masculino
 role: Professor Associado
 institution: Universidade de São Paulo (USP), Escola de Artes, Ciências e Humanidades (EACH)
 stage:

@@ -1,5 +1,6 @@
 ---
 name: Gabriel Silva Costa
+gender: Masculino
 role: Mestrando
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/design-sem-nome-1-.png

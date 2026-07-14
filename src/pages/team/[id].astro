@@ -56,6 +56,22 @@ const personSchema = {
   ...(d.email && { "email": d.email }),
   "sameAs": [d.linkedin, d.lattes, d.orcid, d.researchgate].filter(Boolean)
 };
+/* Gender-based role translation for Portuguese UI */
+let displayRole: string = d.role;
+if (d.gender === 'Feminino') {
+  const femaleRoles: Record<string, string> = {
+    'Coordenador Geral': 'Coordenadora Geral',
+    'Pesquisador Sênior': 'Pesquisadora Sênior',
+    'Professor Titular': 'Professora Titular',
+    'Professor Associado': 'Professora Associada',
+    'Professor Doutor': 'Professora Doutora',
+    'Doutorando': 'Doutoranda',
+    'Mestrando': 'Mestranda',
+    'Engenheiro': 'Engenheira',
+    'Colaborador Externo': 'Colaboradora Externa'
+  };
+  displayRole = femaleRoles[d.role] || d.role;
+}
 ---
 
 <BaseLayout title={d.name}>
@@ -81,7 +97,7 @@ const personSchema = {
         </div>
         <div class="text-center md:text-left">
           <h1 class="text-3xl sm:text-4xl font-black text-white mb-2" style="font-family: 'Outfit', sans-serif;" translate="no">{d.name}</h1>
-          <p class="notranslate text-cyan-400 text-lg font-semibold mb-1" translate="no" data-role-t={d.role}>{d.role}</p>
+          <p class="notranslate text-cyan-400 text-lg font-semibold mb-1" translate="no" data-role-t={d.role}>{displayRole}</p>
           <p class="text-slate-400 text-sm uppercase tracking-wider mb-3" translate="no">{d.institution}</p>
           <div class="flex flex-wrap gap-2 justify-center md:justify-start">
             {stagesArray.map((s: string) => {

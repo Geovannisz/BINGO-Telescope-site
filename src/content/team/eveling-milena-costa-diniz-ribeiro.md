@@ -1,5 +1,6 @@
 ---
 name: Eveling Milena Costa Diniz Ribeiro
+gender: Feminino
 role: Doutorando
 institution: Instituto de Física da USP
 photo: /images/uploads/whatsapp-image-2026-07-14-at-16.23.44.jpeg
