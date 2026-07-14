@@ -459,6 +459,7 @@ export function translateUIElements(lang: string): void {
 
     // Translate individual roles (Team Member cards & profile pages)
     document.querySelectorAll('[data-role-t]').forEach((el) => {
+      if (i18nLang === 'pt') return; // Preserves Astro's gender-inflected HTML
       const key = (el as HTMLElement).dataset.roleT;
       if (!key) return;
       const dictKey = `role.${key}`;
