@@ -1,6 +1,6 @@
 ---
 name: Tales Augusto Carvalho de Barros
-role: Pesquisador Sênior
+role: Pós-doc
 institution: Universidade Estadual da Paraíba (UEPB), Universidade Federal de
   Campina Grande (UFCG).
 photo: /images/uploads/tales.jpg
