@@ -293,7 +293,12 @@ publications:
   - link: https://arxiv.org/abs/2606.31255
     title: Semiclassical Backreaction of Massive Quantum Fields in the Spacetime of
       a Global Monopole
-books_chapters: "Canal de YouTube: Ciencia al alcance de todos:
-  https://www.youtube.com/@cienciaalalcancedetodospor1930"
+books_chapters: ""
+groups_labs: >-
+  Criador  do Grupo de Estudos Avanzados da Universidad de Cienfuegos e seu
+  diretor desde 2010 ate 2023.
+
+
+  **Canal de YouTube:** Ciencia al alcance de todos: https://www.youtube.com/@cienciaalalcancedetodospor1930
 authorized: true
 ---
