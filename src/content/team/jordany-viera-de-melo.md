@@ -1,6 +1,6 @@
 ---
 name: Jordany Viera de Melo
-role: Pós-doc
+role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG), Universidade
   Estadual da Paraíba (UEPB).
 photo: /images/uploads/whatsapp-image-2026-07-14-at-16.31.02.jpeg
