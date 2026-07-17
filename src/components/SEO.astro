@@ -71,7 +71,7 @@ const articleSchema = article ? {
 } : null;
 
 // Generate BreadcrumbList
-const pathParts = Astro.url.pathname.split('/').filter(p => p !== '' && p !== 'BINGO-Telescope-site');
+const pathParts = Astro.url.pathname.split('/').filter(p => p !== '');
 const breadcrumbItems = pathParts.map((part, index) => {
   const url = `${Astro.site ? Astro.site.toString().replace(/\/$/, '') : Astro.url.origin}/${pathParts.slice(0, index + 1).join('/')}`;
   return {

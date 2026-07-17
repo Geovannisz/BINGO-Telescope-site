@@ -16,7 +16,7 @@
   }
 
   function startImageFixer() {
-    // Detect dynamically if the CMS is running under a subpath (e.g. /BINGO-Telescope-site)
+    // Detect dynamically if the CMS is running under a subpath
     const adminIdx = window.location.pathname.indexOf('/admin');
     if (adminIdx <= 0) return; // If 0 or -1, we are at the domain root (e.g. localhost), no fix needed
     const basePath = window.location.pathname.substring(0, adminIdx);

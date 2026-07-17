@@ -6,4 +6,4 @@ Disallow: /admin/
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://bingotelescope.com/sitemap-index.xml
+Sitemap: https://bingotelescope.org/sitemap-index.xml

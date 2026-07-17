@@ -14,7 +14,7 @@ O site foi focado em alta performance (Geração de Site Estático - SSG), SEO e
 - **Estilização:** Tailwind CSS - Usado extensivamente para *Glassmorphism*, efeitos de brilho radial e modo noturno.
 - **Tipografia:** `Outfit` para títulos expressivos e `Inter` para o corpo de texto.
 - **Mapas:** [Leaflet.js](https://leafletjs.com/) - Usado para exibir a localização georreferenciada do site em Aguiar (com injeção segura e isolada).
-- **Conteúdo e CMS:** O repositório utiliza **Decap CMS** (`public/admin/`) para gerenciar dados estruturados (Notícias, Equipes, Publicações) via arquivos Markdown em `src/content/`. O painel conta com um motor auxiliar customizado (`admin-engine.js`) para correção dinâmica de caminhos e pré-visualização de imagens em subpastas de hospedagem (`/BINGO-Telescope-site`), além de validação flexível de esquemas (`Zod schema`).
+- **Conteúdo e CMS:** O repositório utiliza **Decap CMS** (`public/admin/`) para gerenciar dados estruturados (Notícias, Equipes, Publicações) via arquivos Markdown em `src/content/`. O painel conta com um motor auxiliar customizado (`admin-engine.js`) para correção dinâmica de caminhos e pré-visualização de imagens, além de validação flexível de esquemas (`Zod schema`).
 
 ---
 
