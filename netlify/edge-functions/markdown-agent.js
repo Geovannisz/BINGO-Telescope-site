@@ -76,4 +76,20 @@ export default async (request, context) => {
 
 export const config = {
   path: "/*",
+  excludedPath: [
+    "/**/*.css",
+    "/**/*.js",
+    "/**/*.mjs",
+    "/**/*.png",
+    "/**/*.jpg",
+    "/**/*.jpeg",
+    "/**/*.webp",
+    "/**/*.svg",
+    "/**/*.gif",
+    "/**/*.ico",
+    "/**/*.woff",
+    "/**/*.woff2",
+    "/images/*",
+    "/fonts/*"
+  ]
 };
