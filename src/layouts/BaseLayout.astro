@@ -58,28 +58,7 @@ const base = import.meta.env.BASE_URL;
     <meta name="keywords" content="BINGO, telescópio BINGO, radiotelescópio, BAO, oscilações acústicas de bárions, baryon acoustic oscillations, mapeamento de intensidade, intensity mapping, energia escura, dark energy, hidrogênio neutro, hydrogen 21cm, cosmologia, cosmology, Paraíba, Brasil, Brazil, FRB, fast radio bursts, ABDUS, Uirapuru, rádio astronomia, radio astronomy, Aguiar" />
     {nativeI18n && pageId && <meta name="bingo-native-i18n" content={pageId} />}
 
-    <!-- Smart FOUC Prevention (Triggers ONLY on first load of the session to avoid flickering between pages) -->
-    <script is:inline>
-      if (!sessionStorage.getItem('fouc_handled')) {
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.visibility = 'hidden';
-        
-        window.addEventListener('astro:page-load', function() {
-          setTimeout(function() {
-            document.documentElement.style.transition = 'opacity 0.5s ease-out';
-            document.documentElement.style.opacity = '1';
-            document.documentElement.style.visibility = 'visible';
-            sessionStorage.setItem('fouc_handled', 'true');
-          }, 50); // Small delay to ensure CSS is painted
-        });
-
-        // Fallback for extremely slow loads
-        setTimeout(function() {
-          document.documentElement.style.opacity = '1';
-          document.documentElement.style.visibility = 'visible';
-        }, 3000);
-      }
-    </script>
+    <!-- Smart FOUC Prevention is removed because ClientRouter handles SPA transitions and inline styles handle initial paint -->
     <style is:inline>
       /* Prevents black-text FOUC on slow connections or Tailwind failures */
       html, body { background-color: #070d1f !important; color: #e2e8f0 !important; }
