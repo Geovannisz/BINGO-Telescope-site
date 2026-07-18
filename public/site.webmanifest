@@ -8,11 +8,6 @@
   "theme_color": "#070d1f",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "32x32",
-      "type": "image/x-icon"
-    },
-    {
       "src": "/BINGO-Logo-ico.png",
       "sizes": "512x512",
       "type": "image/png",
