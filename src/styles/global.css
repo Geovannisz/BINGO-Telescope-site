@@ -25,10 +25,11 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 @layer base {
-  /* Layer 1: Tell every browser this is a dark-only site */
+  /* Layer 1: Tell every browser this is a dark-only site and trigger FOUC visibility */
   :root,
   html {
     color-scheme: dark only;
+    --fouc-opacity: 1 !important;
   }
 
   /* Layer 2: Explicit fallback colors on ALL base elements.

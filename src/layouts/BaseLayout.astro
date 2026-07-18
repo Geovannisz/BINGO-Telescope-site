@@ -58,11 +58,18 @@ const base = import.meta.env.BASE_URL;
 
     <!-- Critical inline dark-theme styles (loads before any external CSS) -->
     <style is:inline>
+      /* FOUC Prevention: hide content until global.css is loaded, triggering a fade-in */
+      html { --fouc-opacity: 0; opacity: var(--fouc-opacity); transition: opacity 0.6s ease-out; }
       /* Prevents black-text FOUC on slow connections or Tailwind failures */
       html, body { background-color: #070d1f !important; color: #e2e8f0 !important; }
       /* Prevent Google Translate <font> tags from forcing black text */
       font, font[color] { color: inherit !important; }
     </style>
+    <noscript><style>html { --fouc-opacity: 1 !important; opacity: 1 !important; }</style></noscript>
+    <script is:inline>
+      // FOUC Fallback: If global.css fails to load within 2.5s, force visibility
+      setTimeout(function() { document.documentElement.style.setProperty('--fouc-opacity', '1', 'important'); }, 2500);
+    </script>
     <!-- Fonts: Inter (body) + Outfit (headings) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
