@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
@@ -42,6 +43,7 @@ const base = import.meta.env.BASE_URL;
     <link rel="apple-touch-icon" href={`${base}BINGO-Logo-ico.png`} />
     <link rel="manifest" href={`${base}site.webmanifest`} />
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
     
     <SEO 
       title={title} 
@@ -62,7 +64,7 @@ const base = import.meta.env.BASE_URL;
         document.documentElement.style.opacity = '0';
         document.documentElement.style.visibility = 'hidden';
         
-        window.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('astro:page-load', function() {
           setTimeout(function() {
             document.documentElement.style.transition = 'opacity 0.5s ease-out';
             document.documentElement.style.opacity = '1';
@@ -144,8 +146,8 @@ const base = import.meta.env.BASE_URL;
       import { initTranslator, switchLanguage, getStoredLang } from '../utils/translator';
       import { initNativeTranslator } from '../utils/nativeTranslator';
 
-      // Run as early as possible after DOM is ready
-      document.addEventListener('DOMContentLoaded', () => {
+      // Run as early as possible after DOM is ready or page navigated via SPA
+      document.addEventListener('astro:page-load', () => {
         // Detect whether this page uses native (hardcoded) translation
         const nativeMeta = document.querySelector('meta[name="bingo-native-i18n"]');
 

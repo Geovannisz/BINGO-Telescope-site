@@ -308,7 +308,8 @@ const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location
 </style>
 
 <script>
-  // Mobile menu toggle
+  document.addEventListener('astro:page-load', () => {
+    // Mobile menu toggle
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('menu-icon-open');
@@ -397,4 +398,5 @@ const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location
       }
     });
   }
+});
 </script>

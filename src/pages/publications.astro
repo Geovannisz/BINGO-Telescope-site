@@ -341,7 +341,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('astro:page-load', () => {
       const ITEMS_PER_PAGE = 15;
       let currentPage = 1;
 
