@@ -10,14 +10,14 @@ const base = import.meta.env.BASE_URL;
       <p class="text-center text-xs text-slate-500 uppercase tracking-wider mb-4 font-medium" data-i18n="footer.partners">Financiadores e Parceiros</p>
       <div class="w-full overflow-x-auto pb-4 custom-scrollbar">
         <div class="flex justify-center min-w-[1000px] lg:min-w-full">
-          <img src={`${base}images/logos/Regua-de-logos-bco-1536x200.png`} alt="Logos dos parceiros e financiadores do BINGO" class="h-24 md:h-36 lg:h-48 w-auto object-contain" />
+          <img src={`${base}images/logos/Regua-de-logos-bco-1536x200.png`} alt="Logos dos parceiros e financiadores do BINGO" width="1536" height="200" class="h-24 md:h-36 lg:h-48 w-auto object-contain" />
         </div>
       </div>
     </div>
   </div>
 
   <!-- Background texture -->
-  <div class="absolute inset-0 opacity-[0.03]" style={`background-image: url('${base}images/backgrounds/cmb_planck-background.png'); background-size: cover; background-position: center;`}></div>
+  <div class="absolute inset-0 opacity-[0.03]" style={`background-image: url('${base}images/backgrounds/cmb_planck-background.webp'); background-size: cover; background-position: center;`}></div>
 
   <div class="relative pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +29,8 @@ const base = import.meta.env.BASE_URL;
             <img
               src={`${base}BINGO-Logo-ico.png`}
               alt="BINGO Logo"
-              class="h-9 w-auto object-contain"
+              width="400" height="357"
+              class="h-10 w-auto object-contain drop-shadow-lg"
             />
             <span class="text-xl font-extrabold text-white tracking-wider" style="font-family: 'Outfit', sans-serif;">
               <span class="gradient-text-cyan font-bingo">BINGO</span><span class="text-slate-400 font-light ml-1">Telescope</span>

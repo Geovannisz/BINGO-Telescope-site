@@ -17,10 +17,11 @@ const base = import.meta.env.BASE_URL;
   <!-- Galaxy Background Image with Overlay -->
   <div class="absolute inset-0 z-[1]">
     <img
-      src={`${base}images/backgrounds/galaxy-background.jpg`}
+      src={`${base}images/backgrounds/galaxy-background.webp`}
       alt="Galáxia — Fundo cósmico"
       class="w-full h-full object-cover opacity-60"
       loading="eager"
+      fetchpriority="high"
       style="animation: subtle-zoom 40s ease-in-out infinite alternate;"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-[#050a18]/40 via-[#070d1f]/50 to-[#0f172a]"></div>
