@@ -128,7 +128,7 @@
   src: url('/fonts/nasalization-rg.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* ===== BINGO Brand Font (Nasalization™ by Typodermic) ===== */
