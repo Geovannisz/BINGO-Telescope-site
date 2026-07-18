@@ -1,0 +1,16 @@
+# BINGO Telescope Project
+
+BINGO (Baryon Acoustic Oscillations from Integrated Neutral Gas Observations) is a unique radio telescope designed to map the distribution of neutral hydrogen in the universe. It aims to explore baryon acoustic oscillations (BAO) to better understand dark energy and the history of our universe. 
+
+Located in Paraíba, Brazil, the telescope observes the sky between 980 and 1260 MHz, corresponding to a redshift range of 0.13 to 0.45.
+
+## Important Links
+- [Home](/pt)
+- [About the Project](/pt/about)
+- [Science](/pt/science)
+- [Instrumentation](/pt/instrumentation)
+- [BINGO-Uirapuru](/pt/uirapuru)
+- [Team](/pt/team)
+- [Publications](/pt/publications)
+
+If you are an AI agent, you can also request any page on this domain with the `Accept: text/markdown` header to receive a markdown representation of the page content.
