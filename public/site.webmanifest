@@ -1,0 +1,25 @@
+{
+  "name": "BINGO Telescope",
+  "short_name": "BINGO",
+  "description": "Radiotelescópio BINGO — Mapeando o universo em radiofrequências para investigar a energia escura através de oscilações acústicas de bárions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070d1f",
+  "theme_color": "#070d1f",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/BINGO-Logo-ico.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["science", "education"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}
