@@ -8,6 +8,6 @@ summary: "Investigação da correspondência clássico-quântica para sistemas p
 journal: "Physical Review A"
 volume: "103"
 issue: "2"
-pages: ""
+pages: "022201"
 category: "Colaboração"
 ---

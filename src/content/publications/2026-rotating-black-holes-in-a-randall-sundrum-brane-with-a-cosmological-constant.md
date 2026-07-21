@@ -8,6 +8,6 @@ summary: "Buracos negros em rotação em uma brana de Randall-Sundrum com consta
 journal: "Physical Review D"
 volume: "86"
 issue: "12"
-pages: ""
+pages: "124047"
 category: "Colaboração"
 ---

@@ -8,6 +8,6 @@ summary: "Investigação de perturbações eletromagnéticas em novos cenários 
 journal: "Physical Review D"
 volume: "93"
 issue: "12"
-pages: ""
+pages: "124068"
 category: "Colaboração"
 ---

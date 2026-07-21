@@ -8,6 +8,6 @@ summary: "Estudo numérico dos modos quasinormais de buracos negros em espaço a
 journal: "Physical Review D"
 volume: "80"
 issue: "2"
-pages: ""
+pages: "024024"
 category: "Colaboração"
 ---

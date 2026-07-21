@@ -8,6 +8,6 @@ summary: "Assinatura gravitacional de buracos negros de Schwarzschild na gravida
 journal: "Physical Review D"
 volume: "81"
 issue: "12"
-pages: ""
+pages: "124021"
 category: "Colaboração"
 ---

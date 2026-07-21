@@ -8,6 +8,6 @@ summary: "Caudas temporais tardias do campo vetorial massivo em um fundo de bura
 journal: "Physical Review D"
 volume: "75"
 issue: "8"
-pages: ""
+pages: "084004"
 category: "Colaboração"
 ---

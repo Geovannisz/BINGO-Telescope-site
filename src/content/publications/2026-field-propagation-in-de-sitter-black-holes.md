@@ -8,6 +8,6 @@ summary: "Propagação de campos escalares, eletromagnéticos e gravitacionais e
 journal: "Physical Review D"
 volume: "69"
 issue: "10"
-pages: ""
+pages: "104013"
 category: "Colaboração"
 ---

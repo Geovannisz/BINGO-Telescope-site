@@ -8,6 +8,6 @@ summary: "Extensões isotrópicas das soluções de vácuo na relatividade geral
 journal: "Physical Review D"
 volume: "84"
 issue: "10"
-pages: ""
+pages: "104013"
 category: "Colaboração"
 ---

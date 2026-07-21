@@ -8,6 +8,6 @@ summary: "Buracos de minhoca em branas de Sitter, construindo soluções de worm
 journal: "Physical Review D"
 volume: "86"
 issue: "2"
-pages: ""
+pages: "024015"
 category: "Colaboração"
 ---

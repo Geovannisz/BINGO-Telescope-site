@@ -8,6 +8,6 @@ summary: "Dinâmica geodésica em wormholes de brane-de Sitter, investigando tra
 journal: "Physical Review D"
 volume: "111"
 issue: "10"
-pages: ""
+pages: "104014"
 category: "Colaboração"
 ---

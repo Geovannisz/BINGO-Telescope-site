@@ -8,6 +8,6 @@ summary: "Estudo de deformações das soluções de vácuo da relatividade geral
 journal: "Physical Review D"
 volume: "88"
 issue: "12"
-pages: ""
+pages: "127501"
 category: "Colaboração"
 ---

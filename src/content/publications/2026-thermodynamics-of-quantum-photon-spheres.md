@@ -8,6 +8,6 @@ summary: "Termodinâmica de esferas de fótons quânticas em buracos negros, inv
 journal: "Physical Review D"
 volume: "90"
 issue: "10"
-pages: ""
+pages: "104025"
 category: "Colaboração"
 ---

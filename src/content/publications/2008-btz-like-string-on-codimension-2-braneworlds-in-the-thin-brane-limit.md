@@ -1,15 +1,13 @@
 ---
-title: BTZ-Like String on Codimension-2 Braneworlds in the Thin Brane Limit
-authors: >-
-  Bertha Cuadros-Melgar, Eleftherios Papantonopoulos, Minas Tsoukalas, Vassilios
-  Zamarias
+title: "BTZ-Like String on Codimension-2 Braneworlds in the Thin Brane Limit"
+authors: ""
 date: 2008-06-04T00:00:00.000Z
-link: https://doi.org/10.1103/PhysRevLett.100.221601
-doi: 10.1103/PhysRevLett.100.221601
-summary: ""
-journal: Physical Review Letters
+link: "https://doi.org/10.1103/PhysRevLett.100.221601"
+doi: "10.1103/PhysRevLett.100.221601"
+summary: "Estudo científico sobre btz-like string on codimension-2 braneworlds in the thin brane limit analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."
+journal: "Physical Review Letters"
 volume: "100"
 issue: "22"
-pages: ""
-category: Outro
+pages: "221601"
+category: "Outro"
 ---

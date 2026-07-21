@@ -8,6 +8,6 @@ summary: "Análise dinâmica de geodésicas nulas em espaços-tempo de brane wor
 journal: "Physical Review D"
 volume: "102"
 issue: "10"
-pages: ""
+pages: "104051"
 category: "Colaboração"
 ---

@@ -8,6 +8,6 @@ summary: "Modos quasinormais de buracos negros esféricos em d dimensões com co
 journal: "Physical Review D"
 volume: "68"
 issue: "6"
-pages: ""
+pages: "064007"
 category: "Colaboração"
 ---

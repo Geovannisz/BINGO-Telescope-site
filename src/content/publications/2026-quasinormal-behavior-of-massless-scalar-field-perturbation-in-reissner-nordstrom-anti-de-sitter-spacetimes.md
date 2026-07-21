@@ -8,6 +8,6 @@ summary: "Comportamento quasinormal de perturbações de campo escalar sem massa
 journal: "Physical Review D"
 volume: "70"
 issue: "6"
-pages: ""
+pages: "064025"
 category: "Colaboração"
 ---

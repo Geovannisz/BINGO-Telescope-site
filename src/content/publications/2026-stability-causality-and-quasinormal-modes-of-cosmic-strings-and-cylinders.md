@@ -8,6 +8,6 @@ summary: "Estabilidade, causalidade e modos quasinormais de cordas cósmicas e c
 journal: "Physical Review D"
 volume: "81"
 issue: "4"
-pages: ""
+pages: "044003"
 category: "Colaboração"
 ---

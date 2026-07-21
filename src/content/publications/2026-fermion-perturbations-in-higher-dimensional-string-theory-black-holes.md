@@ -1,13 +1,13 @@
 ---
-title: FERMION PERTURBATIONS IN HIGHER-DIMENSIONAL STRING-THEORY BLACK HOLES
-authors: Owen Pavel Fernández Piedra
-date: 2026-07-16T11:53:59.803Z
-link: https://www.worldscientific.com/doi/abs/10.1142/S0218271813500739
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
-pages: ""
-category: Outro
+title: "FERMION PERTURBATIONS IN HIGHER-DIMENSIONAL STRING-THEORY BLACK HOLES"
+authors: "Owen Pavel Fernández Piedra"
+date: 2013-08-15T12:00:00Z
+link: "https://www.worldscientific.com/doi/abs/10.1142/S0218271813500739"
+doi: "10.1142/S0218271813500739"
+summary: "Estudo científico sobre fermion perturbations in higher-dimensional string-theory black holes analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."
+journal: "International Journal of Modern Physics D"
+volume: "22"
+issue: "10"
+pages: "1350073"
+category: "Outro"
 ---

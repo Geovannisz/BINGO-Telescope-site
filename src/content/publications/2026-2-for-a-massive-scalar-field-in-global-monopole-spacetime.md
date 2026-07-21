@@ -1,13 +1,13 @@
 ---
-title: ⟨𝜙2⟩ for a massive scalar field in global monopole spacetime
-authors: Owen Pavel Fernández Piedra
-date: 2026-07-16T11:53:59.802Z
-link: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.101.125016
-doi: ""
-summary: ""
-journal: ""
-volume: ""
-issue: ""
-pages: ""
-category: Outro
+title: "⟨𝜙2⟩ for a massive scalar field in global monopole spacetime"
+authors: "Owen Pavel Fernández Piedra"
+date: 2020-06-22T12:00:00Z
+link: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.101.125016"
+doi: "10.1103/PhysRevD.101.125016"
+summary: "Estudo científico sobre ⟨𝜙2⟩ for a massive scalar field in global monopole spacetime analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."
+journal: "Physical Review D"
+volume: "101"
+issue: "12"
+pages: "125016"
+category: "Outro"
 ---

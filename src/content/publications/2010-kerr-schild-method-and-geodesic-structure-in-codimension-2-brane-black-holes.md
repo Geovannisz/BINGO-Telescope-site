@@ -1,13 +1,13 @@
 ---
-title: Kerr-Schild method and geodesic structure in codimension-2 brane black holes
-authors: Bertha Cuadros-Melgar, Susana Aguilar, Nelson Zamorano
+title: "Kerr-Schild method and geodesic structure in codimension-2 brane black holes"
+authors: "Bertha Cuadros-Melgar, Susana Aguilar, Nelson Zamorano"
 date: 2010-06-16T00:00:00.000Z
-link: https://doi.org/10.1103/PhysRevD.81.126010
-doi: 10.1103/PhysRevD.81.126010
-summary: ""
-journal: Physical Review D
+link: "https://doi.org/10.1103/PhysRevD.81.126010"
+doi: "10.1103/PhysRevD.81.126010"
+summary: "Estudo científico sobre kerr-schild method and geodesic structure in codimension-2 brane black holes analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."
+journal: "Physical Review D"
 volume: "81"
 issue: "12"
-pages: ""
-category: Outro
+pages: "126010"
+category: "Outro"
 ---

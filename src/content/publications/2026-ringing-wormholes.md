@@ -8,6 +8,6 @@ summary: "Estudo dos modos quasinormais ('ringing') de buracos de minhoca, calcu
 journal: "Physical Review D"
 volume: "71"
 issue: "12"
-pages: ""
+pages: "124009"
 category: "Colaboração"
 ---

@@ -8,6 +8,6 @@ summary: "Perturbações de black p-branes, analisando a estabilidade e os modos
 journal: "Physical Review D"
 volume: "81"
 issue: "6"
-pages: ""
+pages: "064001"
 category: "Colaboração"
 ---

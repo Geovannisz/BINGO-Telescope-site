@@ -8,6 +8,6 @@ summary: "Geração da termodinâmica de buracos negros de Kerr-anti-de Sitter a
 journal: "Physical Review D"
 volume: "110"
 issue: "2"
-pages: ""
+pages: "024049"
 category: "Colaboração"
 ---

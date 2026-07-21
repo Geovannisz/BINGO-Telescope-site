@@ -8,6 +8,6 @@ summary: "Estudo de soluções de buracos negros e buracos de minhoca em branas 
 journal: "Physical Review D"
 volume: "82"
 issue: "4"
-pages: ""
+pages: "044029"
 category: "Colaboração"
 ---

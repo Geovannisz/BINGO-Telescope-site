@@ -8,6 +8,6 @@ summary: "Análise de buracos negros e buracos brancos cosmológicos com massa d
 journal: "Physical Review D"
 volume: "91"
 issue: "8"
-pages: ""
+pages: "084043"
 category: "Colaboração"
 ---

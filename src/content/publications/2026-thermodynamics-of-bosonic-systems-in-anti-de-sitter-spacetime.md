@@ -8,6 +8,6 @@ summary: "Termodinâmica de sistemas bosônicos no espaço-tempo anti-de Sitter,
 journal: "Physical Review D"
 volume: "99"
 issue: "8"
-pages: ""
+pages: "084028"
 category: "Colaboração"
 ---

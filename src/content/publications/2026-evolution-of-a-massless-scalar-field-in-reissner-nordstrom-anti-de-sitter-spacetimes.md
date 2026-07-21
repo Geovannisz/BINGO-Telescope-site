@@ -8,6 +8,6 @@ summary: "Evolução temporal de um campo escalar sem massa no espaço-tempo de 
 journal: "Physical Review D"
 volume: "63"
 issue: "8"
-pages: ""
+pages: "084001"
 category: "Colaboração"
 ---

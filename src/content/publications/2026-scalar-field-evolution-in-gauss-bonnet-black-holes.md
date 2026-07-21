@@ -8,6 +8,6 @@ summary: "Evolução de campos escalares em buracos negros de Gauss-Bonnet, anal
 journal: "Physical Review D"
 volume: "72"
 issue: "8"
-pages: ""
+pages: "084006"
 category: "Colaboração"
 ---
