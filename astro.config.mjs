@@ -11,7 +11,7 @@ export default defineConfig({
   base,
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/admin') && !page.includes('/404'),
+      filter: (page) => !page.includes('/admin') && !page.includes('/404') && !page.includes('/team'),  // TODO: remove '/team' filter when team page is re-enabled
       serialize(item) {
         // Home page — highest priority
         if (item.url === `${site}/` || item.url === site) {

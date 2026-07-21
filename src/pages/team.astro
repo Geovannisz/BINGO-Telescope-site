@@ -5,10 +5,17 @@
    Displays:
    1. Working Groups (Stages 0-V) overview
    2. Team members grouped by role hierarchy
+
+   ⚠️ TEMPORARILY HIDDEN — page redirects to 404.
+   Remove the return below to re-enable this page.
    =================================================================== */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamMember from '../components/TeamMember.astro';
 import { getCollection } from 'astro:content';
+
+/* ── 🔒 TEAM PAGE HIDDEN: remove this block to re-enable ── */
+return Astro.redirect(`${import.meta.env.BASE_URL}404`, 404);
+/* ── end hidden block ── */
 
 const allTeam = await getCollection('team');
 const base = import.meta.env.BASE_URL;

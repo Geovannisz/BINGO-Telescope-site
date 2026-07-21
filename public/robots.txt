@@ -5,6 +5,7 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /_astro/
+Disallow: /team/  # Temporarily hidden — remove when team page is re-enabled
 
 # Crawl-delay to be polite with the server
 Crawl-delay: 2
