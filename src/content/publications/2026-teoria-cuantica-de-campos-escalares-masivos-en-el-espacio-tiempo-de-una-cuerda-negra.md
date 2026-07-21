@@ -1,15 +1,13 @@
 ---
-title: >-
-  Teoría cuántica de campos escalares masivos en el espacio-tiempo de una cuerda
-  negra
-authors: Owen Pavel Fernández Piedra
-date: 2026-07-16T11:53:59.796Z
-link: https://inspirehep.net/files/e0e546b056fc9eb8c3d7d2ce64c346f7
+title: "Teoría cuántica de campos escalares masivos en el espacio-tiempo de una cuerda negra"
+authors: "Owen Pavel Fernández Piedra"
+date: 2008-01-01T12:00:00Z
+link: "https://inspirehep.net/literature/1486754"
 doi: ""
-summary: ""
-journal: ""
+journal: "Tese de Doutorado"
 volume: ""
 issue: ""
 pages: ""
-category: Outro
+category: "Tese"
+summary: "Estudo da teoria quântica de campos escalares massivos no fundo de espaço-tempo de uma corda negra (black string) cilíndrica estática."
 ---
