@@ -194,6 +194,97 @@
     input.click();
   }
 
+  function importBibTex(type) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.bib,.txt';
+    input.addEventListener('change', async (ev) => {
+      const file = ev.target.files[0];
+      if (!file) return;
+      try {
+        const text = await file.text();
+        const data = parseBibTex(text);
+        if (data.length === 0) {
+            showToast('Nenhum artigo BibTeX válido encontrado.', 'warn');
+            return;
+        }
+        showImportPreview(type, data);
+      } catch (e) {
+        showToast('Erro ao ler o arquivo BibTeX: ' + e.message, 'error');
+      }
+    });
+    input.click();
+  }
+
+  function parseBibTex(text) {
+    const entries = [];
+    const entryRegex = /@\w+\s*\{([^,]+),([\s\S]*?)\n\}/g;
+    let match;
+    while ((match = entryRegex.exec(text)) !== null) {
+      const id = match[1].trim();
+      const body = match[2];
+      const entry = {};
+      
+      const lines = body.split('\n');
+      for (let line of lines) {
+         line = line.trim();
+         if (!line) continue;
+         const eqIdx = line.indexOf('=');
+         if (eqIdx === -1) continue;
+         const key = line.substring(0, eqIdx).trim().toLowerCase();
+         let val = line.substring(eqIdx + 1).trim();
+         if (val.endsWith(',')) val = val.substring(0, val.length - 1).trim();
+         
+         // Remove outer braces or quotes
+         if (val.startsWith('{') && val.endsWith('}')) val = val.substring(1, val.length - 1).trim();
+         else if (val.startsWith('"') && val.endsWith('"')) val = val.substring(1, val.length - 1).trim();
+         
+         if (key === 'author') {
+             val = val.split(' and ').map(a => {
+                 let name = a.replace(/[{}]/g, '').trim();
+                 if (name.includes(',')) {
+                     const parts = name.split(',').map(p => p.trim());
+                     name = parts[1] + ' ' + parts[0];
+                 }
+                 return name.replace(/\s*~\s*/g, ' ').replace(/\s+/g, ' ');
+             }).join(', ');
+         }
+         if (key === 'title') {
+             val = val.replace(/[{}]/g, '').trim();
+         }
+         entry[key] = val;
+      }
+      
+      const pub = {};
+      if (entry.title) pub.title = entry.title;
+      if (entry.author) pub.authors = entry.author;
+      
+      let year = entry.year || new Date().getFullYear();
+      let monthStr = entry.month || '01';
+      const months = {jan:'01',feb:'02',mar:'03',apr:'04',may:'05',jun:'06',jul:'07',aug:'08',sep:'09',oct:'10',nov:'11',dec:'12'};
+      let month = months[monthStr.toLowerCase().substring(0,3)] || '01';
+      if (!isNaN(parseInt(monthStr)) && parseInt(monthStr) > 0) {
+          month = String(parseInt(monthStr)).padStart(2, '0');
+      }
+      pub.date = `${year}-${month}-01T12:00:00Z`;
+      
+      if (entry.doi) pub.doi = entry.doi;
+      if (entry.adsurl) pub.link = entry.adsurl;
+      else if (entry.url) pub.link = entry.url;
+      else if (entry.doi) pub.link = `https://doi.org/${entry.doi}`;
+      
+      if (entry.journal) pub.journal = entry.journal.replace(/\\aap/g, 'Astronomy & Astrophysics').replace(/\\mnras/g, 'Monthly Notices of the Royal Astronomical Society').replace(/\\prd/g, 'Physical Review D').replace(/\\apj/g, 'The Astrophysical Journal').replace(/[{}]/g, '');
+      if (entry.volume) pub.volume = entry.volume;
+      if (entry.eid) pub.pages = entry.eid;
+      else if (entry.pages) pub.pages = entry.pages;
+      
+      pub.category = 'Série Principal';
+      
+      if (pub.title && pub.authors) entries.push(pub);
+    }
+    return entries;
+  }
+
   function showImportPreview(type, entries) {
     const schema = SCHEMAS[type];
     const overlay = document.createElement('div');
@@ -360,7 +451,8 @@
             <div class="bingo-io-group">
               <span class="bingo-io-group-label">${v.label}</span>
               <button class="bingo-io-btn bingo-io-btn-export" data-type="${k}" title="Exportar ${v.label} (JSON)">⬇ Exportar</button>
-              <button class="bingo-io-btn bingo-io-btn-import" data-type="${k}" title="Importar ${v.label} (JSON)">⬆ Importar</button>
+              <button class="bingo-io-btn bingo-io-btn-import" data-type="${k}" title="Importar ${v.label} (JSON)">⬆ JSON</button>
+              ${k === 'publications' ? `<button class="bingo-io-btn bingo-io-btn-bibtex" data-type="${k}" title="Importar BibTeX">📚 BibTeX</button>` : ''}
             </div>
           `).join('')}
         </div>
@@ -381,6 +473,7 @@
       if (!type) return;
       if (btn.classList.contains('bingo-io-btn-export')) exportCollection(type);
       if (btn.classList.contains('bingo-io-btn-import')) importCollection(type);
+      if (btn.classList.contains('bingo-io-btn-bibtex')) importBibTex(type);
     });
   }
 
