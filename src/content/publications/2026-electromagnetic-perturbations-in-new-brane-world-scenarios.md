@@ -1,7 +1,7 @@
 ---
 title: "Electromagnetic perturbations in new brane world scenarios"
-authors: "C. Molina, A. B. Pavan, T. E. Medina Torrejón"
-date: 2016-06-27T12:00:00Z
+authors: "C. Molina, A. B. Pavan, T. E. Medina Torrejón"
+date: 2016-06-27 12:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.93.124068"
 doi: "10.1103/PhysRevD.93.124068"
 summary: "Investigação de perturbações eletromagnéticas em novos cenários de brane worlds, analisando a estabilidade e as propriedades espectrais de buracos negros em modelos de dimensões extras. Calcula os modos quasinormais eletromagnéticos e discute as assinaturas observacionais."

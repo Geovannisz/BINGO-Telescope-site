@@ -1,7 +1,7 @@
 ---
 title: "Universality in quasinormal modes of a magnetized black hole"
 authors: "Eveling Milena Costa Diniz Ribeiro"
-date: 2025-12-08T23:42:03Z
+date: 2025-12-08 23:42:03+00:00
 link: "https://doi.org/10.1103/2bc9-zb5b"
 doi: "10.1103/2bc9-zb5b"
 summary: "Estudo da universalidade nos modos quasinormais em buracos negros magnetizados."

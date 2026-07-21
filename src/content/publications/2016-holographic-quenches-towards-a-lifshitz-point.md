@@ -1,7 +1,7 @@
 ---
 title: "Holographic quenches towards a Lifshitz point"
 authors: "Giancarlo Camilo, Bertha Cuadros-Melgar, Elcio Abdalla"
-date: 2016-02-01T00:00:00.000Z
+date: 2016-02-01 00:00:00+00:00
 link: "https://doi.org/10.1007/JHEP02(2016)014"
 doi: "10.1007/JHEP02(2016)014"
 summary: "Estudo científico sobre holographic quenches towards a lifshitz point analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."

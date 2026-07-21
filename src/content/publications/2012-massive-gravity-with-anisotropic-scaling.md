@@ -1,7 +1,7 @@
 ---
 title: "Massive gravity with anisotropic scaling"
 authors: ""
-date: 2012-06-18T00:00:00.000Z
+date: 2012-06-18 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.85.124035"
 doi: "10.1103/PhysRevD.85.124035"
 summary: "Estudo científico sobre massive gravity with anisotropic scaling analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."

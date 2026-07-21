@@ -1,7 +1,7 @@
 ---
 title: "Shortcuts in a nonlinear dynamical braneworld in six dimensions"
 authors: "Bertha Cuadros-Melgar"
-date: 2004-04-29T00:00:00.000Z
+date: 2004-04-29 00:00:00+00:00
 link: "https://doi.org/10.1088/0264-9381/21/11/011"
 doi: "10.1088/0264-9381/21/11/011"
 summary: "Estudo científico sobre shortcuts in a nonlinear dynamical braneworld in six dimensions analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."

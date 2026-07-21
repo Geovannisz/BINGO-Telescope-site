@@ -1,7 +1,7 @@
 ---
 title: "Stability analysis and area spectrum of three-dimensional Lifshitz black holes"
 authors: "Bertha Cuadros-Melgar, Jeferson de Oliveira, C. E. Pellicer"
-date: 2012-01-11T00:00:00.000Z
+date: 2012-01-11 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.85.024014"
 doi: "10.1103/PhysRevD.85.024014"
 summary: "Estudo científico sobre stability analysis and area spectrum of three-dimensional lifshitz black holes analisando aspectos teóricos e observacionais relevantes para a cosmologia e física fundamental."

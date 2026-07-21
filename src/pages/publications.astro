@@ -39,14 +39,45 @@ const combinedPubs = [...allPubs.map(p => ({
   data: { ...p.data, _source: 'collection' }
 })), ...teamPubs];
 
-// Deduplicate publications by title (case-insensitive and trimmed)
+// Deduplicate publications by DOI, URL, or Title
+function getDoi(pub: any): string {
+  const doi = pub.data.doi || '';
+  if (doi) return doi.toLowerCase().trim();
+  const link = pub.data.link || '';
+  const m = link.match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/);
+  return m ? m[0].toLowerCase().trim() : '';
+}
+
+function getCleanUrl(pub: any): string {
+  const link = pub.data.link || '';
+  return link.toLowerCase().replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '').trim();
+}
+
+function getNormTitle(pub: any): string {
+  const t = pub.data.title || '';
+  return t.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+}
+
+const seenDois = new Set<string>();
+const seenUrls = new Set<string>();
 const seenTitles = new Set<string>();
 const uniquePubs: typeof combinedPubs = [];
 
 for (const pub of combinedPubs) {
-  const normTitle = pub.data.title.toLowerCase().trim().replace(/\s+/g, ' ');
-  if (!seenTitles.has(normTitle)) {
-    seenTitles.add(normTitle);
+  const doi = getDoi(pub);
+  const url = getCleanUrl(pub);
+  const title = getNormTitle(pub);
+
+  if (!title && !doi && !url) continue;
+
+  const isSeen = (doi && seenDois.has(doi)) || 
+                 (url && seenUrls.has(url)) || 
+                 (title && seenTitles.has(title));
+
+  if (!isSeen) {
+    if (doi) seenDois.add(doi);
+    if (url) seenUrls.add(url);
+    if (title) seenTitles.add(title);
     uniquePubs.push(pub);
   }
 }

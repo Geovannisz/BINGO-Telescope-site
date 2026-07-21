@@ -1,7 +1,7 @@
 ---
 title: "Black holes and wormholes in AdS branes"
 authors: "C. Molina, J. C. S. Neves"
-date: 2010-08-13T12:00:00Z
+date: 2010-08-13 12:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.82.044029"
 doi: "10.1103/PhysRevD.82.044029"
 summary: "Estudo de soluções de buracos negros e buracos de minhoca em branas anti-de Sitter no contexto de modelos de dimensões extras. Analisa as propriedades geométricas e causais dessas soluções, incluindo a estrutura do horizonte e a travessabilidade dos wormholes."

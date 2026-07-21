@@ -1,7 +1,7 @@
 ---
 title: "Perturbations of black p-branes"
 authors: "Elcio Abdalla, Owen Pavel Fernandez Piedra, Jeferson de Oliveira, C. Molina"
-date: 2010-03-02T12:00:00Z
+date: 2010-03-02 12:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.81.064001"
 doi: "10.1103/PhysRevD.81.064001"
 summary: "Perturbações de black p-branes, analisando a estabilidade e os modos quasinormais de objetos estendidos negros em dimensões superiores. Calcula o espectro de perturbações gravitacionais e discute implicações para a correspondência gauge/gravidade."
