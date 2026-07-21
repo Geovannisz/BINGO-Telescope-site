@@ -1,6 +1,6 @@
 ---
 title: "Instability of a Reissner-Nordström-AdS black hole under perturbations of a\" scalar field coupled to the Einstein tensor"
-authors: ""
+authors: "C. Molina, Elcio Abdalla, Bertha Cuadros-Melgar"
 date: 2019-05-28 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.99.104065"
 doi: "10.1103/PhysRevD.99.104065"

@@ -1,6 +1,6 @@
 ---
 title: "Massive gravity with anisotropic scaling"
-authors: ""
+authors: "Bertha Cuadros-Melgar, Elcio Abdalla, C. Molina"
 date: 2012-06-18 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.85.124035"
 doi: "10.1103/PhysRevD.85.124035"

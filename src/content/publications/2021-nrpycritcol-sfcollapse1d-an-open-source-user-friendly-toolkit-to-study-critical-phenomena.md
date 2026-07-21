@@ -1,6 +1,6 @@
 ---
 title: "'NRPyCritCol_SFCollapse1D: An open-source, user-friendly toolkit to study critical\" phenomena"
-authors: ""
+authors: "Alex B. Pavan, C. Molina, Elcio Abdalla"
 date: 2021-11-25 00:00:00+00:00
 link: "https://doi.org/10.1088/1361-6382/ac33bf"
 doi: "10.1088/1361-6382/ac33bf"

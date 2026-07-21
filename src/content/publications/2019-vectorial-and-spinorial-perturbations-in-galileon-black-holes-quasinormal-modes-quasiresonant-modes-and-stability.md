@@ -1,6 +1,6 @@
 ---
 title: "'Vectorial and spinorial perturbations in Galileon black holes: Quasinormal\" modes, quasiresonant modes, and stability"
-authors: ""
+authors: "C. Molina, Elcio Abdalla, Bertha Cuadros-Melgar"
 date: 2019-02-14 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.99.044023"
 doi: "10.1103/PhysRevD.99.044023"

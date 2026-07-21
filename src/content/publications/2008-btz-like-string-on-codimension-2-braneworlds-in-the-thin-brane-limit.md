@@ -1,6 +1,6 @@
 ---
 title: "BTZ-Like String on Codimension-2 Braneworlds in the Thin Brane Limit"
-authors: ""
+authors: "Elcio Abdalla, Bertha Cuadros-Melgar, Alex B. Pavan, C. Molina"
 date: 2008-06-04 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevLett.100.221601"
 doi: "10.1103/PhysRevLett.100.221601"

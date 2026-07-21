@@ -1,6 +1,6 @@
 ---
 title: "Perturbations of Gauss-Bonnet black strings in codimension-2 braneworlds"
-authors: ""
+authors: "Alex B. Pavan, Elcio Abdalla, Bertha Cuadros-Melgar, C. Molina"
 date: 2011-03-01 00:00:00+00:00
 link: "https://doi.org/10.1007/JHEP03(2011)010"
 doi: "10.1007/JHEP03(2011)010"

@@ -1,6 +1,6 @@
 ---
 title: "Stability of the spacetime of a magnetized compact object"
-authors: ""
+authors: "Eveling Milena Costa Diniz Ribeiro, C. Molina, Elcio Abdalla"
 date: 2025-01-15 00:00:00+00:00
 link: "https://doi.org/10.1103/PhysRevD.111.024043"
 doi: "10.1103/PhysRevD.111.024043"
