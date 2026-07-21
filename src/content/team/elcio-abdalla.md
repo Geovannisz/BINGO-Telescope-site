@@ -8,7 +8,7 @@ stage:
 - Coordenação
 city: São Paulo / SP / Brasil
 area: Física Teórica, Cosmologia Observacional
-email: eabdalla@if.usp.br
+email: eabdalla@usp.br
 lattes: http://lattes.cnpq.br/6256541728060383
 orcid: https://orcid.org/0000-0002-9814-1690
 researchgate: https://www.researchgate.net/profile/Elcio-Abdalla
