@@ -1,22 +1,31 @@
-/**
- * BINGO Telescope — CMS OAuth Proxy (Cloudflare Worker)
- * ─────────────────────────────────────────────────────
- * Handles Google and GitHub OAuth flows for Decap CMS.
- *
- * Authorization: Reads allowed emails dynamically from team .md files
- * in the GitHub repository. Falls back to a static allowlist if the
- * API call fails. This means adding a new team member with an email
- * automatically grants CMS access — no Worker redeployment needed.
- *
- * Required secrets (set via `wrangler secret put <NAME>`):
- *   GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
- *   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
- */
+// ══════════════════════════════════════════════════════════════
+// BINGO CMS — OAuth Proxy (GitHub + Google)
+// Cloudflare Worker — handles both GitHub and Google OAuth
+// ══════════════════════════════════════════════════════════════
+//
+// v2.0 — Dynamic email allowlist
+// Now reads authorized emails from team .md files in the GitHub
+// repository. Adding a team member with an email field automatically
+// grants CMS access — no Worker redeployment needed.
+//
+// Required environment variables (set via Cloudflare dashboard):
+//   GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET
+//   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+//   GITHUB_BOT_TOKEN (PAT with repo access for Google-authenticated users)
+//
+// Optional env vars (with defaults):
+//   GITHUB_REPO, GITHUB_BRANCH, TEAM_FOLDER
+// ══════════════════════════════════════════════════════════════
 
-// ── Static fallback allowlist (kept in sync with team files) ──
+// URLs exatas de callback para evitar problemas de mismatch
+const GITHUB_REDIRECT_URI = 'https://bingo-cms-oauth.geovanni.workers.dev/callback';
+const GOOGLE_REDIRECT_URI = 'https://bingo-cms-oauth.geovanni.workers.dev/google/callback';
+
+// ── Static fallback allowlist (used if GitHub API is unavailable) ──
 const STATIC_ALLOWED_EMAILS = [
+  'geovanniszzzz@gmail.com',
   'geovanni@usp.br',
-  'geovannisz@gmail.com',
+  'marinilima@secties.pb.gov.br',
   'eabdalla@usp.br',
   'eabdalla@if.usp.br',
   'alessandrormarins@gmail.com',
@@ -40,7 +49,7 @@ const STATIC_ALLOWED_EMAILS = [
   'talesaugusto.barros@ee.ufcg.edu.br',
 ];
 
-// ── Dynamic email fetcher ──
+// ── Dynamic email fetcher (reads team files from GitHub) ──
 async function fetchAllowedEmails(env) {
   try {
     const repo = env.GITHUB_REPO || 'Geovannisz/BINGO-Telescope-site';
@@ -56,6 +65,7 @@ async function fetchAllowedEmails(env) {
     const files = await listRes.json();
     const mdFiles = files.filter(f => f.name.endsWith('.md'));
 
+    // Start with static list as base
     const emails = new Set(STATIC_ALLOWED_EMAILS.map(e => e.toLowerCase().trim()));
 
     for (const f of mdFiles) {
@@ -63,10 +73,10 @@ async function fetchAllowedEmails(env) {
         const raw = await fetch(f.download_url, { headers: { 'User-Agent': 'BINGO-CMS-OAuth-Worker' } });
         const text = await raw.text();
 
-        // Extract email from frontmatter
-        const emailMatch = text.match(/^email:\s*["']?([^\s"']+)/m);
+        // Extract email from YAML frontmatter
+        const emailMatch = text.match(/^email:\s*["']?([^\n"']+)/m);
         if (emailMatch) {
-          // Handle "email1 / email2" format
+          // Handle "email1 / email2" format used by some members
           const parts = emailMatch[1].split('/').map(e => e.trim().toLowerCase()).filter(e => e.includes('@'));
           parts.forEach(e => emails.add(e));
         }
@@ -85,253 +95,275 @@ async function isEmailAllowed(email, env) {
   return allowed.has(email.toLowerCase().trim());
 }
 
-// ── HTML templates ──
-function htmlPage(title, bodyContent) {
+// ── postMessage HTML (sends token back to Decap CMS popup) ──
+function buildPostMessageHTML(token) {
+  return `<!DOCTYPE html><html><body><script>
+    (function() {
+      function recvMsg(e) {
+        window.opener.postMessage(
+          'authorization:github:success:{"token":"${token}","provider":"github"}',
+          e.origin
+        );
+      }
+      window.addEventListener("message", recvMsg, false);
+      window.opener.postMessage("authorizing:github", "*");
+    })();
+  </script></body></html>`;
+}
+
+// ── Denied page ──
+function deniedPage(email) {
   return new Response(`<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title}</title>
+  <title>Acesso Negado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
     body {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #0a0e1a 0%, #111827 50%, #0f172a 100%);
-      color: #e2e8f0;
+      background: radial-gradient(circle at top right, rgba(248, 113, 113, 0.1) 0%, transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                  #020617;
+      color: #f8fafc;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; text-align: center;
     }
     .card {
-      background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px);
-      border: 1px solid rgba(99, 102, 241, 0.15);
-      border-radius: 20px; padding: 48px; max-width: 460px; width: 90%;
-      text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(248, 113, 113, 0.2);
+      border-radius: 24px; padding: 3rem 2.5rem;
+      width: 90%; max-width: 460px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
     }
-    h1 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
-    p { color: #94a3b8; margin-bottom: 24px; font-size: 0.95rem; }
-    .btn {
-      display: block; padding: 14px 24px; border-radius: 12px;
-      font-size: 1rem; font-weight: 600; text-decoration: none;
-      transition: all 0.2s ease; margin-bottom: 12px; border: none; cursor: pointer;
-    }
-    .btn-google {
-      background: linear-gradient(135deg, #4285f4, #357ae8); color: #fff;
-    }
-    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(66,133,244,0.4); }
-    .btn-github {
-      background: linear-gradient(135deg, #333, #24292e); color: #fff;
-    }
-    .btn-github:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
-    .icon { font-size: 2.5rem; margin-bottom: 16px; }
-    .error { color: #f87171; }
-    .email-highlight { color: #fff; font-weight: 700; }
-    .back-link { display: inline-block; margin-top: 16px; color: #6366f1; text-decoration: none; font-size: 0.9rem; }
-    .back-link:hover { color: #818cf8; }
+    .icon { font-size: 3rem; margin-bottom: 1rem; }
+    h1 { color: #f87171; font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+    p { color: #94a3b8; margin-bottom: 0.75rem; font-size: 1rem; line-height: 1.6; }
+    .email { color: #fff; font-weight: 700; }
+    .hint { font-size: 0.85rem; color: #64748b; margin-top: 1.5rem; }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { color: #93c5fd; text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="card">${bodyContent}</div>
+  <div class="card">
+    <div class="icon">⛔</div>
+    <h1>Acesso Negado</h1>
+    <p>O e-mail <span class="email">${email}</span> não está autorizado.</p>
+    <p class="hint">Para solicitar acesso, entre em contato com o administrador e peça para adicionar seu perfil na equipe do site.</p>
+    <p style="margin-top: 1.5rem;"><a href="/auth">← Tentar novamente</a></p>
+  </div>
 </body>
-</html>`, {
-    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-  });
+</html>`, { status: 403, headers: { 'Content-Type': 'text/html' } });
 }
 
-function authPage() {
-  return htmlPage('BINGO CMS - Autenticação', `
-    <div class="icon">🔭</div>
-    <h1>BINGO CMS</h1>
-    <p>Selecione seu método de acesso</p>
-    <a href="/google/auth" class="btn btn-google">Login com Google</a>
-    <a href="/github/login" class="btn btn-github">Login com GitHub</a>
-  `);
-}
-
-function deniedPage(email) {
-  return htmlPage('Acesso Negado', `
-    <div class="icon">🚫</div>
-    <h1 class="error">Acesso Negado</h1>
-    <p>O e-mail <span class="email-highlight">${email}</span> não está autorizado.</p>
-    <p style="font-size: 0.85rem; color: #64748b;">Solicite ao administrador que adicione seu perfil na equipe do site para liberar o acesso.</p>
-    <a href="/auth" class="back-link">← Tentar novamente</a>
-  `);
-}
-
-function errorPage(msg) {
-  return htmlPage('Erro', `
-    <div class="icon">⚠️</div>
-    <h1 class="error">Erro</h1>
-    <p>${msg}</p>
-    <a href="/auth" class="back-link">← Tentar novamente</a>
-  `);
-}
-
-// ── OAuth flows ──
-
-// GitHub OAuth
-async function handleGitHubLogin(env) {
-  const params = new URLSearchParams({
-    client_id: env.GITHUB_CLIENT_ID,
-    scope: 'repo,user',
-    redirect_uri: 'https://bingo-cms-oauth.geovanni.workers.dev/github/callback',
-  });
-  return Response.redirect(`https://github.com/login/oauth/authorize?${params}`, 302);
-}
-
-async function handleGitHubCallback(request, env) {
-  const url = new URL(request.url);
-  const code = url.searchParams.get('code');
-  if (!code) return errorPage('Código de autorização não encontrado.');
-
-  // Exchange code for token
-  const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      client_id: env.GITHUB_CLIENT_ID,
-      client_secret: env.GITHUB_CLIENT_SECRET,
-      code,
-    }),
-  });
-
-  const tokenData = await tokenRes.json();
-  if (!tokenData.access_token) return errorPage('Falha ao obter token de acesso do GitHub.');
-
-  // Get user info
-  const userRes = await fetch('https://api.github.com/user', {
-    headers: { Authorization: `token ${tokenData.access_token}`, 'User-Agent': 'BINGO-CMS-OAuth' },
-  });
-  const user = await userRes.json();
-
-  // Get primary email
-  const emailsRes = await fetch('https://api.github.com/user/emails', {
-    headers: { Authorization: `token ${tokenData.access_token}`, 'User-Agent': 'BINGO-CMS-OAuth' },
-  });
-  const emails = await emailsRes.json();
-  const primaryEmail = Array.isArray(emails)
-    ? (emails.find(e => e.primary)?.email || emails[0]?.email || user.email)
-    : user.email;
-
-  // Check authorization
-  if (primaryEmail && !(await isEmailAllowed(primaryEmail, env))) {
-    return deniedPage(primaryEmail);
-  }
-
-  // Return token to Decap CMS via postMessage
-  return new Response(`<!DOCTYPE html><html><head><script>
-    (function() {
-      function receiveMessage(e) {
-        console.log("receiveMessage", e);
-        window.opener.postMessage(
-          'authorization:github:success:${JSON.stringify({ token: tokenData.access_token, provider: 'github' })}',
-          e.origin
-        );
-        window.removeEventListener("message", receiveMessage, false);
-      }
-      window.addEventListener("message", receiveMessage, false);
-      window.opener.postMessage("authorizing:github", "*");
-    })();
-  </script></head><body><p>Autenticando...</p></body></html>`, {
-    headers: { 'Content-Type': 'text/html;charset=UTF-8' },
-  });
-}
-
-// Google OAuth
-async function handleGoogleAuth(env) {
-  const params = new URLSearchParams({
-    client_id: env.GOOGLE_CLIENT_ID,
-    redirect_uri: 'https://bingo-cms-oauth.geovanni.workers.dev/google/callback',
-    response_type: 'code',
-    scope: 'openid email profile',
-    access_type: 'offline',
-    prompt: 'select_account',
-  });
-  return Response.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`, 302);
-}
-
-async function handleGoogleCallback(request, env) {
-  const url = new URL(request.url);
-  const code = url.searchParams.get('code');
-  const error = url.searchParams.get('error');
-
-  if (error) return errorPage(`Google retornou erro: ${error}`);
-  if (!code) return errorPage('Código de autorização não encontrado.');
-
-  // Exchange code for tokens
-  const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      code,
-      client_id: env.GOOGLE_CLIENT_ID,
-      client_secret: env.GOOGLE_CLIENT_SECRET,
-      redirect_uri: 'https://bingo-cms-oauth.geovanni.workers.dev/google/callback',
-      grant_type: 'authorization_code',
-    }),
-  });
-
-  const tokenData = await tokenRes.json();
-  if (!tokenData.access_token) return errorPage('Falha ao obter token de acesso do Google.');
-
-  // Get user info from Google
-  const userRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-    headers: { Authorization: `Bearer ${tokenData.access_token}` },
-  });
-  const userInfo = await userRes.json();
-  const email = userInfo.email;
-
-  if (!email) return errorPage('Não foi possível obter o e-mail da conta Google.');
-
-  // Check authorization
-  if (!(await isEmailAllowed(email, env))) {
-    return deniedPage(email);
-  }
-
-  // Now we need a GitHub token for Decap CMS (Google is only for identity)
-  // Use the GitHub OAuth Device Flow or redirect to GitHub login
-  // Strategy: after Google verification, redirect to GitHub OAuth to get a repo token
-  const ghParams = new URLSearchParams({
-    client_id: env.GITHUB_CLIENT_ID,
-    scope: 'repo,user',
-    redirect_uri: 'https://bingo-cms-oauth.geovanni.workers.dev/github/callback',
-  });
-  return Response.redirect(`https://github.com/login/oauth/authorize?${ghParams}`, 302);
-}
-
-// ── Main handler ──
+// ══════════════════════════════════════════════════════════════
+// Main handler
+// ══════════════════════════════════════════════════════════════
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const path = url.pathname;
 
-    // CORS preflight
-    if (request.method === 'OPTIONS') {
-      return new Response(null, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        },
+    // ── Tela de Seleção (Intercepta o popup original do Decap CMS) ──
+    if (url.pathname.startsWith('/auth')) {
+      return new Response(`<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>BINGO CMS - Autenticação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+    body {
+      background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.15) 0%, transparent 40%), 
+                  radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15) 0%, transparent 40%), 
+                  #020617;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(34, 211, 238, 0.15);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 0%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p.subtitle {
+      color: #94a3b8;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #fff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+    .btn-github {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-github:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .btn-google {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
+    .btn-google:hover {
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+      border-color: rgba(96, 165, 250, 0.5);
+    }
+    .icon { width: 22px; height: 22px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>BINGO CMS</h1>
+    <p class="subtitle">Selecione seu método de acesso</p>
+    
+    <a href="/google/auth" class="btn btn-google">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+      </svg>
+      Login com Google
+    </a>
+    
+    <a href="/github/login" class="btn btn-github">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+      Login com GitHub
+    </a>
+  </div>
+</body>
+</html>`, { headers: { 'Content-Type': 'text/html' } });
+    }
+
+    // ── GitHub OAuth: início ──
+    if (url.pathname === '/github/login') {
+      const authUrl = new URL('https://github.com/login/oauth/authorize');
+      authUrl.searchParams.set('client_id', env.GITHUB_CLIENT_ID);
+      authUrl.searchParams.set('redirect_uri', GITHUB_REDIRECT_URI);
+      authUrl.searchParams.set('scope', 'repo,user');
+      return Response.redirect(authUrl.toString(), 302);
+    }
+
+    // ── GitHub OAuth: callback ──
+    if (url.pathname === '/callback') {
+      const code = url.searchParams.get('code');
+      if (!code) return new Response('Missing code', { status: 400 });
+      const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          client_id: env.GITHUB_CLIENT_ID,
+          client_secret: env.GITHUB_CLIENT_SECRET,
+          code,
+        }),
+      });
+      const tokenData = await tokenRes.json();
+      if (tokenData.error) {
+        return new Response('Auth error: ' + tokenData.error_description, { status: 401 });
+      }
+      return new Response(buildPostMessageHTML(tokenData.access_token), {
+        headers: { 'Content-Type': 'text/html' },
       });
     }
 
-    try {
-      // Routes
-      if (path === '/') return new Response('BINGO CMS OAuth Proxy — OK (GitHub + Google)', { status: 200 });
-      if (path === '/auth') return authPage();
-
-      // GitHub flow
-      if (path === '/github/login') return handleGitHubLogin(env);
-      if (path === '/github/callback') return handleGitHubCallback(request, env);
-
-      // Google flow
-      if (path === '/google/auth') return handleGoogleAuth(env);
-      if (path === '/google/callback') return handleGoogleCallback(request, env);
-
-      return new Response('Not found', { status: 404 });
-    } catch (e) {
-      console.error('Worker error:', e);
-      return errorPage(`Erro interno: ${e.message}`);
+    // ── Google OAuth: início ──
+    if (url.pathname === '/google/auth') {
+      const authUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+      authUrl.searchParams.set('client_id', env.GOOGLE_CLIENT_ID.trim());
+      authUrl.searchParams.set('redirect_uri', GOOGLE_REDIRECT_URI);
+      authUrl.searchParams.set('response_type', 'code');
+      authUrl.searchParams.set('scope', 'email profile');
+      authUrl.searchParams.set('access_type', 'online');
+      return Response.redirect(authUrl.toString(), 302);
     }
+
+    // ── Google OAuth: callback ──
+    if (url.pathname === '/google/callback') {
+      const code = url.searchParams.get('code');
+      if (!code) return new Response('Missing code', { status: 400 });
+
+      // Exchange code for Google access token
+      const bodyParams = `client_id=${env.GOOGLE_CLIENT_ID.trim()}&client_secret=${env.GOOGLE_CLIENT_SECRET.trim()}&code=${encodeURIComponent(code)}&grant_type=authorization_code&redirect_uri=${encodeURIComponent(GOOGLE_REDIRECT_URI)}`;
+
+      const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        body: bodyParams,
+      });
+
+      const tokenData = await tokenRes.json();
+      if (!tokenData.access_token) {
+        return new Response('Erro Google: ' + JSON.stringify(tokenData), { status: 500 });
+      }
+
+      // Get user email from Google
+      const userRes = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+        headers: { Authorization: `Bearer ${tokenData.access_token}` },
+      });
+      const userData = await userRes.json();
+
+      // Check if email is authorized (dynamic + static)
+      if (!(await isEmailAllowed(userData.email, env))) {
+        return deniedPage(userData.email);
+      }
+
+      // Authorized! Send the pre-stored GitHub bot token to Decap CMS
+      return new Response(buildPostMessageHTML(env.GITHUB_BOT_TOKEN.trim()), {
+        headers: { 'Content-Type': 'text/html' },
+      });
+    }
+
+    // ── Health check ──
+    if (url.pathname === '/') {
+      return new Response('BINGO CMS OAuth Proxy — OK (GitHub + Google)', { status: 200 });
+    }
+
+    return new Response('Not found', { status: 404 });
   },
 };
