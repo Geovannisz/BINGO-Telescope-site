@@ -1,0 +1,6 @@
+{
+  "name": "bingo-cms-oauth",
+  "version": "2.0.0",
+  "private": true,
+  "description": "BINGO Telescope CMS OAuth Proxy — dynamic email allowlist from GitHub team files"
+}

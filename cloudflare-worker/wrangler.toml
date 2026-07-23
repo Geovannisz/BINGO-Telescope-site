@@ -1,0 +1,16 @@
+name = "bingo-cms-oauth"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Secrets (already set via Cloudflare dashboard — DO NOT remove):
+#   GITHUB_CLIENT_SECRET
+#   GOOGLE_CLIENT_SECRET
+#   GITHUB_BOT_TOKEN
+
+[vars]
+GITHUB_CLIENT_ID = "Ov23litMc27BORUAAc1n"
+GOOGLE_CLIENT_ID = "1699517180-dptj3pbspuk73q3788708g8igapckagh.apps.googleusercontent.com"
+GITHUB_REPO = "Geovannisz/BINGO-Telescope-site"
+GITHUB_BRANCH = "main"
+TEAM_FOLDER = "src/content/team"
