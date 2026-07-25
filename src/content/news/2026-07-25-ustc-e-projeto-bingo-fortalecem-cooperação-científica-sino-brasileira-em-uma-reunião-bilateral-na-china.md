@@ -19,7 +19,7 @@ summary: A Universidade de Ciência e Tecnologia da China (USTC) e o Projeto
 
 \    O presidente **Chang Jin** destacou a importância da parceria entre a USTC e o Projeto BINGO como uma oportunidade para consolidar uma plataforma internacional de excelência voltada ao desenvolvimento de grandes projetos científicos e tecnológicos. Em sua fala, o professor **Élcio Abdalla** ressaltou que o BINGO representa muito mais do que um observatório científico, constituindo um elo para ampliar a cooperação em pesquisa, inovação, formação de recursos humanos e intercâmbio cultural entre os dois países.
 
-No decorrer da reunião, o professor **Feng Chang** apresentou um panorama do Projeto BINGO, abordando seus objetivos científicos, o estágio atual da construção do telescópio e a participação da equipe chinesa no desenvolvimento da iniciativa. O BINGO foi concebido para detectar a emissão de 21 centímetros do hidrogênio neutro, permitindo investigar fenômenos fundamentais da cosmologia, como a energia escura, a matéria escura e as oscilações acústicas de bárions, fundamentais para compreender a evolução do Universo.
+\    No decorrer da reunião, o professor **Feng Chang** apresentou um panorama do Projeto BINGO, abordando seus objetivos científicos, o estágio atual da construção do telescópio e a participação da equipe chinesa no desenvolvimento da iniciativa. O BINGO foi concebido para detectar a emissão de 21 centímetros do hidrogênio neutro, permitindo investigar fenômenos fundamentais da cosmologia, como a energia escura, a matéria escura e as oscilações acústicas de bárions, fundamentais para compreender a evolução do Universo.
 
 \    A apresentação destacou ainda o avanço das atividades de implantação do telescópio no Brasil, cuja estrutura principal já se encontra no local de instalação. A equipe da USTC desempenha papel importante em diversas frentes do projeto, incluindo modelagem teórica, desenvolvimento de algoritmos, processamento de dados e infraestrutura computacional, contribuindo significativamente para o progresso científico da colaboração.
 
@@ -30,7 +30,5 @@ No decorrer da reunião, o professor **Feng Chang** apresentou um panorama do Pr
 Ao final do encontro, especialistas convidados destacaram o elevado potencial científico do Projeto BINGO e reconheceram os avanços já alcançados pela colaboração internacional. As discussões contribuíram para consolidar novos entendimentos entre as equipes, definir prioridades para as próximas etapas de desenvolvimentoe fortalecer a parceria científica entre Brasil e China.
 
 Essa reunião representa mais um marco na trajetória internacional do Projeto BINGO, evidenciando a importância da cooperação entre instituições de diferentes países para enfrentar alguns dos maiores desafios da cosmologia contemporânea eampliar o conhecimento sobre a estrutura e a evolução do Universo.
-
-
 
 **Fonte:** Universidade de Ciência e Tecnologia da China (USTC). *USTC and the BINGO International Cooperation Project Hold Bilateral Meeting*. Disponível em: <https://news.ustc.edu.cn/info/1055/95834.htm>. Acesso em: 25 jul. 2026.
