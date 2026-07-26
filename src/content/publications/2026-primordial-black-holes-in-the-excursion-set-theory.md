@@ -1,0 +1,14 @@
+---
+title: Primordial black holes in the excursion set theory
+authors: Hamed Kameli
+date: 2026-07-26T10:30:30.776Z
+link: >-
+  https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:qjMakFHDy7sC
+doi: ""
+summary: ""
+journal: ""
+volume: ""
+issue: ""
+pages: ""
+category: Outro
+---
