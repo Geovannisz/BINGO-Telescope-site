@@ -16,27 +16,7 @@
   }
 
   function setupUnpublishButton() {
-    // 1. Locate editor toolbar container
-    const allButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
-
-    // Search for publish/save button by partial text matching
-    const publishBtn = allButtons.find(b => {
-      const text = (b.textContent || '').trim().toLowerCase();
-      return text.includes('publi') || text.includes('sav') || text.includes('salv');
-    });
-
-    if (!publishBtn) return; // Not inside editor view
-
-    const toolbar = publishBtn.parentElement;
-    if (!toolbar) return;
-
-    // Ensure toolbar container displays items in a flex row
-    if (getComputedStyle(toolbar).display !== 'flex') {
-      toolbar.style.display = 'flex';
-      toolbar.style.alignItems = 'center';
-    }
-
-    // 2. Check current publication status from the "published" form control
+    // 1. Check current publication status from the "published" form control
     let isCurrentlyPublished = true;
     const publishedInputs = Array.from(document.querySelectorAll('#nc-root input'));
     const pubInput = publishedInputs.find(i => {
@@ -46,67 +26,64 @@
       return id.includes('published') || name.includes('published') || labelText.includes('publicad') || labelText.includes('publish');
     });
 
-    if (pubInput) {
-      if (pubInput.type === 'checkbox') {
-        isCurrentlyPublished = pubInput.checked;
-      } else if (pubInput.value !== undefined) {
-        isCurrentlyPublished = String(pubInput.value) !== 'false' && String(pubInput.value) !== '0';
-      }
-    }
-
-    // 3. Get or Create Custom Unpublish / Save Draft Button
     const btnId = 'bingo-unpublish-action';
     let unpublishBtn = document.getElementById(btnId);
 
-    if (!unpublishBtn || !toolbar.contains(unpublishBtn)) {
-      if (unpublishBtn) unpublishBtn.remove();
+    if (!pubInput) {
+      // Not inside editor view - hide button if exists
+      if (unpublishBtn) unpublishBtn.style.display = 'none';
+      return;
+    }
 
+    if (pubInput.type === 'checkbox') {
+      isCurrentlyPublished = pubInput.checked;
+    } else if (pubInput.value !== undefined) {
+      isCurrentlyPublished = String(pubInput.value) !== 'false' && String(pubInput.value) !== '0';
+    }
+
+    // 2. Get or Create Custom Unpublish / Save Draft Button as a Global Floating Action Button
+    if (!unpublishBtn) {
       unpublishBtn = document.createElement('button');
       unpublishBtn.id = btnId;
       unpublishBtn.type = 'button';
+      
+      // Fixed positioning to guarantee visibility regardless of Decap CMS React nodes
+      unpublishBtn.style.position = 'fixed';
+      unpublishBtn.style.top = '12px';
+      unpublishBtn.style.left = '50%';
+      unpublishBtn.style.transform = 'translateX(-50%)';
+      unpublishBtn.style.zIndex = '999999';
+      unpublishBtn.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
 
       unpublishBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        // Re-query published input at click time
-        const currentInputs = Array.from(document.querySelectorAll('#nc-root input'));
-        const currentPubInput = currentInputs.find(i => {
-          const id = (i.id || '').toLowerCase();
-          const name = (i.name || '').toLowerCase();
-          const labelText = (i.closest('label')?.textContent || '').toLowerCase();
-          return id.includes('published') || name.includes('published') || labelText.includes('publicad') || labelText.includes('publish');
-        });
-
-        // Set published status to false (Unpublish)
-        if (currentPubInput) {
-          if (currentPubInput.type === 'checkbox') {
-            if (currentPubInput.checked) {
-              currentPubInput.click();
-            }
-          } else {
-            currentPubInput.value = 'false';
-            currentPubInput.dispatchEvent(new Event('input', { bubbles: true }));
-            currentPubInput.dispatchEvent(new Event('change', { bubbles: true }));
-          }
+        // 3. Update the toggle value directly
+        if (pubInput.type === 'checkbox') {
+          if (pubInput.checked) pubInput.click();
+        } else {
+          pubInput.value = 'false';
+          pubInput.dispatchEvent(new Event('input', { bubbles: true }));
+          pubInput.dispatchEvent(new Event('change', { bubbles: true }));
         }
 
-        // Trigger native publish/save button click after toggle update
+        // 4. Try to click native Save/Publish automatically
         setTimeout(() => {
-          const freshButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
-          const freshPublishBtn = freshButtons.find(b => {
+          const allButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
+          const nativeActionBtn = allButtons.find(b => {
             const text = (b.textContent || '').trim().toLowerCase();
-            return text.includes('publi') || text.includes('sav') || text.includes('salv');
+            return (text.includes('publi') || text.includes('sav') || text.includes('salv'));
           });
-          if (freshPublishBtn) {
-            freshPublishBtn.click();
+          if (nativeActionBtn) {
+            nativeActionBtn.click();
           }
         }, 150);
       });
-
-      // Insert before Publish button in the toolbar
-      toolbar.insertBefore(unpublishBtn, publishBtn);
+      document.body.appendChild(unpublishBtn);
     }
+
+    unpublishBtn.style.display = 'inline-flex';
 
     // 4. Update button text, title and visual class based on state
     if (isCurrentlyPublished) {
