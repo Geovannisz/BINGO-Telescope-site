@@ -3,7 +3,7 @@ title: >-
   A new inverse method based on Lattice Boltzmann method for 1D heat flux
   estimation
 authors: Hamed Kameli
-date: 2026-07-26T10:30:30.776Z
+date: 2026-07-26T10:24:21.809Z
 link: >-
   https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:u-x6o8ySG0sC
 doi: ""
