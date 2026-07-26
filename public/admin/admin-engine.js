@@ -16,77 +16,82 @@
   }
 
   function setupUnpublishButton() {
-    const allButtons = Array.from(document.querySelectorAll('button'));
-    
-    // Find Delete entry button
-    const deleteBtn = allButtons.find(b => {
-      const text = b.textContent.trim().toLowerCase();
-      return text.includes('delete') || text.includes('excluir') || text.includes('deletar');
-    });
+    // Find all buttons in the document
+    const allButtons = Array.from(document.querySelectorAll('button, div[role="button"], a[role="button"]'));
 
-    // Find Publish / Save button
+    // Locate the Publish or Save button
     const publishBtn = allButtons.find(b => {
       const text = b.textContent.trim().toLowerCase();
-      return text.includes('publish') || text.includes('publicar') || text.includes('save') || text.includes('salvar');
+      return (text === 'publish' || text === 'publicar' || text === 'save' || text === 'salvar' || text.includes('publish') || text.includes('publicar'));
     });
 
-    // Locate the "published" toggle in the form to determine status
-    const publishedInputs = Array.from(document.querySelectorAll('input'));
+    if (!publishBtn) return; // Exit if not inside editor view yet
+
+    const toolbar = publishBtn.parentElement;
+    if (!toolbar) return;
+
+    // Check publication status by finding the "published" input field in the form
+    let isCurrentlyPublished = true;
+    const publishedInputs = Array.from(document.querySelectorAll('input, [id*="published"]'));
     const pubInput = publishedInputs.find(i => 
-      i.id.includes('published') || 
+      (i.id && i.id.includes('published')) || 
       (i.name && i.name.includes('published')) ||
-      (i.closest('label') && i.closest('label').textContent.toLowerCase().includes('publicad')) ||
-      (i.closest('label') && i.closest('label').textContent.toLowerCase().includes('publish'))
+      (i.closest && i.closest('label') && (i.closest('label').textContent.toLowerCase().includes('publicad') || i.closest('label').textContent.toLowerCase().includes('publish')))
     );
 
-    // Check if the current entry is published (default to true if input not found or checked)
-    const isCurrentlyPublished = pubInput ? (pubInput.type === 'checkbox' ? pubInput.checked : pubInput.value !== 'false') : true;
-
-    const btnId = 'bingo-unpublish-btn';
-    let unpublishBtn = document.getElementById(btnId);
-
-    const targetParent = publishBtn?.parentNode || deleteBtn?.parentNode;
-    if (!targetParent) return;
-
-    // Ensure container uses flex inline alignment side-by-side
-    if (targetParent.style.display !== 'flex') {
-      targetParent.style.display = 'inline-flex';
-      targetParent.style.alignItems = 'center';
-      targetParent.style.gap = '8px';
+    if (pubInput) {
+      if (pubInput.type === 'checkbox') {
+        isCurrentlyPublished = pubInput.checked;
+      } else if (pubInput.value !== undefined) {
+        isCurrentlyPublished = pubInput.value !== 'false' && pubInput.value !== '0';
+      }
     }
 
-    if (!unpublishBtn) {
+    const btnId = 'bingo-unpublish-action';
+    let unpublishBtn = document.getElementById(btnId);
+
+    // If button doesn't exist or was removed by React re-render
+    if (!unpublishBtn || !toolbar.contains(unpublishBtn)) {
+      if (unpublishBtn) unpublishBtn.remove();
+
       unpublishBtn = document.createElement('button');
       unpublishBtn.id = btnId;
+      unpublishBtn.className = publishBtn.className || '';
       unpublishBtn.type = 'button';
+      
       unpublishBtn.style.cssText = `
-        font-weight: 600;
-        border-radius: 4px;
-        padding: 6px 14px;
-        margin: 0 4px;
-        cursor: pointer;
-        font-size: 13px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s ease;
-        line-height: 1.4;
-        white-space: nowrap;
-        vertical-align: middle;
+        font-weight: 600 !important;
+        border-radius: 4px !important;
+        padding: 6px 14px !important;
+        margin-right: 8px !important;
+        cursor: pointer !important;
+        font-size: 13px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        transition: all 0.2s ease !important;
+        border: 1px solid transparent !important;
+        white-space: nowrap !important;
+        line-height: 1.4 !important;
+        vertical-align: middle !important;
+        z-index: 100 !important;
       `;
       
-      unpublishBtn.addEventListener('click', () => {
-        const currentPubInput = Array.from(document.querySelectorAll('input')).find(i => 
-          i.id.includes('published') || 
+      unpublishBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const currentPubInput = Array.from(document.querySelectorAll('input, [id*="published"]')).find(i => 
+          (i.id && i.id.includes('published')) || 
           (i.name && i.name.includes('published')) ||
-          (i.closest('label') && i.closest('label').textContent.toLowerCase().includes('publicad')) ||
-          (i.closest('label') && i.closest('label').textContent.toLowerCase().includes('publish'))
+          (i.closest && i.closest('label') && (i.closest('label').textContent.toLowerCase().includes('publicad') || i.closest('label').textContent.toLowerCase().includes('publish')))
         );
 
         if (currentPubInput) {
           if (currentPubInput.type === 'checkbox') {
             if (currentPubInput.checked) {
-              currentPubInput.click();
+              currentPubInput.click(); // Uncheck to set to false
             }
           } else {
             currentPubInput.value = 'false';
@@ -95,11 +100,11 @@
           }
         }
 
-        // Trigger publish/save to persist the unpublish / draft state
+        // Trigger native publish action to save changes
         setTimeout(() => {
-          const currentPublishBtn = Array.from(document.querySelectorAll('button')).find(b => {
+          const currentPublishBtn = Array.from(document.querySelectorAll('button, div[role="button"], a[role="button"]')).find(b => {
             const text = b.textContent.trim().toLowerCase();
-            return text.includes('publish') || text.includes('publicar') || text.includes('save') || text.includes('salvar');
+            return (text === 'publish' || text === 'publicar' || text === 'save' || text === 'salvar' || text.includes('publish') || text.includes('publicar'));
           });
           if (currentPublishBtn) {
             currentPublishBtn.click();
@@ -107,31 +112,26 @@
         }, 150);
       });
 
-      if (publishBtn) {
-        publishBtn.parentNode.insertBefore(unpublishBtn, publishBtn);
-      } else {
-        targetParent.appendChild(unpublishBtn);
-      }
+      // Align side by side with existing buttons
+      toolbar.style.display = 'flex';
+      toolbar.style.alignItems = 'center';
+      toolbar.insertBefore(unpublishBtn, publishBtn);
     }
 
-    // Dynamic state update (Text, Icons, Styling and Visibility based on publication state)
+    // Dynamic state update
     if (isCurrentlyPublished) {
-      // Entry is Published -> Show "Unpublish / Save as Draft" button in yellow/amber
-      unpublishBtn.textContent = '🔒 Unpublish (Draft)';
-      unpublishBtn.title = 'Unpublish this entry and keep it as a draft';
-      unpublishBtn.style.background = '#eab308';
+      unpublishBtn.textContent = '🔒 Unpublish (Save Draft)';
+      unpublishBtn.title = 'Unpublish this content and revert to draft';
+      unpublishBtn.style.backgroundColor = '#eab308';
       unpublishBtn.style.color = '#0f172a';
-      unpublishBtn.style.border = '1px solid #ca8a04';
-      unpublishBtn.style.boxShadow = '0 2px 6px rgba(234, 179, 8, 0.35)';
+      unpublishBtn.style.borderColor = '#ca8a04';
       unpublishBtn.style.display = 'inline-flex';
     } else {
-      // Entry is Draft / Unpublished -> Show "Save Draft" in subtle grey or keep option clear
       unpublishBtn.textContent = '📝 Save Draft';
-      unpublishBtn.title = 'Save current changes as draft without publishing';
-      unpublishBtn.style.background = '#475569';
+      unpublishBtn.title = 'Save changes as draft';
+      unpublishBtn.style.backgroundColor = '#475569';
       unpublishBtn.style.color = '#ffffff';
-      unpublishBtn.style.border = '1px solid #334155';
-      unpublishBtn.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.2)';
+      unpublishBtn.style.borderColor = '#334155';
       unpublishBtn.style.display = 'inline-flex';
     }
   }
@@ -202,8 +202,10 @@
     // Fix image previews
     startImageFixer();
 
-    // Setup custom unpublish button
-    setInterval(setupUnpublishButton, 400);
+    // Setup custom unpublish button with mutation observer for instant reaction on view switch
+    const unpublishObserver = new MutationObserver(setupUnpublishButton);
+    unpublishObserver.observe(document.body, { childList: true, subtree: true });
+    setInterval(setupUnpublishButton, 300);
   }
 
   if (document.readyState === 'loading') {
