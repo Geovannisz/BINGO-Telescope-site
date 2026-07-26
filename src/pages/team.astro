@@ -17,7 +17,7 @@ import { getCollection } from 'astro:content';
 return Astro.redirect(`${import.meta.env.BASE_URL}404`, 404);
 /* ── end hidden block ── */
 
-const allTeam = await getCollection('team');
+const allTeam = await getCollection('team', ({ data }) => data.published !== false);
 const base = import.meta.env.BASE_URL;
 
 /* Role hierarchy for display order */

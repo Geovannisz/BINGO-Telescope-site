@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const allPubs = await getCollection('publications');
-const allTeam = await getCollection('team');
+const allPubs = await getCollection('publications', ({ data }) => data.published !== false);
+const allTeam = await getCollection('team', ({ data }) => data.published !== false);
 
 const teamPubs: any[] = [];
 allTeam.forEach(member => {

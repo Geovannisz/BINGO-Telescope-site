@@ -13,6 +13,7 @@ const newsCollection = defineCollection({
     audience: z.string().optional(),
     topic: z.string().optional(),
     country: z.string().optional(),
+    published: z.boolean().default(true),
   }),
 });
 
@@ -94,6 +95,7 @@ const teamCollection = defineCollection({
 
     /* ── Authorization ── */
     authorized: z.boolean().default(true),
+    published: z.boolean().default(true),
     credit_name: z.string().optional(),
   }),
 });
@@ -112,6 +114,7 @@ const publicationsCollection = defineCollection({
     pages: z.string().optional(),
     doi: z.string().optional(),
     category: z.enum(['Série Principal', 'ABDUS', 'Colaboração', 'Tese', 'Outro']).optional(),
+    published: z.boolean().default(true),
   }),
 });
 

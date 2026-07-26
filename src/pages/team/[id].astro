@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 import { marked } from 'marked';
 
 export async function getStaticPaths() {
-  const team = await getCollection('team');
+  const team = await getCollection('team', ({ data }) => data.published !== false);
   return team.map((member) => ({
     params: { id: member.id },
     props: { member },
