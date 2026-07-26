@@ -16,42 +16,55 @@
   }
 
   function setupUnpublishButton() {
-    const allButtons = Array.from(document.querySelectorAll('button'));
-    const deleteBtn = allButtons.find(b => 
-      b.textContent.toLowerCase().includes('delete entry') || 
-      b.textContent.toLowerCase().includes('excluir entrada') ||
-      b.textContent.toLowerCase().includes('deletar')
-    );
-    const publishBtn = allButtons.find(b => 
-      b.textContent.toLowerCase().includes('publish') || 
-      b.textContent.toLowerCase().includes('publicar') ||
-      b.textContent.toLowerCase().includes('save')
-    );
+    if (document.getElementById('bingo-unpublish-btn')) return;
 
-    if (deleteBtn && publishBtn && !document.getElementById('bingo-unpublish-btn')) {
+    const allButtons = Array.from(document.querySelectorAll('button'));
+    
+    // Find Delete entry button (or any delete/excluir button)
+    const deleteBtn = allButtons.find(b => {
+      const text = b.textContent.trim().toLowerCase();
+      return text.includes('delete') || text.includes('excluir') || text.includes('deletar');
+    });
+
+    // Find Publish / Save button
+    const publishBtn = allButtons.find(b => {
+      const text = b.textContent.trim().toLowerCase();
+      return text.includes('publish') || text.includes('publicar') || text.includes('save') || text.includes('salvar');
+    });
+
+    // If both exist or if there's any action header container
+    const targetParent = publishBtn?.parentNode || deleteBtn?.parentNode;
+
+    if (targetParent) {
       const unpublishBtn = document.createElement('button');
       unpublishBtn.id = 'bingo-unpublish-btn';
       unpublishBtn.type = 'button';
-      unpublishBtn.textContent = '🔒 Despublicar / Rascunho';
+      unpublishBtn.textContent = '🔒 Despublicar (Salvar Rascunho)';
       unpublishBtn.style.cssText = `
-        background: #eab308;
+        background: linear-gradient(135deg, #eab308, #ca8a04);
         color: #0f172a;
         font-weight: 700;
-        border: none;
+        border: 1px solid rgba(250, 204, 21, 0.4);
         border-radius: 6px;
         padding: 8px 16px;
-        margin: 0 10px;
+        margin: 0 8px;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 13px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         transition: all 0.2s ease;
         box-shadow: 0 2px 8px rgba(234, 179, 8, 0.3);
+        z-index: 999;
       `;
       
       unpublishBtn.addEventListener('mouseenter', () => {
-        unpublishBtn.style.background = '#ca8a04';
+        unpublishBtn.style.transform = 'translateY(-1px)';
+        unpublishBtn.style.boxShadow = '0 4px 12px rgba(234, 179, 8, 0.4)';
       });
       unpublishBtn.addEventListener('mouseleave', () => {
-        unpublishBtn.style.background = '#eab308';
+        unpublishBtn.style.transform = 'none';
+        unpublishBtn.style.boxShadow = '0 2px 8px rgba(234, 179, 8, 0.3)';
       });
 
       unpublishBtn.addEventListener('click', () => {
@@ -77,12 +90,17 @@
 
         // Trigger publish/save to persist the unpublish state
         setTimeout(() => {
-          publishBtn.click();
+          if (publishBtn) {
+            publishBtn.click();
+          }
         }, 150);
       });
 
-      // Insert between Delete entry and Publish button
-      publishBtn.parentNode.insertBefore(unpublishBtn, publishBtn);
+      if (publishBtn) {
+        publishBtn.parentNode.insertBefore(unpublishBtn, publishBtn);
+      } else {
+        targetParent.appendChild(unpublishBtn);
+      }
     }
   }
 
