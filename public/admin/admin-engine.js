@@ -12,20 +12,20 @@
   /* ═══════════════════════════════════════════════════════════
    *  CONSTANTS
    * ═══════════════════════════════════════════════════════════ */
-  const DRAFT_BTN_ID = 'bingo-draft-toggle-btn';
-  const STATUS_BADGE_ID = 'bingo-editor-status-badge';
-  const DROPDOWN_ITEM_ID = 'bingo-dropdown-draft-item';
+  var DRAFT_BTN_ID = 'bingo-draft-toggle-btn';
+  var STATUS_BADGE_ID = 'bingo-editor-status-badge';
+  var DROPDOWN_ITEM_ID = 'bingo-dropdown-draft-item';
 
   /* ═══════════════════════════════════════════════════════════
    *  TOAST NOTIFICATIONS
    * ═══════════════════════════════════════════════════════════ */
   function showToast(msg, type) {
-    const existing = document.querySelectorAll('.bingo-engine-toast');
-    const offsetY = existing.length * 60;
-    const toast = document.createElement('div');
+    var existing = document.querySelectorAll('.bingo-engine-toast');
+    var offsetY = existing.length * 60;
+    var toast = document.createElement('div');
     toast.className = 'bingo-engine-toast';
-    const colors = { success: '#22c55e', error: '#ef4444', warn: '#eab308', info: '#3b82f6' };
-    const icons = { success: '✅', error: '❌', warn: '⚠️', info: 'ℹ️' };
+    var colors = { success: '#22c55e', error: '#ef4444', warn: '#eab308', info: '#3b82f6' };
+    var icons = { success: '✅', error: '❌', warn: '⚠️', info: 'ℹ️' };
     Object.assign(toast.style, {
       position: 'fixed', bottom: (20 + offsetY) + 'px', right: '20px', zIndex: '99999',
       padding: '14px 22px', borderRadius: '12px', fontSize: '14px', fontWeight: '600',
@@ -63,15 +63,61 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
-   *  DRAFT / UNPUBLISH FEATURE
+   *  REACT INTERNALS HELPER
+   *
+   *  Decap CMS v3 uses React + Redux. Directly setting checkbox
+   *  properties or calling .click() does NOT update the Redux store.
+   *  We must call onChange through React's internal props or fiber.
    * ═══════════════════════════════════════════════════════════ */
 
   /**
-   * Determine if we are currently inside the entry editor view.
-   * Decap CMS uses hash-based routing:
-   *   #/collections/<name>/entries/<slug>   (edit existing)
-   *   #/collections/<name>/new              (create new)
+   * Find React internal properties on a DOM element.
+   * React attaches __reactProps$xxx, __reactFiber$xxx, etc.
    */
+  function getReactProps(element) {
+    var keys = Object.keys(element);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].startsWith('__reactProps$')) {
+        return element[keys[i]];
+      }
+    }
+    return null;
+  }
+
+  function getReactFiber(element) {
+    var keys = Object.keys(element);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].startsWith('__reactFiber$') || keys[i].startsWith('__reactInternalInstance$')) {
+        return element[keys[i]];
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Walk up the React fiber tree to find the nearest onChange handler.
+   * Returns { handler, fiber } or null.
+   */
+  function findOnChangeInFiber(element) {
+    var fiber = getReactFiber(element);
+    if (!fiber) return null;
+
+    var current = fiber;
+    for (var depth = 0; depth < 20 && current; depth++) {
+      var props = current.memoizedProps || current.pendingProps;
+      if (props && typeof props.onChange === 'function') {
+        return { handler: props.onChange, props: props };
+      }
+      current = current['return'];
+    }
+    return null;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+   *  DRAFT / UNPUBLISH FEATURE
+   * ═══════════════════════════════════════════════════════════ */
+
+  /** Detect editor view via URL hash */
   function isEditorView() {
     var hash = window.location.hash || '';
     return hash.includes('/entries/') || hash.includes('/new');
@@ -79,80 +125,51 @@
 
   /**
    * Find the "published" boolean toggle in the CMS editor form.
-   * Uses multiple strategies for maximum reliability.
    */
   function findPublishedInput() {
     var root = document.getElementById('nc-root') || document.body;
     if (!isEditorView()) return null;
 
-    // ── STRATEGY A: Walk all labels looking for "publicado"/"published" ──
+    // ── STRATEGY A: Walk labels for "publicado"/"published" ──
     var labels = root.querySelectorAll('label, span, p');
     for (var i = 0; i < labels.length; i++) {
       var el = labels[i];
       var elText = (el.textContent || '').toLowerCase();
-
-      // Match field labels containing "publicado" or "published"
-      // but exclude very long text (to avoid matching preview/content areas)
       if (elText.length > 60) continue;
       if (!elText.includes('publicado') && !elText.includes('published')) continue;
-      // Exclude labels from the preview pane (inside iframes)
       if (el.closest('iframe')) continue;
-      // Exclude labels that are part of the toolbar dropdown (Published ✓ status)
-      // These are typically not inside a form/fieldset
       if (el.closest('[class*="Dropdown"]') || el.closest('[role="menu"]')) continue;
 
-      // Walk up from this label, searching progressively wider for a checkbox
+      // Walk up searching for a checkbox
       var container = el.parentElement;
       for (var depth = 0; depth < 10 && container && container !== root; depth++) {
         var checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        if (checkboxes.length === 1) {
-          // Perfect: exactly one checkbox in this container
-          return checkboxes[0];
-        }
+        if (checkboxes.length === 1) return checkboxes[0];
         if (checkboxes.length > 1 && depth >= 2) {
-          // Multiple checkboxes found — the "published" checkbox is typically
-          // adjacent to/below the label. Pick the closest one by DOM position.
-          // In BINGO config, "published" is always after "authorized", so use last.
           return checkboxes[checkboxes.length - 1];
         }
         container = container.parentElement;
       }
 
-      // Also check siblings of the label
+      // Check siblings
       var sibling = el.nextElementSibling;
       for (var s = 0; s < 5 && sibling; s++) {
         var cb = sibling.querySelector('input[type="checkbox"]');
         if (cb) return cb;
-        // Also check for role="switch" toggles
-        var sw = sibling.querySelector('[role="switch"]');
-        if (sw) {
-          var innerCb = sw.querySelector('input[type="checkbox"]');
-          return innerCb || sw;
-        }
         sibling = sibling.nextElementSibling;
       }
     }
 
-    // ── STRATEGY B: "Last checkbox" heuristic ──
-    // In all BINGO CMS collections, "published" is always the last boolean field.
-    // news: only boolean is "published" → 1 checkbox (the only one)
-    // team: "authorized" then "published" → 2 checkboxes (published = last)
-    // publications: only boolean is "published" → 1 checkbox (the only one)
+    // ── STRATEGY B: Last checkbox heuristic ──
     var formCheckboxes = root.querySelectorAll('input[type="checkbox"]');
     if (formCheckboxes.length > 0) {
       return formCheckboxes[formCheckboxes.length - 1];
     }
 
-    // ── STRATEGY C: role="switch" fallback ──
-    var switches = root.querySelectorAll('[role="switch"]');
-    if (switches.length > 0) {
-      return switches[switches.length - 1];
-    }
-
     return null;
   }
 
-  /** Read current published state from the input/toggle */
+  /** Read current published state */
   function getPublishedState(input) {
     if (!input) return true;
     if (input.type === 'checkbox') return input.checked;
@@ -162,49 +179,114 @@
     return String(input.value) !== 'false' && String(input.value) !== '0';
   }
 
-  /** Toggle the published field using React-compatible interaction */
+  /**
+   * Toggle the published field through React's event system.
+   * Tries 4 methods in order of reliability.
+   */
   function togglePublishedInput(input) {
-    if (!input) return;
-    if (input.type === 'checkbox') {
-      // Simulate a real click — React listens on this via event delegation
-      input.click();
-    } else if (input.getAttribute('role') === 'switch') {
-      // For custom toggle switches
-      input.click();
-    } else {
-      // For text inputs / hidden inputs
-      var newVal = String(!getPublishedState(input));
-      var nativeSetter = Object.getOwnPropertyDescriptor(
-        window.HTMLInputElement.prototype, 'value'
-      );
-      if (nativeSetter && nativeSetter.set) {
-        nativeSetter.set.call(input, newVal);
-      } else {
-        input.value = newVal;
-      }
-      input.dispatchEvent(new Event('input', { bubbles: true }));
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+    if (!input) return false;
+    var newChecked = !input.checked;
+
+    // ── METHOD 1: Call onChange from __reactProps$ ──
+    var reactProps = getReactProps(input);
+    if (reactProps && typeof reactProps.onChange === 'function') {
+      reactProps.onChange({ target: { checked: newChecked, type: 'checkbox' } });
+      return true;
     }
+
+    // ── METHOD 2: Walk React fiber tree for onChange ──
+    var fiberResult = findOnChangeInFiber(input);
+    if (fiberResult && typeof fiberResult.handler === 'function') {
+      fiberResult.handler({ target: { checked: newChecked, type: 'checkbox' } });
+      return true;
+    }
+
+    // ── METHOD 3: Click the visual toggle label/container ──
+    // In Decap CMS, the toggle switch is typically a <label> wrapping the checkbox.
+    // Clicking the label triggers the browser's native checkbox toggle + React's
+    // event delegation captures it properly.
+    var toggleLabel = input.closest('label');
+    if (!toggleLabel) {
+      // The checkbox might be a sibling of the visual toggle, not a child
+      var parent = input.parentElement;
+      if (parent) {
+        toggleLabel = parent.closest('label') || parent;
+      }
+    }
+    if (toggleLabel && toggleLabel !== input) {
+      // Dispatch a full mouse event sequence on the visual toggle
+      var evtInit = { bubbles: true, cancelable: true, view: window };
+      toggleLabel.dispatchEvent(new MouseEvent('mousedown', evtInit));
+      toggleLabel.dispatchEvent(new MouseEvent('mouseup', evtInit));
+      toggleLabel.dispatchEvent(new MouseEvent('click', evtInit));
+      return true;
+    }
+
+    // ── METHOD 4: Native property setter + event dispatch ──
+    var descriptor = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'checked');
+    if (descriptor && descriptor.set) {
+      descriptor.set.call(input, newChecked);
+    } else {
+      input.checked = newChecked;
+    }
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    input.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+
+    // ── METHOD 5: Absolute last resort — simple .click() ──
+    try { input.click(); } catch (e) {}
+
+    return true;
   }
 
-  /** Find the Save/Publish button in the CMS toolbar */
+  /**
+   * Find the Save/Publish button in the CMS toolbar.
+   * Carefully excludes status indicators ("Published ✓") and our own buttons.
+   */
   function findSaveButton() {
     var root = document.getElementById('nc-root') || document.body;
-    var allBtns = Array.from(root.querySelectorAll('button, [role="button"]'));
-    return allBtns.find(function (b) {
-      var text = (b.textContent || '').trim().toLowerCase();
-      return (text.includes('publish') || text.includes('save')
-        || text.includes('publicar') || text.includes('salvar'))
-        && !b.id.includes('bingo')
-        && !b.closest('#' + DRAFT_BTN_ID);
-    });
+    var allBtns = Array.from(root.querySelectorAll('button'));
+    var best = null;
+
+    for (var i = 0; i < allBtns.length; i++) {
+      var b = allBtns[i];
+      var text = (b.textContent || '').trim();
+      var lower = text.toLowerCase();
+
+      // Skip our own buttons
+      if (b.id && b.id.includes('bingo')) continue;
+      // Skip hidden/invisible buttons
+      if (b.offsetParent === null && !b.closest('[style*="position: fixed"]')) continue;
+      // Skip status indicators that have ✓ or ✔ (e.g., "Published ✓")
+      if (text.includes('✓') || text.includes('✔')) continue;
+      // Skip dropdown items with + (e.g., "Duplicate +")
+      if (text.includes('+') && lower.includes('duplic')) continue;
+      // Skip delete buttons
+      if (lower.includes('delete') || lower.includes('excluir') || lower.includes('apagar')) continue;
+
+      // Match save-related text
+      if (lower.includes('publish') || lower.includes('save')
+        || lower.includes('publicar') || lower.includes('salvar')) {
+        // Prefer shorter text (more specific button, not a container)
+        if (!best || text.length < best.textContent.trim().length) {
+          best = b;
+        }
+      }
+    }
+
+    return best;
   }
 
-  /** Perform the draft/publish toggle action */
+  /** Perform the draft/publish toggle action with retry for save button */
   function performToggle(pubInput) {
     if (!pubInput) return;
     var wasPublished = getPublishedState(pubInput);
-    togglePublishedInput(pubInput);
+    var toggled = togglePublishedInput(pubInput);
+
+    if (!toggled) {
+      showToast('Erro: não foi possível alterar o campo. Altere manualmente.', 'error');
+      return;
+    }
 
     showToast(
       wasPublished
@@ -213,8 +295,14 @@
       'info'
     );
 
-    // Auto-save after React processes the toggle
-    setTimeout(function () {
+    // Try to find and click the save button, with retries
+    // (the button may take a moment to appear after the field change)
+    var attempts = 0;
+    var maxAttempts = 6;
+    var retryDelay = 500;
+
+    function trySave() {
+      attempts++;
       var saveBtn = findSaveButton();
       if (saveBtn) {
         saveBtn.click();
@@ -225,22 +313,27 @@
               : 'Publicado com sucesso! 🚀',
             'success'
           );
+          // Refresh the floating button state
+          setupDraftFeature();
         }, 1200);
+      } else if (attempts < maxAttempts) {
+        // Save button not visible yet, retry
+        setTimeout(trySave, retryDelay);
       } else {
-        showToast('Alteração feita. Clique em Salvar manualmente.', 'warn');
+        showToast('Campo alterado. Clique em Salvar/Publish manualmente.', 'warn');
       }
-    }, 400);
+    }
+
+    setTimeout(trySave, 400);
   }
 
   /* ── Status Badge ── */
   function updateStatusBadge(isPublished, show) {
     var badge = document.getElementById(STATUS_BADGE_ID);
-
     if (!show) {
       if (badge) badge.style.display = 'none';
       return;
     }
-
     if (!badge) {
       badge = document.createElement('div');
       badge.id = STATUS_BADGE_ID;
@@ -256,7 +349,6 @@
       });
       document.body.appendChild(badge);
     }
-
     badge.style.display = 'flex';
     if (isPublished) {
       badge.innerHTML = '<span style="font-size:8px;color:#22c55e;">●</span> PUBLICADO';
@@ -274,12 +366,10 @@
   /* ── Floating Action Button ── */
   function updateFloatingButton(pubInput, isPublished) {
     var btn = document.getElementById(DRAFT_BTN_ID);
-
     if (!pubInput) {
       if (btn) btn.style.display = 'none';
       return;
     }
-
     if (!btn) {
       btn = document.createElement('button');
       btn.id = DRAFT_BTN_ID;
@@ -308,11 +398,14 @@
         e.preventDefault();
         e.stopPropagation();
         var currentInput = findPublishedInput();
-        if (currentInput) performToggle(currentInput);
+        if (currentInput) {
+          performToggle(currentInput);
+        } else {
+          showToast('Erro: campo "Publicado" não encontrado no formulário.', 'error');
+        }
       });
       document.body.appendChild(btn);
     }
-
     btn.style.display = 'flex';
     if (isPublished) {
       btn.innerHTML = '🔒 Despublicar (Rascunho)';
@@ -332,95 +425,61 @@
   /* ── Dropdown Injection ── */
   function tryInjectDropdown(pubInput, isPublished) {
     if (!pubInput) return;
-
-    // Already injected in this dropdown session?
     var existing = document.getElementById(DROPDOWN_ITEM_ID);
     if (existing) {
-      // Just update its label
-      var textSpan = existing.querySelector('[data-bingo-label]') || existing;
-      textSpan.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
+      var lbl = existing.querySelector('[data-bingo-label]') || existing;
+      lbl.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
       return;
     }
 
-    // Search for visible dropdown items that contain "Duplicate"
-    // Decap CMS v3 renders dropdown items as buttons/divs, text may include icons (e.g. "Duplicate +")
     var allInteractive = document.querySelectorAll('button, a, li, [role="menuitem"], [role="option"]');
     var duplicateBtn = null;
-
     for (var i = 0; i < allInteractive.length; i++) {
       var el = allInteractive[i];
       var text = (el.textContent || '').trim();
-      // Match "Duplicate", "Duplicate +", "Duplicar", "Duplicar +" etc.
       if ((text.includes('Duplicate') || text.includes('Duplicar'))
         && el.offsetParent !== null
-        && !el.id.includes('bingo')) {
+        && !(el.id && el.id.includes('bingo'))) {
         duplicateBtn = el;
         break;
       }
     }
-
     if (!duplicateBtn) return;
+
     var dropdownParent = duplicateBtn.parentElement;
     if (!dropdownParent) return;
 
-    // Clone the Duplicate button to inherit its styling
     var newItem = duplicateBtn.cloneNode(true);
     newItem.id = DROPDOWN_ITEM_ID;
+    newItem.innerHTML = '';
 
-    // Replace text in the clone
-    function replaceText(node, newText) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        var t = node.textContent.trim();
-        if (t.includes('Duplicate') || t.includes('Duplicar') || t === '+') {
-          node.textContent = '';
-        }
-        return;
-      }
-      if (node.childNodes) {
-        for (var c = 0; c < node.childNodes.length; c++) {
-          replaceText(node.childNodes[c], newText);
-        }
-      }
-    }
-    replaceText(newItem, '');
-
-    // Insert our label as a clean span
     var labelSpan = document.createElement('span');
     labelSpan.setAttribute('data-bingo-label', '1');
     labelSpan.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
-    // Clear existing content and put our label
-    newItem.innerHTML = '';
     newItem.appendChild(labelSpan);
 
-    // Style
     newItem.style.cursor = 'pointer';
     newItem.style.color = isPublished ? '#eab308' : '#22c55e';
 
-    // Hover effects
     newItem.addEventListener('mouseenter', function () {
       newItem.style.backgroundColor = isPublished
-        ? 'rgba(234, 179, 8, 0.1)'
-        : 'rgba(34, 197, 94, 0.1)';
+        ? 'rgba(234, 179, 8, 0.1)' : 'rgba(34, 197, 94, 0.1)';
     });
     newItem.addEventListener('mouseleave', function () {
       newItem.style.backgroundColor = '';
     });
 
-    // Click handler
     newItem.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      // Close the dropdown
       document.body.click();
-      // Perform toggle after dropdown closes
       setTimeout(function () {
         var currentInput = findPublishedInput();
         if (currentInput) performToggle(currentInput);
       }, 150);
     });
 
-    // Insert after Duplicate in the dropdown
     if (duplicateBtn.nextSibling) {
       dropdownParent.insertBefore(newItem, duplicateBtn.nextSibling);
     } else {
@@ -428,26 +487,18 @@
     }
   }
 
-  /* ── Main Draft Feature Controller ── */
+  /* ── Main Controller ── */
   function setupDraftFeature() {
     if (!isEditorView()) {
-      // Not editing — hide everything
       var b = document.getElementById(DRAFT_BTN_ID);
       if (b) b.style.display = 'none';
       updateStatusBadge(false, false);
       return;
     }
-
     var pubInput = findPublishedInput();
-
-    if (!pubInput) {
-      // Editor is open but published input not found yet (form still loading)
-      return;
-    }
+    if (!pubInput) return;
 
     var isPublished = getPublishedState(pubInput);
-
-    // Update all UI elements
     updateStatusBadge(isPublished, true);
     updateFloatingButton(pubInput, isPublished);
     tryInjectDropdown(pubInput, isPublished);
@@ -489,7 +540,6 @@
    *  BOOTSTRAP
    * ═══════════════════════════════════════════════════════════ */
   function init() {
-    // Register preview CSS
     if (window.CMS) {
       try { CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
     }
@@ -499,15 +549,12 @@
       }
     }, 3000);
 
-    // Login page detection
     var loginObs = new MutationObserver(checkLoginPage);
     loginObs.observe(document.body, { childList: true, subtree: true });
     checkLoginPage();
 
-    // Image path fixer
     startImageFixer();
 
-    // Draft/Unpublish feature — debounced MutationObserver + periodic check
     var draftPending = false;
     var draftObs = new MutationObserver(function () {
       if (!draftPending) {
