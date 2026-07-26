@@ -23,3 +23,40 @@ body, #nc-root {
 .bingo-login-btn:hover {
   opacity: 0.9;
 }
+
+/* ── Custom Unpublish / Draft Action Button ── */
+#bingo-unpublish-action {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  border-radius: 4px !important;
+  padding: 6px 14px !important;
+  margin-right: 8px !important;
+  margin-left: 8px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  transition: all 0.2s ease !important;
+  height: 36px !important;
+  box-sizing: border-box !important;
+}
+
+#bingo-unpublish-action.is-published {
+  background-color: #eab308 !important;
+  color: #0f172a !important;
+  border: 1px solid #ca8a04 !important;
+}
+#bingo-unpublish-action.is-published:hover {
+  background-color: #ca8a04 !important;
+  color: #ffffff !important;
+}
+
+#bingo-unpublish-action.is-draft {
+  background-color: #475569 !important;
+  color: #ffffff !important;
+  border: 1px solid #334155 !important;
+}
+#bingo-unpublish-action.is-draft:hover {
+  background-color: #334155 !important;
+}

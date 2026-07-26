@@ -16,82 +16,73 @@
   }
 
   function setupUnpublishButton() {
-    // Find all buttons in the document
-    const allButtons = Array.from(document.querySelectorAll('button, div[role="button"], a[role="button"]'));
+    // 1. Locate editor toolbar container
+    const allButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
 
-    // Locate the Publish or Save button
+    // Search for publish/save button by partial text matching
     const publishBtn = allButtons.find(b => {
-      const text = b.textContent.trim().toLowerCase();
-      return (text === 'publish' || text === 'publicar' || text === 'save' || text === 'salvar' || text.includes('publish') || text.includes('publicar'));
+      const text = (b.textContent || '').trim().toLowerCase();
+      return text.includes('publi') || text.includes('sav') || text.includes('salv');
     });
 
-    if (!publishBtn) return; // Exit if not inside editor view yet
+    if (!publishBtn) return; // Not inside editor view
 
     const toolbar = publishBtn.parentElement;
     if (!toolbar) return;
 
-    // Check publication status by finding the "published" input field in the form
+    // Ensure toolbar container displays items in a flex row
+    if (getComputedStyle(toolbar).display !== 'flex') {
+      toolbar.style.display = 'flex';
+      toolbar.style.alignItems = 'center';
+    }
+
+    // 2. Check current publication status from the "published" form control
     let isCurrentlyPublished = true;
-    const publishedInputs = Array.from(document.querySelectorAll('input, [id*="published"]'));
-    const pubInput = publishedInputs.find(i => 
-      (i.id && i.id.includes('published')) || 
-      (i.name && i.name.includes('published')) ||
-      (i.closest && i.closest('label') && (i.closest('label').textContent.toLowerCase().includes('publicad') || i.closest('label').textContent.toLowerCase().includes('publish')))
-    );
+    const publishedInputs = Array.from(document.querySelectorAll('#nc-root input'));
+    const pubInput = publishedInputs.find(i => {
+      const id = (i.id || '').toLowerCase();
+      const name = (i.name || '').toLowerCase();
+      const labelText = (i.closest('label')?.textContent || '').toLowerCase();
+      return id.includes('published') || name.includes('published') || labelText.includes('publicad') || labelText.includes('publish');
+    });
 
     if (pubInput) {
       if (pubInput.type === 'checkbox') {
         isCurrentlyPublished = pubInput.checked;
       } else if (pubInput.value !== undefined) {
-        isCurrentlyPublished = pubInput.value !== 'false' && pubInput.value !== '0';
+        isCurrentlyPublished = String(pubInput.value) !== 'false' && String(pubInput.value) !== '0';
       }
     }
 
+    // 3. Get or Create Custom Unpublish / Save Draft Button
     const btnId = 'bingo-unpublish-action';
     let unpublishBtn = document.getElementById(btnId);
 
-    // If button doesn't exist or was removed by React re-render
     if (!unpublishBtn || !toolbar.contains(unpublishBtn)) {
       if (unpublishBtn) unpublishBtn.remove();
 
       unpublishBtn = document.createElement('button');
       unpublishBtn.id = btnId;
-      unpublishBtn.className = publishBtn.className || '';
       unpublishBtn.type = 'button';
-      
-      unpublishBtn.style.cssText = `
-        font-weight: 600 !important;
-        border-radius: 4px !important;
-        padding: 6px 14px !important;
-        margin-right: 8px !important;
-        cursor: pointer !important;
-        font-size: 13px !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 6px !important;
-        transition: all 0.2s ease !important;
-        border: 1px solid transparent !important;
-        white-space: nowrap !important;
-        line-height: 1.4 !important;
-        vertical-align: middle !important;
-        z-index: 100 !important;
-      `;
-      
+
       unpublishBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        const currentPubInput = Array.from(document.querySelectorAll('input, [id*="published"]')).find(i => 
-          (i.id && i.id.includes('published')) || 
-          (i.name && i.name.includes('published')) ||
-          (i.closest && i.closest('label') && (i.closest('label').textContent.toLowerCase().includes('publicad') || i.closest('label').textContent.toLowerCase().includes('publish')))
-        );
+        // Re-query published input at click time
+        const currentInputs = Array.from(document.querySelectorAll('#nc-root input'));
+        const currentPubInput = currentInputs.find(i => {
+          const id = (i.id || '').toLowerCase();
+          const name = (i.name || '').toLowerCase();
+          const labelText = (i.closest('label')?.textContent || '').toLowerCase();
+          return id.includes('published') || name.includes('published') || labelText.includes('publicad') || labelText.includes('publish');
+        });
 
+        // Set published status to false (Unpublish)
         if (currentPubInput) {
           if (currentPubInput.type === 'checkbox') {
             if (currentPubInput.checked) {
-              currentPubInput.click(); // Uncheck to set to false
+              currentPubInput.click();
             }
           } else {
             currentPubInput.value = 'false';
@@ -100,39 +91,32 @@
           }
         }
 
-        // Trigger native publish action to save changes
+        // Trigger native publish/save button click after toggle update
         setTimeout(() => {
-          const currentPublishBtn = Array.from(document.querySelectorAll('button, div[role="button"], a[role="button"]')).find(b => {
-            const text = b.textContent.trim().toLowerCase();
-            return (text === 'publish' || text === 'publicar' || text === 'save' || text === 'salvar' || text.includes('publish') || text.includes('publicar'));
+          const freshButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
+          const freshPublishBtn = freshButtons.find(b => {
+            const text = (b.textContent || '').trim().toLowerCase();
+            return text.includes('publi') || text.includes('sav') || text.includes('salv');
           });
-          if (currentPublishBtn) {
-            currentPublishBtn.click();
+          if (freshPublishBtn) {
+            freshPublishBtn.click();
           }
         }, 150);
       });
 
-      // Align side by side with existing buttons
-      toolbar.style.display = 'flex';
-      toolbar.style.alignItems = 'center';
+      // Insert before Publish button in the toolbar
       toolbar.insertBefore(unpublishBtn, publishBtn);
     }
 
-    // Dynamic state update
+    // 4. Update button text, title and visual class based on state
     if (isCurrentlyPublished) {
       unpublishBtn.textContent = '🔒 Unpublish (Save Draft)';
-      unpublishBtn.title = 'Unpublish this content and revert to draft';
-      unpublishBtn.style.backgroundColor = '#eab308';
-      unpublishBtn.style.color = '#0f172a';
-      unpublishBtn.style.borderColor = '#ca8a04';
-      unpublishBtn.style.display = 'inline-flex';
+      unpublishBtn.title = 'Unpublish this entry and save as draft';
+      unpublishBtn.className = 'is-published';
     } else {
       unpublishBtn.textContent = '📝 Save Draft';
-      unpublishBtn.title = 'Save changes as draft';
-      unpublishBtn.style.backgroundColor = '#475569';
-      unpublishBtn.style.color = '#ffffff';
-      unpublishBtn.style.borderColor = '#334155';
-      unpublishBtn.style.display = 'inline-flex';
+      unpublishBtn.title = 'Save changes to draft';
+      unpublishBtn.className = 'is-draft';
     }
   }
 
