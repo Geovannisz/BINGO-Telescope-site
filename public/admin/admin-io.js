@@ -437,6 +437,9 @@
     requestAnimationFrame(() => toast.classList.add('bingo-io-toast-show'));
     setTimeout(() => { toast.classList.remove('bingo-io-toast-show'); setTimeout(() => toast.remove(), 400); }, 4500);
   }
+  
+  // Expose globally for other admin scripts (e.g. admin-engine.js)
+  window.showToast = showToast;
 
   /* ── Toolbar injection ── */
   function injectToolbar() {

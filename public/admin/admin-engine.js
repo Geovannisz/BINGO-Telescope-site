@@ -15,7 +15,68 @@
     });
   }
 
-  function setupUnpublishButton() {
+  function findSaveButton() {
+    const header = document.querySelector('header, [class*="AppHeader"], nav');
+    if (header) {
+      const btns = Array.from(header.querySelectorAll('button, [role="button"]'));
+      const saveBtn = btns.find(b => {
+        const text = (b.textContent || '').trim().toLowerCase();
+        return text.includes('publish') || text.includes('save') || text.includes('publicar') || text.includes('salvar');
+      });
+      if (saveBtn) return saveBtn;
+    }
+    const allButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
+    return allButtons.find(b => {
+      const text = (b.textContent || '').trim().toLowerCase();
+      return text.includes('publish') || text.includes('save') || text.includes('publicar') || text.includes('salvar');
+    });
+  }
+
+  function updateStatusBadge(isPublished, hasPubInput) {
+    const badgeId = 'bingo-editor-status-badge';
+    let badge = document.getElementById(badgeId);
+    
+    if (!hasPubInput) {
+      if (badge) badge.style.display = 'none';
+      return;
+    }
+
+    if (!badge) {
+      badge = document.createElement('div');
+      badge.id = badgeId;
+      badge.style.position = 'fixed';
+      badge.style.top = '12px';
+      badge.style.left = '220px';
+      badge.style.zIndex = '9999';
+      badge.style.padding = '6px 12px';
+      badge.style.borderRadius = '20px';
+      badge.style.fontSize = '12px';
+      badge.style.fontWeight = '700';
+      badge.style.fontFamily = "'Outfit', sans-serif";
+      badge.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+      badge.style.pointerEvents = 'none';
+      badge.style.display = 'flex';
+      badge.style.alignItems = 'center';
+      badge.style.gap = '6px';
+      badge.style.transition = 'all 0.3s ease';
+      document.body.appendChild(badge);
+    }
+    
+    badge.style.display = 'flex';
+    if (isPublished) {
+      badge.innerHTML = '<span style="color: #22c55e;">●</span> PUBLICADO';
+      badge.style.backgroundColor = '#0f172a';
+      badge.style.color = '#f8fafc';
+      badge.style.border = '1px solid rgba(34, 197, 94, 0.4)';
+    } else {
+      badge.innerHTML = '<span style="color: #eab308;">●</span> RASCUNHO';
+      badge.style.backgroundColor = '#0f172a';
+      badge.style.color = '#f8fafc';
+      badge.style.border = '1px solid rgba(234, 179, 8, 0.4)';
+    }
+  }
+
+  function setupUnpublishDropdown() {
     // 1. Check current publication status from the "published" form control
     let isCurrentlyPublished = true;
     const publishedInputs = Array.from(document.querySelectorAll('#nc-root input'));
@@ -26,12 +87,17 @@
       return id.includes('published') || name.includes('published') || labelText.includes('publicad') || labelText.includes('publish');
     });
 
-    const btnId = 'bingo-unpublish-action';
-    let unpublishBtn = document.getElementById(btnId);
+    const badgeId = 'bingo-editor-status-badge';
+    const unpublishId = 'bingo-unpublish-dropdown-item';
+
+    // Remove legacy floating button if it exists
+    const oldBtn = document.getElementById('bingo-unpublish-action');
+    if (oldBtn) oldBtn.remove();
 
     if (!pubInput) {
-      // Not inside editor view - hide button if exists
-      if (unpublishBtn) unpublishBtn.style.display = 'none';
+      // Not inside editor view - hide badge if exists
+      const badge = document.getElementById(badgeId);
+      if (badge) badge.style.display = 'none';
       return;
     }
 
@@ -41,59 +107,93 @@
       isCurrentlyPublished = String(pubInput.value) !== 'false' && String(pubInput.value) !== '0';
     }
 
-    // 2. Get or Create Custom Unpublish / Save Draft Button as a Global Floating Action Button
-    if (!unpublishBtn) {
-      unpublishBtn = document.createElement('button');
-      unpublishBtn.id = btnId;
-      unpublishBtn.type = 'button';
-      
-      // Fixed positioning to guarantee visibility regardless of Decap CMS React nodes
-      unpublishBtn.style.position = 'fixed';
-      unpublishBtn.style.top = '12px';
-      unpublishBtn.style.left = '50%';
-      unpublishBtn.style.transform = 'translateX(-50%)';
-      unpublishBtn.style.zIndex = '999999';
-      unpublishBtn.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+    // Update status badge
+    updateStatusBadge(isCurrentlyPublished, true);
 
-      unpublishBtn.addEventListener('click', (e) => {
+    // 2. Scan if the CMS dropdown menu containing "Duplicate"/"Duplicar" is currently visible in DOM
+    const duplicateLeaves = Array.from(document.querySelectorAll('*')).filter(el => {
+      const text = (el.textContent || '').trim();
+      return (text === 'Duplicate' || text === 'Duplicar') && el.children.length === 0;
+    });
+
+    const duplicateLeaf = duplicateLeaves[0];
+    if (!duplicateLeaf) {
+      return; // Dropdown is not open
+    }
+
+    const duplicateContainer = duplicateLeaf.closest('button, li, a, div[role="button"]') || duplicateLeaf;
+    const dropdownParent = duplicateContainer.parentNode;
+    if (!dropdownParent) return;
+
+    // Check if our own button is already injected in this dropdown session
+    let unpublishItem = dropdownParent.querySelector(`#${unpublishId}`);
+    if (!unpublishItem) {
+      unpublishItem = duplicateContainer.cloneNode(true);
+      unpublishItem.id = unpublishId;
+      unpublishItem.classList.add('bingo-unpublish-dropdown-item');
+      
+      // Inject next to duplicate
+      duplicateContainer.after(unpublishItem);
+      
+      // Define click behavior
+      unpublishItem.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
-        // 3. Update the toggle value directly
+        // Close dropdown
+        const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+        document.dispatchEvent(clickEvent);
+
+        // Toggle published state
+        const targetState = !isCurrentlyPublished;
         if (pubInput.type === 'checkbox') {
-          if (pubInput.checked) pubInput.click();
+          if (pubInput.checked !== targetState) {
+            pubInput.click();
+          }
         } else {
-          pubInput.value = 'false';
+          pubInput.value = String(targetState);
           pubInput.dispatchEvent(new Event('input', { bubbles: true }));
           pubInput.dispatchEvent(new Event('change', { bubbles: true }));
         }
 
-        // 4. Try to click native Save/Publish automatically
+        // Show toast
+        if (window.showToast) {
+          window.showToast(
+            targetState ? 'Alterando para Publicado... Salvando. 🚀' : 'Alterando para Rascunho... Salvando. 🔒', 
+            'info'
+          );
+        }
+
+        // Click Save button
         setTimeout(() => {
-          const allButtons = Array.from(document.querySelectorAll('#nc-root button, #nc-root div[role="button"]'));
-          const nativeActionBtn = allButtons.find(b => {
-            const text = (b.textContent || '').trim().toLowerCase();
-            return (text.includes('publi') || text.includes('sav') || text.includes('salv'));
-          });
-          if (nativeActionBtn) {
-            nativeActionBtn.click();
+          const saveBtn = findSaveButton();
+          if (saveBtn) {
+            saveBtn.click();
+            setTimeout(() => {
+              if (window.showToast) {
+                window.showToast(
+                  targetState ? 'Item publicado e salvo com sucesso! 🚀' : 'Rascunho atualizado e salvo! 🔒',
+                  'success'
+                );
+              }
+            }, 1000);
+          } else {
+            if (window.showToast) {
+              window.showToast('Alteração efetuada. Por favor, clique em Salvar manual.', 'warn');
+            }
           }
-        }, 150);
+        }, 300);
       });
-      document.body.appendChild(unpublishBtn);
     }
 
-    unpublishBtn.style.display = 'inline-flex';
+    // 3. Update the label and styling matching current state
+    const itemTextEl = Array.from(unpublishItem.querySelectorAll('*')).concat([unpublishItem]).find(el => {
+      const text = (el.textContent || '').trim();
+      return (text === 'Duplicate' || text === 'Duplicar' || text.includes('Despublicar') || text.includes('Rascunho') || text.includes('Publicar')) && el.children.length === 0;
+    });
 
-    // 4. Update button text, title and visual class based on state
-    if (isCurrentlyPublished) {
-      unpublishBtn.textContent = '🔒 Unpublish (Save Draft)';
-      unpublishBtn.title = 'Unpublish this entry and save as draft';
-      unpublishBtn.className = 'is-published';
-    } else {
-      unpublishBtn.textContent = '📝 Save Draft';
-      unpublishBtn.title = 'Save changes to draft';
-      unpublishBtn.className = 'is-draft';
+    if (itemTextEl) {
+      itemTextEl.textContent = isCurrentlyPublished ? '🔒 Despublicar (Salvar Rascunho)' : '🚀 Publicar (Salvar Ativo)';
     }
   }
 
@@ -163,10 +263,10 @@
     // Fix image previews
     startImageFixer();
 
-    // Setup custom unpublish button with mutation observer for instant reaction on view switch
-    const unpublishObserver = new MutationObserver(setupUnpublishButton);
+    // Setup custom unpublish dropdown item and status badge
+    const unpublishObserver = new MutationObserver(setupUnpublishDropdown);
     unpublishObserver.observe(document.body, { childList: true, subtree: true });
-    setInterval(setupUnpublishButton, 300);
+    setInterval(setupUnpublishDropdown, 300);
   }
 
   if (document.readyState === 'loading') {
