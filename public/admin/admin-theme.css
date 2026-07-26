@@ -1,7 +1,6 @@
 /*
- * BINGO Telescope — Admin
- * Minimal overrides. Let Decap CMS handle its own styling.
- * Only customizes: login button, font, and "New" button color.
+ * BINGO Telescope — Admin Theme
+ * Customizes: login button, font, draft/unpublish controls, toast.
  */
 
 /* ── Font ── */
@@ -24,12 +23,16 @@ body, #nc-root {
   opacity: 0.9;
 }
 
-/* ── Custom Unpublish / Draft Dropdown Action ── */
-.bingo-unpublish-dropdown-item {
+/* ── Draft/Unpublish Dropdown Item ── */
+#bingo-dropdown-draft-item {
   cursor: pointer !important;
   transition: background-color 0.2s ease, color 0.2s ease !important;
 }
-.bingo-unpublish-dropdown-item:hover {
-  background-color: rgba(234, 179, 8, 0.15) !important;
-  color: #eab308 !important;
+#bingo-dropdown-draft-item:hover {
+  background-color: rgba(234, 179, 8, 0.12) !important;
+}
+
+/* ── Toast animation enhancement ── */
+.bingo-engine-toast {
+  line-height: 1.4;
 }
