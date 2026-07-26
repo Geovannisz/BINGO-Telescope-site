@@ -2,7 +2,7 @@
  * BINGO Telescope — Admin Panel Engine
  * Features:
  * - Custom login button styling
- * - Draft/Unpublish toggle with floating action button + dropdown injection
+ * - Draft/Unpublish toggle (floating action button + dropdown injection)
  * - Status badge for published/draft state
  * - Image path fixer for subpath hosting
  */
@@ -17,7 +17,7 @@
   const DROPDOWN_ITEM_ID = 'bingo-dropdown-draft-item';
 
   /* ═══════════════════════════════════════════════════════════
-   *  TOAST NOTIFICATIONS (self-contained, no dependency on admin-io)
+   *  TOAST NOTIFICATIONS
    * ═══════════════════════════════════════════════════════════ */
   function showToast(msg, type) {
     const existing = document.querySelectorAll('.bingo-engine-toast');
@@ -31,22 +31,22 @@
       padding: '14px 22px', borderRadius: '12px', fontSize: '14px', fontWeight: '600',
       fontFamily: "'Outfit', sans-serif", color: '#fff', maxWidth: '420px',
       background: 'linear-gradient(135deg, #1e293b, #0f172a)',
-      border: `1px solid ${colors[type] || colors.info}40`,
-      boxShadow: `0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px ${colors[type] || colors.info}20`,
+      border: '1px solid ' + (colors[type] || colors.info) + '40',
+      boxShadow: '0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px ' + (colors[type] || colors.info) + '20',
       transform: 'translateY(20px)', opacity: '0',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       pointerEvents: 'none',
     });
-    toast.innerHTML = `${icons[type] || 'ℹ️'} ${msg}`;
+    toast.innerHTML = (icons[type] || 'ℹ️') + ' ' + msg;
     document.body.appendChild(toast);
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function () {
       toast.style.transform = 'translateY(0)';
       toast.style.opacity = '1';
     });
-    setTimeout(() => {
+    setTimeout(function () {
       toast.style.transform = 'translateY(20px)';
       toast.style.opacity = '0';
-      setTimeout(() => toast.remove(), 400);
+      setTimeout(function () { toast.remove(); }, 400);
     }, 3500);
   }
 
@@ -54,7 +54,7 @@
    *  LOGIN PAGE CUSTOMIZATION
    * ═══════════════════════════════════════════════════════════ */
   function checkLoginPage() {
-    document.querySelectorAll('button').forEach(btn => {
+    document.querySelectorAll('button').forEach(function (btn) {
       if (btn.textContent.includes('Login with GitHub')) {
         btn.textContent = '🔭 Acessar Painel BINGO';
         btn.classList.add('bingo-login-btn');
@@ -67,51 +67,98 @@
    * ═══════════════════════════════════════════════════════════ */
 
   /**
+   * Determine if we are currently inside the entry editor view.
+   * Decap CMS uses hash-based routing:
+   *   #/collections/<name>/entries/<slug>   (edit existing)
+   *   #/collections/<name>/new              (create new)
+   */
+  function isEditorView() {
+    var hash = window.location.hash || '';
+    return hash.includes('/entries/') || hash.includes('/new');
+  }
+
+  /**
    * Find the "published" boolean toggle in the CMS editor form.
-   * Uses multiple strategies for reliability across Decap CMS versions.
+   * Uses multiple strategies for maximum reliability.
    */
   function findPublishedInput() {
-    // Strategy 1: Find by traversing labels
-    const labels = document.querySelectorAll('#nc-root label');
-    for (const label of labels) {
-      const text = (label.textContent || '').toLowerCase();
-      if (text.includes('publicado') || text === 'published') {
-        const checkbox = label.querySelector('input[type="checkbox"]')
-          || label.parentElement?.querySelector('input[type="checkbox"]');
-        if (checkbox) return checkbox;
-      }
-    }
+    var root = document.getElementById('nc-root') || document.body;
+    if (!isEditorView()) return null;
 
-    // Strategy 2: Find toggle containers with nearby text
-    const toggles = document.querySelectorAll('#nc-root input[type="checkbox"]');
-    for (const toggle of toggles) {
-      // Walk up to find nearby label text
-      let el = toggle;
-      for (let i = 0; i < 5 && el; i++) {
-        el = el.parentElement;
-        if (!el) break;
-        const text = (el.textContent || '').toLowerCase();
-        // Must contain 'publicado'/'published' but NOT 'autoriza' (to exclude the "authorized" field)
-        if ((text.includes('publicado') || text.includes('published'))
-            && !text.includes('autoriza') && !text.includes('authorized')) {
-          // Confirm this is the right checkbox by checking it's the last one in the form
-          // (published is typically at the bottom of the config)
-          return toggle;
+    // ── STRATEGY A: Walk all labels looking for "publicado"/"published" ──
+    var labels = root.querySelectorAll('label, span, p');
+    for (var i = 0; i < labels.length; i++) {
+      var el = labels[i];
+      var elText = (el.textContent || '').toLowerCase();
+
+      // Match field labels containing "publicado" or "published"
+      // but exclude very long text (to avoid matching preview/content areas)
+      if (elText.length > 60) continue;
+      if (!elText.includes('publicado') && !elText.includes('published')) continue;
+      // Exclude labels from the preview pane (inside iframes)
+      if (el.closest('iframe')) continue;
+      // Exclude labels that are part of the toolbar dropdown (Published ✓ status)
+      // These are typically not inside a form/fieldset
+      if (el.closest('[class*="Dropdown"]') || el.closest('[role="menu"]')) continue;
+
+      // Walk up from this label, searching progressively wider for a checkbox
+      var container = el.parentElement;
+      for (var depth = 0; depth < 10 && container && container !== root; depth++) {
+        var checkboxes = container.querySelectorAll('input[type="checkbox"]');
+        if (checkboxes.length === 1) {
+          // Perfect: exactly one checkbox in this container
+          return checkboxes[0];
         }
+        if (checkboxes.length > 1 && depth >= 2) {
+          // Multiple checkboxes found — the "published" checkbox is typically
+          // adjacent to/below the label. Pick the closest one by DOM position.
+          // In BINGO config, "published" is always after "authorized", so use last.
+          return checkboxes[checkboxes.length - 1];
+        }
+        container = container.parentElement;
+      }
+
+      // Also check siblings of the label
+      var sibling = el.nextElementSibling;
+      for (var s = 0; s < 5 && sibling; s++) {
+        var cb = sibling.querySelector('input[type="checkbox"]');
+        if (cb) return cb;
+        // Also check for role="switch" toggles
+        var sw = sibling.querySelector('[role="switch"]');
+        if (sw) {
+          var innerCb = sw.querySelector('input[type="checkbox"]');
+          return innerCb || sw;
+        }
+        sibling = sibling.nextElementSibling;
       }
     }
 
-    // Strategy 3: Direct attribute search
-    const byId = document.querySelector('#nc-root input[id*="published"], #nc-root input[name*="published"]');
-    if (byId) return byId;
+    // ── STRATEGY B: "Last checkbox" heuristic ──
+    // In all BINGO CMS collections, "published" is always the last boolean field.
+    // news: only boolean is "published" → 1 checkbox (the only one)
+    // team: "authorized" then "published" → 2 checkboxes (published = last)
+    // publications: only boolean is "published" → 1 checkbox (the only one)
+    var formCheckboxes = root.querySelectorAll('input[type="checkbox"]');
+    if (formCheckboxes.length > 0) {
+      return formCheckboxes[formCheckboxes.length - 1];
+    }
+
+    // ── STRATEGY C: role="switch" fallback ──
+    var switches = root.querySelectorAll('[role="switch"]');
+    if (switches.length > 0) {
+      return switches[switches.length - 1];
+    }
 
     return null;
   }
 
-  /** Read current published state from the input */
+  /** Read current published state from the input/toggle */
   function getPublishedState(input) {
     if (!input) return true;
     if (input.type === 'checkbox') return input.checked;
+    if (input.getAttribute('aria-checked') !== null) {
+      return input.getAttribute('aria-checked') === 'true';
+    }
     return String(input.value) !== 'false' && String(input.value) !== '0';
   }
 
@@ -119,15 +166,19 @@
   function togglePublishedInput(input) {
     if (!input) return;
     if (input.type === 'checkbox') {
-      // Simulate a real click — React listens to this
+      // Simulate a real click — React listens on this via event delegation
+      input.click();
+    } else if (input.getAttribute('role') === 'switch') {
+      // For custom toggle switches
       input.click();
     } else {
-      const newVal = String(!getPublishedState(input));
-      const nativeSetter = Object.getOwnPropertyDescriptor(
+      // For text inputs / hidden inputs
+      var newVal = String(!getPublishedState(input));
+      var nativeSetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype, 'value'
-      )?.set;
-      if (nativeSetter) {
-        nativeSetter.call(input, newVal);
+      );
+      if (nativeSetter && nativeSetter.set) {
+        nativeSetter.set.call(input, newVal);
       } else {
         input.value = newVal;
       }
@@ -136,25 +187,23 @@
     }
   }
 
-  /** Find the Save/Publish button in the CMS header */
+  /** Find the Save/Publish button in the CMS toolbar */
   function findSaveButton() {
-    // Look in the header area first
-    const header = document.querySelector('[class*="AppHeader"], header, nav');
-    const searchIn = header || document.querySelector('#nc-root');
-    if (!searchIn) return null;
-
-    const btns = Array.from(searchIn.querySelectorAll('button, [role="button"]'));
-    return btns.find(b => {
-      const text = (b.textContent || '').trim().toLowerCase();
+    var root = document.getElementById('nc-root') || document.body;
+    var allBtns = Array.from(root.querySelectorAll('button, [role="button"]'));
+    return allBtns.find(function (b) {
+      var text = (b.textContent || '').trim().toLowerCase();
       return (text.includes('publish') || text.includes('save')
         || text.includes('publicar') || text.includes('salvar'))
-        && !b.id?.includes('bingo'); // Exclude our own buttons
+        && !b.id.includes('bingo')
+        && !b.closest('#' + DRAFT_BTN_ID);
     });
   }
 
   /** Perform the draft/publish toggle action */
   function performToggle(pubInput) {
-    const wasPublished = getPublishedState(pubInput);
+    if (!pubInput) return;
+    var wasPublished = getPublishedState(pubInput);
     togglePublishedInput(pubInput);
 
     showToast(
@@ -165,11 +214,11 @@
     );
 
     // Auto-save after React processes the toggle
-    setTimeout(() => {
-      const saveBtn = findSaveButton();
+    setTimeout(function () {
+      var saveBtn = findSaveButton();
       if (saveBtn) {
         saveBtn.click();
-        setTimeout(() => {
+        setTimeout(function () {
           showToast(
             wasPublished
               ? 'Salvo como rascunho com sucesso! 🔒'
@@ -185,7 +234,7 @@
 
   /* ── Status Badge ── */
   function updateStatusBadge(isPublished, show) {
-    let badge = document.getElementById(STATUS_BADGE_ID);
+    var badge = document.getElementById(STATUS_BADGE_ID);
 
     if (!show) {
       if (badge) badge.style.display = 'none';
@@ -222,9 +271,9 @@
     }
   }
 
-  /* ── Floating Action Button (always visible, reliable) ── */
+  /* ── Floating Action Button ── */
   function updateFloatingButton(pubInput, isPublished) {
-    let btn = document.getElementById(DRAFT_BTN_ID);
+    var btn = document.getElementById(DRAFT_BTN_ID);
 
     if (!pubInput) {
       if (btn) btn.style.display = 'none';
@@ -247,18 +296,18 @@
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
       });
-      btn.addEventListener('mouseenter', () => {
+      btn.addEventListener('mouseenter', function () {
         btn.style.transform = 'translateY(-3px) scale(1.03)';
         btn.style.boxShadow = '0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1)';
       });
-      btn.addEventListener('mouseleave', () => {
+      btn.addEventListener('mouseleave', function () {
         btn.style.transform = '';
         btn.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.06)';
       });
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        const currentInput = findPublishedInput();
+        var currentInput = findPublishedInput();
         if (currentInput) performToggle(currentInput);
       });
       document.body.appendChild(btn);
@@ -280,141 +329,141 @@
     }
   }
 
-  /* ── Dropdown Injection (bonus: adds item to the CMS dropdown when it opens) ── */
+  /* ── Dropdown Injection ── */
   function tryInjectDropdown(pubInput, isPublished) {
     if (!pubInput) return;
 
-    // Already injected?
-    if (document.getElementById(DROPDOWN_ITEM_ID)) {
-      // Just update its text
-      const existing = document.getElementById(DROPDOWN_ITEM_ID);
-      const textEl = existing.querySelector('span, div') || existing;
-      if (textEl.childNodes.length > 0) {
-        // Find the text node
-        for (const node of textEl.childNodes) {
-          if (node.nodeType === Node.TEXT_NODE || node.tagName) {
-            const el = node.nodeType === Node.TEXT_NODE ? textEl : node;
-            if (el.textContent?.includes('Despublicar') || el.textContent?.includes('Publicar')
-                || el.textContent?.includes('Rascunho')) {
-              el.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
-              break;
-            }
-          }
-        }
-      }
+    // Already injected in this dropdown session?
+    var existing = document.getElementById(DROPDOWN_ITEM_ID);
+    if (existing) {
+      // Just update its label
+      var textSpan = existing.querySelector('[data-bingo-label]') || existing;
+      textSpan.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
       return;
     }
 
-    // Search for the dropdown that contains "Duplicate" / "Delete" / "Duplicar" / "Excluir"
-    // These are leaf-text nodes inside buttons/links in dropdown menus
-    const candidates = document.querySelectorAll(
-      '#nc-root button, #nc-root a, #nc-root li, #nc-root [role="menuitem"], '
-      + 'body > div button, body > div a, body > div li, body > div [role="menuitem"]'
-    );
+    // Search for visible dropdown items that contain "Duplicate"
+    // Decap CMS v3 renders dropdown items as buttons/divs, text may include icons (e.g. "Duplicate +")
+    var allInteractive = document.querySelectorAll('button, a, li, [role="menuitem"], [role="option"]');
+    var duplicateBtn = null;
 
-    let duplicateBtn = null;
-    for (const el of candidates) {
-      const text = (el.textContent || '').trim();
-      if ((text === 'Duplicate' || text === 'Duplicar')
-        && el.offsetParent !== null /* visible */
-        && !el.querySelector('button, a, li') /* leaf-ish */) {
+    for (var i = 0; i < allInteractive.length; i++) {
+      var el = allInteractive[i];
+      var text = (el.textContent || '').trim();
+      // Match "Duplicate", "Duplicate +", "Duplicar", "Duplicar +" etc.
+      if ((text.includes('Duplicate') || text.includes('Duplicar'))
+        && el.offsetParent !== null
+        && !el.id.includes('bingo')) {
         duplicateBtn = el;
         break;
       }
     }
 
     if (!duplicateBtn) return;
-
-    const dropdownParent = duplicateBtn.parentElement;
+    var dropdownParent = duplicateBtn.parentElement;
     if (!dropdownParent) return;
 
-    // Clone the duplicate button to match styling
-    const newItem = duplicateBtn.cloneNode(true);
+    // Clone the Duplicate button to inherit its styling
+    var newItem = duplicateBtn.cloneNode(true);
     newItem.id = DROPDOWN_ITEM_ID;
 
-    // Replace all text content
-    function setDeepText(el, text) {
-      if (el.children.length === 0) {
-        el.textContent = text;
+    // Replace text in the clone
+    function replaceText(node, newText) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        var t = node.textContent.trim();
+        if (t.includes('Duplicate') || t.includes('Duplicar') || t === '+') {
+          node.textContent = '';
+        }
         return;
       }
-      for (const child of el.children) {
-        const childText = child.textContent?.trim();
-        if (childText === 'Duplicate' || childText === 'Duplicar') {
-          child.textContent = text;
-          return;
+      if (node.childNodes) {
+        for (var c = 0; c < node.childNodes.length; c++) {
+          replaceText(node.childNodes[c], newText);
         }
       }
-      // Fallback: set on the first text-bearing child
-      const textChild = Array.from(el.querySelectorAll('*')).find(c => c.children.length === 0);
-      if (textChild) textChild.textContent = text;
-      else el.textContent = text;
     }
+    replaceText(newItem, '');
 
-    setDeepText(newItem, isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)');
+    // Insert our label as a clean span
+    var labelSpan = document.createElement('span');
+    labelSpan.setAttribute('data-bingo-label', '1');
+    labelSpan.textContent = isPublished ? '🔒 Despublicar (Rascunho)' : '🚀 Publicar (Ativar)';
+    // Clear existing content and put our label
+    newItem.innerHTML = '';
+    newItem.appendChild(labelSpan);
 
-    // Style it
-    newItem.style.color = isPublished ? '#eab308' : '#22c55e';
+    // Style
     newItem.style.cursor = 'pointer';
+    newItem.style.color = isPublished ? '#eab308' : '#22c55e';
+
+    // Hover effects
+    newItem.addEventListener('mouseenter', function () {
+      newItem.style.backgroundColor = isPublished
+        ? 'rgba(234, 179, 8, 0.1)'
+        : 'rgba(34, 197, 94, 0.1)';
+    });
+    newItem.addEventListener('mouseleave', function () {
+      newItem.style.backgroundColor = '';
+    });
 
     // Click handler
-    newItem.addEventListener('click', (e) => {
+    newItem.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-
-      // Close the dropdown by clicking outside
+      // Close the dropdown
       document.body.click();
-
-      // Perform toggle
-      setTimeout(() => {
-        const currentInput = findPublishedInput();
+      // Perform toggle after dropdown closes
+      setTimeout(function () {
+        var currentInput = findPublishedInput();
         if (currentInput) performToggle(currentInput);
-      }, 100);
+      }, 150);
     });
 
-    // Insert after the duplicate button
-    duplicateBtn.after(newItem);
+    // Insert after Duplicate in the dropdown
+    if (duplicateBtn.nextSibling) {
+      dropdownParent.insertBefore(newItem, duplicateBtn.nextSibling);
+    } else {
+      dropdownParent.appendChild(newItem);
+    }
   }
 
   /* ── Main Draft Feature Controller ── */
-  let lastKnownState = null;
-
   function setupDraftFeature() {
-    const pubInput = findPublishedInput();
-
-    if (!pubInput) {
-      // Not in editor view or collection doesn't have "published" field
-      updateFloatingButton(null);
+    if (!isEditorView()) {
+      // Not editing — hide everything
+      var b = document.getElementById(DRAFT_BTN_ID);
+      if (b) b.style.display = 'none';
       updateStatusBadge(false, false);
-      // Clean up dropdown items from closed menus
-      const old = document.getElementById(DROPDOWN_ITEM_ID);
-      if (old) old.remove();
-      lastKnownState = null;
       return;
     }
 
-    const isPublished = getPublishedState(pubInput);
+    var pubInput = findPublishedInput();
+
+    if (!pubInput) {
+      // Editor is open but published input not found yet (form still loading)
+      return;
+    }
+
+    var isPublished = getPublishedState(pubInput);
 
     // Update all UI elements
     updateStatusBadge(isPublished, true);
     updateFloatingButton(pubInput, isPublished);
     tryInjectDropdown(pubInput, isPublished);
-
-    lastKnownState = isPublished;
   }
 
   /* ═══════════════════════════════════════════════════════════
-   *  IMAGE PATH FIXER (for subpath hosting)
+   *  IMAGE PATH FIXER
    * ═══════════════════════════════════════════════════════════ */
   function startImageFixer() {
-    const adminIdx = window.location.pathname.indexOf('/admin');
+    var adminIdx = window.location.pathname.indexOf('/admin');
     if (adminIdx <= 0) return;
-    const basePath = window.location.pathname.substring(0, adminIdx);
+    var basePath = window.location.pathname.substring(0, adminIdx);
 
     function fixImages(root) {
-      root.querySelectorAll('img').forEach(img => {
-        const src = img.getAttribute('src');
+      root.querySelectorAll('img').forEach(function (img) {
+        var src = img.getAttribute('src');
         if (src && src.startsWith('/images/') && !src.startsWith(basePath)) {
           img.setAttribute('src', basePath + src);
         }
@@ -423,11 +472,11 @@
 
     function scanAndFix() {
       fixImages(document);
-      document.querySelectorAll('iframe').forEach(iframe => {
+      document.querySelectorAll('iframe').forEach(function (iframe) {
         try {
-          const doc = iframe.contentDocument || iframe.contentWindow?.document;
+          var doc = iframe.contentDocument || (iframe.contentWindow && iframe.contentWindow.document);
           if (doc) fixImages(doc);
-        } catch (_) {}
+        } catch (e) {}
       });
     }
 
@@ -442,36 +491,34 @@
   function init() {
     // Register preview CSS
     if (window.CMS) {
-      try { CMS.registerPreviewStyle('./preview.css'); } catch (_) {}
+      try { CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
     }
-    setTimeout(() => {
+    setTimeout(function () {
       if (window.CMS) {
-        try { CMS.registerPreviewStyle('./preview.css'); } catch (_) {}
+        try { CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
       }
     }, 3000);
 
     // Login page detection
-    const loginObs = new MutationObserver(checkLoginPage);
+    var loginObs = new MutationObserver(checkLoginPage);
     loginObs.observe(document.body, { childList: true, subtree: true });
     checkLoginPage();
 
     // Image path fixer
     startImageFixer();
 
-    // Draft/Unpublish feature — runs on DOM mutations and on a timer
-    const draftObs = new MutationObserver(() => {
-      // Debounce: only run if not already scheduled
-      if (!draftObs._pending) {
-        draftObs._pending = true;
-        requestAnimationFrame(() => {
+    // Draft/Unpublish feature — debounced MutationObserver + periodic check
+    var draftPending = false;
+    var draftObs = new MutationObserver(function () {
+      if (!draftPending) {
+        draftPending = true;
+        requestAnimationFrame(function () {
           setupDraftFeature();
-          draftObs._pending = false;
+          draftPending = false;
         });
       }
     });
     draftObs.observe(document.body, { childList: true, subtree: true });
-
-    // Periodic check as safety net (every 500ms is less aggressive than 300ms)
     setInterval(setupDraftFeature, 500);
   }
 
