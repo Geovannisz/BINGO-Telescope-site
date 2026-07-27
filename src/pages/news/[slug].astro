@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { marked } from 'marked';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -16,9 +17,25 @@ const base = import.meta.env.BASE_URL;
 const imageUrl = entry.data.image?.startsWith('/') 
   ? `${base}${entry.data.image.slice(1)}` 
   : entry.data.image;
+
+// Pre-compile markdown for translations
+const transEn = entry.data.en || {};
+const transZh = entry.data.zh || {};
+const translations = {
+  en: {
+    title: transEn.title,
+    summary: transEn.summary,
+    body: transEn.body ? marked.parse(transEn.body) : null
+  },
+  zh: {
+    title: transZh.title,
+    summary: transZh.summary,
+    body: transZh.body ? marked.parse(transZh.body) : null
+  }
+};
 ---
 
-<BaseLayout 
+<BaseLayout nativeI18n={true} pageId="dynamic" 
   title={entry.data.title}
   description={entry.data.summary}
   image={imageUrl}
@@ -26,34 +43,28 @@ const imageUrl = entry.data.image?.startsWith('/')
   publishDate={entry.data.date}
   author={entry.data.author}
 >
-  <article class="py-24 sm:py-32 bg-slate-900 min-h-screen">
+  <article class="py-24 sm:py-32 bg-slate-900 min-h-screen" data-no-translate>
+    <!-- Translation Data -->
+    <script id="entry-translations" type="application/json" set:html={JSON.stringify(translations)}></script>
+
     <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      
+      <!-- Warning for missing translation -->
+      <div id="translation-warning" class="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 items-start gap-3" style="display: none;">
+        <svg class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <div>
+          <p id="translation-warning-text" class="text-amber-400 font-medium text-sm"></p>
+        </div>
+      </div>
+
       <div class="mb-10">
         <time class="text-cyan-400 font-medium text-sm mb-2 block">{entry.data.date.toLocaleDateString('pt-BR')}</time>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">{entry.data.title}</h1>
+        <h1 id="news-title" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">{entry.data.title}</h1>
         <div class="flex items-center gap-4 text-slate-400 text-sm">
           <span>Por {entry.data.author}</span>
         </div>
-
-        {(entry.data.topic || entry.data.audience || entry.data.country) && (
-          <div class="flex flex-wrap gap-2 mt-4">
-            {entry.data.topic && (
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                Tópico: {entry.data.topic}
-              </span>
-            )}
-            {entry.data.audience && (
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                Público: {entry.data.audience}
-              </span>
-            )}
-            {entry.data.country && (
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
-                País: {entry.data.country}
-              </span>
-            )}
-          </div>
-        )}
       </div>
 
       {imageUrl && (
@@ -62,17 +73,48 @@ const imageUrl = entry.data.image?.startsWith('/')
         </div>
       )}
 
-      <div class="prose prose-invert prose-cyan max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-cyan-400 hover:prose-a:text-cyan-300">
+      <div id="news-body" class="prose prose-invert prose-cyan max-w-none prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-a:text-cyan-400 hover:prose-a:text-cyan-300">
         <Content />
       </div>
 
       <script is:inline define:vars={{ base }}>
-        // Fix markdown image paths for GitHub Pages subpaths
-        document.querySelectorAll('.prose img').forEach((img) => {
-          const src = img.getAttribute('src');
-          if (src && src.startsWith('/') && !src.startsWith(base)) {
-            img.setAttribute('src', base + src.slice(1));
+        document.addEventListener('DOMContentLoaded', () => {
+          const lang = localStorage.getItem('bingo-lang') || 'en';
+          if (lang === 'pt') return;
+          
+          const nLang = lang === 'zh-CN' ? 'zh' : lang;
+          const transStr = document.getElementById('entry-translations').textContent;
+          const translations = JSON.parse(transStr);
+          const data = translations[nLang];
+          
+          const hasTrans = data && (data.title || data.body);
+          if (!hasTrans) {
+            const warning = document.getElementById('translation-warning');
+            const warningText = document.getElementById('translation-warning-text');
+            if (warning && warningText) {
+              warning.style.display = 'flex';
+              warningText.textContent = nLang === 'zh'
+                ? '此内容尚未翻译成中文。显示原始葡萄牙语版本。'
+                : 'This content has not yet been translated to English. Displaying the original Portuguese version.';
+            }
+            return; // Fallback to PT
           }
+          
+          if (data.title) {
+            document.getElementById('news-title').innerHTML = data.title;
+            document.title = data.title + " | BINGO Telescope";
+          }
+          if (data.body) {
+            document.getElementById('news-body').innerHTML = data.body;
+          }
+          
+          // Fix markdown image paths
+          document.querySelectorAll('.prose img').forEach((img) => {
+            const src = img.getAttribute('src');
+            if (src && src.startsWith('/') && !src.startsWith(base)) {
+              img.setAttribute('src', base + src.slice(1));
+            }
+          });
         });
       </script>
 

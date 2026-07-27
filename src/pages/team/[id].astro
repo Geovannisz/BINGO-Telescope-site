@@ -81,11 +81,33 @@ if (d.gender === 'Feminino') {
   };
   displayRole = femaleRoles[d.role] || d.role;
 }
+
+const renderObj = async (obj: Record<string, string | undefined> = {}) => {
+  const res: Record<string, string> = {};
+  for (const k in obj) {
+    if (obj[k]) res[k] = await marked.parse(obj[k] as string);
+  }
+  return res;
+};
+
+const translations = {
+  en: await renderObj(d.en),
+  zh: await renderObj(d.zh)
+};
 ---
 
-<BaseLayout title={`${d.name} — ${displayRole}`} description={`${d.name}, ${displayRole} — ${d.institution}. Membro da equipe do Telescópio BINGO.${d.area ? ` Área: ${d.area}.` : ''}`} image={photoSrc || undefined}>
+<BaseLayout nativeI18n={true} pageId="dynamic" title={`${d.name} — ${displayRole}`} description={`${d.name}, ${displayRole} — ${d.institution}. Membro da equipe do Telescópio BINGO.${d.area ? ` Área: ${d.area}.` : ''}`} image={photoSrc || undefined}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-  <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;">
+  <script id="entry-translations" type="application/json" set:html={JSON.stringify(translations)}></script>
+  <!-- Warning for missing translation -->
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8">
+    <div id="translation-warning" class="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 items-start gap-3" style="display: none;">
+      <svg class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+      <div><p id="translation-warning-text" class="text-amber-400 font-medium text-sm"></p></div>
+    </div>
+  </div>
+
+  <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;" data-no-translate>
     <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.1;`}></div>
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
     <div class="starfield"></div>
@@ -127,7 +149,7 @@ if (d.gender === 'Feminino') {
       {/* ── Bio ── */}
       {d.bio && (
         <div class="glass-card-glow p-8 md:p-10 animate-on-scroll">
-          <div class="text-slate-300 leading-relaxed text-lg space-y-4 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.bio)}></div>
+          <div class="text-slate-300 leading-relaxed text-lg space-y-4 [&_strong]:font-bold [&_em]:italic" data-field="bio" set:html={renderMd(d.bio)}></div>
         </div>
       )}
 
@@ -149,11 +171,11 @@ if (d.gender === 'Feminino') {
             <span class="gradient-text-cyan">Trajetória</span> Acadêmica
           </h2>
           <div class="space-y-6">
-            {d.interest_origin && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Como começou o interesse</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.interest_origin)}></div></div>}
-            {d.motivation && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Motivação</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.motivation)}></div></div>}
-            {d.years_researching && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Tempo de pesquisa</h3><p class="text-slate-300 leading-relaxed">{d.years_researching}</p></div>}
-            {d.research_lines && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Linhas de pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.research_lines)}></div></div>}
-            {d.memorable_experience && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Experiência marcante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.memorable_experience)}></div></div>}
+            {d.interest_origin && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Como começou o interesse</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="interest_origin" set:html={renderMd(d.interest_origin)}></div></div>}
+            {d.motivation && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Motivação</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="motivation" set:html={renderMd(d.motivation)}></div></div>}
+            {d.years_researching && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Tempo de pesquisa</h3><p class="text-slate-300 leading-relaxed" data-field="years_researching">{d.years_researching}</p></div>}
+            {d.research_lines && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Linhas de pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="research_lines" set:html={renderMd(d.research_lines)}></div></div>}
+            {d.memorable_experience && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Experiência marcante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="memorable_experience" set:html={renderMd(d.memorable_experience)}></div></div>}
           </div>
         </div>
       )}
@@ -164,14 +186,14 @@ if (d.gender === 'Feminino') {
           <h2 class="text-2xl font-bold text-white mb-6" style="font-family: 'Outfit', sans-serif;">
             <span class="gradient-text-cyan">Pesquisa</span> Atual
           </h2>
-          {d.project_title && <h3 class="text-xl font-semibold text-white mb-4 border-l-4 border-cyan-500 pl-4">{d.project_title}</h3>}
+          {d.project_title && <h3 class="text-xl font-semibold text-white mb-4 border-l-4 border-cyan-500 pl-4" data-field="project_title">{d.project_title}</h3>}
           <div class="space-y-6">
-            {d.project_description && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Sobre a pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_description)}></div></div>}
-            {d.project_problem && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Problema investigado</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_problem)}></div></div>}
-            {d.project_importance && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Importância</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_importance)}></div></div>}
-            {d.project_methods && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Métodos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_methods)}></div></div>}
-            {d.project_results && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Resultados</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_results)}></div></div>}
-            {d.project_challenges && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Desafios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.project_challenges)}></div></div>}
+            {d.project_description && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Sobre a pesquisa</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_description" set:html={renderMd(d.project_description)}></div></div>}
+            {d.project_problem && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Problema investigado</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_problem" set:html={renderMd(d.project_problem)}></div></div>}
+            {d.project_importance && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Importância</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_importance" set:html={renderMd(d.project_importance)}></div></div>}
+            {d.project_methods && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Métodos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_methods" set:html={renderMd(d.project_methods)}></div></div>}
+            {d.project_results && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Resultados</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_results" set:html={renderMd(d.project_results)}></div></div>}
+            {d.project_challenges && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Desafios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="project_challenges" set:html={renderMd(d.project_challenges)}></div></div>}
           </div>
         </div>
       )}
@@ -183,11 +205,11 @@ if (d.gender === 'Feminino') {
             <span class="gradient-text-cyan">Divulgação</span> Científica
           </h2>
           <div class="space-y-6">
-            {d.explain_simple && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Pesquisa em palavras simples</h3><div class="text-slate-300 leading-relaxed italic space-y-2 [&_strong]:font-bold [&_em]:text-cyan-200" set:html={renderMd(`"${d.explain_simple}"`)}></div></div>}
-            {d.biggest_curiosity && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Curiosidade</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.biggest_curiosity)}></div></div>}
-            {d.common_myth && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Mitos comuns</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.common_myth)}></div></div>}
-            {d.impressive_discovery && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Descoberta impressionante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.impressive_discovery)}></div></div>}
-            {d.career_advice && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Conselho profissional</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(`💡 ${d.career_advice}`)}></div></div>}
+            {d.explain_simple && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Pesquisa em palavras simples</h3><div class="text-slate-300 leading-relaxed italic space-y-2 [&_strong]:font-bold [&_em]:text-cyan-200" data-field="explain_simple" set:html={renderMd(`"${d.explain_simple}"`)}></div></div>}
+            {d.biggest_curiosity && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Curiosidade</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="biggest_curiosity" set:html={renderMd(d.biggest_curiosity)}></div></div>}
+            {d.common_myth && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Mitos comuns</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="common_myth" set:html={renderMd(d.common_myth)}></div></div>}
+            {d.impressive_discovery && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Descoberta impressionante</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="impressive_discovery" set:html={renderMd(d.impressive_discovery)}></div></div>}
+            {d.career_advice && <div><h3 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-2">Conselho profissional</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="career_advice" set:html={renderMd(`💡 ${d.career_advice}`)}></div></div>}
           </div>
         </div>
       )}
@@ -222,13 +244,53 @@ if (d.gender === 'Feminino') {
               </div>
             )}
             {d.published_articles && !d.publications && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Artigos publicados</h3><p class="text-slate-300 leading-relaxed whitespace-pre-line">{d.published_articles}</p></div>}
-            {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.books_chapters)}></div></div>}
-            {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.groups_labs)}></div></div>}
-            {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" set:html={renderMd(d.future_projects)}></div></div>}
+            {d.books_chapters && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Livros e capítulos</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="books_chapters" set:html={renderMd(d.books_chapters)}></div></div>}
+            {d.groups_labs && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grupos e laboratórios</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="groups_labs" set:html={renderMd(d.groups_labs)}></div></div>}
+            {d.future_projects && <div><h3 class="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">Projetos futuros</h3><div class="text-slate-300 leading-relaxed space-y-2 [&_strong]:font-bold [&_em]:italic" data-field="future_projects" set:html={renderMd(d.future_projects)}></div></div>}
           </div>
         </div>
       )}
 
     </div>
   </div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('bingo-lang') || 'en';
+    if (lang === 'pt') return;
+    
+    const nLang = lang === 'zh-CN' ? 'zh' : lang;
+    const transStr = document.getElementById('entry-translations').textContent;
+    const translations = JSON.parse(transStr);
+    const data = translations[nLang];
+    
+    const hasTrans = data && Object.keys(data).length > 0;
+    if (!hasTrans) {
+      const warning = document.getElementById('translation-warning');
+      const warningText = document.getElementById('translation-warning-text');
+      if (warning && warningText) {
+        warning.style.display = 'flex';
+        warningText.textContent = nLang === 'zh'
+          ? '此内容尚未翻译成中文。显示原始葡萄牙语版本。'
+          : 'This content has not yet been translated to English. Displaying the original Portuguese version.';
+      }
+      return; // Fallback to PT
+    }
+    
+    // Replace all data-field elements with their translated versions
+    document.querySelectorAll('[data-field]').forEach(el => {
+      const field = el.getAttribute('data-field');
+      if (data[field]) {
+        if (field === 'explain_simple') {
+          el.innerHTML = '<p>"' + data[field].replace(/<\/?p>/g, '') + '"</p>';
+        } else if (field === 'career_advice') {
+          el.innerHTML = '<p>💡 ' + data[field].replace(/<\/?p>/g, '') + '</p>';
+        } else {
+          el.innerHTML = data[field];
+        }
+      }
+    });
+  });
+</script>
+
 </BaseLayout>

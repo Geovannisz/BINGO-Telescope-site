@@ -8,7 +8,7 @@ const sortedNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.va
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Notícias e Blog" description="Últimas notícias, atualizações e artigos do blog do Telescópio BINGO. Acompanhe o progresso da construção e os avanços científicos.">
+<BaseLayout nativeI18n={true} pageId="dynamic" title="Notícias e Blog" description="Últimas notícias, atualizações e artigos do blog do Telescópio BINGO. Acompanhe o progresso da construção e os avanços científicos.">
   <div class="py-24 sm:py-32 bg-slate-950 min-h-screen">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl text-center mb-16">
@@ -21,6 +21,7 @@ const base = import.meta.env.BASE_URL;
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {sortedNews.map(post => (
           <NewsCard
+            id={post.id}
             title={post.data.title}
             date={post.data.date.toLocaleDateString('pt-BR')}
             summary={post.data.summary}

@@ -1,174 +1,1053 @@
-site_url: "https://bingotelescope.org"
-
+site_url: https://bingotelescope.org
 backend:
   name: github
   repo: Geovannisz/BINGO-Telescope-site
   branch: main
   base_url: https://bingo-cms-oauth.geovanni.workers.dev
   auth_endpoint: /auth
-
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
-
+media_folder: public/images/uploads
+public_folder: /images/uploads
 collections:
-  - name: "news"
-    label: "Notícias"
-    folder: "src/content/news"
+  - name: news
+    label: Notícias
+    folder: src/content/news
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Autor", name: "author", widget: "string", default: "BINGO Team"}
-      - {label: "Imagem de Capa", name: "image", widget: "image", required: false}
-      - {label: "Resumo Curto (1 a 2 linhas)", name: "summary", widget: "string"}
-      - {label: "Público-alvo", name: "audience", widget: "string", required: false}
-      - {label: "Tópico", name: "topic", widget: "string", required: false}
-      - {label: "País", name: "country", widget: "string", required: false}
-      - {label: "Publicado", name: "published", widget: "boolean", default: true, required: false}
-      - {label: "Corpo da Notícia", name: "body", widget: "markdown"}
-
-  - name: "team"
-    label: "Equipe"
-    folder: "src/content/team"
-    create: true
-    slug: "{{slug}}"
-    identifier_field: "name"
-    fields:
-      # ── Informações Básicas (obrigatórias) ──
-      - {label: "Nome Completo", name: "name", widget: "string", hint: "Nome completo do pesquisador"}
-      - label: "Gênero"
-        name: "gender"
-        widget: "select"
-        options: ["Masculino", "Feminino"]
+      - label: Título
+        name: title
+        widget: string
+      - label: Data
+        name: date
+        widget: datetime
+      - label: Autor
+        name: author
+        widget: string
+        default: BINGO Team
+      - label: Imagem de Capa
+        name: image
+        widget: image
         required: false
-        hint: "Opcional. Se for Feminino, o título (cargo) será adaptado automaticamente no site."
-      - label: "Cargo/Função"
-        name: "role"
-        widget: "select"
+      - label: Resumo Curto (1 a 2 linhas)
+        name: summary
+        widget: string
+      - label: Público-alvo
+        name: audience
+        widget: string
+        required: false
+      - label: Tópico
+        name: topic
+        widget: string
+        required: false
+      - label: País
+        name: country
+        widget: string
+        required: false
+      - label: Publicado
+        name: published
+        widget: boolean
+        default: true
+        required: false
+      - label: Corpo da Notícia
+        name: body
+        widget: markdown
+      - label: 'Tradução: Inglês (English)'
+        name: en
+        widget: object
+        collapsed: true
+        fields:
+          - label: Título
+            name: title
+            widget: string
+            required: false
+          - label: Resumo Curto (1 a 2 linhas)
+            name: summary
+            widget: string
+            required: false
+          - label: Público-alvo
+            name: audience
+            widget: string
+            required: false
+          - label: Tópico
+            name: topic
+            widget: string
+            required: false
+          - label: País
+            name: country
+            widget: string
+            required: false
+          - label: Corpo da Notícia
+            name: body
+            widget: markdown
+            required: false
+      - label: 'Tradução: Chinês (Chinese)'
+        name: zh
+        widget: object
+        collapsed: true
+        fields:
+          - label: Título
+            name: title
+            widget: string
+            required: false
+          - label: Resumo Curto (1 a 2 linhas)
+            name: summary
+            widget: string
+            required: false
+          - label: Público-alvo
+            name: audience
+            widget: string
+            required: false
+          - label: Tópico
+            name: topic
+            widget: string
+            required: false
+          - label: País
+            name: country
+            widget: string
+            required: false
+          - label: Corpo da Notícia
+            name: body
+            widget: markdown
+            required: false
+  - name: team
+    label: Equipe
+    folder: src/content/team
+    create: true
+    slug: '{{slug}}'
+    identifier_field: name
+    fields:
+      - label: Nome Completo
+        name: name
+        widget: string
+        hint: Nome completo do pesquisador
+      - label: Gênero
+        name: gender
+        widget: select
         options:
-          - "Coordenador Geral"
-          - "Pesquisador Sênior"
-          - "Professor Titular"
-          - "Professor Associado"
-          - "Professor Doutor"
-          - "Pós-doc"
-          - "Doutorando"
-          - "Mestrando"
-          - "Iniciação Científica"
-          - "Engenheiro"
-          - "Colaborador Externo"
-        hint: "Selecione a função do membro no projeto BINGO"
-      - {label: "Instituição", name: "institution", widget: "string", hint: "Universidade ou instituto de vinculação"}
-      - {label: "Foto Profissional", name: "photo", widget: "image", required: false, hint: "Foto profissional ou em campo (preferencialmente quadrada)"}
-      - label: "Grupo de Trabalho (Stage)"
-        name: "stage"
-        widget: "select"
+          - Masculino
+          - Feminino
+        required: false
+        hint: Opcional. Se for Feminino, o título (cargo) será adaptado automaticamente no site.
+      - label: Cargo/Função
+        name: role
+        widget: select
+        options:
+          - Coordenador Geral
+          - Pesquisador Sênior
+          - Professor Titular
+          - Professor Associado
+          - Professor Doutor
+          - Pós-doc
+          - Doutorando
+          - Mestrando
+          - Iniciação Científica
+          - Engenheiro
+          - Colaborador Externo
+        hint: Selecione a função do membro no projeto BINGO
+      - label: Instituição
+        name: institution
+        widget: string
+        hint: Universidade ou instituto de vinculação
+      - label: Foto Profissional
+        name: photo
+        widget: image
+        required: false
+        hint: Foto profissional ou em campo (preferencialmente quadrada)
+      - label: Grupo de Trabalho (Stage)
+        name: stage
+        widget: select
         multiple: true
         options:
-          - "Stage 0"
-          - "Stage I"
-          - "Stage II"
-          - "Stage III"
-          - "Stage IV"
-          - "Stage V"
-          - "Coordenação"
-        default: ["Coordenação"]
-        hint: "Stage(s) do BINGO em que o pesquisador atua (selecione um ou mais)"
-
-      # ── Localização e Contato ──
-      - {label: "Cidade / Estado / País", name: "city", widget: "string", required: false}
-      - {label: "Área de Atuação", name: "area", widget: "string", required: false, hint: "Ex: Cosmologia, Instrumentação RF, Astrofísica Computacional"}
-      - {label: "E-mail para Contato", name: "email", widget: "string", required: false}
-      - {label: "Currículo Lattes (URL)", name: "lattes", widget: "string", required: false}
-      - {label: "ORCID (URL)", name: "orcid", widget: "string", required: false}
-      - {label: "LinkedIn (URL)", name: "linkedin", widget: "string", required: false}
-      - {label: "ResearchGate (URL)", name: "researchgate", widget: "string", required: false}
-
-      # ── Trajetória ──
-      - {label: "Bio Curta", name: "bio", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false, hint: "Breve descrição profissional (2-3 frases)"}
-      - {label: "Como começou o interesse pela pesquisa?", name: "interest_origin", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Motivação para estudar essa área", name: "motivation", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Tempo de pesquisa", name: "years_researching", widget: "string", required: false, hint: "Ex: 5 anos, Desde 2019"}
-      - {label: "Principais linhas de pesquisa", name: "research_lines", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Experiência marcante na trajetória científica", name: "memorable_experience", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-
-      # ── Pesquisa Atual ──
-      - {label: "Título do projeto ou pesquisa", name: "project_title", widget: "string", required: false}
-      - {label: "Descrição da pesquisa (forma simples)", name: "project_description", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Problema que a pesquisa busca resolver", name: "project_problem", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Importância da pesquisa", name: "project_importance", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Métodos utilizados", name: "project_methods", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Resultados ou descobertas até agora", name: "project_results", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Desafios enfrentados", name: "project_challenges", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-
-      # ── Divulgação Científica ──
-      - {label: "Explique sua pesquisa para leigos", name: "explain_simple", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Maior curiosidade sobre seu tema", name: "biggest_curiosity", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Mito ou informação errada comum", name: "common_myth", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Descoberta científica mais impressionante", name: "impressive_discovery", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Conselho para quem quer seguir carreira científica", name: "career_advice", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-
-      # ── Produção Científica ──
-      - label: "Artigos e Publicações"
-        name: "publications"
-        widget: "list"
+          - Stage 0
+          - Stage I
+          - Stage II
+          - Stage III
+          - Stage IV
+          - Stage V
+          - Coordenação
+        default:
+          - Coordenação
+        hint: Stage(s) do BINGO em que o pesquisador atua (selecione um ou mais)
+      - label: Cidade / Estado / País
+        name: city
+        widget: string
+        required: false
+      - label: Área de Atuação
+        name: area
+        widget: string
+        required: false
+        hint: 'Ex: Cosmologia, Instrumentação RF, Astrofísica Computacional'
+      - label: E-mail para Contato
+        name: email
+        widget: string
+        required: false
+      - label: Currículo Lattes (URL)
+        name: lattes
+        widget: string
+        required: false
+      - label: ORCID (URL)
+        name: orcid
+        widget: string
+        required: false
+      - label: LinkedIn (URL)
+        name: linkedin
+        widget: string
+        required: false
+      - label: ResearchGate (URL)
+        name: researchgate
+        widget: string
+        required: false
+      - label: Bio Curta
+        name: bio
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+        hint: Breve descrição profissional (2-3 frases)
+      - label: Como começou o interesse pela pesquisa?
+        name: interest_origin
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Motivação para estudar essa área
+        name: motivation
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Tempo de pesquisa
+        name: years_researching
+        widget: string
+        required: false
+        hint: 'Ex: 5 anos, Desde 2019'
+      - label: Principais linhas de pesquisa
+        name: research_lines
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Experiência marcante na trajetória científica
+        name: memorable_experience
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Título do projeto ou pesquisa
+        name: project_title
+        widget: string
+        required: false
+      - label: Descrição da pesquisa (forma simples)
+        name: project_description
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Problema que a pesquisa busca resolver
+        name: project_problem
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Importância da pesquisa
+        name: project_importance
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Métodos utilizados
+        name: project_methods
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Resultados ou descobertas até agora
+        name: project_results
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Desafios enfrentados
+        name: project_challenges
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Explique sua pesquisa para leigos
+        name: explain_simple
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Maior curiosidade sobre seu tema
+        name: biggest_curiosity
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Mito ou informação errada comum
+        name: common_myth
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Descoberta científica mais impressionante
+        name: impressive_discovery
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Conselho para quem quer seguir carreira científica
+        name: career_advice
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Artigos e Publicações
+        name: publications
+        widget: list
         required: false
         fields:
-          - {label: "Título", name: "title", widget: "string"}
-          - {label: "Autores", name: "authors", widget: "string", required: false, hint: "Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al."}
-          - {label: "Data", name: "date", widget: "datetime", required: false}
-          - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
-          - {label: "DOI (apenas o identificador)", name: "doi", widget: "string", required: false, hint: "Ex: 10.1051/0004-6361/202140883"}
-          - {label: "Resumo", name: "summary", widget: "text", required: false}
-          - {label: "Periódico / Journal", name: "journal", widget: "string", required: false, hint: "Ex: Astronomy & Astrophysics"}
-          - {label: "Volume", name: "volume", widget: "string", required: false}
-          - {label: "Edição (Issue)", name: "issue", widget: "string", required: false}
-          - {label: "Páginas", name: "pages", widget: "string", required: false, hint: "Ex: 1514–1529"}
-          - label: "Categoria"
-            name: "category"
-            widget: "select"
+          - label: Título
+            name: title
+            widget: string
+          - label: Autores
+            name: authors
+            widget: string
+            required: false
+            hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
+          - label: Data
+            name: date
+            widget: datetime
+            required: false
+          - label: Link Externo (DOI/PDF)
+            name: link
+            widget: string
+            required: false
+          - label: DOI (apenas o identificador)
+            name: doi
+            widget: string
+            required: false
+            hint: 'Ex: 10.1051/0004-6361/202140883'
+          - label: Resumo
+            name: summary
+            widget: text
+            required: false
+          - label: Periódico / Journal
+            name: journal
+            widget: string
+            required: false
+            hint: 'Ex: Astronomy & Astrophysics'
+          - label: Volume
+            name: volume
+            widget: string
+            required: false
+          - label: Edição (Issue)
+            name: issue
+            widget: string
+            required: false
+          - label: Páginas
+            name: pages
+            widget: string
+            required: false
+            hint: 'Ex: 1514–1529'
+          - label: Categoria
+            name: category
+            widget: select
             required: false
             options:
-              - "Série Principal"
-              - "ABDUS"
-              - "Colaboração"
-              - "Tese"
-              - "Outro"
-      - {label: "Livros ou capítulos", name: "books_chapters", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Grupos, laboratórios ou projetos", name: "groups_labs", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-      - {label: "Projetos futuros a destacar", name: "future_projects", widget: "markdown", buttons: ["bold", "italic"], minimal: true, required: false}
-
-      # ── Autorização ──
-      - {label: "Autoriza uso de informações e imagens?", name: "authorized", widget: "boolean", default: true}
-      - {label: "Publicado", name: "published", widget: "boolean", default: true, required: false}
-      - {label: "Como prefere ser creditado(a)?", name: "credit_name", widget: "string", required: false}
-
-  - name: "publications"
-    label: "Publicações"
-    folder: "src/content/publications"
+              - Série Principal
+              - ABDUS
+              - Colaboração
+              - Tese
+              - Outro
+      - label: Livros ou capítulos
+        name: books_chapters
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Grupos, laboratórios ou projetos
+        name: groups_labs
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Projetos futuros a destacar
+        name: future_projects
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+        minimal: true
+        required: false
+      - label: Autoriza uso de informações e imagens?
+        name: authorized
+        widget: boolean
+        default: true
+      - label: Publicado
+        name: published
+        widget: boolean
+        default: true
+        required: false
+      - label: Como prefere ser creditado(a)?
+        name: credit_name
+        widget: string
+        required: false
+      - label: 'Tradução: Inglês (English)'
+        name: en
+        widget: object
+        collapsed: true
+        fields:
+          - label: Nome Completo
+            name: name
+            widget: string
+            hint: Nome completo do pesquisador
+            required: false
+          - label: Instituição
+            name: institution
+            widget: string
+            hint: Universidade ou instituto de vinculação
+            required: false
+          - label: Cidade / Estado / País
+            name: city
+            widget: string
+            required: false
+          - label: Área de Atuação
+            name: area
+            widget: string
+            required: false
+            hint: 'Ex: Cosmologia, Instrumentação RF, Astrofísica Computacional'
+          - label: Bio Curta
+            name: bio
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+            hint: Breve descrição profissional (2-3 frases)
+          - label: Como começou o interesse pela pesquisa?
+            name: interest_origin
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Motivação para estudar essa área
+            name: motivation
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Tempo de pesquisa
+            name: years_researching
+            widget: string
+            required: false
+            hint: 'Ex: 5 anos, Desde 2019'
+          - label: Principais linhas de pesquisa
+            name: research_lines
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Experiência marcante na trajetória científica
+            name: memorable_experience
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Título do projeto ou pesquisa
+            name: project_title
+            widget: string
+            required: false
+          - label: Descrição da pesquisa (forma simples)
+            name: project_description
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Problema que a pesquisa busca resolver
+            name: project_problem
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Importância da pesquisa
+            name: project_importance
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Métodos utilizados
+            name: project_methods
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Resultados ou descobertas até agora
+            name: project_results
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Desafios enfrentados
+            name: project_challenges
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Explique sua pesquisa para leigos
+            name: explain_simple
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Maior curiosidade sobre seu tema
+            name: biggest_curiosity
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Mito ou informação errada comum
+            name: common_myth
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Descoberta científica mais impressionante
+            name: impressive_discovery
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Conselho para quem quer seguir carreira científica
+            name: career_advice
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Artigos e Publicações
+            name: publications
+            widget: list
+            required: false
+            fields:
+              - label: Título
+                name: title
+                widget: string
+                required: false
+              - label: Autores
+                name: authors
+                widget: string
+                required: false
+                hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
+              - label: Data
+                name: date
+                widget: datetime
+                required: false
+              - label: Link Externo (DOI/PDF)
+                name: link
+                widget: string
+                required: false
+              - label: DOI (apenas o identificador)
+                name: doi
+                widget: string
+                required: false
+                hint: 'Ex: 10.1051/0004-6361/202140883'
+              - label: Resumo
+                name: summary
+                widget: text
+                required: false
+              - label: Periódico / Journal
+                name: journal
+                widget: string
+                required: false
+                hint: 'Ex: Astronomy & Astrophysics'
+              - label: Volume
+                name: volume
+                widget: string
+                required: false
+              - label: Edição (Issue)
+                name: issue
+                widget: string
+                required: false
+              - label: Páginas
+                name: pages
+                widget: string
+                required: false
+                hint: 'Ex: 1514–1529'
+              - label: Categoria
+                name: category
+                widget: select
+                required: false
+                options:
+                  - Série Principal
+                  - ABDUS
+                  - Colaboração
+                  - Tese
+                  - Outro
+          - label: Livros ou capítulos
+            name: books_chapters
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Grupos, laboratórios ou projetos
+            name: groups_labs
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Projetos futuros a destacar
+            name: future_projects
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+      - label: 'Tradução: Chinês (Chinese)'
+        name: zh
+        widget: object
+        collapsed: true
+        fields:
+          - label: Nome Completo
+            name: name
+            widget: string
+            hint: Nome completo do pesquisador
+            required: false
+          - label: Instituição
+            name: institution
+            widget: string
+            hint: Universidade ou instituto de vinculação
+            required: false
+          - label: Cidade / Estado / País
+            name: city
+            widget: string
+            required: false
+          - label: Área de Atuação
+            name: area
+            widget: string
+            required: false
+            hint: 'Ex: Cosmologia, Instrumentação RF, Astrofísica Computacional'
+          - label: Bio Curta
+            name: bio
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+            hint: Breve descrição profissional (2-3 frases)
+          - label: Como começou o interesse pela pesquisa?
+            name: interest_origin
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Motivação para estudar essa área
+            name: motivation
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Tempo de pesquisa
+            name: years_researching
+            widget: string
+            required: false
+            hint: 'Ex: 5 anos, Desde 2019'
+          - label: Principais linhas de pesquisa
+            name: research_lines
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Experiência marcante na trajetória científica
+            name: memorable_experience
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Título do projeto ou pesquisa
+            name: project_title
+            widget: string
+            required: false
+          - label: Descrição da pesquisa (forma simples)
+            name: project_description
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Problema que a pesquisa busca resolver
+            name: project_problem
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Importância da pesquisa
+            name: project_importance
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Métodos utilizados
+            name: project_methods
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Resultados ou descobertas até agora
+            name: project_results
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Desafios enfrentados
+            name: project_challenges
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Explique sua pesquisa para leigos
+            name: explain_simple
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Maior curiosidade sobre seu tema
+            name: biggest_curiosity
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Mito ou informação errada comum
+            name: common_myth
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Descoberta científica mais impressionante
+            name: impressive_discovery
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Conselho para quem quer seguir carreira científica
+            name: career_advice
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Artigos e Publicações
+            name: publications
+            widget: list
+            required: false
+            fields:
+              - label: Título
+                name: title
+                widget: string
+                required: false
+              - label: Autores
+                name: authors
+                widget: string
+                required: false
+                hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
+              - label: Data
+                name: date
+                widget: datetime
+                required: false
+              - label: Link Externo (DOI/PDF)
+                name: link
+                widget: string
+                required: false
+              - label: DOI (apenas o identificador)
+                name: doi
+                widget: string
+                required: false
+                hint: 'Ex: 10.1051/0004-6361/202140883'
+              - label: Resumo
+                name: summary
+                widget: text
+                required: false
+              - label: Periódico / Journal
+                name: journal
+                widget: string
+                required: false
+                hint: 'Ex: Astronomy & Astrophysics'
+              - label: Volume
+                name: volume
+                widget: string
+                required: false
+              - label: Edição (Issue)
+                name: issue
+                widget: string
+                required: false
+              - label: Páginas
+                name: pages
+                widget: string
+                required: false
+                hint: 'Ex: 1514–1529'
+              - label: Categoria
+                name: category
+                widget: select
+                required: false
+                options:
+                  - Série Principal
+                  - ABDUS
+                  - Colaboração
+                  - Tese
+                  - Outro
+          - label: Livros ou capítulos
+            name: books_chapters
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Grupos, laboratórios ou projetos
+            name: groups_labs
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+          - label: Projetos futuros a destacar
+            name: future_projects
+            widget: markdown
+            buttons:
+              - bold
+              - italic
+            minimal: true
+            required: false
+  - name: publications
+    label: Publicações
+    folder: src/content/publications
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: '{{year}}-{{slug}}'
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Autores", name: "authors", widget: "string"}
-      - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Link Externo (DOI/PDF)", name: "link", widget: "string", required: false}
-      - {label: "DOI (apenas o identificador)", name: "doi", widget: "string", required: false, hint: "Ex: 10.1051/0004-6361/202140883"}
-      - {label: "Resumo", name: "summary", widget: "text", required: false}
-      - {label: "Periódico / Journal", name: "journal", widget: "string", required: false, hint: "Ex: Astronomy & Astrophysics, Monthly Notices of the Royal Astronomical Society"}
-      - {label: "Volume", name: "volume", widget: "string", required: false}
-      - {label: "Edição (Issue)", name: "issue", widget: "string", required: false}
-      - {label: "Páginas", name: "pages", widget: "string", required: false, hint: "Ex: A128, 1514–1529"}
-      - label: "Categoria"
-        name: "category"
-        widget: "select"
+      - label: Título
+        name: title
+        widget: string
+      - label: Autores
+        name: authors
+        widget: string
+      - label: Data
+        name: date
+        widget: datetime
+      - label: Link Externo (DOI/PDF)
+        name: link
+        widget: string
+        required: false
+      - label: DOI (apenas o identificador)
+        name: doi
+        widget: string
+        required: false
+        hint: 'Ex: 10.1051/0004-6361/202140883'
+      - label: Resumo
+        name: summary
+        widget: text
+        required: false
+      - label: Periódico / Journal
+        name: journal
+        widget: string
+        required: false
+        hint: 'Ex: Astronomy & Astrophysics, Monthly Notices of the Royal Astronomical Society'
+      - label: Volume
+        name: volume
+        widget: string
+        required: false
+      - label: Edição (Issue)
+        name: issue
+        widget: string
+        required: false
+      - label: Páginas
+        name: pages
+        widget: string
+        required: false
+        hint: 'Ex: A128, 1514–1529'
+      - label: Categoria
+        name: category
+        widget: select
         required: false
         options:
-          - "Série Principal"
-          - "ABDUS"
-          - "Colaboração"
-          - "Tese"
-          - "Outro"
-      - {label: "Publicado", name: "published", widget: "boolean", default: true, required: false}
-
+          - Série Principal
+          - ABDUS
+          - Colaboração
+          - Tese
+          - Outro
+      - label: Publicado
+        name: published
+        widget: boolean
+        default: true
+        required: false
+      - label: 'Tradução: Inglês (English)'
+        name: en
+        widget: object
+        collapsed: true
+        fields:
+          - label: Título
+            name: title
+            widget: string
+            required: false
+          - label: Autores
+            name: authors
+            widget: string
+            required: false
+          - label: Resumo
+            name: summary
+            widget: text
+            required: false
+          - label: Periódico / Journal
+            name: journal
+            widget: string
+            required: false
+            hint: 'Ex: Astronomy & Astrophysics, Monthly Notices of the Royal Astronomical Society'
+          - label: Volume
+            name: volume
+            widget: string
+            required: false
+          - label: Edição (Issue)
+            name: issue
+            widget: string
+            required: false
+          - label: Páginas
+            name: pages
+            widget: string
+            required: false
+            hint: 'Ex: A128, 1514–1529'
+      - label: 'Tradução: Chinês (Chinese)'
+        name: zh
+        widget: object
+        collapsed: true
+        fields:
+          - label: Título
+            name: title
+            widget: string
+            required: false
+          - label: Autores
+            name: authors
+            widget: string
+            required: false
+          - label: Resumo
+            name: summary
+            widget: text
+            required: false
+          - label: Periódico / Journal
+            name: journal
+            widget: string
+            required: false
+            hint: 'Ex: Astronomy & Astrophysics, Monthly Notices of the Royal Astronomical Society'
+          - label: Volume
+            name: volume
+            widget: string
+            required: false
+          - label: Edição (Issue)
+            name: issue
+            widget: string
+            required: false
+          - label: Páginas
+            name: pages
+            widget: string
+            required: false
+            hint: 'Ex: A128, 1514–1529'

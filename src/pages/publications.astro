@@ -100,9 +100,19 @@ function getCategory(pub: any): string {
 const peerReviewedCount = sortedPubs.filter(p => p.data.link?.includes('doi.org')).length;
 const uniqueJournals = journals.length;
 const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '';
+
+const translationsMap: Record<string, any> = {};
+uniquePubs.forEach(pub => {
+  if (pub.data._source === 'collection') {
+    translationsMap[pub.id] = {
+      en: pub.data.en,
+      zh: pub.data.zh
+    };
+  }
+});
 ---
 
-<BaseLayout 
+<BaseLayout nativeI18n={true} pageId="dynamic" 
   title="Publicações"
   description="Artigos científicos, teses e relatórios técnicos produzidos pelo consórcio BINGO, com publicações focadas em rádio-astronomia e cosmologia na Astronomy & Astrophysics (A&A)."
 >
@@ -237,7 +247,8 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
       </div>
 
       <!-- ===== PUBLICATIONS LIST ===== -->
-      <div id="pub-list" class="space-y-4">
+      <script id="pubs-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
+      <div id="pub-list" class="space-y-4" data-no-translate>
         {sortedPubs.map((pub, i) => {
           const category = getCategory(pub);
           const pubYear = new Date(pub.data.date).getFullYear();
@@ -256,6 +267,7 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
               data-category={category}
               data-source={pubSource}
               data-date={new Date(pub.data.date).valueOf()}
+              data-id={pub.id}
             >
               <div class="pub-card-main">
                 <!-- Number -->
@@ -585,6 +597,33 @@ const yearSpan = years.length > 0 ? `${years[years.length - 1]}-${years[0]}` : '
             pubList.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
         });
+      }
+
+      // Apply native translations
+      const rawLang = localStorage.getItem('bingo-lang') || 'en';
+      const nLang = rawLang === 'zh-CN' ? 'zh' : rawLang;
+      if (nLang !== 'pt') {
+        try {
+          const transEl = document.getElementById('pubs-translations');
+          if (!transEl || !transEl.textContent) return;
+          const translationsMap = JSON.parse(transEl.textContent);
+          document.querySelectorAll('.pub-card').forEach(card => {
+            const id = card.getAttribute('data-id');
+            if (!id) return;
+            const trans = translationsMap[id];
+            if (trans && trans[nLang]) {
+              const data = trans[nLang];
+              if (data.title) {
+                const tEl = card.querySelector('.pub-title');
+                if (tEl) tEl.textContent = data.title;
+              }
+              if (data.summary) {
+                const sEl = card.querySelector('.pub-summary-content p');
+                if (sEl) sEl.textContent = data.summary;
+              }
+            }
+          });
+        } catch(e) {}
       }
 
       // ── KEYBOARD SHORTCUT ──
