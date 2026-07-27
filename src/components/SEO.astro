@@ -74,6 +74,49 @@ const websiteSchema = {
   }
 };
 
+// Schema.org JSON-LD — SiteNavigationElement (For Sitelinks)
+const siteNavigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "SiteNavigationElement",
+      "position": 1,
+      "name": "Últimas Notícias",
+      "description": "Acompanhe as atualizações mais recentes e o progresso da construção do Telescópio BINGO.",
+      "url": `${siteOrigin}/news`
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 2,
+      "name": "A Ciência",
+      "description": "Descubra como o BINGO estuda a energia escura e as Oscilações Acústicas de Bárions (BAO).",
+      "url": `${siteOrigin}/science`
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 3,
+      "name": "Sobre o Projeto",
+      "description": "Conheça os detalhes técnicos, a história e os objetivos do Consórcio Telescópio BINGO.",
+      "url": `${siteOrigin}/about`
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 4,
+      "name": "Equipe",
+      "description": "Conheça os pesquisadores, engenheiros e instituições envolvidas.",
+      "url": `${siteOrigin}/team`
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 5,
+      "name": "Publicações Científicas",
+      "description": "Acesse os artigos e publicações oficiais do consórcio.",
+      "url": `${siteOrigin}/publications`
+    }
+  ]
+};
+
 // Schema.org JSON-LD — Article (for news pages)
 const articleSchema = article ? {
   "@context": "https://schema.org",
@@ -173,6 +216,7 @@ const breadcrumbSchema = {
 <!-- JSON-LD Structured Data -->
 <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(siteNavigationSchema)} />
 <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 {articleSchema && (
   <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
