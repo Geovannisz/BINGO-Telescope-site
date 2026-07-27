@@ -1,33 +1,47 @@
 # 🔭 BINGO Telescope Website
 
+![Astro](https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
 Bem-vindo ao repositório oficial do site do **Projeto BINGO** (*Baryon Acoustic Oscillations from Integrated Neutral Gas Observations*). O BINGO é um radiotelescópio projetado para fazer medições pioneiras de oscilações acústicas de bárions, localizado no estado da Paraíba, Brasil.
 
 Este portal foi construído para servir como interface pública, catálogo científico e painel de divulgação do projeto e de suas ramificações (Uirapuru e ABDUS), usando **Astro** e **Tailwind CSS**.
 
 ---
 
+## ✨ Principais Funcionalidades
+
+- ⚡ **SSG (Static Site Generation) Ultra-Rápido:** Páginas pré-renderizadas no servidor via Astro para performance máxima e SEO impecável.
+- 🎨 **Design System "Dark & Sci-Tech":** Interface imersiva utilizando *Glassmorphism*, efeitos radiais, paletas contrastantes e modo noturno fixo para melhor visualização científica.
+- 🗺️ **Mapeamento Interativo:** Integração georreferenciada segura e isolada via Leaflet.js para explorar a localização do radiotelescópio em Aguiar-PB.
+- 👥 **Gestão Inteligente de Equipe:** Sistema de *Content Collections* embutido com tradução dinâmica que se ajusta automaticamente ao **gênero** do membro (ex: converte de forma fluida "Pesquisador" para "Pesquisadora" na interface em português, mantendo o controle de idioma limpo no background).
+- 📰 **Painel Administrativo Embutido (CMS):** Integração com **Decap CMS** para atualização facilitada e sem código de Notícias, Membros da Equipe e Publicações.
+
+---
+
 ## 🚀 Tecnologias e Arquitetura
 
-O site foi focado em alta performance (Geração de Site Estático - SSG), SEO e numa identidade visual moderna focada no conceito "Dark & Sci-Tech".
-
-- **Framework:** [Astro](https://astro.build/) - Garante uma entrega rápida sem JavaScript desnecessário no cliente.
-- **Estilização:** Tailwind CSS - Usado extensivamente para *Glassmorphism*, efeitos de brilho radial e modo noturno.
+- **Framework Core:** [Astro](https://astro.build/)
+- **Estilização e UI:** Tailwind CSS
 - **Tipografia:** `Outfit` para títulos expressivos e `Inter` para o corpo de texto.
-- **Mapas:** [Leaflet.js](https://leafletjs.com/) - Usado para exibir a localização georreferenciada do site em Aguiar (com injeção segura e isolada).
-- **Conteúdo e CMS:** O repositório utiliza **Decap CMS** (`public/admin/`) para gerenciar dados estruturados (Notícias, Equipes, Publicações) via arquivos Markdown em `src/content/`. O painel conta com um motor auxiliar customizado (`admin-engine.js`) para correção dinâmica de caminhos e pré-visualização de imagens, além de validação flexível de esquemas (`Zod schema`).
+- **Validação de Dados:** Zod Schema - Todas as informações vindas do CMS (`src/content.config.ts`) são fortemente tipadas, impedindo builds falhas causadas por erros humanos de cadastro.
+- **Motor Auxiliar do CMS:** Um script customizado (`admin-engine.js`) assegura que caminhos de imagens em rascunhos e pré-visualizações funcionem de forma idêntica à produção.
 
 ---
 
 ## 🌐 Sistema de Internacionalização (i18n)
 
-A plataforma suporta múltiplos idiomas (Português, Inglês, Chinês) através de um **modelo híbrido de tradução** robusto:
+A plataforma suporta múltiplos idiomas (Português, Inglês, Chinês) através de um **modelo híbrido de tradução** robusto, planejado especialmente para a ciência:
 
-1. **Tradução Nativa (Hardcoded):**
-   Para páginas estáticas de alta relevância (Início, Sobre, Ciência, Localização, etc.), o sistema intercepta elementos com a tag `data-t` e injeta domínios semânticos traduzidos via scripts nativos (`src/utils/nativeTranslator.ts`). Isso garante tradução impecável sem o temido efeito de layout quebrado (*Flash of Unstyled Content*).
+1. **Tradução Nativa e Direta (Hardcoded):**
+   Para as páginas de base (Início, Sobre, Ciência, Instrumentação, etc.), o sistema intercepta elementos através da tag `data-t` e processa de imediato os domínios traduzidos via scripts nativos (`src/utils/nativeTranslator.ts`). Isso garante uma tradução perfeita sem o temido e incômodo *Flash of Unstyled Content* (piscar da página).
 
-2. **Google Translate Customizado:**
-   Para páginas originadas no CMS (como as coleções de Notícias ou Membros da Equipe), o site faz *fallback* para o Google Translate (`src/utils/translator.ts`), mas com proteções léxicas:
-   - Termos acadêmicos cruciais (como *BINGO, Baryon Acoustic Oscillations, FRB*, entre outros) recebem espaçamentos seriais não quebráveis (`\u00A0`) e a classe `.notranslate` antes de o widget carregar. Isso **engana a rede neural do Google**, evitando desordenação semântica do texto.
+2. **Google Translate Orientado a Inteligência:**
+   Para as páginas com conteúdo massivo criado via CMS (coleção de Notícias, Publicações ou textos dinâmicos de Membros), o site utiliza o motor do Google Translate de forma mascarada, porém com **Filtros e Proteções Léxicas**.
+   - Termos acadêmicos cruciais e acrônimos (como *BINGO, Baryon Acoustic Oscillations, FRB, Stage I-V*, nomes próprios, entre outros) recebem a classe protetora `.notranslate` combinada com o uso de `\u00A0` (non-breaking spaces) **antes** de o widget ser carregado. 
+   - Isso impede totalmente que a rede neural do Google "bagunce" ou "picote" frases inteiras em pedaços desconexos caso tente ler um jargão científico solto no meio da sentença.
 
 ---
 
@@ -36,65 +50,64 @@ A plataforma suporta múltiplos idiomas (Português, Inglês, Chinês) através 
 ```text
 /
 ├── .github/workflows/      # Pipeline de CI/CD para deploy no GitHub Pages (deploy.yml)
-├── public/                 # Assets estáticos, fontes, imagens de UI e painel CMS (/admin)
+├── public/                 # Assets estáticos, fontes, favicon e painel headless CMS (/admin)
 ├── scripts/                # Automações pré-build (ex: sync-publications.js)
 ├── src/
-│   ├── components/         # Blocos visuais modulares (Header, Footer, Cards 3D)
-│   ├── content/            # Estrutura de dados gerenciados via CMS (news, team, publications)
-│   ├── layouts/            # Templates mestre para as rotas e injetores de SEO
-│   ├── pages/              # Rotas compiladas para as páginas principais e subprojetos
-│   ├── styles/             # Estilos globais (.css) onde estão os tokens do design
-│   └── utils/              # Bibliotecas locais de i18n e utilitários auxiliares
-├── astro.config.mjs        # Configuração principal do Astro (Vite e integrações)
-└── package.json            # Scripts de compilação, sincronização e dependências
+│   ├── components/         # Blocos visuais reutilizáveis (Header, Cards 3D, Interações)
+│   ├── content/            # Dados geridos via CMS em Markdown puro (news, team, publications)
+│   ├── layouts/            # Templates mestre para estrutura da página e Metadata de SEO
+│   ├── pages/              # Rotas e páginas finais da aplicação
+│   ├── styles/             # Arquivos base de estilização CSS global e utilities do Tailwind
+│   └── utils/              # Lógica de negócio isolada, dictionaries i18n e utilitários
+├── astro.config.mjs        # Configuração nativa de plugins do Astro (Vite)
+├── src/content.config.ts   # Configuração e esquemas do Zod para Integridade das coleções de dados
+└── package.json            # Scripts de CLI e listagem das dependências npm
 ```
 
 ---
 
 ## ⚙️ CI/CD e Pipeline de Deploy Automático
 
-O site utiliza **GitHub Actions** (`.github/workflows/deploy.yml`) para compilação estática (`npm run build`) e publicação automática no **GitHub Pages**:
+O repositório está integrado de forma transparente ao **GitHub Actions** (`deploy.yml`). Ao efetuar qualquer `push` na branch `main` (ou ao aprovar atualizações via interface administrativa do CMS), a esteira de build realiza os seguintes passos:
 
-1. **Geração Estática e Sincronização:**
-   A cada commit na branch `main` (ou publicação feita pela equipe através do Decap CMS), a pipeline executa o script `scripts/sync-publications.js` para atualizar e estruturar as publicações dos membros da equipe antes de gerar o *bundle* final no diretório `dist/`.
-
-2. **Arquitetura de Cache Duplo de Alta Velocidade:**
-   O workflow conta com cache inteligente dividido em duas camadas para compilações em tempo recorde:
-   - **Cache de Dependências (`node_modules`):** Atrelado ao hash do `package-lock.json`. Se as dependências não sofreram alteração, o comando `npm ci` é pulado automaticamente, economizando de 20 a 35 segundos.
-   - **Cache do Motor Astro (`.astro` + `node_modules/.cache`):** Armazena os artefatos compilação e metadados das coleções entre execuções usando chaves dinâmicas (`github.run_id`), evitando reprocessar imagens e Markdown intactos.
-
-3. **Execução na Nuvem com Fallback para Runner Local (`Self-Hosted`):**
-   - **Padrão:** O build roda automaticamente nos servidores virtuais da nuvem do GitHub (`ubuntu-latest`).
-   - **Modo de Emergência (Fallback Local):** Em caso de esgotamento de cota ou instabilidade nos servidores do GitHub, o administrador pode acionar a pipeline manualmente via `workflow_dispatch` marcando a opção **`use_local: true`**, executando o build de forma transparente na máquina local através do script `Iniciar-Runner.bat`.
+1. **Estruturação de Dados Automática:**
+   Executa o `scripts/sync-publications.js` para organizar vínculos de publicações com autores.
+2. **Geração Estática e Compilação:**
+   Transpila todos os arquivos Astro e React/Preact em puro e leve HTML/CSS/JS no diretório de saída (`dist/`).
+3. **Cache Duplo (High-Speed Build):**
+   - **Camada Node:** Utiliza hash do `package-lock.json`. Se nenhuma biblioteca for atualizada, ignora a re-instalação de dependências pesadas, poupando ~30s da esteira.
+   - **Camada Astro:** Aproveita hashes locais para evitar o reprocessamento intensivo (geração de imagens webp otimizadas, conversões de Markdown, etc.) de conteúdos que não mudaram desde a última build de sucesso.
+4. **Resiliência (Fallback Local de Runner):**
+   Em um eventual esgotamento dos recursos da nuvem do GitHub, os mantenedores podem acionar a esteira remotamente em modo **`use_local: true`**, roteando perfeitamente o build inteiro para as máquinas *self-hosted* através de scripts locais (`Iniciar-Runner.bat`).
 
 ---
 
 ## 🛠️ Configuração e Desenvolvimento Local
 
-Para clonar e executar este projeto localmente:
+Para clonar e testar melhorias no projeto localmente na sua máquina:
 
-1. Instale as dependências:
+1. Clone e entre no projeto, logo após instale os pacotes:
    ```bash
    npm install
    ```
 
-2. Inicie o servidor de desenvolvimento:
+2. Inicie o servidor turbo de desenvolvimento:
    ```bash
    npm run dev
    ```
-   > O servidor local rodará por padrão na porta `4321`. Abra `http://localhost:4321/` para ver o site.
+   > Por padrão, sua aplicação local subirá em `http://localhost:4321/`.
 
-3. Para testar o painel de administração CMS localmente:
-   O *Decap CMS* precisa de um proxy local para autenticação ao GitHub. Você pode executar o `npx netlify-cms-proxy-server` no terminal para interceptar as edições locais da pasta `public/admin/`.
+3. **Para desenvolvedores:** 
+   Se deseja abrir o **Decap CMS** em localhost para editar coleções, inicie também, em outra aba do terminal, o proxy de autenticação `npx netlify-cms-proxy-server`. Dessa forma, as alterações no painel irão editar diretamente os arquivos da sua pasta `src/content/` no PC.
 
 ---
 
-## 🏗️ Build e Produção
+## 🏗️ Gerando Versão de Produção
 
-Gere os arquivos estáticos de produção na pasta `dist/` usando:
+Gere manualmente os artefatos estáticos na pasta `dist/` para deploy manual ou verificação usando:
 
 ```bash
 npm run build
 ```
 
-Nenhum servidor Node.js é exigido para rodar o site após a compilação. Basta expor a pasta `dist/` em qualquer servidor estático ou provedor cloud (GitHub Pages, Cloudflare Pages, Netlify, Vercel).
+Após compilado, o site não exige instâncias Node.js rodando. Ele se torna completamente estático, pronto para ser servido via GitHub Pages, Vercel, Cloudflare Pages ou qualquer provedor HTML cru.
