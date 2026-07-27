@@ -186,18 +186,18 @@
   function injectHeaderButton() {
     if (headerBtn && headerBtn.parentElement) return headerBtn;
 
-    // Find the CMS toolbar area — look for "Delete entry" button's container
+    // Find the "Delete entry" button
     var btns = document.querySelectorAll('button');
-    var toolbarContainer = null;
+    var deleteBtn = null;
     for (var i = 0; i < btns.length; i++) {
       var text = (btns[i].textContent || '').trim().toLowerCase();
       if (text.indexOf('delete') !== -1 && text.indexOf('entry') !== -1) {
-        toolbarContainer = btns[i].parentElement;
+        deleteBtn = btns[i];
         break;
       }
     }
 
-    if (!toolbarContainer) return null;
+    if (!deleteBtn || !deleteBtn.parentElement) return null;
 
     // Create button if not exists
     if (!headerBtn) {
@@ -211,13 +211,14 @@
       });
     }
 
-    // Only insert if not already in the toolbar
-    if (headerBtn.parentElement !== toolbarContainer) {
-      toolbarContainer.appendChild(headerBtn);
+    // Insert right after the Delete entry button (as a sibling)
+    if (headerBtn.parentElement !== deleteBtn.parentElement) {
+      deleteBtn.insertAdjacentElement('afterend', headerBtn);
     }
 
     return headerBtn;
   }
+
 
   function updateHeaderButton(isPublished) {
     var btn = injectHeaderButton();
