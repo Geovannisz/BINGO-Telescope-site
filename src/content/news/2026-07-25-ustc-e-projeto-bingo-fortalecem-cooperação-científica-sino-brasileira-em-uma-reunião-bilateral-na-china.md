@@ -4,13 +4,13 @@ title: USTC e Projeto BINGO fortalecem cooperação científica sino-brasileira 
 date: 2026-07-25T10:16:00.000-03:00
 author: Marini N. Lima
 image: /images/uploads/5bb50136faf164fcef42a1c0ae8_01d8e767_20218b.png
-published: false
 summary: A Universidade de Ciência e Tecnologia da China (USTC) e o Projeto
   BINGO realizaram uma reunião bilateral para fortalecer a cooperação científica
   entre Brasil e China e alinhar as próximas etapas do projeto. O encontro
   reforçou a parceria internacional em radioastronomia e cosmologia, destacando
   os avanços na construção do telescópio e os planos para sua evolução
   científica e tecnológica.
+published: true
 ---
 No dia 15 de julho, a **Universidade de Ciência e Tecnologia da China (USTC)** sediou uma reunião bilateral com representantes do **Projeto BINGO (*Baryon Acoustic Oscillations from IntegratedNeutral Gas Observations*)**, reforçando a parceria científica entre Brasil e China e estabelecendo novas perspectivas para o desenvolvimento conjunto de pesquisas em radioastronomia e cosmologia.
 
