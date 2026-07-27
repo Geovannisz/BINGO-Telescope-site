@@ -1,4 +1,11 @@
-MIT License
+BINGO Telescope Website License
+===============================
+
+This repository contains both source code and digital content/assets. They are licensed separately as follows:
+
+1. SOURCE CODE (MIT License)
+----------------------------
+The source code (HTML, CSS, JavaScript/TypeScript, Astro templates, configurations, and build scripts) is licensed under the MIT License:
 
 Copyright (c) 2026 BINGO Telescope Consortium
 
@@ -19,3 +26,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+2. CONTENT AND ASSETS (All Rights Reserved)
+-------------------------------------------
+All textual content, scientific data, publications, news articles, team member biographies, photographs, logos, illustrations, and graphics (located primarily in `src/content/`, `public/`, and embedded within pages) are the exclusive property of the BINGO Telescope Consortium and their respective authors.
+
+These materials are NOT covered by the MIT License. You may not reproduce, distribute, modify, or use them for commercial or non-commercial purposes without explicit written permission from the BINGO Telescope Consortium.
+
+For inquiries regarding the use of scientific data, project branding, or media assets, please refer to the contact information on the official website.
