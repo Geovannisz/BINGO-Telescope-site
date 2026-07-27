@@ -6,6 +6,17 @@ import { getCollection } from 'astro:content';
 const allNews = await getCollection('news', ({ data }) => data.published !== false);
 const sortedNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const base = import.meta.env.BASE_URL;
+
+// Generate translation map for all news
+const translationsMap = Object.fromEntries(
+  sortedNews.map(post => [
+    post.id,
+    {
+      en: post.data.en && (post.data.en.title || post.data.en.summary) ? { title: post.data.en.title, summary: post.data.en.summary } : null,
+      zh: post.data.zh && (post.data.zh.title || post.data.zh.summary) ? { title: post.data.zh.title, summary: post.data.zh.summary } : null,
+    }
+  ])
+);
 ---
 
 <BaseLayout nativeI18n={true} pageId="dynamic" title="Notícias e Blog" description="Últimas notícias, atualizações e artigos do blog do Telescópio BINGO. Acompanhe o progresso da construção e os avanços científicos.">
@@ -32,4 +43,52 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </div>
+
+  <script id="news-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const rawLang = localStorage.getItem('bingo-lang') || 'en';
+      const nLang = rawLang === 'zh-CN' ? 'zh' : rawLang;
+      
+      if (nLang !== 'pt') {
+        try {
+          const transEl = document.getElementById('news-translations');
+          if (!transEl || !transEl.textContent) return;
+          const translationsMap = JSON.parse(transEl.textContent);
+          
+          document.querySelectorAll('.news-card').forEach(card => {
+            const id = card.getAttribute('data-id');
+            if (!id) return;
+            const trans = translationsMap[id];
+            const badge = card.querySelector('.news-translation-badge');
+            
+            if (trans && trans[nLang]) {
+              const data = trans[nLang];
+              if (data.title) {
+                const tEl = card.querySelector('h3');
+                if (tEl) tEl.textContent = data.title;
+              }
+              if (data.summary) {
+                const sEl = card.querySelector('p');
+                if (sEl) sEl.textContent = data.summary;
+              }
+            } else {
+              // Missing translation for the selected language
+              if (badge) {
+                badge.classList.remove('hidden');
+                const badgeText = badge.querySelector('.badge-text');
+                if (badgeText) {
+                  if (nLang === 'en') {
+                    badgeText.textContent = 'No translation';
+                  } else if (nLang === 'zh') {
+                    badgeText.textContent = '无翻译';
+                  }
+                }
+              }
+            }
+          });
+        } catch(e) {}
+      }
+    });
+  </script>
 </BaseLayout>
