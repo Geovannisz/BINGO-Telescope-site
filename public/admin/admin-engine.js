@@ -1,40 +1,15 @@
 /**
- * BINGO Telescope — Admin Panel Engine v7
- * Button in header, robust toggle detection.
+ * BINGO Telescope — Admin Panel Engine v8
+ * - Draft/Publish button injected into CMS header toolbar
+ * - Auto-save via Ctrl+S simulation
+ * - No floating/fixed badge or button — clean integration
  */
 (function () {
   'use strict';
 
-  /* ═══════════════════════════════════════════════════════════
-   *  TOAST
-   * ═══════════════════════════════════════════════════════════ */
-  function showToast(msg, type) {
-    try {
-      var existing = document.querySelectorAll('.bingo-toast');
-      var offsetY = existing.length * 60;
-      var toast = document.createElement('div');
-      toast.className = 'bingo-toast';
-      var bg = { success: '#16a34a', error: '#dc2626', warn: '#ca8a04', info: '#2563eb' };
-      Object.assign(toast.style, {
-        position: 'fixed', bottom: (20 + offsetY) + 'px', right: '20px', zIndex: '99999',
-        padding: '12px 20px', borderRadius: '10px', fontSize: '13px', fontWeight: '600',
-        fontFamily: "'Outfit', sans-serif", color: '#fff', maxWidth: '400px',
-        backgroundColor: bg[type] || bg.info,
-        boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-        transform: 'translateY(20px)', opacity: '0',
-        transition: 'all 0.3s ease',
-      });
-      toast.textContent = msg;
-      document.body.appendChild(toast);
-      requestAnimationFrame(function () {
-        toast.style.transform = 'translateY(0)';
-        toast.style.opacity = '1';
-      });
-      setTimeout(function () {
-        toast.style.opacity = '0';
-        setTimeout(function () { toast.remove(); }, 300);
-      }, 4000);
-    } catch (e) {}
+  function isEditorView() {
+    var hash = window.location.hash || '';
+    return hash.indexOf('/entries/') !== -1 || hash.indexOf('/new') !== -1;
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -51,11 +26,6 @@
     } catch (e) {}
   }
 
-  function isEditorView() {
-    var hash = window.location.hash || '';
-    return hash.indexOf('/entries/') !== -1 || hash.indexOf('/new') !== -1;
-  }
-
   /* ═══════════════════════════════════════════════════════════
    *  FIND THE TOGGLE
    * ═══════════════════════════════════════════════════════════ */
@@ -69,7 +39,6 @@
         if (text.length > 60) continue;
         if (text.indexOf('publicado') === -1 && text.indexOf('published') === -1) continue;
         if (el.closest('iframe')) continue;
-
         var container = el.parentElement;
         for (var depth = 0; depth < 10 && container && container !== root; depth++) {
           var toggle = findToggleInContainer(container);
@@ -78,12 +47,15 @@
         }
         var sib = el.nextElementSibling;
         for (var s = 0; s < 5 && sib; s++) {
-          var sibToggle = findToggleInContainer(sib);
-          if (sibToggle) return sibToggle;
+          var t = findToggleInContainer(sib);
+          if (t) return t;
           sib = sib.nextElementSibling;
         }
       }
-      return findLastToggle(root);
+      // Fallback: last role=switch
+      var sws = root.querySelectorAll('[role="switch"]');
+      if (sws.length > 0) return sws[sws.length - 1];
+      return null;
     } catch (e) { return null; }
   }
 
@@ -93,29 +65,19 @@
     if (cb) return cb;
     var sw = container.querySelector('[role="switch"], [role="checkbox"]');
     if (sw) return sw;
-    var reactToggle = container.querySelector('.react-toggle, [class*="react-toggle"]');
-    if (reactToggle) return reactToggle.querySelector('input') || reactToggle;
-    var styledToggle = container.querySelector('[class*="Toggle"], [class*="toggle"], [class*="Switch"], [class*="switch"]');
-    if (styledToggle) return styledToggle.querySelector('input') || styledToggle;
+    var rt = container.querySelector('.react-toggle, [class*="react-toggle"]');
+    if (rt) return rt.querySelector('input') || rt;
+    var st = container.querySelector('[class*="Toggle"], [class*="toggle"], [class*="Switch"]');
+    if (st) return st.querySelector('input') || st;
     return container.querySelector('[aria-checked]');
-  }
-
-  function findLastToggle(root) {
-    var sws = root.querySelectorAll('[role="switch"], [role="checkbox"]');
-    if (sws.length > 0) return sws[sws.length - 1];
-    var cbs = root.querySelectorAll('input[type="checkbox"]');
-    if (cbs.length > 0) return cbs[cbs.length - 1];
-    return null;
   }
 
   function getToggleState(toggle) {
     if (!toggle) return true;
     if (toggle.type === 'checkbox') return toggle.checked;
-    var ariaChecked = toggle.getAttribute('aria-checked');
-    if (ariaChecked !== null) return ariaChecked === 'true';
-    if (toggle.className && toggle.className.indexOf('checked') !== -1) return true;
-    if (toggle.className && toggle.className.indexOf('checked') === -1) return false;
-    if (toggle.value !== undefined && toggle.value !== '') return toggle.value !== 'false' && toggle.value !== '0';
+    var ac = toggle.getAttribute('aria-checked');
+    if (ac !== null) return ac === 'true';
+    if (toggle.className && toggle.className.indexOf('--checked') !== -1) return true;
     return true;
   }
 
@@ -124,20 +86,18 @@
    * ═══════════════════════════════════════════════════════════ */
   function performToggle(toggle) {
     if (!toggle) return false;
-    var currentState = getToggleState(toggle);
-    console.log('[BINGO] Toggling state. Was: ' + currentState);
-
-    // Prevent form submission if it's a submit button
+    // Prevent accidental form submission (Decap renders toggle as type=submit button)
     if (toggle.type === 'submit') toggle.type = 'button';
 
-    // Method 1: React Props
+    // Method 1: React props onChange
     try {
       var keys = Object.getOwnPropertyNames(toggle);
       for (var i = 0; i < keys.length; i++) {
         if (keys[i].indexOf('__reactProps') === 0) {
           var props = toggle[keys[i]];
           if (props && typeof props.onChange === 'function') {
-            props.onChange({ target: { checked: !currentState, type: 'checkbox', value: !currentState } });
+            var newState = !getToggleState(toggle);
+            props.onChange({ target: { checked: newState, type: 'checkbox', value: newState } });
             return true;
           }
           if (props && typeof props.onClick === 'function') {
@@ -149,39 +109,52 @@
     } catch (e) {}
 
     // Method 2: native click
-    try {
-      toggle.click();
-      return true;
-    } catch (e) {}
-
+    try { toggle.click(); return true; } catch (e) {}
     return false;
   }
 
-  function findSaveButton() {
+  /* ═══════════════════════════════════════════════════════════
+   *  AUTO-SAVE via Ctrl+S simulation
+   * ═══════════════════════════════════════════════════════════ */
+  function triggerSave() {
+    // Method 1: Ctrl+S keyboard shortcut (Decap CMS listens for this)
     try {
-      var root = document.getElementById('nc-root') || document.body;
-      var btns = root.querySelectorAll('button');
-      var best = null;
-      for (var i = 0; i < btns.length; i++) {
-        var b = btns[i];
-        var text = (b.textContent || '').trim();
-        var lower = text.toLowerCase();
-        if (b.id && b.id.indexOf('bingo') !== -1) continue;
-        if (text.indexOf('✓') !== -1 || text.indexOf('✔') !== -1) continue;
-        if (lower.indexOf('delete') !== -1 || lower.indexOf('exclu') !== -1) continue;
-        if (lower.indexOf('duplic') !== -1) continue;
-        if (lower.indexOf('publish') !== -1 || lower.indexOf('save') !== -1 || lower.indexOf('publicar') !== -1 || lower.indexOf('salvar') !== -1) {
-          if (!best || text.length < (best.textContent || '').trim().length) best = b;
+      var event = new KeyboardEvent('keydown', {
+        key: 's', code: 'KeyS', keyCode: 83, which: 83,
+        ctrlKey: true, bubbles: true, cancelable: true
+      });
+      document.dispatchEvent(event);
+      console.log('[BINGO] Dispatched Ctrl+S');
+    } catch (e) {}
+
+    // Method 2: Also try to find & click a save button as fallback
+    setTimeout(function () {
+      try {
+        var root = document.getElementById('nc-root') || document.body;
+        var btns = root.querySelectorAll('button');
+        for (var i = 0; i < btns.length; i++) {
+          var text = (btns[i].textContent || '').trim().toLowerCase();
+          if (btns[i].id && btns[i].id.indexOf('bingo') !== -1) continue;
+          if (text.indexOf('✓') !== -1 || text.indexOf('✔') !== -1) continue;
+          if (text.indexOf('delete') !== -1 || text.indexOf('duplic') !== -1) continue;
+          if (text === 'publish' || text === 'save' || text === 'publish now'
+            || text === 'publicar' || text === 'salvar' || text === 'publicar agora') {
+            console.log('[BINGO] Clicking save button: "' + text + '"');
+            btns[i].click();
+            return;
+          }
         }
-      }
-      return best;
-    } catch (e) { return null; }
+      } catch (e) {}
+    }, 800);
   }
 
+  /* ═══════════════════════════════════════════════════════════
+   *  MAIN ACTION
+   * ═══════════════════════════════════════════════════════════ */
   function doDraftToggle() {
     var toggle = findPublishedToggle();
     if (!toggle) {
-      showToast('❌ Toggle "Publicado" não encontrado.', 'error');
+      window._bingoToast('❌ Campo "Publicado" não encontrado.', 'error');
       return;
     }
 
@@ -189,111 +162,74 @@
     var toggled = performToggle(toggle);
 
     if (!toggled) {
-      showToast('❌ Não foi possível alterar o toggle.', 'error');
+      window._bingoToast('❌ Não foi possível alterar o toggle.', 'error');
       return;
     }
 
-    showToast(wasPublished ? '🔒 Convertendo para rascunho...' : '🚀 Publicando...', 'info');
+    window._bingoToast(wasPublished ? '🔒 Salvando como rascunho...' : '🚀 Publicando...', 'info');
 
-    var attempts = 0;
-    function trySave() {
-      attempts++;
-      var saveBtn = findSaveButton();
-      if (saveBtn) {
-        saveBtn.click();
-        setTimeout(function () {
-          showToast(wasPublished ? '🔒 Rascunho salvo!' : '🚀 Publicado!', 'success');
-          refreshUI();
-        }, 1500);
-      } else if (attempts < 8) {
-        setTimeout(trySave, 500);
-      } else {
-        showToast('⚠️ Alterado. Clique em Save/Publish manualmente.', 'warn');
-      }
-    }
-    setTimeout(trySave, 500);
+    // Auto-save after React processes the change
+    setTimeout(function () {
+      triggerSave();
+      setTimeout(function () {
+        window._bingoToast(wasPublished ? '🔒 Rascunho salvo!' : '🚀 Publicado com sucesso!', 'success');
+        refreshUI();
+      }, 2000);
+    }, 300);
   }
 
   /* ═══════════════════════════════════════════════════════════
-   *  UI ELEMENTS
+   *  UI: BUTTON INJECTED INTO CMS HEADER
    * ═══════════════════════════════════════════════════════════ */
-  var customBtn = null;
+  var headerBtn = null;
 
-  function createCustomButton() {
-    if (customBtn) return customBtn;
-    customBtn = document.createElement('button');
-    customBtn.id = 'bingo-draft-btn';
-    customBtn.type = 'button';
-    Object.assign(customBtn.style, {
-      display: 'none', alignItems: 'center', gap: '8px',
-      padding: '8px 16px', borderRadius: '5px',
-      fontSize: '14px', fontWeight: '500',
-      fontFamily: "'Outfit', sans-serif",
-      cursor: 'pointer',
-      transition: 'all 0.2s ease',
-      background: '#0f172a', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)',
-      marginLeft: '12px'
-    });
-    customBtn.addEventListener('mouseenter', function () { customBtn.style.transform = 'translateY(-1px)'; });
-    customBtn.addEventListener('mouseleave', function () { customBtn.style.transform = ''; });
-    customBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      doDraftToggle();
-    });
-    return customBtn;
-  }
+  function injectHeaderButton() {
+    if (headerBtn && headerBtn.parentElement) return headerBtn;
 
-  function positionButton(btn) {
-    try {
-      var btns = document.querySelectorAll('button');
-      var deleteBtn = null;
-      for (var i = 0; i < btns.length; i++) {
-        var text = (btns[i].textContent || '').toLowerCase();
-        if (text.indexOf('delete') !== -1 || text.indexOf('exclu') !== -1) {
-          deleteBtn = btns[i];
-          break;
-        }
+    // Find the CMS toolbar area — look for "Delete entry" button's container
+    var btns = document.querySelectorAll('button');
+    var toolbarContainer = null;
+    for (var i = 0; i < btns.length; i++) {
+      var text = (btns[i].textContent || '').trim().toLowerCase();
+      if (text.indexOf('delete') !== -1 && text.indexOf('entry') !== -1) {
+        toolbarContainer = btns[i].parentElement;
+        break;
       }
-      
-      if (deleteBtn && deleteBtn.parentElement) {
-        // Place next to delete button in header
-        if (btn.parentElement !== deleteBtn.parentElement) {
-          // Sometimes the delete button is wrapped in a flex container, insert after it
-          deleteBtn.parentElement.insertBefore(btn, deleteBtn.nextSibling);
-        }
-      } else {
-        // Fallback to floating bottom-left if delete button not found
-        Object.assign(btn.style, {
-          position: 'fixed', bottom: '24px', left: '24px', zIndex: '9998',
-          padding: '12px 20px', borderRadius: '14px',
-          boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-          marginLeft: '0'
-        });
-        if (btn.parentElement !== document.body) document.body.appendChild(btn);
-      }
-    } catch (e) {
-      if (btn.parentElement !== document.body) document.body.appendChild(btn);
     }
+
+    if (!toolbarContainer) return null;
+
+    // Create button if not exists
+    if (!headerBtn) {
+      headerBtn = document.createElement('button');
+      headerBtn.id = 'bingo-draft-btn';
+      headerBtn.type = 'button';
+      headerBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        doDraftToggle();
+      });
+    }
+
+    // Only insert if not already in the toolbar
+    if (headerBtn.parentElement !== toolbarContainer) {
+      toolbarContainer.appendChild(headerBtn);
+    }
+
+    return headerBtn;
   }
 
-  function showButton(isPublished) {
-    var btn = createCustomButton();
-    btn.style.display = 'inline-flex';
+  function updateHeaderButton(isPublished) {
+    var btn = injectHeaderButton();
+    if (!btn) return;
+    btn.className = 'bingo-header-draft-btn';
     if (isPublished) {
-      btn.innerHTML = '🔒 Despublicar (Rascunho)';
-      btn.style.color = '#eab308';
-      btn.style.borderColor = 'rgba(234,179,8,0.3)';
+      btn.innerHTML = '<span class="bingo-btn-icon">🔒</span> Despublicar';
+      btn.setAttribute('data-state', 'published');
     } else {
-      btn.innerHTML = '🚀 Publicar';
-      btn.style.color = '#22c55e';
-      btn.style.borderColor = 'rgba(34,197,94,0.3)';
+      btn.innerHTML = '<span class="bingo-btn-icon">🚀</span> Publicar';
+      btn.setAttribute('data-state', 'draft');
     }
-    positionButton(btn);
-  }
-
-  function hideButton() {
-    if (customBtn) customBtn.style.display = 'none';
   }
 
   /* ═══════════════════════════════════════════════════════════
@@ -302,19 +238,22 @@
   function refreshUI() {
     try {
       if (!isEditorView()) {
-        hideButton();
+        if (headerBtn) headerBtn.style.display = 'none';
         return;
       }
+
       var toggle = findPublishedToggle();
       if (toggle) {
         var isPublished = getToggleState(toggle);
-        showButton(isPublished);
-      } else {
-        showButton(true);
+        updateHeaderButton(isPublished);
+        if (headerBtn) headerBtn.style.display = '';
       }
     } catch (e) {}
   }
 
+  /* ═══════════════════════════════════════════════════════════
+   *  IMAGE FIXER
+   * ═══════════════════════════════════════════════════════════ */
   function startImageFixer() {
     try {
       var adminIdx = window.location.pathname.indexOf('/admin');
@@ -334,20 +273,47 @@
           try { var d = f.contentDocument || (f.contentWindow && f.contentWindow.document); if (d) fix(d); } catch (e) {}
         });
       }
-      scan();
-      setInterval(scan, 500);
+      scan(); setInterval(scan, 500);
     } catch (e) {}
   }
 
+  /* ═══════════════════════════════════════════════════════════
+   *  SHARED TOAST (used by both admin-engine and admin-io)
+   * ═══════════════════════════════════════════════════════════ */
+  function bingoToast(msg, type) {
+    try {
+      var existing = document.querySelectorAll('.bingo-toast');
+      var offsetY = existing.length * 56;
+      var toast = document.createElement('div');
+      toast.className = 'bingo-toast bingo-toast--' + (type || 'info');
+      toast.textContent = msg;
+      toast.style.bottom = (20 + offsetY) + 'px';
+      document.body.appendChild(toast);
+      requestAnimationFrame(function () { toast.classList.add('bingo-toast--show'); });
+      setTimeout(function () {
+        toast.classList.remove('bingo-toast--show');
+        setTimeout(function () { toast.remove(); }, 400);
+      }, 4000);
+    } catch (e) {}
+  }
+  // Expose globally
+  window._bingoToast = bingoToast;
+
+  /* ═══════════════════════════════════════════════════════════
+   *  INIT
+   * ═══════════════════════════════════════════════════════════ */
   function init() {
-    console.log('[BINGO] Admin engine v7 loaded');
+    console.log('[BINGO] Admin engine v8 loaded');
     try { if (window.CMS) CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
     setTimeout(function () { try { if (window.CMS) CMS.registerPreviewStyle('./preview.css'); } catch (e) {} }, 3000);
+
     try {
       new MutationObserver(checkLoginPage).observe(document.body, { childList: true, subtree: true });
       checkLoginPage();
     } catch (e) {}
+
     startImageFixer();
+
     try {
       var pending = false;
       new MutationObserver(function () {
@@ -360,9 +326,6 @@
     } catch (e) {}
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();

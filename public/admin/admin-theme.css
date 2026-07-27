@@ -1,6 +1,6 @@
 /*
- * BINGO Telescope — Admin Theme
- * Customizes: login button, font, draft/unpublish controls, toast.
+ * BINGO Telescope — Admin Theme (Unified)
+ * Covers: login, draft/publish button, toasts, I/O toolbar
  */
 
 /* ── Font ── */
@@ -8,7 +8,9 @@ body, #nc-root {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* ── Login button ── */
+/* ══════════════════════════════════════════════════════════════
+   LOGIN
+   ══════════════════════════════════════════════════════════════ */
 .bingo-login-btn {
   background: linear-gradient(135deg, #0891b2, #6366f1) !important;
   color: #fff !important;
@@ -19,20 +21,83 @@ body, #nc-root {
   font-weight: 600 !important;
   cursor: pointer !important;
 }
-.bingo-login-btn:hover {
-  opacity: 0.9;
-}
 
-/* ── Draft/Unpublish Dropdown Item ── */
-#bingo-dropdown-draft-item {
-  cursor: pointer !important;
-  transition: background-color 0.2s ease, color 0.2s ease !important;
-}
-#bingo-dropdown-draft-item:hover {
-  background-color: rgba(234, 179, 8, 0.12) !important;
-}
-
-/* ── Toast animation enhancement ── */
-.bingo-engine-toast {
+/* ══════════════════════════════════════════════════════════════
+   DRAFT / PUBLISH BUTTON (injected into CMS header toolbar)
+   ══════════════════════════════════════════════════════════════ */
+.bingo-header-draft-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-left: 10px;
   line-height: 1.4;
 }
+
+.bingo-header-draft-btn[data-state="published"] {
+  background: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+.bingo-header-draft-btn[data-state="published"]:hover {
+  background: rgba(234, 179, 8, 0.22);
+  border-color: rgba(234, 179, 8, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15);
+}
+
+.bingo-header-draft-btn[data-state="draft"] {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+.bingo-header-draft-btn[data-state="draft"]:hover {
+  background: rgba(34, 197, 94, 0.22);
+  border-color: rgba(34, 197, 94, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+}
+
+.bingo-btn-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TOASTS (unified for engine + io)
+   ══════════════════════════════════════════════════════════════ */
+.bingo-toast {
+  position: fixed;
+  right: 20px;
+  z-index: 9999999;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  max-width: 380px;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(.4, 0, .2, 1), opacity 0.35s;
+  pointer-events: none;
+}
+.bingo-toast--show {
+  transform: translateX(0);
+  opacity: 1;
+}
+.bingo-toast--success { border-left: 4px solid #10b981; }
+.bingo-toast--error   { border-left: 4px solid #ef4444; }
+.bingo-toast--warn    { border-left: 4px solid #f59e0b; }
+.bingo-toast--info    { border-left: 4px solid #06b6d4; }

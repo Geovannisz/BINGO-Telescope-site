@@ -441,26 +441,30 @@
   // Expose globally for other admin scripts (e.g. admin-engine.js)
   window.showToast = showToast;
 
-  /* ── Toolbar injection ── */
+  /* ── Toolbar injection (collapsible drawer) ── */
   function injectToolbar() {
     if (document.getElementById('bingo-io-toolbar')) return;
     const bar = document.createElement('div');
     bar.id = 'bingo-io-toolbar';
+    bar.classList.add('bingo-io-toolbar-collapsed'); // start collapsed
+
     bar.innerHTML = `
       <div class="bingo-io-toolbar-inner">
-        <span class="bingo-io-toolbar-title">📦 Importar / Exportar</span>
+        <span class="bingo-io-toolbar-title">Importar / Exportar</span>
         <div class="bingo-io-toolbar-actions">
           ${Object.entries(SCHEMAS).map(([k, v]) => `
             <div class="bingo-io-group">
               <span class="bingo-io-group-label">${v.label}</span>
-              <button class="bingo-io-btn bingo-io-btn-export" data-type="${k}" title="Exportar ${v.label} (JSON)">⬇ Exportar</button>
+              <button class="bingo-io-btn bingo-io-btn-export" data-type="${k}" title="Exportar ${v.label} (JSON)">⬇ JSON</button>
               <button class="bingo-io-btn bingo-io-btn-import" data-type="${k}" title="Importar ${v.label} (JSON)">⬆ JSON</button>
               ${k === 'publications' ? `<button class="bingo-io-btn bingo-io-btn-bibtex" data-type="${k}" title="Importar BibTeX">📚 BibTeX</button>` : ''}
             </div>
           `).join('')}
         </div>
-        <button class="bingo-io-toolbar-toggle" title="Minimizar">▾</button>
-      </div>`;
+      </div>
+      <button class="bingo-io-toolbar-toggle" title="Importar / Exportar">
+        📦 I/O
+      </button>`;
     document.body.appendChild(bar);
 
     // Event delegation
@@ -468,8 +472,8 @@
       const btn = e.target.closest('button');
       if (!btn) return;
       if (btn.classList.contains('bingo-io-toolbar-toggle')) {
-        bar.classList.toggle('bingo-io-toolbar-collapsed');
-        btn.textContent = bar.classList.contains('bingo-io-toolbar-collapsed') ? '▴' : '▾';
+        const isCollapsed = bar.classList.toggle('bingo-io-toolbar-collapsed');
+        btn.innerHTML = isCollapsed ? '📦 I/O' : '✕ Fechar';
         return;
       }
       const type = btn.dataset.type;
@@ -489,7 +493,6 @@
         setTimeout(injectToolbar, 800);
       }
     }, 500);
-    // Fallback: inject after 5s regardless
     setTimeout(() => { clearInterval(check); injectToolbar(); }, 5000);
   }
 
