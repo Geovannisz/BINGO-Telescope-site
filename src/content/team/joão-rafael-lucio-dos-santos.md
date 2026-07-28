@@ -1,7 +1,7 @@
 ---
 name: João Rafael Lucio dos Santos
 gender: Masculino
-role: Professor Titular
+role: Professor Associado
 institution: Universidade Federal de Campina Grande (UFCG)
 photo: /images/uploads/joão.jpg
 stage:
