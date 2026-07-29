@@ -175,6 +175,7 @@ uniquePubs.forEach(pub => {
             data-pub-placeholder="ui.search_placeholder"
             class="pub-search-input"
             autocomplete="off"
+            aria-label="Buscar publicações"
           />
           <button id="pub-search-clear" class="pub-search-clear hidden" aria-label="Limpar busca">
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -189,7 +190,7 @@ uniquePubs.forEach(pub => {
           <div class="pub-filters-group">
             <!-- Year filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-year" class="pub-filter-select">
+              <select id="pub-filter-year" class="pub-filter-select" aria-label="Filtrar por ano">
                 <option value="" data-pub-t="ui.all_years">Todos os anos</option>
                 {years.map(y => <option value={y}>{y}</option>)}
               </select>
@@ -198,7 +199,7 @@ uniquePubs.forEach(pub => {
 
             <!-- Journal filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-journal" class="pub-filter-select">
+              <select id="pub-filter-journal" class="pub-filter-select" aria-label="Filtrar por periódico">
                 <option value="" data-pub-t="ui.all_journals">Todos os periódicos</option>
                 {journals.map(j => <option value={j}>{j}</option>)}
               </select>
@@ -207,7 +208,7 @@ uniquePubs.forEach(pub => {
 
             <!-- Category filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-category" class="pub-filter-select">
+              <select id="pub-filter-category" class="pub-filter-select" aria-label="Filtrar por categoria">
                 <option value="" data-pub-t="ui.all_categories">Todas as categorias</option>
                 <option value="Série Principal" data-pub-t="category.Série Principal">Série Principal</option>
                 <option value="ABDUS" data-pub-t="category.ABDUS">ABDUS</option>
@@ -223,7 +224,7 @@ uniquePubs.forEach(pub => {
           <!-- Sort -->
           <div class="pub-sort-group">
             <div class="pub-filter-select-wrapper">
-              <select id="pub-sort" class="pub-filter-select pub-sort-select">
+              <select id="pub-sort" class="pub-filter-select pub-sort-select" aria-label="Ordenar publicações">
                 <option value="date-desc" data-pub-t="ui.sort_recent">Mais recente</option>
                 <option value="date-asc" data-pub-t="ui.sort_oldest">Mais antigo</option>
                 <option value="title-asc" data-pub-t="ui.sort_title_asc">A → Z (título)</option>
@@ -550,7 +551,7 @@ uniquePubs.forEach(pub => {
         let html = '<div class="pub-pagination-inner">';
 
         // Previous
-        html += `<button class="pub-page-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>
+        html += `<button class="pub-page-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''} aria-label="Página anterior">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </button>`;
 
@@ -575,7 +576,7 @@ uniquePubs.forEach(pub => {
         }
 
         // Next
-        html += `<button class="pub-page-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>
+        html += `<button class="pub-page-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Próxima página">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>`;
 
