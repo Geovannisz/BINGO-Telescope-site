@@ -2,8 +2,11 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// Define the official domain for SEO canonicals
-const site = process.env.SITE_URL ?? 'https://bingotelescope.org';
+// Define the official domain for SEO canonicals. Handle Netlify, Vercel, and manual env vars.
+let site = process.env.SITE_URL || process.env.URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 'https://bingotelescope.org';
+if (!site.startsWith('http')) {
+  site = `https://${site}`;
+}
 const base = (process.env.BASE_PATH ?? '/').replace(/\/$/, '') + '/';
 
 export default defineConfig({
