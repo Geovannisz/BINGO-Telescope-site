@@ -112,6 +112,29 @@ career_advice: "Foi também isso que meu professor me disse: se você realmente
   pesquisa e estar preparado para passar longos períodos sem ver resultados
   imediatos. Somente as pessoas que têm uma verdadeira paixão por essa área
   conseguem chegar até o fim."
+publications:
+  - title: Universality in quasinormal modes of a magnetized black hole.
+    link: http://dx.doi.org/10.1103/2bc9-zb5b
+  - title: "Lower Thermospheric Zonal Winds Change Interhemispheric Field-Aligned
+      Current Directions Over Asian-Pacific Region. "
+    link: http://dx.doi.org/10.1029/2025JA034925
+  - title: Impact of perfect fluid dark matter on the appearance of rotating black
+      hole. Physics of the Dark Universe.
+    link: http://dx.doi.org/10.1016/j.dark.2026.102225
+  - title: Polarized radiative transfer of Kerr-Newman black hole.
+    link: http://dx.doi.org/10.1140/epjc/s10052-026-15683-3
+  - title: "Continued fraction method for high overtone quasinormal modes in
+      effective potentials with a discontinuity. "
+    link: http://dx.doi.org/10.1103/1j6q-sj7w
+  - title: Polarization signatures of rotating black holes in perfect fluid dark
+      matter spacetimes.
+    doi: http://dx.doi.org/10.1103/mn54-tl64
+  - title: Quasinormal modes correspondence between horizonless asymptotically
+      regular flat spacetimes and asymptotically anti-de Sitter black holes.
+    link: http://dx.doi.org/10.1103/physrevd.111.084076
+  - title: " Echoes of bimodal axial gravitational perturbations in a
+      uniform-density star in Einstein-Æther gravity."
+    link: http://dx.doi.org/10.1103/44n5-s2k6
 books_chapters: "Tenho um livro, mas em chines : *Braneworld Cosmology and
   Superstring Phenomenology*. estou preparando a escrever um livro sobre
   relatividade geral."
