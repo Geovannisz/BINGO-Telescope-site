@@ -227,35 +227,46 @@ const translationsMap = Object.fromEntries(
     <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7, 13, 31, 0.8) 0%, rgba(7, 13, 31, 0.9) 100%);"></div>
     <div class="starfield"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-on-scroll">
-        <!-- Mirrors -->
-        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
-          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">~40m</div>
-          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.mirrors">Diâmetro dos Espelhos</div>
-        </div>
-        <!-- Horns -->
-        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
-          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">28</div>
-          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.horns">Cornetas no Plano Focal</div>
-        </div>
-        <!-- Publications -->
-        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)]">
-          <div class="stat-number notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">100+</div>
-          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.publications">Publicações Científicas</div>
-        </div>
-        <!-- Countries -->
-        <div class="group text-center rounded-2xl p-6 sm:p-8 border border-slate-800/80 bg-slate-950/40 backdrop-blur-md hover:border-cyan-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.08)] flex flex-col items-center justify-center">
-          <div class="flex justify-center gap-1.5 sm:gap-2 mb-3 flex-wrap">
-            <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Brasil" />
-            <img src="https://flagcdn.com/cn.svg" alt="China" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="China" />
-            <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Reino Unido" />
-            <img src="https://flagcdn.com/fr.svg" alt="França" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="França" />
-            <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="Holanda" />
-            <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-5 sm:h-6 aspect-[3/2] object-cover rounded shadow-md shadow-black/30 ring-1 ring-white/10 hover:ring-cyan-500/30 transition-all duration-300" title="África do Sul" />
+      <div class="text-center mb-10 sm:mb-12 animate-on-scroll">
+        <span class="eyebrow" data-t="stats.label">O Projeto em Números</span>
+      </div>
+
+      <div class="instrument-panel animate-on-scroll">
+        <div class="hairline-sweep" aria-hidden="true"></div>
+        <dl class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          <div class="stat-cell">
+            <dd class="stat-value notranslate" translate="no">~40m</dd>
+            <dt class="stat-caption" data-t="stats.mirrors">Diâmetro dos Espelhos</dt>
           </div>
-          <div class="stat-number text-xl sm:text-2xl mt-1 notranslate drop-shadow-[0_0_10px_rgba(34,211,238,0.4)] group-hover:drop-shadow-[0_0_16px_rgba(34,211,238,0.6)] transition-all duration-500" translate="no">6+</div>
-          <div class="stat-label group-hover:text-slate-300 transition-colors duration-300" data-t="stats.countries">Países Colaboradores</div>
-        </div>
+          <div class="stat-cell">
+            <dd class="stat-value notranslate" translate="no">28</dd>
+            <dt class="stat-caption" data-t="stats.horns">Cornetas no Plano Focal</dt>
+          </div>
+          <div class="stat-cell">
+            <dd class="stat-value notranslate" translate="no">980–1260</dd>
+            <dt class="stat-caption" data-t="stats.freq">Frequência (MHz)</dt>
+          </div>
+          <div class="stat-cell">
+            <dd class="stat-value notranslate" translate="no">0.13–0.45</dd>
+            <dt class="stat-caption" data-t="stats.redshift">Faixa de Redshift</dt>
+          </div>
+          <div class="stat-cell">
+            <dd class="stat-value notranslate" translate="no">100+</dd>
+            <dt class="stat-caption" data-t="stats.publications">Publicações Científicas</dt>
+          </div>
+          <div class="stat-cell">
+            <dd class="flex justify-center gap-1.5 mb-2.5 flex-wrap">
+              <img src="https://flagcdn.com/br.svg" alt="Brasil" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="Brasil" />
+              <img src="https://flagcdn.com/cn.svg" alt="China" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="China" />
+              <img src="https://flagcdn.com/gb.svg" alt="Reino Unido" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="Reino Unido" />
+              <img src="https://flagcdn.com/fr.svg" alt="França" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="França" />
+              <img src="https://flagcdn.com/nl.svg" alt="Holanda" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="Holanda" />
+              <img src="https://flagcdn.com/za.svg" alt="África do Sul" class="h-4 aspect-[3/2] object-cover rounded-sm ring-1 ring-white/10" title="África do Sul" />
+              <span class="stat-value w-full notranslate" translate="no">6+</span>
+            </dd>
+            <dt class="stat-caption" data-t="stats.countries">Países Colaboradores</dt>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
