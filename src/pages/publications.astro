@@ -507,6 +507,9 @@ uniquePubs.forEach(pub => {
         const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
         if (currentPage > totalPages) currentPage = totalPages;
 
+        // Reorder DOM to match sorted array (fixes visual order issue)
+        filtered.forEach(card => pubList.appendChild(card));
+
         // Hide all cards
         allCards.forEach(c => {
           c.style.display = 'none';
