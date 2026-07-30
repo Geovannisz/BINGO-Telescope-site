@@ -989,9 +989,10 @@ h1, h2, h3 {
 
 .pub-filters-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   flex: 1;
+  min-width: 0;
 }
 
 .pub-sort-group {
@@ -1000,7 +1001,9 @@ h1, h2, h3 {
 
 .pub-filter-select-wrapper {
   position: relative;
-  display: inline-flex;
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .pub-filter-select {
@@ -1015,7 +1018,10 @@ h1, h2, h3 {
   cursor: pointer;
   outline: none;
   transition: all 0.2s;
-  min-width: 0;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .pub-filter-select:focus {
   border-color: rgba(34, 211, 238, 0.4);
