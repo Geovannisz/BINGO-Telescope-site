@@ -173,6 +173,7 @@ uniquePubs.forEach(pub => {
             id="pub-search-input" 
             placeholder="Buscar por título, autores, resumo ou periódico..." 
             data-pub-placeholder="ui.search_placeholder"
+            data-pub-aria="ui.search_aria"
             class="pub-search-input"
             autocomplete="off"
             aria-label="Buscar publicações"
@@ -190,7 +191,7 @@ uniquePubs.forEach(pub => {
           <div class="pub-filters-group">
             <!-- Year filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-year" class="pub-filter-select" aria-label="Filtrar por ano">
+              <select id="pub-filter-year" class="pub-filter-select" aria-label="Filtrar por ano" data-pub-aria="ui.filter_year_aria">
                 <option value="" data-pub-t="ui.all_years">Todos os anos</option>
                 {years.map(y => <option value={y}>{y}</option>)}
               </select>
@@ -199,7 +200,7 @@ uniquePubs.forEach(pub => {
 
             <!-- Journal filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-journal" class="pub-filter-select" aria-label="Filtrar por periódico">
+              <select id="pub-filter-journal" class="pub-filter-select" aria-label="Filtrar por periódico" data-pub-aria="ui.filter_journal_aria">
                 <option value="" data-pub-t="ui.all_journals">Todos os periódicos</option>
                 {journals.map(j => <option value={j}>{j}</option>)}
               </select>
@@ -208,7 +209,7 @@ uniquePubs.forEach(pub => {
 
             <!-- Category filter -->
             <div class="pub-filter-select-wrapper">
-              <select id="pub-filter-category" class="pub-filter-select" aria-label="Filtrar por categoria">
+              <select id="pub-filter-category" class="pub-filter-select" aria-label="Filtrar por categoria" data-pub-aria="ui.filter_category_aria">
                 <option value="" data-pub-t="ui.all_categories">Todas as categorias</option>
                 <option value="Série Principal" data-pub-t="category.Série Principal">Série Principal</option>
                 <option value="ABDUS" data-pub-t="category.ABDUS">ABDUS</option>
@@ -224,7 +225,7 @@ uniquePubs.forEach(pub => {
           <!-- Sort -->
           <div class="pub-sort-group">
             <div class="pub-filter-select-wrapper">
-              <select id="pub-sort" class="pub-filter-select pub-sort-select" aria-label="Ordenar publicações">
+              <select id="pub-sort" class="pub-filter-select pub-sort-select" aria-label="Ordenar publicações" data-pub-aria="ui.sort_aria">
                 <option value="date-desc" data-pub-t="ui.sort_recent">Mais recente</option>
                 <option value="date-asc" data-pub-t="ui.sort_oldest">Mais antigo</option>
                 <option value="title-asc" data-pub-t="ui.sort_title_asc">A → Z (título)</option>
@@ -377,6 +378,12 @@ uniquePubs.forEach(pub => {
         data-pagination-of-pt="de"
         data-pagination-of-en="of"
         data-pagination-of-zh="/"
+        data-pagination-prev-pt="Página anterior"
+        data-pagination-prev-en="Previous page"
+        data-pagination-prev-zh="上一页"
+        data-pagination-next-pt="Próxima página"
+        data-pagination-next-en="Next page"
+        data-pagination-next-zh="下一页"
       >
         <!-- Dynamically rendered by JS -->
       </div>
@@ -550,8 +557,13 @@ uniquePubs.forEach(pub => {
 
         let html = '<div class="pub-pagination-inner">';
 
+        const rawLang = localStorage.getItem('bingo-lang') || 'en';
+        const langCode = rawLang === 'zh-CN' ? 'zh' : rawLang;
+        const prevAria = pagination.getAttribute(`data-pagination-prev-${langCode}`) || 'Previous page';
+        const nextAria = pagination.getAttribute(`data-pagination-next-${langCode}`) || 'Next page';
+
         // Previous
-        html += `<button class="pub-page-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''} aria-label="Página anterior">
+        html += `<button class="pub-page-btn ${currentPage === 1 ? 'disabled' : ''}" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''} aria-label="${prevAria}">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         </button>`;
 
@@ -576,12 +588,10 @@ uniquePubs.forEach(pub => {
         }
 
         // Next
-        html += `<button class="pub-page-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''} aria-label="Próxima página">
+        html += `<button class="pub-page-btn ${currentPage === totalPages ? 'disabled' : ''}" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''} aria-label="${nextAria}">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>`;
 
-        const rawLang = localStorage.getItem('bingo-lang') || 'en';
-        const langCode = rawLang === 'zh-CN' ? 'zh' : rawLang;
         const deText = pagination.getAttribute(`data-pagination-of-${langCode}`) || 'de';
 
         html += `<span class="pub-page-info">${((currentPage - 1) * ITEMS_PER_PAGE) + 1}–${Math.min(currentPage * ITEMS_PER_PAGE, total)} ${deText} ${total}</span>`;

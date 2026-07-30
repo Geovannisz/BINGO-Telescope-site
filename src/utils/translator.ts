@@ -510,5 +510,15 @@ export function translateUIElements(lang: string): void {
         el.placeholder = translation;
       }
     });
+
+    // Translate publications ARIA labels natively
+    document.querySelectorAll('[data-pub-aria]').forEach((el) => {
+      const key = (el as HTMLElement).dataset.pubAria;
+      if (!key) return;
+      const translation = (pubTranslations[i18nLang as 'pt' | 'en' | 'zh'] as Record<string, string>)[key];
+      if (translation) {
+        el.setAttribute('aria-label', translation);
+      }
+    });
   });
 }
