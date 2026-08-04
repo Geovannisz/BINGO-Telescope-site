@@ -46,4 +46,3 @@ Após a reunião, a **Universidade de Ciência e Tecnologia da China (USTC)** e 
 
 
 **Fonte:** Universidade de Ciência e Tecnologia da China (USTC). *USTC and the BINGO International Cooperation Project Hold Bilateral Meeting*. Disponível em: <https://news.ustc.edu.cn/info/1055/95834.htm>. Acesso em: 25 jul. 2026.
-```
