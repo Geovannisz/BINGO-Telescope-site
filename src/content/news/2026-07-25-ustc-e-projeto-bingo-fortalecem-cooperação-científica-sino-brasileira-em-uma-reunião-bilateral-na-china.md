@@ -10,7 +10,7 @@ summary: A Universidade de Ciência e Tecnologia da China (USTC) e o Projeto
   reforçou a parceria internacional em radioastronomia e cosmologia, destacando
   os avanços na construção do telescópio e os planos para sua evolução
   científica e tecnológica.
-published: false
+published: true
 ---
 No dia 15 de julho, a **Universidade de Ciência e Tecnologia da China (USTC)** sediou uma reunião bilateral com representantes do **Projeto BINGO (*Baryon Acoustic Oscillations from Integrated Neutral Gas Observations*)**, reforçando a parceria científica entre Brasil e China e estabelecendo novas perspectivas para o desenvolvimento conjunto de pesquisas em radioastronomia e cosmologia.
 
