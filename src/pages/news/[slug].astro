@@ -53,7 +53,7 @@ const translations = {
         <time class="text-cyan-400 font-medium text-sm mb-2 block">{entry.data.date.toLocaleDateString('pt-BR')}</time>
         <h1 id="news-title" class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">{entry.data.title}</h1>
         <div class="flex items-center gap-4 text-slate-400 text-sm">
-          <span>Por {entry.data.author}</span>
+          <span id="news-byline" class="notranslate" translate="no">Por {entry.data.author}</span>
         </div>
       </div>
 
@@ -104,13 +104,24 @@ const translations = {
             });
           }
           // No manual translation → leave as-is, Google Translate handles it
+
+          // Always translate structural UI elements natively
+          const byline = document.getElementById('news-byline');
+          if (byline) {
+            const author = byline.textContent.replace('Por ', '');
+            byline.textContent = nLang === 'zh' ? '作者：' + author : 'By ' + author;
+          }
+          const backLink = document.getElementById('news-back-link');
+          if (backLink) {
+            backLink.textContent = nLang === 'zh' ? '返回新闻' : 'Back to News';
+          }
         });
       </script>
 
       <div class="mt-16 pt-8 border-t border-slate-800">
         <a href={`${base}news`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
           <svg class="mr-2 w-5 h-5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          Voltar para Notícias
+          <span id="news-back-link" class="notranslate" translate="no">Voltar para Notícias</span>
         </a>
       </div>
     </div>
