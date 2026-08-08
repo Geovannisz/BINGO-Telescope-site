@@ -43,21 +43,11 @@ const translations = {
   publishDate={entry.data.date}
   author={entry.data.author}
 >
-  <article class="py-24 sm:py-32 bg-slate-900 min-h-screen" data-no-translate>
+  <article class="py-24 sm:py-32 bg-slate-900 min-h-screen" data-dynamic-translate="true">
     <!-- Translation Data -->
     <script id="entry-translations" type="application/json" set:html={JSON.stringify(translations)}></script>
 
     <div class="mx-auto max-w-3xl px-6 lg:px-8">
-      
-      <!-- Warning for missing translation -->
-      <div id="translation-warning" class="mb-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 items-start gap-3" style="display: none;">
-        <svg class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-        <div>
-          <p id="translation-warning-text" class="text-amber-400 font-medium text-sm"></p>
-        </div>
-      </div>
 
       <div class="mb-10">
         <time class="text-cyan-400 font-medium text-sm mb-2 block">{entry.data.date.toLocaleDateString('pt-BR')}</time>
@@ -83,38 +73,37 @@ const translations = {
           if (lang === 'pt') return;
           
           const nLang = lang === 'zh-CN' ? 'zh' : lang;
-          const transStr = document.getElementById('entry-translations').textContent;
-          const translations = JSON.parse(transStr);
+          const transEl = document.getElementById('entry-translations');
+          if (!transEl || !transEl.textContent) return;
+          const translations = JSON.parse(transEl.textContent);
           const data = translations[nLang];
           
           const hasTrans = data && (data.title || data.body);
-          if (!hasTrans) {
-            const warning = document.getElementById('translation-warning');
-            const warningText = document.getElementById('translation-warning-text');
-            if (warning && warningText) {
-              warning.style.display = 'flex';
-              warningText.textContent = nLang === 'zh'
-                ? '此内容尚未翻译成中文。显示原始葡萄牙语版本。'
-                : 'This content has not yet been translated to English. Displaying the original Portuguese version.';
+          if (hasTrans) {
+            // Manual translation exists → apply and mark as notranslate
+            if (data.title) {
+              const titleEl = document.getElementById('news-title');
+              titleEl.innerHTML = data.title;
+              titleEl.classList.add('notranslate');
+              titleEl.setAttribute('translate', 'no');
+              document.title = data.title + " | BINGO Telescope";
             }
-            return; // Fallback to PT
-          }
-          
-          if (data.title) {
-            document.getElementById('news-title').innerHTML = data.title;
-            document.title = data.title + " | BINGO Telescope";
-          }
-          if (data.body) {
-            document.getElementById('news-body').innerHTML = data.body;
-          }
-          
-          // Fix markdown image paths
-          document.querySelectorAll('.prose img').forEach((img) => {
-            const src = img.getAttribute('src');
-            if (src && src.startsWith('/') && !src.startsWith(base)) {
-              img.setAttribute('src', base + src.slice(1));
+            if (data.body) {
+              const bodyEl = document.getElementById('news-body');
+              bodyEl.innerHTML = data.body;
+              bodyEl.classList.add('notranslate');
+              bodyEl.setAttribute('translate', 'no');
             }
-          });
+            
+            // Fix markdown image paths
+            document.querySelectorAll('.prose img').forEach((img) => {
+              const src = img.getAttribute('src');
+              if (src && src.startsWith('/') && !src.startsWith(base)) {
+                img.setAttribute('src', base + src.slice(1));
+              }
+            });
+          }
+          // No manual translation → leave as-is, Google Translate handles it
         });
       </script>
 

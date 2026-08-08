@@ -355,9 +355,9 @@ const translationsMap = Object.fromEntries(
             const id = card.getAttribute('data-id');
             if (!id) return;
             const trans = translationsMap[id];
-            const badge = card.querySelector('.news-translation-badge');
             
             if (trans && trans[nLang]) {
+              // Manual translation exists → apply it and block Google Translate
               const data = trans[nLang];
               if (data.title) {
                 const tEl = card.querySelector('h3');
@@ -367,20 +367,10 @@ const translationsMap = Object.fromEntries(
                 const sEl = card.querySelector('p');
                 if (sEl) sEl.textContent = data.summary;
               }
-            } else {
-              // Missing translation for the selected language
-              if (badge) {
-                badge.classList.remove('hidden');
-                const badgeText = badge.querySelector('.badge-text');
-                if (badgeText) {
-                  if (nLang === 'en') {
-                    badgeText.textContent = 'No translation';
-                  } else if (nLang === 'zh') {
-                    badgeText.textContent = '无翻译';
-                  }
-                }
-              }
+              card.classList.add('notranslate');
+              card.setAttribute('translate', 'no');
             }
+            // No manual translation → leave as-is, Google Translate handles it
           });
         } catch(e) {}
       }

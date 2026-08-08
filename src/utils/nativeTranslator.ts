@@ -77,6 +77,13 @@ export async function initNativeTranslator(pageId: string): Promise<void> {
     const { pageTranslations } = await import('./translations/pages');
     const pageTrans = pageTranslations[pageId];
     if (!pageTrans) {
+      // Even without page-specific translations, pages with dynamic CMS
+      // content (news, team, publications) may need Google Translate as
+      // a fallback for entries that lack manual translations.
+      if (hasDynamic) {
+        initTranslator();
+        return;
+      }
       revealBody();
       return;
     }
