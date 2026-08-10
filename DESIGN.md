@@ -36,10 +36,10 @@ Para ressaltar termos críticos e estatísticas sem ofuscar a interface escura, 
 
 *   **`.gradient-text` (Ex: Texto "Universo Escuro" / "Dark Universe" no Hero):**
     *   `linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #fbbf24 100%)`
-    *   Cria um forte contraste e transmite a ideia de mistério e energia, com uma transição suave que começa no Ciano Elétrico (`#22d3ee`), passa pelo Azul Índigo (`#818cf8`) e finaliza com toques de Amarelo/Dourado (`#fbbf24`).
+    *   Cria um forte contraste e transmite a ideia de mistério e energia, com uma transição suave que começa no Ciano Elétrico (![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) `#22d3ee`), passa pelo Azul Índigo (![#818cf8](https://placehold.co/15x15/818cf8/818cf8.png) `#818cf8`) e finaliza com toques de Amarelo/Dourado (![#fbbf24](https://placehold.co/15x15/fbbf24/fbbf24.png) `#fbbf24`).
 *   **`.gradient-text-cyan` (Ex: Números de estatísticas rápidos):**
     *   `linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #6366f1 100%)`
-    *   Uma variação mais tecnológica para transmitir precisão científica ("telemetria"). Transição entre tons de Ciano (`#22d3ee`, `#06b6d4`) e Azul Violeta (`#6366f1`).
+    *   Uma variação mais tecnológica para transmitir precisão científica ("telemetria"). Transição entre tons de Ciano (![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) `#22d3ee`, ![#06b6d4](https://placehold.co/15x15/06b6d4/06b6d4.png) `#06b6d4`) e Azul Violeta (![#6366f1](https://placehold.co/15x15/6366f1/6366f1.png) `#6366f1`).
 
 ---
 
