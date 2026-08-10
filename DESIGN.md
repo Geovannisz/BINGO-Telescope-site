@@ -51,6 +51,7 @@ A tipografia é uma mistura de fontes sem serifa geométricas de alto impacto e 
 | :--- | :--- | :--- | :--- |
 | **[Outfit](https://fonts.google.com/specimen/Outfit)** | Títulos e Estatísticas | `700`, `800`, `900` | Autoritária, geométrica, espaçamento (tracking) apertado. |
 | **[Inter](https://fonts.google.com/specimen/Inter)** | Corpo e Prosa | `400`, `500`, `600` | Altamente legível, limpa, fonte moderna de trabalho. |
+| **Nasalization Rg** (`.font-bingo`) | Marca / Sigla BINGO | `400` | Fonte oficial da marca, futurista, usada exclusivamente para destacar o acrônimo BINGO. |
 
 ### Regras Tipográficas Avançadas
 - **Telemetria/Números:** Os números estatísticos usam a fonte **Outfit**, mas dependem crucialmente de `font-variant-numeric: tabular-nums` para manter o alinhamento vertical preciso nos painéis.
@@ -63,8 +64,8 @@ A tipografia é uma mistura de fontes sem serifa geométricas de alto impacto e 
 A hierarquia é estabelecida através de **camadas translúcidas** e **bordas brilhantes**, em vez de tradicionais sombras opacas (drop-shadows).
 
 * **Nível 0 (Fundo/Canvas):** Fundos do espaço profundo (`#050a18`), frequentemente usando efeitos imersivos como a classe `.starfield` (simulação em CSS de partículas/estrelas brilhantes) ou gradientes radiais em imagens de fundo para dar foco sem poluir.
-* **Nível 1 (Superfícies):** Cartões (Cards) glassmórficos com `backdrop-filter: blur(18px)` e uma borda sutil ultrafina de `1px` com a cor `rgba(148, 163, 184, 0.12)`.
-* **Nível 2 (Interação):** Ao passar o mouse (hover), os elementos aumentam levemente (`transform: translateY(-8px)`), as cores das bordas mudam para ciano `rgba(34, 211, 238, 0.28)` e ganham um suave brilho externo colorido (`box-shadow: 0 0 42px -12px rgba(34, 211, 238, 0.35)`).
+* **Nível 1 (Superfícies):** Cartões (Cards) glassmórficos base (`.glass-card`) com `backdrop-filter: blur(12px)` e uma borda sutil ultrafina de `1px` com a cor `rgba(148, 163, 184, 0.10)`. Para destaques maiores, a classe `.glass-card-glow` adiciona sombras internas e brilhos externos em tons de índigo.
+* **Nível 2 (Interação):** Ao passar o mouse (hover), os cartões aumentam levemente (`transform: translateY(-2px)` a `-8px`), as cores das bordas mudam para ciano `rgba(34, 211, 238, 0.20)` e ganham um suave brilho externo colorido (`box-shadow: 0 0 30px rgba(34, 211, 238, 0.08)`).
 
 ---
 
@@ -92,3 +93,31 @@ Uma exibição de telemetria condensada usada na seção principal (Hero). Possu
 `.eyebrow`
 Um rótulo em forma de pílula, delicado e brilhante, para categorizar seções (ex: "O Projeto em Números"). Ele usa um fundo intensamente desfocado, sombras internas e tipografia espaçada em letras maiúsculas.
 
+---
+
+## 🌌 5. Fundos e Atmosfera (Backgrounds)
+
+O design se apoia muito em fundos dinâmicos para evitar superfícies pretas "chapadas" e transmitir a profundidade do espaço.
+
+*   **`.starfield`**: Um sistema de camadas de partículas e estrelas construído 100% em CSS com múltiplos `radial-gradients` de tamanhos e opacidades variadas. A camada superior de estrelas possui uma animação lenta de flutuação (`float 30s`) para criar paralelaxe.
+*   **`.bg-cosmic` e `.bg-cosmic-alt`**: Gradientes de fundo combinando focos radiais (índigo e ciano) nas bordas superiores/inferiores com um gradiente linear para criar uma névoa espacial muito suave e profissional.
+*   **`.page-hero-bg` / `.section-bg-image`**: Utilizadas para mesclar imagens reais de telescópios ao fundo. Empregam sobreposições lineares opacas para garantir que o texto seja legível, com a imagem muito sutil por baixo (opacidade de 15% a 25%). O hero possui um `@keyframes subtle-zoom` de 30s.
+
+---
+
+## 🎬 6. Animações e Scroll
+
+As animações são focadas em suavidade e "tecnologia sutil".
+
+*   **Scroll Reveal (`.animate-on-scroll`)**: Elementos com esta classe começam invisíveis e levemente deslocados para baixo (`translateY(30px)`). Via JavaScript interativo (`IntersectionObserver`), eles recebem a classe `.is-visible` ao entrarem na tela, revelando-se de forma elegante.
+*   **Animações Padrão**: Classes como `.animate-fade-in-up`, `.animate-slide-left`, `.animate-glow`, `.animate-float` oferecem utilitários prontos (`@keyframes` do `global.css`) para micro-interações.
+
+---
+
+## 🛡️ 7. Resiliência e Acessibilidade (Dark Theme Hardening)
+
+O BINGO Telescope possui uma camada defensiva de estilos (CSS Hardening) para assegurar que a interface **Apenas Escura** não quebre sob certas circunstâncias agressivas do navegador.
+
+*   **Forced-Colors Mode**: Suporte integral ao *High-Contrast Mode* do Windows (`@media (forced-colors: active)`), removendo gradientes e respeitando cores de tela nativas (`Canvas`, `CanvasText`) para usuários com necessidades visuais.
+*   **Sobrescrita do Google Translate**: O widget e as extensões do Google Translate frequentemente injetam estilos diretos (`<font color="#000000">`), o que resulta em textos pretos invisíveis no tema escuro. O sistema blinda isso forçando os elementos traduzidos a herdarem a cor base (`color: inherit !important`).
+*   **Garantia Dark-Only**: Regras de base no `html` e `body` e o media query `@media (prefers-color-scheme: light)` forçam `color-scheme: dark only`, garantindo que extensões de modo claro não corrompam o contraste da UI.
