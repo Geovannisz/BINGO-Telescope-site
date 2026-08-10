@@ -30,6 +30,17 @@ The palette is anchored in a **Dark-Only** mode to reflect the deep-space missio
 > **Surfaces** leverage complex, layered linear gradients with translucency rather than solid colors.  
 > *Example:* `linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(7, 13, 31, 0.86) 100%)`
 
+### 🌈 1.1 Text Gradients (Destaques)
+
+Para ressaltar termos críticos e estatísticas sem ofuscar a interface escura, utilizamos gradientes textuais específicos:
+
+*   **`.gradient-text` (Ex: Texto "Universo Escuro" / "Dark Universe" no Hero):**
+    *   `linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #fbbf24 100%)`
+    *   Cria um forte contraste e transmite a ideia de mistério e energia, com uma transição suave que começa no Ciano Elétrico (`#22d3ee`), passa pelo Azul Índigo (`#818cf8`) e finaliza com toques de Amarelo/Dourado (`#fbbf24`).
+*   **`.gradient-text-cyan` (Ex: Números de estatísticas rápidos):**
+    *   `linear-gradient(135deg, #22d3ee 0%, #06b6d4 50%, #6366f1 100%)`
+    *   Uma variação mais tecnológica para transmitir precisão científica ("telemetria"). Transição entre tons de Ciano (`#22d3ee`, `#06b6d4`) e Azul Violeta (`#6366f1`).
+
 ---
 
 ## 🔤 2. Typography
@@ -51,7 +62,7 @@ Typography is a mix of high-impact geometric sans-serifs and highly readable wor
 
 Hierarchy is established through **translucent layers** and **glowing borders** rather than traditional opaque drop-shadows.
 
-* **Level 0 (Canvas):** Deep space backgrounds (`#050a18`), often using a subtle noise/film-grain overlay or faint celestial gradients.
+* **Level 0 (Canvas):** Deep space backgrounds (`#050a18`), frequentemente usando efeitos imersivos como a classe `.starfield` (simulação em CSS de partículas/estrelas brilhantes) ou gradientes radiais em imagens de fundo para dar foco sem poluir.
 * **Level 1 (Surfaces):** Glassmorphic cards with `backdrop-filter: blur(18px)` and a ultra-thin `1px` subtle border `rgba(148, 163, 184, 0.12)`.
 * **Level 2 (Interaction):** Upon hover, elements scale up slightly (`transform: translateY(-8px)`), border colors shift to cyan `rgba(34, 211, 238, 0.28)`, and they gain a soft, colored outer glow (`box-shadow: 0 0 42px -12px rgba(34, 211, 238, 0.35)`).
 
@@ -60,6 +71,10 @@ Hierarchy is established through **translucent layers** and **glowing borders** 
 ## 🧩 4. Core Custom Components
 
 Our `src/styles/global.css` defines several highly polished utility classes that form the backbone of the UI.
+
+### 🔘 Botões Cósmicos (Buttons)
+`.btn-cosmic` | `.btn-cosmic-outline`
+Botões projetados para parecerem interfaces de comando futuristas. O `.btn-cosmic` traz um gradiente chamativo no fundo para ações primárias, enquanto o `.btn-cosmic-outline` usa fundo semitransparente com borda reforçada. No estado *hover*, ativam um brilho extra (`::after` sweep).
 
 ### 🎛️ Instrument Panel
 `.instrument-panel` | `.stat-cell` | `.stat-value`
@@ -76,3 +91,4 @@ A condensed telemetry display used in the Hero section. It features a sweeping a
 ### 🏷️ Eyebrow Badges
 `.eyebrow`
 A delicate, glowing pill-shape label for categorizing sections (e.g., "O Projeto em Números"). It uses a heavily blurred backdrop, inner shadows, and uppercase spaced typography.
+
