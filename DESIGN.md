@@ -1,36 +1,36 @@
 ---
-name: Cosmic Observatory
+name: Observatório Cósmico
 version: 2.0
 theme: Premium Glassmorphism
 ---
 
-# 🌌 BINGO Telescope Design System
+# 🌌 Sistema de Design do Telescópio BINGO
 
 > [!NOTE]
-> **Vision:** A high-fidelity tribute to the mystery and precision of radio astronomy. The design evokes the feeling of a state-of-the-art observatory control room, blending the vast, silent expanse of the universe with the sharp, glowing telemetry of modern scientific instruments.
+> **Visão:** Um tributo de alta fidelidade ao mistério e à precisão da radioastronomia. O design evoca a sensação de uma sala de controle de um observatório de última geração, misturando a vasta e silenciosa imensidão do universo com a telemetria nítida e brilhante dos modernos instrumentos científicos.
 
-The core aesthetic relies heavily on **Premium Glassmorphism** layered over a **Minimalist Cosmic** foundation. High-transparency surfaces with heavy backdrop blurs (`blur(18px)`) create a sense of deep atmospheric data. 
+A estética central baseia-se fortemente no **Glassmorphism Premium** em camadas sobre uma base **Cósmica Minimalista**. Superfícies de alta transparência com desfoques de fundo intensos (`blur(18px)`) criam uma sensação de dados atmosféricos profundos. 
 
 ---
 
-## 🎨 1. Colors & Palette
+## 🎨 1. Cores & Paleta
 
-The palette is anchored in a **Dark-Only** mode to reflect the deep-space mission of the telescope.
+A paleta está ancorada em um modo **Apenas Escuro** (Dark-Only) para refletir a missão de espaço profundo do telescópio.
 
-| Role | Color | Hex Code | Usage |
+| Função | Cor | Código Hex | Uso |
 | :--- | :--- | :--- | :--- |
-| **Primary** | ![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) Electric Cyan | `#22d3ee` | Interactive elements, active states, and focal statistical values. The "signal". |
-| **Secondary** | ![#3b82f6](https://placehold.co/15x15/3b82f6/3b82f6.png) Cosmic Blue | `#3b82f6` | Depth, transitions, and gradient pairings with Cyan. |
-| **Neutral** | ![#050a18](https://placehold.co/15x15/050a18/050a18.png) Cosmic Void | `#050a18` | The foundational dark space background. |
-| **Surface** | ![#0f172a](https://placehold.co/15x15/0f172a/0f172a.png) Slate Glow | `#0f172a` | Used as the base for glassmorphic gradients. |
-| **Text** | ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) Starlight | `#ffffff` | Primary headings and high-contrast text. |
-| **Muted Text** | ![#94a3b8](https://placehold.co/15x15/94a3b8/94a3b8.png) Cosmic Dust | `#94a3b8` | Paragraphs, captions, and secondary information. |
+| **Primária** | ![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) Ciano Elétrico | `#22d3ee` | Elementos interativos, estados ativos e valores estatísticos focais. O "sinal". |
+| **Secundária** | ![#3b82f6](https://placehold.co/15x15/3b82f6/3b82f6.png) Azul Cósmico | `#3b82f6` | Profundidade, transições e combinações de gradientes com Ciano. |
+| **Neutra** | ![#050a18](https://placehold.co/15x15/050a18/050a18.png) Vazio Cósmico | `#050a18` | O fundo escuro do espaço base. |
+| **Superfície** | ![#0f172a](https://placehold.co/15x15/0f172a/0f172a.png) Brilho de Ardósia (Slate Glow) | `#0f172a` | Usado como base para gradientes glassmórficos. |
+| **Texto** | ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) Luz Estelar | `#ffffff` | Títulos primários e textos de alto contraste. |
+| **Texto Suave** | ![#94a3b8](https://placehold.co/15x15/94a3b8/94a3b8.png) Poeira Cósmica | `#94a3b8` | Parágrafos, legendas e informações secundárias. |
 
 > [!TIP]
-> **Surfaces** leverage complex, layered linear gradients with translucency rather than solid colors.  
-> *Example:* `linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(7, 13, 31, 0.86) 100%)`
+> **Superfícies** utilizam gradientes lineares complexos e em camadas com translucidez, em vez de cores sólidas.  
+> *Exemplo:* `linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(7, 13, 31, 0.86) 100%)`
 
-### 🌈 1.1 Text Gradients (Destaques)
+### 🌈 1.1 Gradientes de Texto (Destaques)
 
 Para ressaltar termos críticos e estatísticas sem ofuscar a interface escura, utilizamos gradientes textuais específicos:
 
@@ -43,52 +43,52 @@ Para ressaltar termos críticos e estatísticas sem ofuscar a interface escura, 
 
 ---
 
-## 🔤 2. Typography
+## 🔤 2. Tipografia
 
-Typography is a mix of high-impact geometric sans-serifs and highly readable workhorses.
+A tipografia é uma mistura de fontes sem serifa geométricas de alto impacto e fontes de trabalho (workhorses) altamente legíveis.
 
-| Font Family | Usage | Weights | Characteristics |
+| Família de Fontes | Uso | Pesos | Características |
 | :--- | :--- | :--- | :--- |
-| **[Outfit](https://fonts.google.com/specimen/Outfit)** | Headlines & Stats | `700`, `800`, `900` | Authoritative, geometric, tight tracking. |
-| **[Inter](https://fonts.google.com/specimen/Inter)** | Body & Prose | `400`, `500`, `600` | Highly readable, clean, modern workhorse. |
+| **[Outfit](https://fonts.google.com/specimen/Outfit)** | Títulos e Estatísticas | `700`, `800`, `900` | Autoritária, geométrica, espaçamento (tracking) apertado. |
+| **[Inter](https://fonts.google.com/specimen/Inter)** | Corpo e Prosa | `400`, `500`, `600` | Altamente legível, limpa, fonte moderna de trabalho. |
 
-### Advanced Typographic Rules
-- **Telemetry/Numbers:** Statistical numbers use **Outfit**, but crucially rely on `font-variant-numeric: tabular-nums` to maintain precise vertical alignment in dashboards.
-- **Eyebrow Labels:** Small, uppercase labels use **Outfit** with very wide letter spacing (`letter-spacing: 0.16em` or more) to distinguish metadata from standard content.
-
----
-
-## 🏔️ 3. Elevation & Depth
-
-Hierarchy is established through **translucent layers** and **glowing borders** rather than traditional opaque drop-shadows.
-
-* **Level 0 (Canvas):** Deep space backgrounds (`#050a18`), frequentemente usando efeitos imersivos como a classe `.starfield` (simulação em CSS de partículas/estrelas brilhantes) ou gradientes radiais em imagens de fundo para dar foco sem poluir.
-* **Level 1 (Surfaces):** Glassmorphic cards with `backdrop-filter: blur(18px)` and a ultra-thin `1px` subtle border `rgba(148, 163, 184, 0.12)`.
-* **Level 2 (Interaction):** Upon hover, elements scale up slightly (`transform: translateY(-8px)`), border colors shift to cyan `rgba(34, 211, 238, 0.28)`, and they gain a soft, colored outer glow (`box-shadow: 0 0 42px -12px rgba(34, 211, 238, 0.35)`).
+### Regras Tipográficas Avançadas
+- **Telemetria/Números:** Os números estatísticos usam a fonte **Outfit**, mas dependem crucialmente de `font-variant-numeric: tabular-nums` para manter o alinhamento vertical preciso nos painéis.
+- **Rótulos de Destaque (Eyebrow Labels):** Pequenos rótulos em maiúsculas usam a fonte **Outfit** com um espaçamento de letras muito amplo (`letter-spacing: 0.16em` ou mais) para distinguir os metadados do conteúdo padrão.
 
 ---
 
-## 🧩 4. Core Custom Components
+## 🏔️ 3. Elevação e Profundidade
 
-Our `src/styles/global.css` defines several highly polished utility classes that form the backbone of the UI.
+A hierarquia é estabelecida através de **camadas translúcidas** e **bordas brilhantes**, em vez de tradicionais sombras opacas (drop-shadows).
+
+* **Nível 0 (Fundo/Canvas):** Fundos do espaço profundo (`#050a18`), frequentemente usando efeitos imersivos como a classe `.starfield` (simulação em CSS de partículas/estrelas brilhantes) ou gradientes radiais em imagens de fundo para dar foco sem poluir.
+* **Nível 1 (Superfícies):** Cartões (Cards) glassmórficos com `backdrop-filter: blur(18px)` e uma borda sutil ultrafina de `1px` com a cor `rgba(148, 163, 184, 0.12)`.
+* **Nível 2 (Interação):** Ao passar o mouse (hover), os elementos aumentam levemente (`transform: translateY(-8px)`), as cores das bordas mudam para ciano `rgba(34, 211, 238, 0.28)` e ganham um suave brilho externo colorido (`box-shadow: 0 0 42px -12px rgba(34, 211, 238, 0.35)`).
+
+---
+
+## 🧩 4. Componentes Principais Personalizados
+
+Nosso arquivo `src/styles/global.css` define diversas classes utilitárias altamente polidas que formam a espinha dorsal da interface do usuário (UI).
 
 ### 🔘 Botões Cósmicos (Buttons)
 `.btn-cosmic` | `.btn-cosmic-outline`
 Botões projetados para parecerem interfaces de comando futuristas. O `.btn-cosmic` traz um gradiente chamativo no fundo para ações primárias, enquanto o `.btn-cosmic-outline` usa fundo semitransparente com borda reforçada. No estado *hover*, ativam um brilho extra (`::after` sweep).
 
-### 🎛️ Instrument Panel
+### 🎛️ Painel de Instrumentos (Instrument Panel)
 `.instrument-panel` | `.stat-cell` | `.stat-value`
-A large, unified glassmorphic dashboard container. It groups metrics into distinct cells with overlapping hairline borders. The values use a vibrant Cyan-to-Blue gradient text fill.
+Um grande contêiner unificado de dashboard glassmórfico. Ele agrupa métricas em células distintas com sobreposição de bordas muito finas (hairline). Os valores usam um preenchimento de texto gradiente vibrante de Ciano para Azul.
 
-### 🛰️ Mission Cards
+### 🛰️ Cartões de Missão (Mission Cards)
 `.mission-card` | `.mission-media`
-Used for project sections (BAO, FRBs) and News items. These cards feature a hidden, slowly rotating conic gradient (`@keyframes spin-slow`) that subtly highlights the border edges on hover. Images gently scale up while the card itself elevates.
+Usados para seções de projetos (BAO, FRBs) e itens de Notícias. Estes cartões possuem um gradiente cônico oculto que gira lentamente (`@keyframes spin-slow`), destacando sutilmente as bordas no hover. As imagens aumentam suavemente de escala enquanto o próprio cartão se eleva.
 
-### 📡 Hero Metrics Strip
+### 📡 Faixa de Métricas do Hero (Hero Metrics Strip)
 `.metric` | `.hairline-sweep`
-A condensed telemetry display used in the Hero section. It features a sweeping animated scanline (`.hairline-sweep::after`) that mimics data acquisition processes, running back and forth beneath the data points.
+Uma exibição de telemetria condensada usada na seção principal (Hero). Possui uma linha de varredura animada (`.hairline-sweep::after`) que simula os processos de aquisição de dados, movendo-se para frente e para trás abaixo dos pontos de dados.
 
-### 🏷️ Eyebrow Badges
+### 🏷️ Emblemas de Destaque (Eyebrow Badges)
 `.eyebrow`
-A delicate, glowing pill-shape label for categorizing sections (e.g., "O Projeto em Números"). It uses a heavily blurred backdrop, inner shadows, and uppercase spaced typography.
+Um rótulo em forma de pílula, delicado e brilhante, para categorizar seções (ex: "O Projeto em Números"). Ele usa um fundo intensamente desfocado, sombras internas e tipografia espaçada em letras maiúsculas.
 
