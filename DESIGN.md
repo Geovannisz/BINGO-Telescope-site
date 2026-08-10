@@ -19,12 +19,12 @@ A paleta está ancorada em um modo **Apenas Escuro** (Dark-Only) para refletir a
 
 | Função | Cor | Código Hex | Uso |
 | :--- | :--- | :--- | :--- |
-| **Primária** | ![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) Ciano Elétrico | `#22d3ee` | Elementos interativos, estados ativos e valores estatísticos focais. O "sinal". |
-| **Secundária** | ![#3b82f6](https://placehold.co/15x15/3b82f6/3b82f6.png) Azul Cósmico | `#3b82f6` | Profundidade, transições e combinações de gradientes com Ciano. |
-| **Neutra** | ![#050a18](https://placehold.co/15x15/050a18/050a18.png) Vazio Cósmico | `#050a18` | O fundo escuro do espaço base. |
-| **Superfície** | ![#0f172a](https://placehold.co/15x15/0f172a/0f172a.png) Brilho de Ardósia (Slate Glow) | `#0f172a` | Usado como base para gradientes glassmórficos. |
-| **Texto** | ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) Luz Estelar | `#ffffff` | Títulos primários e textos de alto contraste. |
-| **Texto Suave** | ![#94a3b8](https://placehold.co/15x15/94a3b8/94a3b8.png) Poeira Cósmica | `#94a3b8` | Parágrafos, legendas e informações secundárias. |
+| **Primária** | ![#22d3ee](https://placehold.co/15x15/22d3ee/22d3ee.png) Electric Cyan | `#22d3ee` | Elementos interativos, estados ativos e valores estatísticos focais. O "sinal". |
+| **Secundária** | ![#3b82f6](https://placehold.co/15x15/3b82f6/3b82f6.png) Cosmic Blue | `#3b82f6` | Profundidade, transições e combinações de gradientes com Ciano. |
+| **Neutra** | ![#050a18](https://placehold.co/15x15/050a18/050a18.png) Cosmic Void | `#050a18` | O fundo escuro do espaço base. |
+| **Superfície** | ![#0f172a](https://placehold.co/15x15/0f172a/0f172a.png) Slate Glow | `#0f172a` | Usado como base para gradientes glassmórficos. |
+| **Texto** | ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) Starlight | `#ffffff` | Títulos primários e textos de alto contraste. |
+| **Texto Suave** | ![#94a3b8](https://placehold.co/15x15/94a3b8/94a3b8.png) Cosmic Dust | `#94a3b8` | Parágrafos, legendas e informações secundárias. |
 
 > [!TIP]
 > **Superfícies** utilizam gradientes lineares complexos e em camadas com translucidez, em vez de cores sólidas.  
