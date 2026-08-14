@@ -1,17 +1,17 @@
 ---
-name: Andreia Pereira de Souza
+name: Amélia Ferrari Gênova
 gender: Feminino
 role: Colaborador Externo
-institution: Instituto de Física da Universidade de São Paulo (IFUSP)
+institution: " Universidade de São Paulo (USP)"
+photo: /images/uploads/captura-de-tela-2026-08-14-091559.png
 stage:
   - Stage 0
-email: andreiapsouza@usp.br
-lattes: Possui graduação em Engenharia Civil pela Universidade Estadual de
-  Campinas (2006) e pós-graduação em Engenharia de Segurança do Trabalho pelo
-  PECE-USP (2009). Atuou na área de projetos de pequenas centrais hidrelétricas
-  (PCH). Atualmente é engenheira civil da Universidade de São Paulo, colaborando
-  no projeto do radiotelescópio BINGO, que tem como foco o estudo da energia
-  escura que forma o Universo.
+city: São Paulo, SP - Brasil
+email: ameligenova@gmail.com
+lattes: http://lattes.cnpq.br/9530170278289526
+bio: Possui graduação em Letras pela Universidade Braz Cubas (1985),
+  pós-graduação em Tecnologias e Gestão da Qualidade pela Escola Politécnica da
+  USP e também em Assessoria Executiva pela UniÍtalo.
 authorized: true
 published: true
 ---
