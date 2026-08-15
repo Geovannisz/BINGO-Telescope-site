@@ -1,7 +1,7 @@
 ---
 name: Amélia Ferrari Gênova
 gender: Feminino
-role: Colaborador Externo
+role: Assessor/Assistente
 institution: " Universidade de São Paulo (USP)"
 photo: /images/uploads/captura-de-tela-2026-08-14-091559.png
 stage:
