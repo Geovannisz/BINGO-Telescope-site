@@ -1,10 +1,10 @@
 ---
 title: >-
-  The BINGO Project IX: Search for Fast Radio Bursts – A Forecast for the BINGO
-  Interferometry System⋆
-authors: João Rafael Lucio dos Santos
-date: 2026-08-15T01:46:11.314Z
-link: https://arxiv.org/pdf/2308.06805
+  The BINGO Project. IX. Search for fast radio bursts - A forecast for the BINGO
+  interferometry system.
+authors: Thyrso Villela
+date: 2026-08-15T01:46:56.574Z
+link: http://dx.doi.org/10.1051/0004-6361/202346924
 doi: ""
 summary: ""
 journal: ""
