@@ -91,32 +91,6 @@ const translations = {
 
 <BaseLayout nativeI18n={true} pageId="dynamic" title={`${d.name} — ${displayRole}`} description={`${d.name}, ${displayRole} — ${d.institution}. Membro da equipe do Telescópio BINGO.${d.area ? ` Área: ${d.area}.` : ''}`} image={photoSrc || undefined}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-
-  <!-- AUTH GATE — shown to non-authenticated visitors -->
-  <div id="team-auth-gate" class="bg-cosmic min-h-[60vh] flex items-center justify-center px-4">
-    <div class="glass-card-glow p-8 sm:p-12 max-w-lg w-full text-center animate-fade-in-up">
-      <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-        <svg class="w-8 h-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-      </div>
-      <h1 class="text-2xl sm:text-3xl font-black text-white mb-3" style="font-family: 'Outfit', sans-serif;">
-        Acesso <span class="gradient-text-cyan">Restrito</span>
-      </h1>
-      <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-        Os perfis dos membros estão disponíveis apenas para membros cadastrados no painel do BINGO Telescope.
-      </p>
-      <a href={`${base}admin/`} class="btn-cosmic inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-        </svg>
-        Entrar via Painel CMS
-      </a>
-    </div>
-  </div>
-
-  <!-- TEAM MEMBER CONTENT — hidden by default, revealed after auth check -->
-  <div id="team-content" style="display: none;">
   <script id="entry-translations" type="application/json" set:html={JSON.stringify(translations)}></script>
   <!-- Warning for missing translation -->
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8">
@@ -311,32 +285,5 @@ const translations = {
     });
   });
 </script>
-
-  </div> <!-- /team-content -->
-
-  <!-- AUTH CHECK SCRIPT -->
-  <script is:inline>
-    (function() {
-      function checkCMSAuth() {
-        try {
-          var keys = ['decap-cms-user', 'netlify-cms-user'];
-          for (var i = 0; i < keys.length; i++) {
-            var raw = localStorage.getItem(keys[i]);
-            if (raw) {
-              var user = JSON.parse(raw);
-              if (user && (user.token || user.access_token)) return true;
-            }
-          }
-        } catch(e) {}
-        return false;
-      }
-      if (checkCMSAuth()) {
-        var gate = document.getElementById('team-auth-gate');
-        var content = document.getElementById('team-content');
-        if (gate) gate.style.display = 'none';
-        if (content) content.style.display = '';
-      }
-    })();
-  </script>
 
 </BaseLayout>
