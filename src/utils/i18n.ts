@@ -189,6 +189,7 @@ export const roleTranslations = {
     'role.Iniciação Científica': 'Iniciação Científica',
     'role.Engenheiro': 'Engenheiro',
     'role.Colaborador Externo': 'Colaborador Externo',
+    'role.Assessor/Assistente': 'Assessor/Assistente',
     // Plural labels
     'label.Coordenador Geral': 'Coordenação Geral',
     'label.Pesquisador Sênior': 'Pesquisadores Seniores',
@@ -202,6 +203,7 @@ export const roleTranslations = {
     'label.Iniciação Científica': 'Iniciação Científica',
     'label.Engenheiro': 'Engenheiros',
     'label.Colaborador Externo': 'Colaboradores Externos',
+    'label.Assessor/Assistente': 'Assessores e Assistentes',
     // Descriptions
     'desc.Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
     'desc.Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
@@ -215,6 +217,7 @@ export const roleTranslations = {
     'desc.Iniciação Científica': 'Estudantes de graduação em projetos de IC',
     'desc.Engenheiro': 'Profissionais de engenharia e infraestrutura',
     'desc.Colaborador Externo': 'Parceiros e colaboradores de outras instituições',
+    'desc.Assessor/Assistente': 'Equipe de apoio técnico e administrativo',
   },
   en: {
     // Singular roles
@@ -229,6 +232,7 @@ export const roleTranslations = {
     'role.Iniciação Científica': 'Undergraduate Researcher',
     'role.Engenheiro': 'Engineer',
     'role.Colaborador Externo': 'External Collaborator',
+    'role.Assessor/Assistente': 'Advisor/Assistant',
     // Plural labels
     'label.Coordenador Geral': 'General Coordination',
     'label.Pesquisador Sênior': 'Senior Researchers',
@@ -242,6 +246,7 @@ export const roleTranslations = {
     'label.Iniciação Científica': 'Undergraduate Research',
     'label.Engenheiro': 'Engineers',
     'label.Colaborador Externo': 'External Collaborators',
+    'label.Assessor/Assistente': 'Advisors and Assistants',
     // Descriptions
     'desc.Coordenador Geral': 'Leadership and strategic direction of the BINGO project',
     'desc.Pesquisador Sênior': 'PhD researchers leading specific research lines',
@@ -255,6 +260,7 @@ export const roleTranslations = {
     'desc.Iniciação Científica': 'Undergraduate students in scientific initiation projects',
     'desc.Engenheiro': 'Engineering and infrastructure professionals',
     'desc.Colaborador Externo': 'Partners and collaborators from other institutions',
+    'desc.Assessor/Assistente': 'Technical and administrative support team',
   },
   zh: {
     // Singular roles
@@ -269,6 +275,7 @@ export const roleTranslations = {
     'role.Iniciação Científica': '本科生研究员',
     'role.Engenheiro': '工程师',
     'role.Colaborador Externo': '外部合作者',
+    'role.Assessor/Assistente': '顾问/助理',
     // Plural labels
     'label.Coordenador Geral': '总协调',
     'label.Pesquisador Sênior': '资深研究员',
@@ -282,6 +289,7 @@ export const roleTranslations = {
     'label.Iniciação Científica': '本科生科研',
     'label.Engenheiro': '工程师',
     'label.Colaborador Externo': '外部合作者',
+    'label.Assessor/Assistente': '顾问和助理',
     // Descriptions
     'desc.Coordenador Geral': 'BINGO项目的领导与战略方向',
     'desc.Pesquisador Sênior': '领导特定研究方向 of BINGO 的博士研究人员',
@@ -293,8 +301,9 @@ export const roleTranslations = {
     'desc.Doutorando': '正在撰写博士论文的博士研究生',
     'desc.Mestrando': '正在撰写硕士论文的硕士研究生',
     'desc.Iniciação Científica': '参与科研启蒙项目的在读本科生',
-    'desc.Engenheiro': '工程与基础设施专业人员',
+    'desc.Engenheiro': '工程和基础设施专业人员',
     'desc.Colaborador Externo': '来自其他机构的合作伙伴和合作者',
+    'desc.Assessor/Assistente': '技术和行政支持团队',
   }
 } as const;
 

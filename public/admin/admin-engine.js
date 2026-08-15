@@ -214,7 +214,8 @@
           'Doutorando': 'Doutoranda',
           'Mestrando': 'Mestranda',
           'Engenheiro': 'Engenheira',
-          'Colaborador Externo': 'Colaboradora Externa'
+          'Colaborador Externo': 'Colaboradora Externa',
+          'Assessor/Assistente': 'Assessora/Assistente'
         };
 
         var TeamPreview = window.CMS.createClass({

@@ -143,6 +143,7 @@ collections:
           - Iniciação Científica
           - Engenheiro
           - Colaborador Externo
+          - Assessor/Assistente
         hint: Selecione a função do membro no projeto BINGO
       - label: Instituição
         name: institution

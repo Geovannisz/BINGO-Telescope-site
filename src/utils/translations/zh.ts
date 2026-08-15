@@ -180,6 +180,7 @@ const zh: Record<string, string> = {
   'Mestrando': '硕士生',
   'Engenheiro': '工程师',
   'Colaborador Externo': '外部合作者',
+  'Assessor/Assistente': '顾问/助理',
   'Voltar à Equipe': '返回团队',
   'Trajetória': '学术',
   'Acadêmica': '轨迹',

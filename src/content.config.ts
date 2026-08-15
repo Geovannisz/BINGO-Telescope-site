@@ -45,6 +45,7 @@ const teamCollection = defineCollection({
       'Iniciação Científica',
       'Engenheiro',
       'Colaborador Externo',
+      'Assessor/Assistente',
     ]),
     institution: z.string(),
     photo: z.string().optional(),

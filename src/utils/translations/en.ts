@@ -179,6 +179,7 @@ const en: Record<string, string> = {
   'Mestrando': 'Master\'s Student',
   'Engenheiro': 'Engineer',
   'Colaborador Externo': 'External Collaborator',
+  'Assessor/Assistente': 'Advisor/Assistant',
   'Voltar à Equipe': 'Back to Team',
   'Trajetória': 'Trajectory',
   'Acadêmica': 'Academic',
