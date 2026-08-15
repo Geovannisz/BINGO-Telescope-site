@@ -201,7 +201,178 @@
   function init() {
     console.log('[BINGO] Admin engine v9 loaded');
     try { if (window.CMS) CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
-    setTimeout(function () { try { if (window.CMS) CMS.registerPreviewStyle('./preview.css'); } catch (e) {} }, 3000);
+    
+    try {
+      if (window.CMS && window.CMS.createClass && window.CMS.h) {
+        var h = window.CMS.h;
+        var femaleRoles = {
+          'Coordenador Geral': 'Coordenadora Geral',
+          'Pesquisador Sênior': 'Pesquisadora Sênior',
+          'Professor Titular': 'Professora Titular',
+          'Professor Associado': 'Professora Associada',
+          'Professor Doutor': 'Professora Doutora',
+          'Doutorando': 'Doutoranda',
+          'Mestrando': 'Mestranda',
+          'Engenheiro': 'Engenheira',
+          'Colaborador Externo': 'Colaboradora Externa'
+        };
+
+        var TeamPreview = window.CMS.createClass({
+          render: function() {
+            var entry = this.props.entry;
+            var data = entry.get('data') ? entry.get('data').toJS() : {};
+            
+            var name = data.name || 'Nome do Membro';
+            var gender = data.gender || 'Masculino';
+            var role = data.role || 'Pesquisador';
+            if (gender === 'Feminino' && femaleRoles[role]) {
+              role = femaleRoles[role];
+            }
+            var photo = data.photo || '';
+            var institution = data.institution || 'Instituição';
+            var stage = data.stage || [];
+            var area = data.area || '';
+            var city = data.city || '';
+            var bio = data.bio || '';
+            var links = data.links || {};
+            
+            var getStageClass = function(s) {
+              if (s === 'Coordenação') return 'tp-stage-coord';
+              if (s.indexOf('0') !== -1) return 'tp-stage-0';
+              if (s.indexOf('I') === -1) return 'tp-stage-0';
+              if (s === 'Estágio V') return 'tp-stage-5';
+              if (s === 'Estágio IV') return 'tp-stage-4';
+              if (s === 'Estágio III') return 'tp-stage-3';
+              if (s === 'Estágio II') return 'tp-stage-2';
+              if (s === 'Estágio I') return 'tp-stage-1';
+              return 'tp-stage-0';
+            };
+            
+            var renderBadges = function() {
+              var badges = [];
+              if (stage && stage.length > 0) {
+                stage.forEach(function(s) {
+                  badges.push(h('span', { className: 'tp-stage ' + getStageClass(s), key: s }, s));
+                });
+              }
+              if (area) {
+                badges.push(h('span', { className: 'tp-area-badge', key: 'area' }, area));
+              }
+              if (city) {
+                badges.push(h('span', { className: 'tp-city-badge', key: 'city' }, '📍 ' + city));
+              }
+              return badges;
+            };
+
+            var renderLinks = function() {
+              var linkEls = [];
+              var types = ['email', 'lattes', 'orcid', 'linkedin', 'researchgate'];
+              types.forEach(function(type) {
+                if (links[type]) {
+                  linkEls.push(h('a', { className: 'tp-link-btn', href: links[type], target: '_blank', key: type }, type.charAt(0).toUpperCase() + type.slice(1)));
+                }
+              });
+              return linkEls;
+            };
+            
+            var renderTrajetoria = function() {
+              if (!data.interest_origin && !data.motivation && !data.years_researching && !data.research_lines && !data.memorable_experience) return null;
+              return h('div', { className: 'tp-glass-card' }, 
+                h('h3', { className: 'tp-section-title' }, 'Trajetória Acadêmica'),
+                data.interest_origin && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Origem do Interesse'), h('p', { className: 'tp-text' }, data.interest_origin)),
+                data.motivation && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Motivação'), h('p', { className: 'tp-text' }, data.motivation)),
+                data.years_researching && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Anos em Pesquisa'), h('p', { className: 'tp-text' }, data.years_researching + ' anos')),
+                data.research_lines && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Linhas de Pesquisa'), h('p', { className: 'tp-text' }, data.research_lines)),
+                data.memorable_experience && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Experiência Memorável'), h('p', { className: 'tp-text' }, data.memorable_experience))
+              );
+            };
+
+            var renderPesquisa = function() {
+              if (!data.project_title && !data.project_description && !data.project_problem && !data.project_importance && !data.project_methods && !data.project_results && !data.project_challenges) return null;
+              return h('div', { className: 'tp-glass-card' }, 
+                h('h3', { className: 'tp-section-title' }, 'Pesquisa Atual'),
+                data.project_title && h('div', { className: 'tp-project-title' }, data.project_title),
+                data.project_description && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Descrição'), h('p', { className: 'tp-text' }, data.project_description)),
+                data.project_problem && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'O Problema'), h('p', { className: 'tp-text' }, data.project_problem)),
+                data.project_importance && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Importância'), h('p', { className: 'tp-text' }, data.project_importance)),
+                data.project_methods && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Métodos'), h('p', { className: 'tp-text' }, data.project_methods)),
+                data.project_results && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Resultados/Expectativas'), h('p', { className: 'tp-text' }, data.project_results)),
+                data.project_challenges && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Desafios'), h('p', { className: 'tp-text' }, data.project_challenges))
+              );
+            };
+
+            var renderDivulgacao = function() {
+              if (!data.explain_simple && !data.biggest_curiosity && !data.common_myth && !data.impressive_discovery && !data.career_advice) return null;
+              return h('div', { className: 'tp-glass-card' }, 
+                h('h3', { className: 'tp-section-title tp-title-amber' }, 'Divulgação Científica'),
+                data.explain_simple && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle-amber' }, 'Explicação Simples'), h('p', { className: 'tp-text' }, data.explain_simple)),
+                data.biggest_curiosity && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle-amber' }, 'Maior Curiosidade'), h('p', { className: 'tp-text' }, data.biggest_curiosity)),
+                data.common_myth && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle-amber' }, 'Mito Comum'), h('p', { className: 'tp-text' }, data.common_myth)),
+                data.impressive_discovery && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle-amber' }, 'Descoberta Impressionante'), h('p', { className: 'tp-text' }, data.impressive_discovery)),
+                data.career_advice && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle-amber' }, 'Conselho de Carreira'), h('p', { className: 'tp-text' }, data.career_advice))
+              );
+            };
+
+            var renderProducao = function() {
+              if (!data.publications && !data.published_articles && !data.books_chapters && !data.groups_labs && !data.future_projects) return null;
+              
+              var pubsEls = [];
+              if (data.publications && data.publications.length > 0) {
+                pubsEls = data.publications.map(function(pub, idx) {
+                  return h('div', { className: 'tp-pub-item', key: idx },
+                    h('div', { className: 'tp-pub-item-title' }, pub.title),
+                    h('div', { className: 'tp-pub-item-meta' }, (pub.journal || '') + (pub.year ? ' (' + pub.year + ')' : '')),
+                    pub.link && h('a', { className: 'tp-pub-link', href: pub.link, target: '_blank' }, 'Ver publicação ↗')
+                  );
+                });
+              }
+
+              return h('div', { className: 'tp-glass-card' }, 
+                h('h3', { className: 'tp-section-title' }, 'Produção Científica'),
+                pubsEls.length > 0 && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Principais Publicações'), pubsEls),
+                data.published_articles && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Artigos Publicados'), h('p', { className: 'tp-text' }, data.published_articles)),
+                data.books_chapters && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Livros/Capítulos'), h('p', { className: 'tp-text' }, data.books_chapters)),
+                data.groups_labs && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Grupos e Laboratórios'), h('p', { className: 'tp-text' }, data.groups_labs)),
+                data.future_projects && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Projetos Futuros'), h('p', { className: 'tp-text' }, data.future_projects))
+              );
+            };
+
+            var photoUrl = '';
+            if (photo) {
+              try { photoUrl = this.props.getAsset(photo).toString(); } catch(e) {}
+            }
+
+            return h('div', { className: 'tp-container' },
+              h('div', { className: 'tp-hero' },
+                photoUrl ? h('img', { className: 'tp-photo', src: photoUrl }) : h('div', { className: 'tp-photo-fallback' }, '👤'),
+                h('h1', { className: 'tp-name' }, name),
+                h('div', { className: 'tp-role' }, role),
+                h('div', { className: 'tp-institution' }, institution),
+                h('div', { className: 'tp-badges' }, renderBadges())
+              ),
+              bio && h('div', { className: 'tp-glass-card tp-mb-6' }, h('p', { className: 'tp-text' }, bio)),
+              links && Object.keys(links).length > 0 && h('div', { className: 'tp-links tp-mb-6' }, renderLinks()),
+              renderTrajetoria(),
+              renderPesquisa(),
+              renderDivulgacao(),
+              renderProducao()
+            );
+          }
+        });
+        window.CMS.registerPreviewTemplate('team', TeamPreview);
+        window.__BINGO_TEAM_PREVIEW_REGISTERED = true;
+      }
+    } catch(e) { console.warn('[BINGO] Team preview registration failed:', e); }
+
+    setTimeout(function () { 
+      try { 
+        if (window.CMS) CMS.registerPreviewStyle('./preview.css'); 
+        if (window.CMS && !window.__BINGO_TEAM_PREVIEW_REGISTERED && window.CMS.createClass) {
+          // Backup registration in case it failed earlier
+          if (typeof TeamPreview !== 'undefined') window.CMS.registerPreviewTemplate('team', TeamPreview);
+        }
+      } catch (e) {} 
+    }, 3000);
 
     try {
       new MutationObserver(checkLoginPage).observe(document.body, { childList: true, subtree: true });

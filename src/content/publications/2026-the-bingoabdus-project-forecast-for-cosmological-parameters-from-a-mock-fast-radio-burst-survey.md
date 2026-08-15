@@ -3,7 +3,7 @@ title: >-
   The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a Mock Fast
   Radio Burst Survey.
 authors: Alexandre Jean René Serres
-date: 2026-08-14T12:42:59.498Z
+date: 2026-08-15T00:48:19.711Z
 link: >-
   The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a Mock Fast
   Radio Burst Survey.

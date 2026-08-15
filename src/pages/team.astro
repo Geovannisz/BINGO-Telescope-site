@@ -6,16 +6,12 @@
    1. Working Groups (Stages 0-V) overview
    2. Team members grouped by role hierarchy
 
-   ⚠️ TEMPORARILY HIDDEN — page redirects to 404.
-   Remove the return below to re-enable this page.
+   🔒 ACCESS RESTRICTED — visible only to authenticated CMS members.
+   Client-side auth gate checks for Decap CMS login token.
    =================================================================== */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamMember from '../components/TeamMember.astro';
 import { getCollection } from 'astro:content';
-
-/* ── 🔒 TEAM PAGE HIDDEN: remove this block to re-enable ── */
-return Astro.redirect(`${import.meta.env.BASE_URL}404`, 404);
-/* ── end hidden block ── */
 
 const allTeam = await getCollection('team', ({ data }) => data.published !== false);
 const base = import.meta.env.BASE_URL;
@@ -147,123 +143,183 @@ const stages = [
 ---
 
 <BaseLayout nativeI18n={true} pageId="dynamic" title="Equipe" description="Conheça os pesquisadores, engenheiros e estudantes que formam a equipe do Telescópio BINGO — um consórcio multinacional liderado pela USP.">
-  <!-- Page Header -->
-  <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;">
-    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.1;`}></div>
-    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
-    <div class="starfield"></div>
-    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl animate-fade-in-up">
-        <div class="flex mb-5">
-          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-            <span>Equipe</span>
-          </span>
+
+  <!-- ══════════════════════════════════════════════════════════
+       AUTH GATE — shown to non-authenticated visitors
+       ══════════════════════════════════════════════════════════ -->
+  <div id="team-auth-gate" class="bg-cosmic min-h-[60vh] flex items-center justify-center px-4">
+    <div class="glass-card-glow p-8 sm:p-12 max-w-lg w-full text-center animate-fade-in-up">
+      <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+        <svg class="w-8 h-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white mb-3" style="font-family: 'Outfit', sans-serif;">
+        Acesso <span class="gradient-text-cyan">Restrito</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+        A página da equipe está disponível apenas para membros cadastrados no painel do BINGO Telescope.
+      </p>
+      <a href={`${base}admin/`} class="btn-cosmic inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+        </svg>
+        Entrar via Painel CMS
+      </a>
+      <p class="text-slate-500 text-xs mt-4">
+        Faça login com sua conta GitHub autorizada no painel admin.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TEAM CONTENT — hidden by default, revealed after auth check
+       ══════════════════════════════════════════════════════════ -->
+  <div id="team-content" style="display: none;">
+    <!-- Page Header -->
+    <div class="relative py-20 sm:py-24 overflow-hidden section-bg-image" style="min-height: 30vh;">
+      <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.1;`}></div>
+      <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
+      <div class="starfield"></div>
+      <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl animate-fade-in-up">
+          <div class="flex mb-5">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              <span>Equipe</span>
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white" style="font-family: 'Outfit', sans-serif;">
+            Nossa <span class="gradient-text-cyan">Equipe</span>
+          </h1>
+          <p class="mt-4 text-base sm:text-lg leading-7 text-slate-300 max-w-2xl">
+            A colaboração internacional por trás do telescópio BINGO — pesquisadores, engenheiros e estudantes unidos para desvendar o universo.
+          </p>
         </div>
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white" style="font-family: 'Outfit', sans-serif;">
-          Nossa <span class="gradient-text-cyan">Equipe</span>
-        </h1>
-        <p class="mt-4 text-base sm:text-lg leading-7 text-slate-300 max-w-2xl">
-          A colaboração internacional por trás do telescópio BINGO — pesquisadores, engenheiros e estudantes unidos para desvendar o universo.
-        </p>
+      </div>
+    </div>
+
+    <div class="bg-cosmic pt-10 pb-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- ══════════════════════════════════════════════════════════
+             WORKING GROUPS (STAGES)
+             ══════════════════════════════════════════════════════════ -->
+        <section class="mb-20 animate-on-scroll">
+          <div class="text-center mb-12">
+            <div class="flex justify-center mb-5">
+              <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                <span>Organização</span>
+              </span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: 'Outfit', sans-serif;">
+              Grupos de <span class="gradient-text-cyan">Trabalho</span>
+            </h2>
+            <div class="section-divider"></div>
+            <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+              O projeto BINGO é estruturado em seis etapas interdependentes — do hardware ao impacto social — cada uma liderada por um grupo de especialistas.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {stages.map((s) => (
+              <div 
+                class={`group glass-card-glow p-5 sm:p-6 border ${s.border} transition-all duration-500 hover:shadow-lg hover:shadow-cyan-500/5 relative cursor-pointer bg-slate-900/40 hover:bg-slate-800/60 rounded-xl flex flex-col`}
+                tabindex="0"
+              >
+                <div class="flex items-center justify-between mb-1">
+                  <div class="flex items-center gap-3">
+                    <div class={`w-10 h-10 rounded-lg flex items-center justify-center text-xl bg-slate-800/80 border ${s.border} shadow-inner transform transition-transform duration-500 group-hover:scale-110 group-focus:scale-110`}>
+                      {s.icon}
+                    </div>
+                    <span class={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${s.badge}`}>{s.name}</span>
+                  </div>
+                  <div class="w-8 h-8 flex-shrink-0 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 group-hover:text-white group-focus:text-white group-hover:bg-slate-700 group-focus:bg-slate-700 transition-all duration-500 border border-slate-700/50 group-hover:rotate-180 group-focus:rotate-180">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                </div>
+                
+                <h3 class="text-base sm:text-lg font-bold text-white transition-colors duration-300 group-hover:text-cyan-400 group-focus:text-cyan-400 mt-3" style="font-family: 'Outfit', sans-serif;">
+                  {s.title}
+                </h3>
+                
+                <div class="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] group-hover:opacity-100 group-focus:opacity-100 transition-all duration-500 ease-in-out">
+                  <div class="overflow-hidden">
+                    <div class="pt-4 mt-4 border-t border-slate-700/50">
+                      <p class="text-slate-400 text-sm leading-relaxed">
+                        {s.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════
+             TEAM MEMBERS BY ROLE
+             ══════════════════════════════════════════════════════════ -->
+        {grouped.map((group) => (
+          <section class="mb-16 animate-on-scroll">
+            <div class="mb-8">
+              <h2 class="notranslate text-xl sm:text-2xl font-bold text-white" style="font-family: 'Outfit', sans-serif;" translate="no" data-role-label-t={group.role}>
+                {group.label}
+              </h2>
+              {group.description && <p class="notranslate text-slate-400 text-sm mt-1" translate="no" data-role-desc-t={group.role}>{group.description}</p>}
+              <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500 mt-3"></div>
+            </div>
+            <div class="grid gap-4 sm:gap-6 lg:gap-8 justify-center" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 320px));">
+              {group.members.map((member) => (
+                <TeamMember
+                  name={member.data.name}
+                  role={member.data.role}
+                  institution={member.data.institution}
+                  photo={member.data.photo}
+                  stage={member.data.stage}
+                  slug={member.id}
+                  gender={member.data.gender}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <!-- Empty state -->
+        {allTeam.length === 0 && (
+          <div class="text-center py-16">
+            <p class="text-slate-500 text-lg">Nenhum membro da equipe cadastrado ainda.</p>
+            <p class="text-slate-600 text-sm mt-2">Adicione membros via o painel <a href={`${base}admin/`} class="text-cyan-400 hover:underline">admin</a>.</p>
+          </div>
+        )}
       </div>
     </div>
   </div>
 
-  <div class="bg-cosmic pt-10 pb-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <!-- ══════════════════════════════════════════════════════════
+       AUTH CHECK SCRIPT
+       ══════════════════════════════════════════════════════════ -->
+  <script is:inline>
+    (function() {
+      function checkCMSAuth() {
+        try {
+          var raw = localStorage.getItem('netlify-cms-user');
+          if (raw) {
+            var user = JSON.parse(raw);
+            if (user && (user.token || user.access_token)) return true;
+          }
+        } catch(e) {}
+        return false;
+      }
+      if (checkCMSAuth()) {
+        var gate = document.getElementById('team-auth-gate');
+        var content = document.getElementById('team-content');
+        if (gate) gate.style.display = 'none';
+        if (content) content.style.display = '';
+      }
+    })();
+  </script>
 
-      <!-- ══════════════════════════════════════════════════════════
-           WORKING GROUPS (STAGES)
-           ══════════════════════════════════════════════════════════ -->
-      <section class="mb-20 animate-on-scroll">
-        <div class="text-center mb-12">
-          <div class="flex justify-center mb-5">
-            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
-              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-              <span>Organização</span>
-            </span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white" style="font-family: 'Outfit', sans-serif;">
-            Grupos de <span class="gradient-text-cyan">Trabalho</span>
-          </h2>
-          <div class="section-divider"></div>
-          <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-            O projeto BINGO é estruturado em seis etapas interdependentes — do hardware ao impacto social — cada uma liderada por um grupo de especialistas.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {stages.map((s) => (
-            <div 
-              class={`group glass-card-glow p-5 sm:p-6 border ${s.border} transition-all duration-500 hover:shadow-lg hover:shadow-cyan-500/5 relative cursor-pointer bg-slate-900/40 hover:bg-slate-800/60 rounded-xl flex flex-col`}
-              tabindex="0"
-            >
-              <div class="flex items-center justify-between mb-1">
-                <div class="flex items-center gap-3">
-                  <div class={`w-10 h-10 rounded-lg flex items-center justify-center text-xl bg-slate-800/80 border ${s.border} shadow-inner transform transition-transform duration-500 group-hover:scale-110 group-focus:scale-110`}>
-                    {s.icon}
-                  </div>
-                  <span class={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${s.badge}`}>{s.name}</span>
-                </div>
-                <div class="w-8 h-8 flex-shrink-0 rounded-full bg-slate-800/50 flex items-center justify-center text-slate-400 group-hover:text-white group-focus:text-white group-hover:bg-slate-700 group-focus:bg-slate-700 transition-all duration-500 border border-slate-700/50 group-hover:rotate-180 group-focus:rotate-180">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </div>
-              </div>
-              
-              <h3 class="text-base sm:text-lg font-bold text-white transition-colors duration-300 group-hover:text-cyan-400 group-focus:text-cyan-400 mt-3" style="font-family: 'Outfit', sans-serif;">
-                {s.title}
-              </h3>
-              
-              <div class="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-focus:grid-rows-[1fr] group-hover:opacity-100 group-focus:opacity-100 transition-all duration-500 ease-in-out">
-                <div class="overflow-hidden">
-                  <div class="pt-4 mt-4 border-t border-slate-700/50">
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                      {s.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- ══════════════════════════════════════════════════════════
-           TEAM MEMBERS BY ROLE
-           ══════════════════════════════════════════════════════════ -->
-      {grouped.map((group) => (
-        <section class="mb-16 animate-on-scroll">
-          <div class="mb-8">
-            <h2 class="notranslate text-xl sm:text-2xl font-bold text-white" style="font-family: 'Outfit', sans-serif;" translate="no" data-role-label-t={group.role}>
-              {group.label}
-            </h2>
-            {group.description && <p class="notranslate text-slate-400 text-sm mt-1" translate="no" data-role-desc-t={group.role}>{group.description}</p>}
-            <div class="w-16 h-0.5 bg-gradient-to-r from-cyan-500 to-indigo-500 mt-3"></div>
-          </div>
-          <div class="grid gap-4 sm:gap-6 lg:gap-8 justify-center" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 320px));">
-            {group.members.map((member) => (
-              <TeamMember
-                name={member.data.name}
-                role={member.data.role}
-                institution={member.data.institution}
-                photo={member.data.photo}
-                stage={member.data.stage}
-                slug={member.id}
-                gender={member.data.gender}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
-
-      <!-- Empty state -->
-      {allTeam.length === 0 && (
-        <div class="text-center py-16">
-          <p class="text-slate-500 text-lg">Nenhum membro da equipe cadastrado ainda.</p>
-          <p class="text-slate-600 text-sm mt-2">Adicione membros via o painel <a href={`${base}admin/`} class="text-cyan-400 hover:underline">admin</a>.</p>
-        </div>
-      )}
-    </div>
-  </div>
 </BaseLayout>
+
