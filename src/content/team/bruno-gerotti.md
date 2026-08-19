@@ -1,19 +1,22 @@
 ---
-name: Bruno Gerotti
-gender: Masculino
-role: Mestrando
-institution: Instituto de Física da Universidade de São Paulo (IFUSP)
+name: "Chayenny Edna da Silva Rodrigues "
+gender: Feminino
+role: Doutorando
+institution: Universidade Federal de Campina Grande (UFCG)
 stage:
   - Stage 0
-area: Instabilidade Gravitacional
-email: gerotti@usp.br
-lattes: http://lattes.cnpq.br/9696349792384504
-bio: Possuí bacharel em Física pelo Instituto de Física da Universidade de São
-  Paulo (2021), campus Butantã. Atua atualmente em um Mestrado na área de
-  cosmologia orientado pelo Prof. Dr. Elcio Abdalla, trabalhando com
-  instabilidades gravitacionais ao redor de objetos super massivos como Buracos
-  Negros e Estrelas de Neutrons afim de relaciona-las com rajadas rápidas de
-  rádio no projeto BINGO. Possuí financiamento da CNPq.
+city: ""
+area: Cosmologia e Astrofísica
+email: chayenneedna@hotmail.com
+lattes: http://lattes.cnpq.br/3786651997275366
+bio: "Graduada em Licenciatura em Física (2014) pela Universidade Estadual da
+  Paraíba (UEPB). Mestre em Ciência e Tecnologia Ambiental (2017) pela
+  Universidade Estadual da Paraíba (UEPB). Doutoranda em Engenharia Ambiental
+  (2023) pela Universidade Estadual da Paraíba (UEPB). Tem experiência na área
+  de Geociências, com ênfase em Aeronomia, atuando principalmente nos seguintes
+  temas: dinâmica da alta atmosfera, ondas atmosféricas e radar meteórico.
+  Menbro-secretaria do OSA Campina Student Chapter, ligado à Optical Society of
+  America."
 authorized: true
 published: true
 ---
