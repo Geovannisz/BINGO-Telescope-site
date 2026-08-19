@@ -1,10 +1,12 @@
 ---
 title: >-
   The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a Mock Fast
-  Radio Burst Survey
-authors: Edmar Candeia Gurjão
-date: 2026-08-19T17:49:45.015Z
-link: https://iopscience.iop.org/article/10.3847/1538-4357/adfa11
+  Radio Burst Survey.
+authors: Alexandre Jean René Serres
+date: 2026-08-19T17:54:59.019Z
+link: >-
+  The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a Mock Fast
+  Radio Burst Survey.
 doi: ""
 summary: ""
 journal: ""
