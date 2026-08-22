@@ -4,7 +4,7 @@ gender: Feminino
 role: Colaborador Externo
 institution: Universidade Federal de Campina Grande (UFCG)
 stage:
-  - Coordenação
+  - Stage 0
 area: Gerenciamento de Projetos
 email: gurjaoelaine@gmail.com
 lattes: http://lattes.cnpq.br/9582770067315332
