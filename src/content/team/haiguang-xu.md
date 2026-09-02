@@ -1,5 +1,6 @@
 ---
 name: Haiguang Xu
+gender: Masculino
 role: Professor Associado
 institution: Shanghai Jiao Tong University
 stage:
