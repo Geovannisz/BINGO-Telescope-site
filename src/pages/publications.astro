@@ -45,7 +45,11 @@ function getDoi(pub: any): string {
   if (doi) return doi.toLowerCase().trim();
   const link = pub.data.link || '';
   const m = link.match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/);
-  return m ? m[0].toLowerCase().trim() : '';
+  if (m) return m[0].toLowerCase().trim();
+  if (link.includes('2022A%26A...664A..19Z') || link.includes('2022A&A...664A..19Z')) {
+    return '10.1051/0004-6361/202140887';
+  }
+  return '';
 }
 
 function getCleanUrl(pub: any): string {
@@ -55,7 +59,14 @@ function getCleanUrl(pub: any): string {
 
 function getNormTitle(pub: any): string {
   const t = pub.data.title || '';
-  return t.toLowerCase().trim().replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
+  return t
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s]/g, ' ')
+    .replace(/\bh\s+i\b/gi, 'hi')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 const seenDois = new Set<string>();

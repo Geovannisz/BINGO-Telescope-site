@@ -93,17 +93,30 @@ career_advice: Follow your curiosity, and don’t be afraid. No matter you are
   the curiosity, can always lead you to a interesting life. It is interesting
   enough that you will never regret.
 publications:
-  - title: Design and Validation of a New RFSoC Based Digital Receiver System
-    link: https://ui.adsabs.harvard.edu/abs/2026RAA....26a5002Q/abstract
-  - title: Halo spin and orientation in interacting dark matter dark energy cosmology
-    link: https://ui.adsabs.harvard.edu/abs/2025PhRvD.112j3533Z/abstract
-  - title: Smoking gun signature from axion and the constraints with radio telescopes
-    link: https://ui.adsabs.harvard.edu/abs/2025PhRvD.112j3035L/abstract
-    authors: ""
-  - title: Forecast measurement of the 21 cm global spectrum from lunar orbit with
-      the Vari-Zeroth-Order Polynomial (VZOP) method
-    link: https://ui.adsabs.harvard.edu/abs/2025PASA...42...39L/abstract
-  - link: https://ui.adsabs.harvard.edu/abs/2022A%26A...664A..19Z/abstract
-    title: The BINGO project. VI. H I halo occupation distribution and mock building
+  - title: "Design and Validation of a New RFSoC Based Digital Receiver System"
+    link: "https://doi.org/10.1088/1674-4527/ae171f"
+    doi: "10.1088/1674-4527/ae171f"
+    authors: "Donghao Qu, Jiajun Zhang, Yajun Wu, Zhang Zhao, Zixuan Liu, Yanbin Yang"
+    date: 2026-01-30
+  - title: "Halo spin and orientation in interacting dark matter dark energy cosmology"
+    link: "https://doi.org/10.1103/PhysRevD.112.103533"
+    doi: "10.1103/PhysRevD.112.103533"
+    authors: "Guandi Zhao, Jiajun Zhang, Peng Wang, Ji Yao"
+    date: 2025-11-19
+  - title: "Smoking gun signature from axion and the constraints with radio telescopes"
+    link: "https://doi.org/10.1103/PhysRevD.112.103035"
+    doi: "10.1103/PhysRevD.112.103035"
+    authors: "Zixuan Liu, Jiajun Zhang"
+    date: 2025-11-18
+  - title: "Forecast measurement of the 21 cm global spectrum from lunar orbit with the Vari-Zeroth-Order Polynomial (VZOP) method"
+    link: "https://doi.org/10.1017/pasa.2025.17"
+    doi: "10.1017/pasa.2025.17"
+    authors: "Tianyang Liu, Jiajun Zhang, Yuan Shi, Junhua Gu, Quan Guo, Yidong Xu, Furen Deng, Fengquan Wu, Yanping Cong, Xuelei Chen"
+    date: 2025-05-01
+  - title: "The BINGO Project VI: HI Halo Occupation Distribution and Mock Building"
+    link: "https://doi.org/10.1051/0004-6361/202140887"
+    doi: "10.1051/0004-6361/202140887"
+    authors: "Jiajun Zhang, Pablo Motta, Camila P. Novaes, Filipe B. Abdalla, Andre A. Costa, Bin Wang, Zhenghao Zhu, Chenxi Shan, Haiguang Xu, Elcio Abdalla, Luciano Barosi, Francisco A. Brito, Amilcar Queiroz, Thyrso Villela, Carlos A. Wuensche, Elisa G. M. Ferreira, Karin S. F. Fornazier, Alessandro Marins, Larissa Santos, Marcelo Vargas dos Santos, Ricardo G. Landim, Vincenzo Liccardo"
+    date: 2022-08-01
 authorized: true
 ---

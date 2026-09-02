@@ -25,6 +25,7 @@ function normalizeTitle(title) {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '') // remove diacritical marks
     .replace(/[^\w\s]/g, ' ') // normalize all punctuation and special characters to spaces
+    .replace(/\bh\s+i\b/gi, 'hi')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -32,7 +33,11 @@ function normalizeTitle(title) {
 function extractDoi(text) {
   if (!text) return '';
   const m = String(text).match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/);
-  return m ? m[0].toLowerCase().trim() : '';
+  if (m) return m[0].toLowerCase().trim();
+  if (String(text).includes('2022A%26A...664A..19Z') || String(text).includes('2022A&A...664A..19Z')) {
+    return '10.1051/0004-6361/202140887';
+  }
+  return '';
 }
 
 function runSync() {
