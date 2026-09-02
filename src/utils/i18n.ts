@@ -86,6 +86,9 @@ export const ui = {
     'footer.successor': 'Sucessor de',
     'footer.description': 'Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. Mapeando o universo em rádio para entender a energia escura.',
     'footer.copyright': '© BINGO Telescope Consortium. Todos os direitos reservados.',
+    'news.tag': 'Notícias',
+    'news.title': 'Notícias e Atualizações',
+    'news.desc': 'Acompanhe os últimos desenvolvimentos, marcos e histórias do projeto BINGO.',
     'lang.label': 'Idioma',
     'lang.switchTo': 'Mudar idioma',
   },
@@ -128,6 +131,9 @@ export const ui = {
     'footer.successor': 'Successor to',
     'footer.description': 'Baryon Acoustic Oscillations from Integrated Neutral Gas Observations. Mapping the universe in radio to understand dark energy.',
     'footer.copyright': '© BINGO Telescope Consortium. All rights reserved.',
+    'news.tag': 'News',
+    'news.title': 'News and Updates',
+    'news.desc': 'Follow the latest developments, milestones, and stories from the BINGO project.',
     'lang.label': 'Language',
     'lang.switchTo': 'Switch language',
   },
@@ -170,6 +176,9 @@ export const ui = {
     'footer.successor': '继承自',
     'footer.description': 'Baryon Acoustic Oscillations from Integrated Neutral Gas Observations — 通过射电波段绘制宇宙地图以理解暗能量。',
     'footer.copyright': '© BINGO 望远镜联盟。版权所有。',
+    'news.tag': '新闻',
+    'news.title': '新闻与动态',
+    'news.desc': '关注BINGO项目的最新进展、里程碑与科研动态。',
     'lang.label': '语言',
     'lang.switchTo': '切换语言',
   },
@@ -347,6 +356,11 @@ export const pubTranslations = {
     'ui.sort_title_asc': 'A → Z (título)',
     'ui.sort_title_desc': 'Z → A (título)',
     'ui.pagination_of': 'de',
+    // Hero
+    'hero.tag': 'Produção Científica',
+    'hero.title': 'Publicações',
+    'hero.title_highlight': 'Científicas',
+    'hero.desc': 'Artigos, teses e relatórios técnicos produzidos pelo consórcio BINGO.',
   },
   en: {
     // Categories
@@ -387,6 +401,11 @@ export const pubTranslations = {
     'ui.sort_title_asc': 'A → Z (title)',
     'ui.sort_title_desc': 'Z → A (title)',
     'ui.pagination_of': 'of',
+    // Hero
+    'hero.tag': 'Scientific Output',
+    'hero.title': 'Scientific',
+    'hero.title_highlight': 'Publications',
+    'hero.desc': 'Articles, theses, and technical reports produced by the BINGO consortium.',
   },
   zh: {
     // Categories
@@ -427,6 +446,11 @@ export const pubTranslations = {
     'ui.sort_title_asc': 'A → Z (标题)',
     'ui.sort_title_desc': 'Z → A (标题)',
     'ui.pagination_of': '/',
+    // Hero
+    'hero.tag': '学术成果',
+    'hero.title': '学术',
+    'hero.title_highlight': '出版物',
+    'hero.desc': 'BINGO望远镜联盟发表的学术论文、学位论文及技术报告。',
   },
 } as const;
 

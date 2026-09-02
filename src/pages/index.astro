@@ -339,7 +339,7 @@ const translationsMap = Object.fromEntries(
     </div>
   </section>
 
-  <script id="news-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
+  <script is:inline id="news-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const rawLang = localStorage.getItem('bingo-lang') || 'en';

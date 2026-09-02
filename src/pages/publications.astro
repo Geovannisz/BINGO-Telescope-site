@@ -123,12 +123,12 @@ uniquePubs.forEach(pub => {
       <div class="max-w-3xl animate-fade-in-up">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-6">
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-          Produção Científica
+          <span data-pub-t="hero.tag">Produção Científica</span>
         </div>
         <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl">
-          Publicações <span class="gradient-text-cyan">Científicas</span>
+          <span data-pub-t="hero.title">Publicações</span> <span class="gradient-text-cyan" data-pub-t="hero.title_highlight">Científicas</span>
         </h1>
-        <p class="mt-6 text-lg leading-8 text-slate-300 max-w-2xl">
+        <p class="mt-6 text-lg leading-8 text-slate-300 max-w-2xl" data-pub-t="hero.desc">
           Artigos, teses e relatórios técnicos produzidos pelo consórcio BINGO.
         </p>
       </div>
@@ -249,7 +249,7 @@ uniquePubs.forEach(pub => {
       </div>
 
       <!-- ===== PUBLICATIONS LIST ===== -->
-      <script id="pubs-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
+      <script is:inline id="pubs-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
       <div id="pub-list" class="space-y-4" data-no-translate>
         {sortedPubs.map((pub, i) => {
           const category = getCategory(pub);

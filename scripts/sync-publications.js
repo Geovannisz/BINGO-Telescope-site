@@ -22,11 +22,17 @@ function slugify(text) {
 function normalizeTitle(title) {
   return title
     .toLowerCase()
-    .trim()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '') // remove diacritical marks
-    .replace(/[\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]/g, '-') // normalize all unicode dashes to hyphen
-    .replace(/\s+/g, ' ');
+    .replace(/[^\w\s]/g, ' ') // normalize all punctuation and special characters to spaces
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function extractDoi(text) {
+  if (!text) return '';
+  const m = String(text).match(/10\.\d{4,9}\/[-._;()/:A-Za-z0-9]+/);
+  return m ? m[0].toLowerCase().trim() : '';
 }
 
 function runSync() {
@@ -44,6 +50,7 @@ function runSync() {
   // 1. Load all existing publications in src/content/publications
   const existingPubFiles = fs.readdirSync(PUBS_DIR).filter(file => file.endsWith('.md'));
   const existingTitles = new Set();
+  const existingDois = new Set();
 
   existingPubFiles.forEach(file => {
     const filePath = path.join(PUBS_DIR, file);
@@ -52,8 +59,14 @@ function runSync() {
       const parts = content.split('---');
       if (parts.length >= 3) {
         const frontmatter = yaml.load(parts[1]);
-        if (frontmatter && frontmatter.title) {
-          existingTitles.add(normalizeTitle(frontmatter.title));
+        if (frontmatter) {
+          if (frontmatter.title) {
+            existingTitles.add(normalizeTitle(frontmatter.title));
+          }
+          const doi = extractDoi(frontmatter.doi) || extractDoi(frontmatter.link);
+          if (doi) {
+            existingDois.add(doi);
+          }
         }
       }
     } catch (err) {
@@ -80,7 +93,11 @@ function runSync() {
             if (!pub.title) return;
 
             const normTitle = normalizeTitle(pub.title);
-            if (!existingTitles.has(normTitle)) {
+            const pubDoi = extractDoi(pub.doi) || extractDoi(pub.link);
+
+            const isAlreadyPresent = existingTitles.has(normTitle) || (pubDoi && existingDois.has(pubDoi));
+
+            if (!isAlreadyPresent) {
               // We need to create a new standalone publication file!
               let year = new Date().getFullYear();
               if (pub.date) {
@@ -127,8 +144,9 @@ function runSync() {
               fs.writeFileSync(newFilePath, fileContent, 'utf8');
               console.log(`✅ Nova publicação criada: "${pub.title}" -> ${newFileName} (Adicionado por: ${memberName})`);
 
-              // Add to existing titles so we don't duplicate within the same run
+              // Add to existing titles and DOIs so we don't duplicate within the same run
               existingTitles.add(normTitle);
+              if (pubDoi) existingDois.add(pubDoi);
               newPubsCount++;
             }
           });

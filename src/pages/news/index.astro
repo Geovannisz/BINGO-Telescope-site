@@ -21,12 +21,31 @@ const translationsMap = Object.fromEntries(
 
 <BaseLayout nativeI18n={true} pageId="dynamic" title="Notícias e Blog" description="Últimas notícias, atualizações e artigos do blog do Telescópio BINGO. Acompanhe o progresso da construção e os avanços científicos.">
   <div class="py-24 sm:py-32 bg-slate-950 min-h-screen">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center mb-16">
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Notícias e Atualizações</h2>
-        <p class="mt-4 text-lg text-slate-400">
+      <div class="mx-auto max-w-2xl text-center mb-16 animate-fade-in-up">
+        <div class="flex justify-center mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span data-i18n="news.tag">Notícias</span>
+          </span>
+        </div>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl" data-i18n="news.title">Notícias e Atualizações</h2>
+        <p class="mt-4 text-lg text-slate-400" data-i18n="news.desc">
           Acompanhe os últimos desenvolvimentos, marcos e histórias do projeto BINGO.
         </p>
+        <div class="mt-6 flex justify-center">
+          <a
+            href={`${base}rss.xml`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 hover:bg-amber-500/20 transition-all duration-300 shadow-[0_0_12px_rgba(245,158,11,0.1)]"
+            title="Feed RSS"
+          >
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27Zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93Z"/>
+            </svg>
+            <span>Feed RSS</span>
+          </a>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-dynamic-translate="true">
@@ -44,7 +63,7 @@ const translationsMap = Object.fromEntries(
     </div>
   </div>
 
-  <script id="news-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
+  <script is:inline id="news-translations" type="application/json" set:html={JSON.stringify(translationsMap)}></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const rawLang = localStorage.getItem('bingo-lang') || 'en';
