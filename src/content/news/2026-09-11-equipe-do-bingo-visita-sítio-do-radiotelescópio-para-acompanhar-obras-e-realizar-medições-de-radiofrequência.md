@@ -3,7 +3,7 @@ title: Equipe do BINGO visita sítio do radiotelescópio para acompanhar obras e
   realizar medições de radiofrequência
 date: 2026-09-11T09:58:00.000-03:00
 author: Marini N. Lima
-image: /images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-.png
+image: /images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-1-.png
 summary: Uma equipe de pesquisadores do projeto BINGO realizou uma visita no dia
   (citar o dia) ao sítio onde está sendo instalado o radiotelescópio, no
   município de Aguiar, na Paraíba. A visita teve como objetivo acompanhar o
@@ -17,13 +17,11 @@ Durante a visita, os pesquisadores Jordany Vieira, Tales Augusto e o prof. Kárl
 
 As medições de radiofrequência são uma etapa importante para o projeto, uma vez que o BINGO necessita de um ambiente com baixos níveis de interferência eletromagnética. A identificação e o monitoramento de possíveis fontes de sinais na região permitem avaliar as condições do local e contribuir para a proteção das observações realizadas pelo radiotelescópio.
 
-![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-.png)
+![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-1-.png)
 
 A realização periódica dessas medições possibilita acompanhar as condições do ambiente ao longo da implantação do projeto e identificar eventuais fontes de interferência que possam comprometer a operação do instrumento.
 
 A visita também contou com a presença do prefeito de Aguiar Manoel Batista e do prof. Élcio Abdalla, coordenador-geral do projeto BINGO. Além do acompanhamento das obras, a agenda teve como objetivo fortalecer a aproximação entre o projeto, os pesquisadores e a comunidade local.
-
-
 
 **BINGO e município de Aguiar discutem novas parcerias**
 
