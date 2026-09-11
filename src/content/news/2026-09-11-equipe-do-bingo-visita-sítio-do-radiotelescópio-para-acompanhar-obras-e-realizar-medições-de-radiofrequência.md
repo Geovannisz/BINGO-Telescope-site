@@ -3,7 +3,7 @@ title: Equipe do BINGO visita sítio do radiotelescópio para acompanhar obras e
   realizar medições de radiofrequência
 date: 2026-09-11T09:58:00.000-03:00
 author: Marini N. Lima
-image: /images/uploads/whatsapp-image-2026-09-05-at-22.39.19.jpeg
+image: /images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-.png
 summary: Uma equipe de pesquisadores do projeto BINGO realizou uma visita no dia
   (citar o dia) ao sítio onde está sendo instalado o radiotelescópio, no
   município de Aguiar, na Paraíba. A visita teve como objetivo acompanhar o
