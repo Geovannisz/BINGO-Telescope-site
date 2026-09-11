@@ -196,11 +196,178 @@
   }
 
   /* ═══════════════════════════════════════════════════════════
+   *  IMAGE SANITIZER & COMPRESSOR (Auto WebP / HD scale)
+   * ═══════════════════════════════════════════════════════════ */
+  function sanitizeFileName(name) {
+    var extIdx = name.lastIndexOf('.');
+    var baseName = extIdx !== -1 ? name.substring(0, extIdx) : name;
+
+    // Normalize NFD and remove diacritics / accents (e.g. ó -> o)
+    var clean = baseName.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    // Replace non-alphanumeric with hyphen
+    clean = clean.toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    if (!clean) clean = 'imagem-' + Date.now();
+    return clean;
+  }
+
+  function processImageFile(file) {
+    return new Promise(function (resolve) {
+      if (!file.type || file.type.indexOf('image/') !== 0 || file.type === 'image/svg+xml') {
+        var safeName = sanitizeFileName(file.name) + '.' + (file.name.split('.').pop() || 'bin');
+        try {
+          resolve(new File([file], safeName, { type: file.type }));
+        } catch (e) {
+          resolve(file);
+        }
+        return;
+      }
+
+      var img = new Image();
+      var url = URL.createObjectURL(file);
+      img.onload = function () {
+        URL.revokeObjectURL(url);
+        try {
+          var width = img.naturalWidth || img.width;
+          var height = img.naturalHeight || img.height;
+          var maxDim = 1920;
+
+          // Scale down if larger than 1920px
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          var canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          var outType = 'image/webp';
+          var outExt = 'webp';
+          var quality = 0.85;
+
+          canvas.toBlob(function (blob) {
+            if (!blob) {
+              resolve(file);
+              return;
+            }
+            var cleanBase = sanitizeFileName(file.name);
+            var safeFullName = cleanBase + '.' + outExt;
+            try {
+              var optimizedFile = new File([blob], safeFullName, {
+                type: outType,
+                lastModified: Date.now()
+              });
+              resolve(optimizedFile);
+            } catch (err) {
+              resolve(file);
+            }
+          }, outType, quality);
+        } catch (err) {
+          resolve(file);
+        }
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        resolve(file);
+      };
+      img.src = url;
+    });
+  }
+
+  function startImageUploadOptimizer() {
+    // Intercept standard input[type="file"] changes
+    document.addEventListener('change', function (e) {
+      var target = e.target;
+      if (!target || target.tagName !== 'INPUT' || target.type !== 'file') return;
+      if (e.__bingoOptimized) return;
+      var files = target.files;
+      if (!files || files.length === 0) return;
+
+      var hasImage = false;
+      for (var i = 0; i < files.length; i++) {
+        if (files[i].type && files[i].type.indexOf('image/') === 0) {
+          hasImage = true;
+          break;
+        }
+      }
+      if (!hasImage) return;
+
+      e.stopImmediatePropagation();
+      e.stopPropagation();
+      e.preventDefault();
+
+      bingoToast('🖼️ Otimizando e sanitizando imagem...', 'info');
+
+      var promises = [];
+      for (var j = 0; j < files.length; j++) {
+        promises.push(processImageFile(files[j]));
+      }
+
+      Promise.all(promises).then(function (optimizedFiles) {
+        try {
+          var dt = new DataTransfer();
+          optimizedFiles.forEach(function (f) { dt.items.add(f); });
+          target.files = dt.files;
+        } catch (e) {}
+
+        var cleanEvt = new Event('change', { bubbles: true });
+        cleanEvt.__bingoOptimized = true;
+        target.dispatchEvent(cleanEvt);
+
+        var totalOriginal = 0;
+        var totalOpt = 0;
+        for (var k = 0; k < files.length; k++) totalOriginal += files[k].size;
+        for (var m = 0; m < optimizedFiles.length; m++) totalOpt += optimizedFiles[m].size;
+
+        var origKb = Math.round(totalOriginal / 1024);
+        var optKb = Math.round(totalOpt / 1024);
+        bingoToast('✅ Imagem otimizada (' + origKb + 'KB ➔ ' + optKb + 'KB) e nome seguro!', 'success');
+      }).catch(function (err) {
+        console.warn('[BINGO] Falha na otimização:', err);
+        var cleanEvt = new Event('change', { bubbles: true });
+        cleanEvt.__bingoOptimized = true;
+        target.dispatchEvent(cleanEvt);
+      });
+    }, true);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
    *  INIT
    * ═══════════════════════════════════════════════════════════ */
   function init() {
-    console.log('[BINGO] Admin engine v9 loaded');
+    console.log('[BINGO] Admin engine v11 loaded');
     try { if (window.CMS) CMS.registerPreviewStyle('./preview.css'); } catch (e) {}
+    startImageUploadOptimizer();
+
+    try {
+      if (window.CMS && window.CMS.registerEventListener) {
+        window.CMS.registerEventListener({
+          name: 'preSave',
+          handler: function (data) {
+            try {
+              var entry = data && data.entry;
+              if (!entry) return;
+              var entryData = entry.get('data');
+              if (!entryData) return;
+              var jsData = entryData.toJS ? entryData.toJS() : entryData;
+              if (jsData.summary && /citar/i.test(jsData.summary)) {
+                bingoToast('⚠️ Atenção: O campo "Resumo" parece conter marcadores não preenchidos (ex: citar o dia).', 'warn');
+              }
+            } catch (e) {}
+          }
+        });
+      }
+    } catch (e) {}
     
     try {
       if (window.CMS && window.CMS.createClass && window.CMS.h) {

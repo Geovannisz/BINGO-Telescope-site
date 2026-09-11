@@ -7,10 +7,10 @@
   },
   "scripts": {
     "dev": "node scripts/sync-publications.js && astro dev",
-    "build": "node scripts/sync-publications.js && astro build",
+    "build": "node scripts/sync-publications.js && node scripts/verify-assets.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "node scripts/sync-publications.js && astro check",
+    "check": "node scripts/sync-publications.js && node scripts/verify-assets.js && astro check",
     "prepare": "husky"
   },
   "dependencies": {
