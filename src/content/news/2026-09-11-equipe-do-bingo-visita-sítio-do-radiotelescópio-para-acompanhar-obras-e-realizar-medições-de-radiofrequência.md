@@ -3,9 +3,9 @@ title: Equipe do BINGO visita sítio do radiotelescópio para acompanhar obras e
   realizar medições de radiofrequência
 date: 2026-09-11T09:58:00.000-03:00
 author: Marini N. Lima
-image: /images/uploads/2026-09-11-equipe-bingo-visita-sitio-aguiar.webp
+image: /images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-1-.png
 summary: Uma equipe de pesquisadores do projeto BINGO realizou uma visita no dia
-  5 de setembro ao sítio onde está sendo instalado o radiotelescópio, no
+  (citar o dia) ao sítio onde está sendo instalado o radiotelescópio, no
   município de Aguiar, na Paraíba. A visita teve como objetivo acompanhar o
   andamento das obras, verificar as estruturas que estão sendo construídas e
   realizar novas medições de radiofrequência na região.
@@ -13,11 +13,11 @@ published: true
 ---
 Uma equipe de pesquisadores do projeto BINGO realizou uma visita no dia 5 de setembro, ao sítio onde está sendo instalado o radiotelescópio, no município de Aguiar, na Paraíba. A visita teve como objetivo acompanhar o andamento das obras, verificar as estruturas que estão sendo construídas e realizar novas medições de radiofrequência na região.
 
-Durante a visita, os pesquisadores Jordany Vieira, Tales Augusto e o prof. Kárlucio Heleno realizaram medições de ruído utilizando duas antenas disponibilizadas pelo prof. Alexandre Renê Serres, da Universidade Federal de Campina Grande (UFCG), e pelo prof. Allysson Macário, da Universidade Federal da Paraíba (UFPB).
+Durante a visita, os pesquisadores Jordany Vieira, Tales Augusto e o prof. Kárlucio Heleno realizara medições de ruído utilizando duas antenas disponibilizadas pelo prof. Alexandre Renê Serres, da Universidade Federal de Campina Grande (UFCG), e pelo prof. Allysson Macário, do Instituto Federal da Paraíba (IFPB).
 
 As medições de radiofrequência são uma etapa importante para o projeto, uma vez que o BINGO necessita de um ambiente com baixos níveis de interferência eletromagnética. A identificação e o monitoramento de possíveis fontes de sinais na região permitem avaliar as condições do local e contribuir para a proteção das observações realizadas pelo radiotelescópio.
 
-![Medições de radiofrequência e visita técnica ao sítio do radiotelescópio BINGO](/images/uploads/2026-09-11-medicoes-radiofrequencia-antenas.webp)
+![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-3-.png)
 
 A realização periódica dessas medições possibilita acompanhar as condições do ambiente ao longo da implantação do projeto e identificar eventuais fontes de interferência que possam comprometer a operação do instrumento.
 
@@ -29,7 +29,7 @@ Durante a passagem da equipe pelo município, foram realizadas duas reuniões co
 
 A iniciativa reforça a importância da colaboração entre a comunidade científica e o poder público local para ampliar os impactos científicos, educacionais e sociais associados à instalação do radiotelescópio na região.
 
-![Reuniões institucionais e entrevista na rádio comunitária Aguiar FM](/images/uploads/2026-09-11-visita-aguiar-entrevista-radio.webp)
+![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-.png)
 
 A equipe também participou de uma entrevista em uma rádio local, oportunidade em que apresentou mais informações sobre o projeto BINGO, seus objetivos científicos e a importância da instalação do radiotelescópio para a pesquisa e para o desenvolvimento de atividades de divulgação científica na região.
 
