@@ -5,7 +5,7 @@ date: 2026-09-11T09:58:00.000-03:00
 author: Marini N. Lima
 image: /images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-1-.png
 summary: Uma equipe de pesquisadores do projeto BINGO realizou uma visita no dia
-  (citar o dia) ao sítio onde está sendo instalado o radiotelescópio, no
+  5 de setembro ao sítio onde está sendo instalado o radiotelescópio, no
   município de Aguiar, na Paraíba. A visita teve como objetivo acompanhar o
   andamento das obras, verificar as estruturas que estão sendo construídas e
   realizar novas medições de radiofrequência na região.
@@ -29,7 +29,7 @@ Durante a passagem da equipe pelo município, foram realizadas duas reuniões co
 
 A iniciativa reforça a importância da colaboração entre a comunidade científica e o poder público local para ampliar os impactos científicos, educacionais e sociais associados à instalação do radiotelescópio na região.
 
-![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-.png)
+![](/images/uploads/cópia-de-livro-de-colorir-capa-46-x-35-cm-48-x-35-cm-50-x-35-cm-30-x-50-cm-.png)
 
 A equipe também participou de uma entrevista em uma rádio local, oportunidade em que apresentou mais informações sobre o projeto BINGO, seus objetivos científicos e a importância da instalação do radiotelescópio para a pesquisa e para o desenvolvimento de atividades de divulgação científica na região.
 
