@@ -48,17 +48,19 @@ const translationsMap = Object.fromEntries(
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-dynamic-translate="true">
-        {sortedNews.map(post => (
-          <NewsCard
-            id={post.id}
-            title={post.data.title}
-            date={post.data.date.toLocaleDateString('pt-BR')}
-            summary={post.data.summary}
-            image={post.data.image}
-            href={`${base}news/${post.id}`}
-          />
-        ))}
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-dynamic-translate="true">
+          {sortedNews.map(post => (
+            <NewsCard
+              id={post.id}
+              title={post.data.title}
+              date={post.data.date.toLocaleDateString('pt-BR')}
+              summary={post.data.summary}
+              image={post.data.image}
+              href={`${base}news/${post.id}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   </div>
