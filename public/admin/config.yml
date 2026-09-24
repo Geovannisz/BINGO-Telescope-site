@@ -135,7 +135,7 @@ collections:
         min: 1
         max: 999
         required: false
-        hint: Defina a ordem manual por importância (menor número aparece primeiro, ex: 1, 2, 3...)
+        hint: "Defina a ordem manual por importância (menor número aparece primeiro, ex: 1, 2, 3...)"
       - label: Gênero
         name: gender
         widget: select
