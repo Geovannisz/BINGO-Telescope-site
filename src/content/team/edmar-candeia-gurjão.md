@@ -34,12 +34,5 @@ biggest_curiosity: Como os atacantes agem.
 common_myth: Que o ataque não irá acontecer.
 impressive_discovery: Atualmente o uso da IA.
 career_advice: Muito trabalho e dedicação.
-publications:
-  - title: "The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a
-      Mock Fast Radio Burst Survey"
-    link: https://iopscience.iop.org/article/10.3847/1538-4357/adfa11
-books_chapters: "BINGO-ABDUS: A Radiotelescope to Unveil the Dark Sector of the
-  Universe. Compact Objects in the Universe. 1ed.: Springer Nature Switzerland,
-  2024, v. , p. 311-326."
 authorized: true
 ---

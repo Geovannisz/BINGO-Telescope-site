@@ -519,6 +519,7 @@ hr {
 .tp-stage-4 { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
 .tp-stage-5 { background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3); }
 .tp-stage-coord { background: rgba(6,182,212,0.15); color: #22d3ee; border: 1px solid rgba(6,182,212,0.3); }
+.tp-stage-builder { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
 .tp-area-badge { background: rgba(71,85,105,0.3); color: #cbd5e1; border: 1px solid rgba(148,163,184,0.3); }
 .tp-city-badge { background: rgba(30,41,59,0.5); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
 

@@ -6,6 +6,7 @@ institution: "Universidade de São Paulo (USP)"
 stage:
   - "Stage IV"
   - "Stage V"
+  - "builder"
 city: "São Paulo / SP / Brasil"
 area: "Simulações Cosmológicas e MCMC"
 email: "pablomotta@ustc.edu.cn"

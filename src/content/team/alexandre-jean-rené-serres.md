@@ -98,17 +98,6 @@ career_advice: "Cultive a curiosidade, desenvolva uma base sólida em matemátic
   aprender inglês, buscar colaborações e manter contato com experimentos reais,
   porque é na combinação entre teoria e prática que surgem as melhores
   perguntas."
-publications:
-  - title: "The BINGO Project II: Instrument Description."
-    doi: "The BINGO Project II: Instrument Description."
-  - title: "The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a
-      Mock Fast Radio Burst Survey."
-    link: "The BINGO/ABDUS Project: Forecast for Cosmological Parameters from a Mock
-      Fast Radio Burst Survey."
-books_chapters: Possuo produção em livros e capítulos de livro, além de
-  materiais didáticos e de divulgação sobre antenas, eletromagnetismo, RFID,
-  sensores e instrumentação de micro-ondas. Científicos e conteúdos relacionados
-  ao desenvolvimento do receptor e do radiotelescópio Uirapuru.
 groups_labs: Coordeno o Laboratório de Radiometria da . Sou professor permanente
   do PPgEE/UFCG e participo da colaboração BINGO/ABDUS, do INCT-NAMITEC e de
   projetos em instrumentação de RF, sensores, FSS, RFID e sistemas 5G/6G. Também

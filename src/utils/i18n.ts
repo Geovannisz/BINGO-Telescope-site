@@ -188,7 +188,10 @@ export const roleTranslations = {
   pt: {
     // Singular roles
     'role.Coordenador Geral': 'Coordenador Geral',
+    'role.Pesquisador Principal': 'Pesquisador Principal',
+    'role.Principal Researcher': 'Pesquisador Principal',
     'role.Pesquisador Sênior': 'Pesquisador Sênior',
+    'role.Senior Researcher': 'Pesquisador Sênior',
     'role.Professor Titular': 'Professor Titular',
     'role.Professor Associado': 'Professor Associado',
     'role.Professor Doutor': 'Professor Doutor',
@@ -201,7 +204,10 @@ export const roleTranslations = {
     'role.Assessor/Assistente': 'Assessor/Assistente',
     // Plural labels
     'label.Coordenador Geral': 'Coordenação Geral',
+    'label.Pesquisador Principal': 'Pesquisadores Principais',
+    'label.Principal Researcher': 'Pesquisadores Principais',
     'label.Pesquisador Sênior': 'Pesquisadores Seniores',
+    'label.Senior Researcher': 'Pesquisadores Seniores',
     'label.Professor Titular': 'Professores Titulares',
     'label.Professor Associado': 'Professores Associados',
     'label.Professor Doutor': 'Professores Doutores',
@@ -215,7 +221,10 @@ export const roleTranslations = {
     'label.Assessor/Assistente': 'Assessores e Assistentes',
     // Descriptions
     'desc.Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
+    'desc.Pesquisador Principal': 'Pesquisadores principais e coordenadores de áreas-chave do projeto BINGO',
+    'desc.Principal Researcher': 'Pesquisadores principais e coordenadores de áreas-chave do projeto BINGO',
     'desc.Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
+    'desc.Senior Researcher': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
     'desc.Professor Titular': 'Professores titulares de universidades e institutos de pesquisa parceiros',
     'desc.Professor Associado': 'Professores associados de universidades e institutos de pesquisa parceiros',
     'desc.Professor Doutor': 'Professores doutores de universidades e institutos de pesquisa parceiros',
@@ -231,7 +240,10 @@ export const roleTranslations = {
   en: {
     // Singular roles
     'role.Coordenador Geral': 'General Coordinator',
+    'role.Pesquisador Principal': 'Principal Researcher',
+    'role.Principal Researcher': 'Principal Researcher',
     'role.Pesquisador Sênior': 'Senior Researcher',
+    'role.Senior Researcher': 'Senior Researcher',
     'role.Professor Titular': 'Full Professor',
     'role.Professor Associado': 'Associate Professor',
     'role.Professor Doutor': 'Assistant Professor',
@@ -244,7 +256,10 @@ export const roleTranslations = {
     'role.Assessor/Assistente': 'Advisor/Assistant',
     // Plural labels
     'label.Coordenador Geral': 'General Coordination',
+    'label.Pesquisador Principal': 'Principal Researchers',
+    'label.Principal Researcher': 'Principal Researchers',
     'label.Pesquisador Sênior': 'Senior Researchers',
+    'label.Senior Researcher': 'Senior Researchers',
     'label.Professor Titular': 'Full Professors',
     'label.Professor Associado': 'Associate Professors',
     'label.Professor Doutor': 'Assistant Professors',
@@ -258,7 +273,10 @@ export const roleTranslations = {
     'label.Assessor/Assistente': 'Advisors and Assistants',
     // Descriptions
     'desc.Coordenador Geral': 'Leadership and strategic direction of the BINGO project',
+    'desc.Pesquisador Principal': 'Principal researchers leading key research fronts of the BINGO project',
+    'desc.Principal Researcher': 'Principal researchers leading key research fronts of the BINGO project',
     'desc.Pesquisador Sênior': 'PhD researchers leading specific research lines',
+    'desc.Senior Researcher': 'PhD researchers leading specific research lines',
     'desc.Professor Titular': 'Full professors from partner universities and research institutes',
     'desc.Professor Associado': 'Associate professors from partner universities and research institutes',
     'desc.Professor Doutor': 'Assistant professors from partner universities and research institutes',
@@ -274,7 +292,10 @@ export const roleTranslations = {
   zh: {
     // Singular roles
     'role.Coordenador Geral': '总协调人',
+    'role.Pesquisador Principal': '主要研究员',
+    'role.Principal Researcher': '主要研究员',
     'role.Pesquisador Sênior': '资深研究员',
+    'role.Senior Researcher': '资深研究员',
     'role.Professor Titular': '教授',
     'role.Professor Associado': '副教授',
     'role.Professor Doutor': '助理教授',
@@ -287,7 +308,10 @@ export const roleTranslations = {
     'role.Assessor/Assistente': '顾问/助理',
     // Plural labels
     'label.Coordenador Geral': '总协调',
+    'label.Pesquisador Principal': '主要研究员',
+    'label.Principal Researcher': '主要研究员',
     'label.Pesquisador Sênior': '资深研究员',
+    'label.Senior Researcher': '资深研究员',
     'label.Professor Titular': '教授',
     'label.Professor Associado': '副教授',
     'label.Professor Doutor': '助理教授',
@@ -301,7 +325,10 @@ export const roleTranslations = {
     'label.Assessor/Assistente': '顾问和助理',
     // Descriptions
     'desc.Coordenador Geral': 'BINGO项目的领导与战略方向',
+    'desc.Pesquisador Principal': '领导BINGO项目核心领域的骨干研究人员',
+    'desc.Principal Researcher': '领导BINGO项目核心领域的骨干研究人员',
     'desc.Pesquisador Sênior': '领导特定研究方向 of BINGO 的博士研究人员',
+    'desc.Senior Researcher': '领导特定研究方向 of BINGO 的博士研究人员',
     'desc.Professor Titular': '来自合作大学及研究机构的教授',
     'desc.Professor Associado': '来自合作大学及研究机构的副教授',
     'desc.Professor Doutor': '来自合作大学及研究机构的助理教授',

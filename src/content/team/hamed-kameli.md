@@ -106,26 +106,5 @@ biggest_curiosity: The biggest curiosity is understanding thetrue nature of dark
 impressive_discovery: Recently the discovery of Gravitational Waveimpressed me.
   Also, the expanding Universe.
 career_advice: It is hard but you can enjoy it.
-publications:
-  - authors: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:u5HHmVD_uO8C
-    title: " Solution of inverse heat conduction problem using the lattice Boltzmann
-      method"
-  - title: Primordial black holes in the excursion set theory
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:qjMakFHDy7sC
-  - title: A new inverse method based on Lattice Boltzmann method for 1D heat flux
-      estimation
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:u-x6o8ySG0sC
-  - title: Modified initial power spectrum and too big to fail problem
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:9yKSN-GCB0IC
-  - title: Voids and Halo in Voids statistics as a probe of the Expansion History of
-      the Universe
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:IjCSPb-OGe4C
-  - title: Mass assembly history of dark matter haloes in the light of H0 tension
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:UeHWp8X0CEIC
-  - title: Clustering of Primordial Black Holes in Excursion Set Theory
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:W7OEmFMy1HYC
-  - title: Investigation of Trombe wall performance by CFD simulation, a Parameter
-      study
-    link: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=JKkUXmgAAAAJ&citation_for_view=JKkUXmgAAAAJ:d1gkVwhDpl0C
 authorized: true
 ---

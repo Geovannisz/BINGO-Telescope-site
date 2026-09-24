@@ -1,7 +1,7 @@
 ---
 name: Carlos Alexandre Wuensche de Souza
 gender: Masculino
-role: Pesquisador Sênior
+role: Pesquisador Principal
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
 stage:
   - Stage 0

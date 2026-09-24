@@ -17,11 +17,6 @@ bio: Físico teórico e cosmólogo, o Prof. Dr. Elcio Abdalla é o líder e coor
   cosmologia e teoria quântica de campos, ele é a força motriz por trás da concepção,
   financiamento e execução do maior radiotelescópio da América Latina. Sob sua liderança,
   o BINGO se tornou uma das principais parcerias estratégicas Brasil-China na ciência.
-publications:
-- title: Machine learning analysis of photometric data from the Dark Energy Survey
-  link: https://doi.org/10.1093/mnras/staf1341
-  doi: 10.1093/mnras/staf1341
-  date: '2025-11-08 12:00:00+00:00'
 authorized: true
 credit_name: ''
 ---

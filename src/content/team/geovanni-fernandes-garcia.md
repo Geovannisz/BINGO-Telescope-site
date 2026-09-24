@@ -112,13 +112,6 @@ career_advice: Construa o seu legado conscientemente. Pense na ciência não com
   um compilado de burocracias ou linhas num currículo, mas como uma ferramenta
   direta de impacto para o futuro da humanidade. Ancore seus estudos e sua
   motivação em como você gostaria de ser lembrado.
-published_articles: Atualmente dedico-me à redação final da minha dissertação de
-  mestrado (com defesa prevista para 2026), que baseará minhas futuras
-  publicações em periódicos da área.
-books_chapters: Sou muito ativo na divulgação científica. Sou criador do canal
-  no YouTube "Dois Físicos e um Vetor" (com mais de 600 mil visualizações),
-  administro o grupo "Astronomia e Astrofísica" no Facebook (com mais de 280 mil
-  membros) e sou criador/professor do "Curso Online de Física".
 groups_labs: Faço parte do Instituto de Física da USP (IFUSP) e sou membro
   oficial da colaboração internacional do Telescópio BINGO, atuando fortemente
   na Fase 2 do projeto (BINGO-ABDUS).

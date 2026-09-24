@@ -374,7 +374,10 @@
         var h = window.CMS.h;
         var femaleRoles = {
           'Coordenador Geral': 'Coordenadora Geral',
+          'Pesquisador Principal': 'Pesquisadora Principal',
+          'Principal Researcher': 'Pesquisadora Principal',
           'Pesquisador Sênior': 'Pesquisadora Sênior',
+          'Senior Researcher': 'Pesquisadora Sênior',
           'Professor Titular': 'Professora Titular',
           'Professor Associado': 'Professora Associada',
           'Professor Doutor': 'Professora Doutora',
@@ -406,6 +409,7 @@
             
             var getStageClass = function(s) {
               if (s === 'Coordenação') return 'tp-stage-coord';
+              if (s === 'builder' || s === 'Builder') return 'tp-stage-builder';
               if (s.indexOf('0') !== -1) return 'tp-stage-0';
               if (s.indexOf('I') === -1) return 'tp-stage-0';
               if (s === 'Estágio V') return 'tp-stage-5';
@@ -481,30 +485,6 @@
               );
             };
 
-            var renderProducao = function() {
-              if (!data.publications && !data.published_articles && !data.books_chapters && !data.groups_labs && !data.future_projects) return null;
-              
-              var pubsEls = [];
-              if (data.publications && data.publications.length > 0) {
-                pubsEls = data.publications.map(function(pub, idx) {
-                  return h('div', { className: 'tp-pub-item', key: idx },
-                    h('div', { className: 'tp-pub-item-title' }, pub.title),
-                    h('div', { className: 'tp-pub-item-meta' }, (pub.journal || '') + (pub.year ? ' (' + pub.year + ')' : '')),
-                    pub.link && h('a', { className: 'tp-pub-link', href: pub.link, target: '_blank' }, 'Ver publicação ↗')
-                  );
-                });
-              }
-
-              return h('div', { className: 'tp-glass-card' }, 
-                h('h3', { className: 'tp-section-title' }, 'Produção Científica'),
-                pubsEls.length > 0 && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Principais Publicações'), pubsEls),
-                data.published_articles && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Artigos Publicados'), h('p', { className: 'tp-text' }, data.published_articles)),
-                data.books_chapters && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Livros/Capítulos'), h('p', { className: 'tp-text' }, data.books_chapters)),
-                data.groups_labs && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Grupos e Laboratórios'), h('p', { className: 'tp-text' }, data.groups_labs)),
-                data.future_projects && h('div', { className: 'tp-mb-4' }, h('h4', { className: 'tp-section-subtitle' }, 'Projetos Futuros'), h('p', { className: 'tp-text' }, data.future_projects))
-              );
-            };
-
             var photoUrl = '';
             if (photo) {
               try { photoUrl = this.props.getAsset(photo).toString(); } catch(e) {}
@@ -522,8 +502,7 @@
               links && Object.keys(links).length > 0 && h('div', { className: 'tp-links tp-mb-6' }, renderLinks()),
               renderTrajetoria(),
               renderPesquisa(),
-              renderDivulgacao(),
-              renderProducao()
+              renderDivulgacao()
             );
           }
         });

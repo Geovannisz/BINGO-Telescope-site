@@ -1,7 +1,7 @@
 ---
 name: "Filipe Batoni Abdalla"
 gender: "Masculino"
-role: "Pesquisador Sênior"
+role: "Pesquisador Principal"
 institution: "University College London (UCL) / Universidade de São Paulo (USP)"
 stage:
   - "Stage III"

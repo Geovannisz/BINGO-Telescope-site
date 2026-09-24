@@ -1,6 +1,6 @@
 ---
 name: Thyrso Villela Neto
-role: Pós-doc
+role: Pesquisador Sênior
 institution: Instituto Nacional de Pesquisas Espaciais  (INPE)
 stage:
   - Coordenação

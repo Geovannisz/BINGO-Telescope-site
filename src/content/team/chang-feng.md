@@ -5,6 +5,7 @@ role: Pesquisador Sênior
 institution: University of Science and Technology of China
 stage:
   - Stage IV
+  - builder
 city: China
 email: changfeng@ustc.edu.cn
 authorized: true

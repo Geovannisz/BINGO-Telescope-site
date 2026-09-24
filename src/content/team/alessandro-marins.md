@@ -7,6 +7,7 @@ stage:
   - "Stage I"
   - "Stage IV"
   - "Coordenação"
+  - "builder"
 city: "São Paulo / SP / Brasil"
 area: "Cosmologia e Radioastronomia"
 email: "alessandrormarins@gmail.com"

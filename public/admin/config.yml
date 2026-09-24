@@ -119,11 +119,23 @@ collections:
     create: true
     slug: '{{slug}}'
     identifier_field: name
+    sortable_fields:
+      - order
+      - name
+      - role
     fields:
       - label: Nome Completo
         name: name
         widget: string
         hint: Nome completo do pesquisador
+      - label: Ordem de Exibição / Prioridade
+        name: order
+        widget: number
+        value_type: int
+        min: 1
+        max: 999
+        required: false
+        hint: Defina a ordem manual por importância (menor número aparece primeiro, ex: 1, 2, 3...)
       - label: Gênero
         name: gender
         widget: select
@@ -137,7 +149,10 @@ collections:
         widget: select
         options:
           - Coordenador Geral
+          - Pesquisador Principal
+          - Principal Researcher
           - Pesquisador Sênior
+          - Senior Researcher
           - Professor Titular
           - Professor Associado
           - Professor Doutor
@@ -170,6 +185,7 @@ collections:
           - Stage IV
           - Stage V
           - Coordenação
+          - builder
         default:
           - Coordenação
         hint: Stage(s) do BINGO em que o pesquisador atua (selecione um ou mais)
@@ -339,73 +355,6 @@ collections:
           - bold
           - italic
         minimal: true
-        required: false
-      - label: Artigos e Publicações
-        name: publications
-        widget: list
-        required: false
-        fields:
-          - label: Título
-            name: title
-            widget: string
-          - label: Autores
-            name: authors
-            widget: string
-            required: false
-            hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
-          - label: Data
-            name: date
-            widget: datetime
-            required: false
-          - label: Link Externo (DOI/PDF)
-            name: link
-            widget: string
-            required: false
-          - label: DOI (apenas o identificador)
-            name: doi
-            widget: string
-            required: false
-            hint: 'Ex: 10.1051/0004-6361/202140883'
-          - label: Resumo
-            name: summary
-            widget: text
-            required: false
-          - label: Periódico / Journal
-            name: journal
-            widget: string
-            required: false
-            hint: 'Ex: Astronomy & Astrophysics'
-          - label: Volume
-            name: volume
-            widget: string
-            required: false
-          - label: Edição (Issue)
-            name: issue
-            widget: string
-            required: false
-          - label: Páginas
-            name: pages
-            widget: string
-            required: false
-            hint: 'Ex: 1514–1529'
-          - label: Categoria
-            name: category
-            widget: select
-            required: false
-            options:
-              - Série Principal
-              - ABDUS
-              - Colaboração
-              - Tese
-              - Outro
-      - label: Livros ou capítulos
-        name: books_chapters
-        widget: markdown
-        buttons:
-          - bold
-          - italic
-        minimal: true
-        required: false
       - label: Grupos, laboratórios ou projetos
         name: groups_labs
         widget: markdown
@@ -596,74 +545,6 @@ collections:
               - bold
               - italic
             minimal: true
-            required: false
-          - label: Artigos e Publicações
-            name: publications
-            widget: list
-            required: false
-            fields:
-              - label: Título
-                name: title
-                widget: string
-                required: false
-              - label: Autores
-                name: authors
-                widget: string
-                required: false
-                hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
-              - label: Data
-                name: date
-                widget: datetime
-                required: false
-              - label: Link Externo (DOI/PDF)
-                name: link
-                widget: string
-                required: false
-              - label: DOI (apenas o identificador)
-                name: doi
-                widget: string
-                required: false
-                hint: 'Ex: 10.1051/0004-6361/202140883'
-              - label: Resumo
-                name: summary
-                widget: text
-                required: false
-              - label: Periódico / Journal
-                name: journal
-                widget: string
-                required: false
-                hint: 'Ex: Astronomy & Astrophysics'
-              - label: Volume
-                name: volume
-                widget: string
-                required: false
-              - label: Edição (Issue)
-                name: issue
-                widget: string
-                required: false
-              - label: Páginas
-                name: pages
-                widget: string
-                required: false
-                hint: 'Ex: 1514–1529'
-              - label: Categoria
-                name: category
-                widget: select
-                required: false
-                options:
-                  - Série Principal
-                  - ABDUS
-                  - Colaboração
-                  - Tese
-                  - Outro
-          - label: Livros ou capítulos
-            name: books_chapters
-            widget: markdown
-            buttons:
-              - bold
-              - italic
-            minimal: true
-            required: false
           - label: Grupos, laboratórios ou projetos
             name: groups_labs
             widget: markdown
@@ -841,74 +722,6 @@ collections:
               - bold
               - italic
             minimal: true
-            required: false
-          - label: Artigos e Publicações
-            name: publications
-            widget: list
-            required: false
-            fields:
-              - label: Título
-                name: title
-                widget: string
-                required: false
-              - label: Autores
-                name: authors
-                widget: string
-                required: false
-                hint: 'Ex: E. Abdalla, F. B. Abdalla, A. Marins, et al.'
-              - label: Data
-                name: date
-                widget: datetime
-                required: false
-              - label: Link Externo (DOI/PDF)
-                name: link
-                widget: string
-                required: false
-              - label: DOI (apenas o identificador)
-                name: doi
-                widget: string
-                required: false
-                hint: 'Ex: 10.1051/0004-6361/202140883'
-              - label: Resumo
-                name: summary
-                widget: text
-                required: false
-              - label: Periódico / Journal
-                name: journal
-                widget: string
-                required: false
-                hint: 'Ex: Astronomy & Astrophysics'
-              - label: Volume
-                name: volume
-                widget: string
-                required: false
-              - label: Edição (Issue)
-                name: issue
-                widget: string
-                required: false
-              - label: Páginas
-                name: pages
-                widget: string
-                required: false
-                hint: 'Ex: 1514–1529'
-              - label: Categoria
-                name: category
-                widget: select
-                required: false
-                options:
-                  - Série Principal
-                  - ABDUS
-                  - Colaboração
-                  - Tese
-                  - Outro
-          - label: Livros ou capítulos
-            name: books_chapters
-            widget: markdown
-            buttons:
-              - bold
-              - italic
-            minimal: true
-            required: false
           - label: Grupos, laboratórios ou projetos
             name: groups_labs
             widget: markdown

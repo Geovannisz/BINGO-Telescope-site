@@ -1,7 +1,7 @@
 ---
 name: "Bin Wang  "
 gender: Masculino
-role: Professor Titular
+role: Pesquisador Principal
 institution: Shanghai Jiao Tong University/Yangzhou University
 stage:
   - Stage IV

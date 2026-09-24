@@ -1,6 +1,5 @@
 ---
 name: Temuulen Enkhsaikhan
-gender: null
 role: Mestrando
 institution: University of Science and Technology of China
 stage:

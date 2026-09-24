@@ -91,14 +91,5 @@ career_advice: Seguir carreira científica exige coragem, paixão, resiliência 
   que os resultados nem sempre correspondem às nossas expectativas. Ainda assim, a
   oportunidade de contribuir para o avanço do conhecimento faz com que o caminho valha
   a pena.
-publications:
-- title: Stability of the spacetime of a magnetized compact object
-  link: https://doi.org/10.1103/PhysRevD.111.024043
-  doi: 10.1103/PhysRevD.111.024043
-  date: '2025-01-15 00:00:00+00:00'
-- title: Universality in quasinormal modes of a magnetized black hole
-  link: https://doi.org/10.1103/2bc9-zb5b
-  doi: 10.1103/2bc9-zb5b
-  date: '2025-12-08 23:42:03+00:00'
 authorized: true
 ---

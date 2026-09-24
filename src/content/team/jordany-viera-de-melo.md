@@ -8,6 +8,7 @@ stage:
 - Stage 0
 - Stage I
 - Stage IV
+- builder
 city: Cariacica, ES - Brasil
 area: Cosmologia e Radioastronomia
 email: jordanyv@gmail.com
@@ -71,44 +72,5 @@ impressive_discovery: 'A teoria da relatividade geral feita por Einstein. Quando
 career_advice: 'Perseverança. A carreira científica no Brasil é bem vinculada a carreira
   acadêmica, e perseverança é a palavra-chave para que você siga em frente e continue
   a manter a mesma vontade. Outro conselho é: converse com as pessoas!'
-publications:
-- title: 'O Projeto BINGO I: Oscilações Acústicas Bariônicas a Partir de Observações
-    Integradas de Gás Neutro'
-  link: https://www.aanda.org/articles/aa/abs/2022/08/aa40883-21/aa40883-21.html
-  doi: 10.1051/0004-6361/202140883
-  date: '2022-08-01 12:00:00+00:00'
-- title: 'O Projeto BINGO II: Descrição do Instrumento'
-  link: https://www.aanda.org/articles/aa/abs/2022/08/aa39962-20/aa39962-20.html
-  doi: 10.1051/0004-6361/202039962
-  date: '2022-08-01 12:00:00+00:00'
-- title: 'O Projeto BINGO V: Etapas Adicionais na Separação de Componentes e Análise
-    do Bi-espectro'
-  link: https://www.aanda.org/articles/aa/abs/2022/08/aa41707-21/aa41707-21.html
-  doi: 10.1051/0004-6361/202141707
-  date: '2022-08-01 12:00:00+00:00'
-- title: 'O Projeto BINGO III: Projeto Óptico e Otimização do Plano Focal'
-  link: https://www.aanda.org/articles/aa/abs/2022/08/aa41382-21/aa41382-21.html
-  doi: 10.1051/0004-6361/202141382
-  date: '2022-08-01 12:00:00+00:00'
-- title: 'Uirapuru Horn Antenna: Integrated System for Radio Frequency Monitoring
-    and Receiver Component Evaluation'
-  link: https://www.researchgate.net/publication/378900000_Uirapuru_Horn_Antenna
-  doi: 10.13140/RG.2.2.34890.03521
-  date: '2024-03-01 12:00:00+00:00'
-- title: 'Baryon Acoustic Oscillations from Integrated Neutral Gas Observations: an
-    instrument to observe the 21cm hydrogen line in the redshift range 0.13 < z <
-    0.45 – status update'
-  link: https://doi.org/10.1590/0001-3765202120201096
-  doi: 10.1590/0001-3765202120201096
-  date: '2021-01-01 00:00:00+00:00'
-- title: Cosmographic constraints from late-time probes including fast radio bursts
-  link: https://arxiv.org/abs/2307.06975
-  doi: 10.48550/arXiv.2307.06975
-  date: '2023-07-09 12:00:00+00:00'
-books_chapters: 'Astrofísica de fontes de rádio: análise de sinais de 21 cm pós-reionização
-  e modelagem de FRBs como buracos negros primordiais com campos magnéticos. <https://link.springer.com/chapter/10.1007/978-3-031-55098-0_10>
-
-
-  BINGO-ABDUS: Um radiotelescópio para revelar o setor escuro do universo. https://link.springer.com/chapter/10.1007/978-3-031-55098-0_11'
 authorized: true
 ---

@@ -32,10 +32,13 @@ const teamCollection = defineCollection({
   schema: z.object({
     /* ── Basic Info ── */
     name: z.string(),
-    gender: z.enum(['Masculino', 'Feminino']).optional(),
+    gender: z.enum(['Masculino', 'Feminino']).nullable().optional(),
     role: z.enum([
       'Coordenador Geral',
+      'Pesquisador Principal',
+      'Principal Researcher',
       'Pesquisador Sênior',
+      'Senior Researcher',
       'Professor Titular',
       'Professor Associado',
       'Professor Doutor',
@@ -47,6 +50,7 @@ const teamCollection = defineCollection({
       'Colaborador Externo',
       'Assessor/Assistente',
     ]),
+    order: z.number().optional().default(999),
     institution: z.string(),
     photo: z.string().optional(),
     stage: z.union([

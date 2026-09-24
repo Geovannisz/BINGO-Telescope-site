@@ -65,28 +65,6 @@ career_advice: Que esta carreira é cheia de obstáculos e desafios, como grande
   completamente não só a sua história, mas também a história da própria ciência
   e, consequentemente, da humanidade. Assim, podemos dizer que trabalhar com
   ciência é uma experiência árdua, mas muito enriquecedora.
-publications:
-  - title: Inflation in f (R, T ) Gravity
-    link: https://arxiv.org/pdf/2006.04336
-  - title: Energy Conditions in f(Q) gravity
-    link: https://arxiv.org/pdf/2008.01563
-  - title: "The BINGO project I: Baryon acoustic oscillations from integrated
-      neutral gas observations"
-    link: https://arxiv.org/pdf/2107.01633
-  - link: https://arxiv.org/pdf/2107.01634
-    title: "The BINGO project II: Instrument description"
-  - link: https://arxiv.org/pdf/2308.06805
-    title: "The BINGO Project IX: Search for Fast Radio Bursts – A Forecast for the
-      BINGO Interferometry System⋆"
-  - link: https://arxiv.org/pdf/2309.05099
-    title: "BINGO-ABDUS: a radiotelescope to unveil the dark sector of the Universe"
-  - link: https://arxiv.org/pdf/2303.16714
-    title: Cosmological models for f(R, T) − Λ(ϕ) gravity
-  - link: https://arxiv.org/pdf/2507.06975
-    title: Cosmographic constraints from late-time probes including fast radio bursts
-  - link: https://arxiv.org/pdf/2604.16154
-    title: "Probing Primordial Black Holes with upcoming Radio Telescopes: a case
-      study for LOFAR2.0, FAST Core Array and BINGO"
 future_projects: Atualmente sou membro do grupo de trabalho científico de
   cosmologia do telescópio SKA e do grupo de cosmologia do *Australian SKA
   Pathfinder* (ASKAP).

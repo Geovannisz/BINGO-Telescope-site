@@ -19,6 +19,7 @@ const base = import.meta.env.BASE_URL;
 /* Role hierarchy for display order */
 const roleOrder = [
   'Coordenador Geral',
+  'Pesquisador Principal',
   'Pesquisador Sênior',
   'Professor Titular, Associado e Doutor',
   'Pós-doc',
@@ -32,6 +33,7 @@ const roleOrder = [
 
 const roleLabels: Record<string, string> = {
   'Coordenador Geral': 'Coordenação Geral',
+  'Pesquisador Principal': 'Pesquisadores Principais',
   'Pesquisador Sênior': 'Pesquisadores Seniores',
   'Professor Titular, Associado e Doutor': 'Professores Titulares, Associados e Doutores',
   'Pós-doc': 'Pós-Doutorandos',
@@ -45,6 +47,7 @@ const roleLabels: Record<string, string> = {
 
 const roleDescriptions: Record<string, string> = {
   'Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
+  'Pesquisador Principal': 'Pesquisadores principais e líderes de frentes científicas e instrumentais do projeto BINGO',
   'Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
   'Professor Titular, Associado e Doutor': 'Professores titulares, associados e doutores de universidades e institutos de pesquisa parceiros',
   'Pós-doc': 'Pesquisadores em estágio pós-doutoral',
@@ -56,19 +59,35 @@ const roleDescriptions: Record<string, string> = {
   'Assessor/Assistente': 'Equipe de apoio técnico e administrativo',
 };
 
+/* Sort comparator: manual ordering by importance (lower number = higher importance) */
+const sortByOrder = (a: any, b: any) => {
+  const orderA = a.data.order ?? 999;
+  const orderB = b.data.order ?? 999;
+  if (orderA !== orderB) return orderA - orderB;
+  return 0;
+};
+
 /* Group members by role */
 const grouped = roleOrder
   .map(role => {
     let members;
-    if (role === 'Professor Titular, Associado e Doutor') {
+    if (role === 'Pesquisador Principal') {
+      members = allTeam
+        .filter(m => m.data.role === 'Pesquisador Principal' || m.data.role === 'Principal Researcher')
+        .sort(sortByOrder);
+    } else if (role === 'Pesquisador Sênior') {
+      members = allTeam
+        .filter(m => m.data.role === 'Pesquisador Sênior' || m.data.role === 'Senior Researcher')
+        .sort(sortByOrder);
+    } else if (role === 'Professor Titular, Associado e Doutor') {
       const targetRoles = ['Professor Titular', 'Professor Associado', 'Professor Doutor'];
       members = allTeam
         .filter(m => targetRoles.includes(m.data.role))
-        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+        .sort(sortByOrder);
     } else {
       members = allTeam
         .filter(m => m.data.role === role)
-        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+        .sort(sortByOrder);
     }
 
     return {
@@ -249,7 +268,7 @@ const stages = [
                   photo={member.data.photo}
                   stage={member.data.stage}
                   slug={member.id}
-                  gender={member.data.gender}
+                  gender={member.data.gender ?? undefined}
                 />
               ))}
             </div>

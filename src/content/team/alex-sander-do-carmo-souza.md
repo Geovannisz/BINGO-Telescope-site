@@ -57,10 +57,5 @@ career_advice: Persistência. A jornada acadêmica e científica é inegavelment
   e cheia de obstáculos imprevisíveis. No entanto, para aqueles que mantêm a resiliência,
   a Física acaba se revelando incrivelmente bela e recompensadora na forma como nos
   ajuda a entender o universo.
-publications:
-- title: Machine learning analysis of photometric data from the Dark Energy Survey
-  link: https://doi.org/10.1093/mnras/staf1341
-  doi: 10.1093/mnras/staf1341
-  date: '2025-11-08 12:00:00+00:00'
 authorized: true
 ---
