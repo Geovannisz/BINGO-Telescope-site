@@ -3,8 +3,12 @@ name: "Bin Wang  "
 gender: Masculino
 role: Pesquisador Principal
 institution: Shanghai Jiao Tong University/Yangzhou University
+photo: /images/uploads/d5dec67873aada1b9107f5febb6b6ff7a97e0be0.webp
 stage:
   - Stage IV
+  - Coordenação
+city: China
+area: Teoria da gravidade e Cosmologia
 email: wang_b@sjtu.edu.cn
 lattes: http://lattes.cnpq.br/0605283425379640
 bio: Possui graduação em Física - *Shanghai Normal University* (1990) e
