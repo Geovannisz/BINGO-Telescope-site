@@ -1,8 +1,9 @@
 ---
 name: Douglas Fregolente
 gender: Masculino
-role: Professor Associado
+role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-5.webp
 stage:
   - Stage 0
 area: Teoria
