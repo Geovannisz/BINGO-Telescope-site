@@ -1,5 +1,6 @@
 ---
 name: Chang Feng
+order: 2
 gender: Masculino
 role: Pesquisador Sênior
 institution: University of Science and Technology of China
