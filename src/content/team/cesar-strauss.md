@@ -7,15 +7,14 @@ stage:
   - Stage 0
   - Stage I
 email: cesar.strauss@inpe.br
-lattes: http://lattes.cnpq.br/3350015577302962
-bio: Possui graduação em Física pela Universidad Nacional Mayor de San Marcos
-  (2005), mestrado em Astrofísica pelo Instituto Nacional de Pesquisas Espaciais
-  (2009), e doutorado em Ciências e Aplicações Geoespaciais pela Universidade
-  Presbiteriana Mackenzie (2016). Pós-doutorado no Centro de Radio Astronomia e
-  Astrofísica Mackenzie (CRAAM) de maio de 2017 até dezembro de 2020. Tem
-  experiência na área de Astronomia observacional, instrumentação, e analise de
-  dados com ênfase em Física Solar e na determinação de opacidade atmosférica
-  terrestre na faixa (sub)milimétrica.
+lattes: http://lattes.cnpq.br/1228313832666346
+bio: "Possui mestrado em Engenharia Elétrica pela Universidade de São
+  Paulo(2001) e doutorado em Computação Aplicada pelo Instituto Nacional de
+  Pesquisas Espaciais(2013). Atualmente é Tecnologista do Instituto Nacional de
+  Pesquisas Espaciais. Tem experiência na área de Engenharia Elétrica, com
+  ênfase em Circuitos Elétricos, Magnéticos e Eletrônicos. Atuando
+  principalmente nos seguintes temas: Automação Agrícola e Controller Area
+  Network."
 authorized: true
 published: true
 ---
