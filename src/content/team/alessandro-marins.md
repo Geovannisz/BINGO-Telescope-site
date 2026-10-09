@@ -1,5 +1,6 @@
 ---
 name: "Alessandro Ribeiro Marins "
+order: 1
 gender: Masculino
 role: Pesquisador Sênior
 institution: Universidade de São Paulo (USP)
