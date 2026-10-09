@@ -1,7 +1,7 @@
 ---
 name: Alexandre Jean René Serres
 gender: Masculino
-role: Professor Associado
+role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG), Centro de Engenharia
   Elétrica e Informática (CEEI), Departamento de Engenharia Elétrica (DEE).
 photo: /images/uploads/captura-de-tela-2026-08-01-113837.png
