@@ -6,6 +6,7 @@ institution: Shanghai Jiao Tong University
 photo: /images/uploads/20220704145719.webp
 stage:
   - Stage IV
+city: China
 area: Astronomia de raios X, Radioastronomia, Aglomerados de galáxias
 email: hgxu@sjtu.edu.cn
 bio: O Professor Xu obteve seu doutorado em Física em 1998 pela Universidade
