@@ -21,7 +21,6 @@ const roleOrder = [
   'Coordenador Geral',
   'Coordenador',
   'Core',
-  'Builder',
   'Pesquisador Sênior',
   'Professor Titular, Associado e Doutor',
   'Pós-doc',
@@ -37,7 +36,6 @@ const roleLabels: Record<string, string> = {
   'Coordenador Geral': 'Coordenação Geral',
   'Coordenador': 'Coordenação',
   'Core': 'Core',
-  'Builder': 'Builder',
   'Pesquisador Sênior': 'Pesquisadores Seniores',
   'Professor Titular, Associado e Doutor': 'Professores Titulares, Associados e Doutores',
   'Pós-doc': 'Pós-Doutorandos',
@@ -53,7 +51,6 @@ const roleDescriptions: Record<string, string> = {
   'Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
   'Coordenador': 'Coordenadores de áreas-chave do projeto BINGO',
   'Core': 'Membros centrais da colaboração BINGO',
-  'Builder': 'Construtores e desenvolvedores do projeto BINGO',
   'Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
   'Professor Titular, Associado e Doutor': 'Professores titulares, associados e doutores de universidades e institutos de pesquisa parceiros',
   'Pós-doc': 'Pesquisadores em estágio pós-doutoral',
@@ -84,10 +81,6 @@ const grouped = roleOrder
     } else if (role === 'Core') {
       members = allTeam
         .filter(m => m.data.role === 'Core')
-        .sort(sortByOrder);
-    } else if (role === 'Builder') {
-      members = allTeam
-        .filter(m => m.data.role === 'Builder')
         .sort(sortByOrder);
     } else if (role === 'Pesquisador Sênior') {
       members = allTeam

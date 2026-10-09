@@ -59,6 +59,7 @@ collections:
         name: en
         widget: object
         collapsed: true
+        required: false
         fields:
           - label: Título
             name: title
@@ -88,6 +89,7 @@ collections:
         name: zh
         widget: object
         collapsed: true
+        required: false
         fields:
           - label: Título
             name: title
@@ -151,7 +153,6 @@ collections:
           - Coordenador Geral
           - Coordenador
           - Core
-          - Builder
           - Pesquisador Sênior
           - Senior Researcher
           - Professor Titular
@@ -391,6 +392,7 @@ collections:
         name: en
         widget: object
         collapsed: true
+        required: false
         fields:
           - label: Nome Completo
             name: name
@@ -569,6 +571,7 @@ collections:
         name: zh
         widget: object
         collapsed: true
+        required: false
         fields:
           - label: Nome Completo
             name: name
