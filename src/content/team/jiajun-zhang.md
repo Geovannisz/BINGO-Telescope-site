@@ -2,13 +2,12 @@
 name: Jiajun Zhang
 order: 3
 gender: Masculino
-role: Pesquisador Sênior
+role: Builder
 institution: Shanghai Astronomical Observatory, CAS.
 photo: /images/uploads/captura-de-tela-2026-07-30-143359.png
 stage:
   - Stage II
   - Stage III
-  - builder
 city: Shanghai - China
 area: Astrophysics, AI for Science.
 email: jjzhang@shao.ac.cn

@@ -94,7 +94,7 @@ const displayName = name;
     </div>
     <!-- Member info -->
     <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no" title={name}>{displayName}</h3>
-    <p class="notranslate text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2" translate="no" data-role-t={role}>{displayRole}</p>
+    <p class={`notranslate text-xs sm:text-sm font-medium mb-1.5 sm:mb-2 ${role === 'Builder' ? 'text-amber-400' : 'text-cyan-400'}`} translate="no" data-role-t={role}>{displayRole}</p>
     <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2" translate="no">{institution}</p>
     <div class="flex flex-wrap justify-center gap-1.5 mt-2">
       {stagesArray.map((s) => {

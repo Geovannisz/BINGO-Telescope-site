@@ -2,7 +2,7 @@
 name: Jordany Viera de Melo
 order: 4
 gender: Masculino
-role: Pesquisador Sênior
+role: Builder
 institution: Universidade Federal de Campina Grande (UFCG), Universidade
   Estadual da Paraíba (UEPB).
 photo: /images/uploads/whatsapp-image-2026-07-14-at-16.31.02.jpeg
@@ -10,7 +10,6 @@ stage:
   - Stage 0
   - Stage I
   - Stage IV
-  - builder
 city: Cariacica, ES - Brasil
 area: Cosmologia e Radioastronomia
 email: jordanyv@gmail.com

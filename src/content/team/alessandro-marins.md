@@ -2,13 +2,12 @@
 name: "Alessandro Ribeiro Marins "
 order: 1
 gender: Masculino
-role: Pesquisador Sênior
+role: Builder
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/servletrecuperafoto-2.webp
 stage:
   - Stage I
   - Stage IV
-  - builder
 city: São Paulo / SP / Brasil
 area: Cosmologia e Radioastronomia
 email: alessandrormarins@gmail.com

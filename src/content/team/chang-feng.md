@@ -2,11 +2,10 @@
 name: Chang Feng
 order: 2
 gender: Masculino
-role: Pesquisador Sênior
+role: Builder
 institution: University of Science and Technology of China
 stage:
   - Stage IV
-  - builder
 city: China
 email: changfeng@ustc.edu.cn
 authorized: true

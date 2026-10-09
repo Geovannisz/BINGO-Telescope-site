@@ -2,13 +2,12 @@
 name: Pablo César Benevides de Carvalho Rossas Motta
 order: 5
 gender: Masculino
-role: Pesquisador Sênior
+role: Builder
 institution: Universidade de São Paulo (USP)
 photo: /images/uploads/servletrecuperafoto-3.webp
 stage:
   - Stage IV
   - Stage V
-  - builder
 city: São Paulo / SP / Brasil
 area: Simulações Cosmológicas e MCMC
 email: pablomotta@ustc.edu.cn
