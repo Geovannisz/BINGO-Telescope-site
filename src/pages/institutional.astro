@@ -46,34 +46,37 @@ const base = import.meta.env.BASE_URL;
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Elcio Abdalla -->
-          <div class="glass-card-glow p-6 flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <a href={`${base}team/elcio-abdalla/`} class="glass-card-glow p-6 flex flex-col items-center text-center group hover:border-cyan-500/30 transition-all duration-300">
+            <div class="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-slate-600 group-hover:border-cyan-500/50 group-hover:shadow-md group-hover:shadow-cyan-500/20 transition-all duration-300 flex-shrink-0 bg-slate-700">
+              <img src={`${base}images/team/elcio-abdalla.jpg`} alt="Prof. Dr. Elcio Abdalla" class="w-full h-full object-cover" loading="lazy" />
             </div>
-            <p class="text-white font-bold text-lg" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Elcio Abdalla</p>
-            <p class="text-cyan-400 text-sm font-medium mb-2" data-t="committee.role.pi">Principal Investigator</p>
-            <p class="text-slate-400 text-sm mt-auto">Instituto de Física — Universidade de São Paulo (IF-USP)</p>
-          </div>
+            <p class="text-white font-bold text-lg leading-snug group-hover:text-cyan-300 transition-colors" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Elcio Abdalla</p>
+            <p class="text-cyan-400 text-sm font-medium mt-1 mb-1" data-t="committee.role.pi">Principal Investigator</p>
+            <p class="text-slate-400 text-xs uppercase tracking-wider leading-tight mb-4">Instituto de Física — USP</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-xs text-cyan-400/60 group-hover:text-cyan-400 transition-colors" data-t="committee.profile_link">Ver perfil completo →</span>
+          </a>
 
           <!-- Carlos Alexandre Wuensche -->
-          <div class="glass-card-glow p-6 flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <a href={`${base}team/carlos-alexandre-wuensche-de-souza/`} class="glass-card-glow p-6 flex flex-col items-center text-center group hover:border-cyan-500/30 transition-all duration-300">
+            <div class="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-slate-600 group-hover:border-cyan-500/50 group-hover:shadow-md group-hover:shadow-cyan-500/20 transition-all duration-300 flex-shrink-0 bg-slate-700">
+              <img src={`${base}images/uploads/whatsapp-image-2026-10-09-at-18-17-15.webp`} alt="Prof. Dr. Carlos Alexandre Wuensche" class="w-full h-full object-cover" loading="lazy" />
             </div>
-            <p class="text-white font-bold text-lg" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Carlos Alexandre Wuensche</p>
-            <p class="text-cyan-400 text-sm font-medium mb-2" data-t="committee.role.copi_instr">Co-PI (Instrumentação)</p>
-            <p class="text-slate-400 text-sm mt-auto">Instituto Nacional de Pesquisas Espaciais (INPE)</p>
-          </div>
+            <p class="text-white font-bold text-lg leading-snug group-hover:text-cyan-300 transition-colors" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Carlos Alexandre Wuensche</p>
+            <p class="text-cyan-400 text-sm font-medium mt-1 mb-1" data-t="committee.role.copi_instr">Co-PI (Instrumentação)</p>
+            <p class="text-slate-400 text-xs uppercase tracking-wider leading-tight mb-4">INPE — São José dos Campos</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-xs text-cyan-400/60 group-hover:text-cyan-400 transition-colors" data-t="committee.profile_link">Ver perfil completo →</span>
+          </a>
 
           <!-- Luciano Barosi -->
-          <div class="glass-card-glow p-6 flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <a href={`${base}team/luciano-barosi/`} class="glass-card-glow p-6 flex flex-col items-center text-center group hover:border-cyan-500/30 transition-all duration-300">
+            <div class="w-28 h-28 rounded-full overflow-hidden mb-4 border-2 border-slate-600 group-hover:border-cyan-500/50 group-hover:shadow-md group-hover:shadow-cyan-500/20 transition-all duration-300 flex-shrink-0 bg-slate-700">
+              <img src={`${base}images/uploads/whatsapp-image-2026-07-06-at-23.43.37.jpeg`} alt="Prof. Dr. Luciano Barosi" class="w-full h-full object-cover" loading="lazy" />
             </div>
-            <p class="text-white font-bold text-lg" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Luciano Barosi</p>
-            <p class="text-cyan-400 text-sm font-medium mb-2" data-t="committee.role.copi_site">Co-PI (Site &amp; Operações)</p>
-            <p class="text-slate-400 text-sm mt-auto">Universidade Federal de Campina Grande (UFCG)</p>
-          </div>
+            <p class="text-white font-bold text-lg leading-snug group-hover:text-cyan-300 transition-colors" style="font-family: 'Outfit', sans-serif;">Prof. Dr. Luciano Barosi</p>
+            <p class="text-cyan-400 text-sm font-medium mt-1 mb-1" data-t="committee.role.copi_site">Co-PI (Site &amp; Operações)</p>
+            <p class="text-slate-400 text-xs uppercase tracking-wider leading-tight mb-4">UFCG — Campina Grande</p>
+            <span class="mt-auto inline-flex items-center gap-1 text-xs text-cyan-400/60 group-hover:text-cyan-400 transition-colors" data-t="committee.profile_link">Ver perfil completo →</span>
+          </a>
         </div>
       </div>
 

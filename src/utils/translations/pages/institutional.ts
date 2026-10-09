@@ -17,6 +17,7 @@ const institutional: Record<string, { en: string; zh: string }> = {
   'committee.role.pi': { en: 'Principal Investigator', zh: '首席研究员' },
   'committee.role.copi_instr': { en: 'Co-PI (Instrumentation)', zh: '联合PI（仪器）' },
   'committee.role.copi_site': { en: 'Co-PI (Site &amp; Operations)', zh: '联合PI（站址与运营）' },
+  'committee.profile_link': { en: 'View full profile →', zh: '查看完整简介 →' },
   'docs.label': { en: 'Documents', zh: '文件' },
   'docs.title': { en: 'Collaboration Documents', zh: '合作文件' },
   'docs.desc': {
