@@ -3,7 +3,7 @@ name: Carlos Alexandre Wuensche de Souza
 gender: Masculino
 role: Coordenador
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
-photo: /images/uploads/servletrecuperafoto.webp
+photo: /images/uploads/whatsapp-image-2026-10-09-at-17-55-46.webp
 stage:
   - Stage 0
   - Stage I
