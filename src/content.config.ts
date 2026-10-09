@@ -35,8 +35,9 @@ const teamCollection = defineCollection({
     gender: z.enum(['Masculino', 'Feminino']).nullable().optional(),
     role: z.enum([
       'Coordenador Geral',
-      'Pesquisador Principal',
-      'Principal Researcher',
+      'Coordenador',
+      'Core',
+      'Builder',
       'Pesquisador Sênior',
       'Senior Researcher',
       'Professor Titular',

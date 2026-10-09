@@ -1,7 +1,7 @@
 ---
 name: "Bin Wang  "
 gender: Masculino
-role: Pesquisador Principal
+role: Coordenador
 institution: Shanghai Jiao Tong University/Yangzhou University
 photo: /images/uploads/d5dec67873aada1b9107f5febb6b6ff7a97e0be0.webp
 stage:

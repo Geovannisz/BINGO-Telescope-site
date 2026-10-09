@@ -19,7 +19,9 @@ const base = import.meta.env.BASE_URL;
 /* Role hierarchy for display order */
 const roleOrder = [
   'Coordenador Geral',
-  'Pesquisador Principal',
+  'Coordenador',
+  'Core',
+  'Builder',
   'Pesquisador Sênior',
   'Professor Titular, Associado e Doutor',
   'Pós-doc',
@@ -33,7 +35,9 @@ const roleOrder = [
 
 const roleLabels: Record<string, string> = {
   'Coordenador Geral': 'Coordenação Geral',
-  'Pesquisador Principal': 'Pesquisadores Principais',
+  'Coordenador': 'Coordenação',
+  'Core': 'Core',
+  'Builder': 'Builder',
   'Pesquisador Sênior': 'Pesquisadores Seniores',
   'Professor Titular, Associado e Doutor': 'Professores Titulares, Associados e Doutores',
   'Pós-doc': 'Pós-Doutorandos',
@@ -47,7 +51,9 @@ const roleLabels: Record<string, string> = {
 
 const roleDescriptions: Record<string, string> = {
   'Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
-  'Pesquisador Principal': 'Pesquisadores principais e líderes de frentes científicas e instrumentais do projeto BINGO',
+  'Coordenador': 'Coordenadores de áreas-chave do projeto BINGO',
+  'Core': 'Membros centrais da colaboração BINGO',
+  'Builder': 'Construtores e desenvolvedores do projeto BINGO',
   'Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
   'Professor Titular, Associado e Doutor': 'Professores titulares, associados e doutores de universidades e institutos de pesquisa parceiros',
   'Pós-doc': 'Pesquisadores em estágio pós-doutoral',
@@ -71,9 +77,17 @@ const sortByOrder = (a: any, b: any) => {
 const grouped = roleOrder
   .map(role => {
     let members;
-    if (role === 'Pesquisador Principal') {
+    if (role === 'Coordenador') {
       members = allTeam
-        .filter(m => m.data.role === 'Pesquisador Principal' || m.data.role === 'Principal Researcher')
+        .filter(m => m.data.role === 'Coordenador')
+        .sort(sortByOrder);
+    } else if (role === 'Core') {
+      members = allTeam
+        .filter(m => m.data.role === 'Core')
+        .sort(sortByOrder);
+    } else if (role === 'Builder') {
+      members = allTeam
+        .filter(m => m.data.role === 'Builder')
         .sort(sortByOrder);
     } else if (role === 'Pesquisador Sênior') {
       members = allTeam

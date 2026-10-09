@@ -33,8 +33,7 @@ let displayRole = role;
 if (gender === 'Feminino') {
   const femaleRoles: Record<string, string> = {
     'Coordenador Geral': 'Coordenadora Geral',
-    'Pesquisador Principal': 'Pesquisadora Principal',
-    'Principal Researcher': 'Pesquisadora Principal',
+    'Coordenador': 'Coordenadora',
     'Pesquisador Sênior': 'Pesquisadora Sênior',
     'Senior Researcher': 'Pesquisadora Sênior',
     'Professor Titular': 'Professora Titular',
@@ -49,7 +48,7 @@ if (gender === 'Feminino') {
   displayRole = femaleRoles[role] || role;
 }
 
-/* If photo path is provided but doesn't start with http or base, prepend base */
+/* Photo path handling */
 const photoSrc = photo
   ? (photo.startsWith('http') || photo.startsWith(base))
     ? photo
@@ -65,31 +64,13 @@ const stageColors: Record<string, string> = {
   'Stage IV': 'bg-blue-500/15 text-blue-400 border-blue-500/30',
   'Stage V': 'bg-purple-500/15 text-purple-400 border-purple-500/30',
   'Coordenação': 'bg-cyan-500/15 text-cyan-400 border-cyan-500/30',
+  'Core': 'bg-indigo-500/15 text-indigo-400 border-indigo-500/30',
   'builder': 'bg-amber-500/15 text-amber-400 border-amber-500/30',
   'Builder': 'bg-amber-500/15 text-amber-400 border-amber-500/30',
 };
 const stagesArray = stage || [];
 
-/* Helper to abbreviate middle names to save space */
-function abbreviateName(fullName: string): string {
-  const parts = fullName.trim().split(/\s+/);
-  if (parts.length <= 2) return fullName;
-  
-  const first = parts[0];
-  const last = parts[parts.length - 1];
-  
-  const middles = parts.slice(1, -1).map(m => {
-    const lower = m.toLowerCase();
-    if (['de', 'da', 'do', 'dos', 'das', 'e'].includes(lower)) {
-       return lower;
-    }
-    return m.charAt(0).toUpperCase() + '.';
-  });
-  
-  return [first, ...middles, last].join(' ');
-}
-
-const displayName = abbreviateName(name);
+const displayName = name;
 ---
 
 <a href={`${base}team/${slug}/`} class="group block w-full max-w-[320px] mx-auto">

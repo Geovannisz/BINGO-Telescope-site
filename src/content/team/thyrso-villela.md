@@ -1,7 +1,7 @@
 ---
 name: Thyrso Villela
 gender: Masculino
-role: Pesquisador Sênior
+role: Core
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
 photo: /images/uploads/captura-de-tela-2026-08-01-102734.png
 stage:
