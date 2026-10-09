@@ -25,12 +25,12 @@ const extensionLinks = [
   { href: `${base}location`, label: t('nav.location'), key: 'nav.location' },
 ];
 
-const secondaryLinks = [
-  // { href: `${base}team`, label: t('nav.team'), key: 'nav.team' },
+const communityLinks = [
   { href: `${base}news`, label: t('nav.news'), key: 'nav.news' },
   { href: `${base}publications`, label: t('nav.publications'), key: 'nav.publications' },
   { href: `${base}press`, label: t('nav.press'), key: 'nav.press' },
   { href: `${base}faq`, label: t('nav.faq'), key: 'nav.faq' },
+  { href: `${base}institutional`, label: t('nav.institutional'), key: 'nav.institutional' },
 ];
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -39,15 +39,16 @@ const pathname = new URL(Astro.request.url).pathname;
 const isActive = (href: string) => {
   const cleanPathname = pathname.replace(/\/$/, "") || "/";
   const cleanHref = href.replace(/\/$/, "") || "/";
-  
+
   if (cleanHref === base.replace(/\/$/, "") || cleanHref === "/") {
     return cleanPathname === cleanHref;
   }
-  
+
   return cleanPathname === cleanHref || cleanPathname.startsWith(cleanHref + '/');
 };
 
 const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location' && isActive(link.href));
+const isCommunityActive = communityLinks.some(link => isActive(link.href));
 ---
 
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 pt-4 px-4 sm:px-6 lg:px-8" translate="no">
@@ -129,22 +130,46 @@ const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location
           </div>
         </div>
 
-        {secondaryLinks.map((link) => {
-          const active = isActive(link.href);
-          return (
-            <a
-              href={link.href}
-              class={`transition-all duration-300 text-sm font-medium px-3 py-2 rounded-xl border cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/30 ${
-                active 
-                  ? 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 shadow-[0_0_12px_rgba(34,211,238,0.15)]' 
-                  : 'text-slate-300 border-transparent hover:text-cyan-400 hover:bg-white/5'
-              }`}
-              data-i18n={link.key}
-            >
-              {link.label}
-            </a>
-          );
-        })}
+        <!-- Comunidade Dropdown -->
+        <div class="relative" id="community-dropdown">
+          <button
+            class={`transition-all duration-300 text-sm font-medium px-3 py-2 rounded-xl border inline-flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/30 ${
+              isCommunityActive
+                ? 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 shadow-[0_0_12px_rgba(34,211,238,0.15)]'
+                : 'text-slate-300 border-transparent hover:text-cyan-400 hover:bg-white/5'
+            }`}
+            id="community-btn"
+            data-i18n="nav.community"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="community-menu"
+          >
+            {t('nav.community')}
+            <svg class="w-3 h-3 transition-transform duration-300 text-slate-500" id="community-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-2.5 w-56 rounded-2xl border border-indigo-500/20 shadow-[0_20px_50px_rgba(7,13,31,0.6),0_0_30px_rgba(99,102,241,0.15)] opacity-0 invisible transition-all duration-300 transform -translate-y-2 z-[100] p-1.5" id="community-menu" style="background: rgba(10, 18, 40, 0.95); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
+            <div class="space-y-0.5">
+              {communityLinks.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <a
+                    href={link.href}
+                    class={`block px-3 py-2.5 text-xs rounded-xl transition-all duration-200 border cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/30 ${
+                      active
+                        ? 'text-cyan-300 bg-cyan-500/10 border-cyan-500/20'
+                        : 'text-slate-300 border-transparent hover:text-cyan-300 hover:bg-white/5'
+                    }`}
+                    data-i18n={link.key}
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
         <!-- Social icons -->
         <a href="https://www.instagram.com/bingotelescopio/" target="_blank" rel="noopener noreferrer" class="ml-2 text-slate-500 hover:text-pink-400 transition-colors p-2 rounded-xl hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50" aria-label="Instagram">
@@ -221,17 +246,19 @@ const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location
           );
         })}
 
-        <div class="border-t border-indigo-500/10 my-3"></div>
-        
-        {secondaryLinks.map((link) => {
+        <div class="pt-3 pb-1 pl-4">
+          <p class="text-xxs font-extrabold text-indigo-400/50 uppercase tracking-widest" data-i18n="nav.community">{t('nav.community')}</p>
+        </div>
+
+        {communityLinks.map((link) => {
           const active = isActive(link.href);
           return (
             <a
               href={link.href}
-              class={`block px-4 py-2.5 rounded-xl text-base font-semibold transition-all duration-300 border cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/30 ${
+              class={`block px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 border pl-8 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/30 ${
                 active
-                  ? 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 pl-6 shadow-[0_0_10px_rgba(34,211,238,0.05)]'
-                  : 'text-slate-300 border-transparent hover:text-white hover:bg-white/5'
+                  ? 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20 shadow-[0_0_10px_rgba(34,211,238,0.05)]'
+                  : 'text-slate-400 border-transparent hover:text-cyan-400 hover:bg-white/5'
               }`}
               data-i18n={link.key}
             >
@@ -377,6 +404,67 @@ const isExtensionActive = extensionLinks.some(link => link.key !== 'nav.location
           dropdownBtn.focus();
         }
       }
+    });
+  }
+
+  // Community dropdown
+  const communityBtn = document.getElementById('community-btn');
+  const communityMenu = document.getElementById('community-menu');
+  const communityChevron = document.getElementById('community-chevron');
+
+  if (communityBtn && communityMenu && communityChevron) {
+    communityBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = !communityMenu.classList.contains('invisible');
+      // Close extensions dropdown if open
+      const extMenu = document.getElementById('extensions-menu');
+      const extChevron = document.getElementById('extensions-chevron');
+      const extBtn = document.getElementById('extensions-btn');
+      if (extMenu) { extMenu.classList.add('opacity-0', 'invisible', '-translate-y-2'); extMenu.classList.remove('opacity-100', 'visible', 'translate-y-0'); }
+      if (extChevron) extChevron.style.transform = '';
+      if (extBtn) extBtn.setAttribute('aria-expanded', 'false');
+
+      if (isOpen) {
+        communityMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+        communityMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        communityChevron.style.transform = '';
+        communityBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        communityMenu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
+        communityMenu.classList.add('opacity-100', 'visible', 'translate-y-0');
+        communityChevron.style.transform = 'rotate(180deg)';
+        communityBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    document.addEventListener('click', () => {
+      communityMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+      communityMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+      communityChevron.style.transform = '';
+      communityBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const isOpen = !communityMenu.classList.contains('invisible');
+        if (isOpen) {
+          communityMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+          communityMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+          communityChevron.style.transform = '';
+          communityBtn.setAttribute('aria-expanded', 'false');
+          communityBtn.focus();
+        }
+      }
+    });
+  }
+
+  // Also close community when extensions opens
+  const dropdownBtn2 = document.getElementById('extensions-btn');
+  if (dropdownBtn2) {
+    dropdownBtn2.addEventListener('click', () => {
+      if (communityMenu) { communityMenu.classList.add('opacity-0', 'invisible', '-translate-y-2'); communityMenu.classList.remove('opacity-100', 'visible', 'translate-y-0'); }
+      if (communityChevron) communityChevron.style.transform = '';
+      if (communityBtn) communityBtn.setAttribute('aria-expanded', 'false');
     });
   }
 
