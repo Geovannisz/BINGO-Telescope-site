@@ -2,6 +2,7 @@
 name: "Rafael Alves Batista "
 role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/captura-de-tela-2026-10-09-185506.webp
 stage:
   - Stage 0
   - Stage I
