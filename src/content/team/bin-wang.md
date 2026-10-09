@@ -3,7 +3,7 @@ name: "Bin Wang  "
 gender: Masculino
 role: Coordenador
 institution: Shanghai Jiao Tong University/Yangzhou University
-photo: /images/uploads/d5dec67873aada1b9107f5febb6b6ff7a97e0be0.webp
+photo: /images/uploads/whatsapp-image-2026-10-09-at-17-52-38.webp
 stage:
   - Stage IV
   - Coordenação
