@@ -3,6 +3,7 @@ name: Filipe Batoni Abdalla
 gender: Masculino
 role: Coordenador
 institution: University College London (UCL) / Universidade de São Paulo (USP)
+photo: /images/uploads/whatsapp-image-2026-10-09-at-19-04-27.webp
 stage:
   - Stage III
   - Stage IV
