@@ -5,7 +5,6 @@ role: Core
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
 photo: /images/uploads/captura-de-tela-2026-08-01-102734.png
 stage:
-  - Coordenação
   - Stage 0
   - Stage I
   - Stage II
