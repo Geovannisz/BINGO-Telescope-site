@@ -1,6 +1,6 @@
 ---
 name: Jordany Viera de Melo
-order: 3
+order: 4
 gender: Masculino
 role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG), Universidade
