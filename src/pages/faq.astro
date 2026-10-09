@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="FAQ — Perguntas Frequentes" description="Respostas às perguntas mais frequentes sobre o Telescópio BINGO: o que é, onde fica, como funciona, objetivos científicos e como contribuir." nativeI18n pageId="faq">
+  <!-- Page Header -->
+  <div class="relative py-24 overflow-hidden section-bg-image" style="min-height: 40vh;">
+    <div class="bg-img" style={`background-image: url('${base}images/backgrounds/WMAP_2012-background.png'); opacity: 0.15;`}></div>
+    <div class="bg-overlay" style="background: linear-gradient(180deg, rgba(7,13,31,0.5) 0%, rgba(15,23,42,0.85) 70%, #0f172a 100%);"></div>
+    <div class="starfield"></div>
+    <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="max-w-3xl animate-fade-in-up">
+        <div class="flex mb-5">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span data-t="header.label">FAQ</span>
+          </span>
+        </div>
+        <h1 class="text-4xl font-black tracking-tight text-white sm:text-6xl" style="font-family: 'Outfit', sans-serif;" data-t="header.title">
+          Perguntas <span class="gradient-text-cyan">Frequentes</span>
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-slate-300" data-t="header.desc">
+          Respostas às principais dúvidas sobre o Radiotelescópio BINGO — o que é, onde fica, como funciona e como participar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-cosmic pt-10 pb-24">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8">
+
+      <!-- FAQ List -->
+      <div class="space-y-4 animate-on-scroll" id="faq-list">
+
+        <!-- Q1 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">1</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q1.question">O que é o Radiotelescópio BINGO?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q1.answer">
+              O BINGO (acrônimo para Baryon Acoustic Oscillations in Neutral Gas Observations) é um radiotelescópio de grande porte, atualmente em construção, que será um dos maiores da América Latina. Idealizado e coordenado pelo professor Élcio Abdalla, doutor em física, Professor Titular aposentado da Universidade de São Paulo (USP) e atual Gestor de Projetos do Governo da Paraíba, o projeto é uma colaboração internacional liderada pelo Brasil. O BINGO foi projetado para ser o primeiro telescópio do mundo a detectar as Oscilações Acústicas de Bárions (BAOs) por meio de ondas de rádio, utilizando a técnica de Mapeamento de Intensidades do hidrogênio neutro (HI) para estudar a distribuição de matéria no Universo e investigar a energia escura.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">2</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q2.question">Quais são as instituições participantes?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q2.answer">
+              O projeto BINGO é um consórcio internacional coordenado pela Universidade de São Paulo (USP) e coliderado pelo Instituto Nacional de Pesquisas Espaciais (INPE) e pela Universidade Federal de Campina Grande (UFCG) no Brasil. A lista de instituições participantes é extensa e inclui, do lado brasileiro, ainda a Universidade Federal da Paraíba (UFPB). Internacionalmente, conta atualmente com a participação das seguintes universidades: Shanghai Jiao Tong University (SJTU), University of Science and Technology of China (USTC), Ningbo University (NBU), Shanghai Astronomical Observatory (SHAO) e Yangzhou University (YZU), todas chinesas.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">3</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q3.question">Quem financia?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q3.answer">
+              Atualmente, o principal financiamento do projeto BINGO é feito pelo Governo da Paraíba, que ultrapassou o investimento feito pela FAPESP, que tem a mesma ordem de grandeza. Além disso, existe um forte financiamento por parte de instituições chinesas como: Fundação Nacional de Ciências Naturais da China, Universidade de Yangzhou, CETC54, Universidade de Ciências e Tecnologia da China, Departamento de Ciência e Tecnologia de Yangzhou, Província de Hebei e Ministério de Ciências e Tecnologia. Essas instituições têm financiamento já aprovado e fazem parte do BINGO, como também financiamentos que estão para ocorrer até 2030.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">4</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q4.question">Onde está localizado?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q4.answer">
+              O radiotelescópio BINGO está sendo instalado na Serra do Urubu (também denominada Serra da Catarina), no município de Aguiar, no sertão da Paraíba. As coordenadas aproximadas do local são 7°02′57″ Sul e 38°15′46″ Oeste. Este local foi escolhido por seu "silêncio eletromagnético", ou seja, por apresentar níveis muito baixos de interferência de radiofrequência, o que é essencial para a sensibilidade do telescópio.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">5</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q5.question">Como é o radiotelescópio?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q5.answer">
+              O BINGO será um telescópio de trânsito, ou seja, estático, sem partes móveis. Sua estrutura consiste em duas parábolas refletoras: uma primária e outra secundária. O espelho primário terá 40 metros de diâmetro e o secundário, 35,6 metros. A radiação captada pelo espelho primário é refletida para o secundário, que a direciona para um arranjo de 28 a 50 cornetas (feedhorns), as quais atuam como receptores. O telescópio operará na faixa de frequência de 0,98 GHz a 1,26 GHz e mapeará uma região do céu de 15° por 200°, com uma resolução angular de 40 minutos de arco.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">6</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q6.question">Quais são os objetivos científicos?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q6.answer">
+              O principal objetivo científico do BINGO é realizar a primeira detecção das Oscilações Acústicas de Bárions (BAOs) na faixa de rádio. Ao medir a distribuição do hidrogênio neutro no Universo, o telescópio permitirá estudar a energia escura e sua influência na expansão cósmica. Além disso, o BINGO também se dedicará à detecção de Rajadas Rápidas de Rádio (Fast Radio Bursts - FRBs) e contribuirá para a tomografia da distribuição de matéria no Universo, ajudando a refinar nosso entendimento sobre a evolução cósmica.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">7</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q7.question">Quais são os planos futuros?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q7.answer">
+              As próximas etapas para o BINGO incluem a finalização da construção e a realização dos primeiros testes, com previsão para iniciar a captação de dados no primeiro semestre de 2027. Após o início de suas operações, um centro de dados será organizado para disponibilização dos dados entre os membros do projeto BINGO para análise. Após a análise prioritária dos dados pelos membros do projeto, os dados serão disponibilizados na rede para que qualquer um, com interesse, possa analisá-los também. Além disso, já está sendo trabalhada uma atualização para o BINGO, o chamado ABDUS (Advanced BINGO Dark Universe Studies), que terá como objetivo a ampliação do projeto original, para estudo de uma região ainda maior do céu, cobrindo cerca de 50% do céu, e também fenômenos de que ainda não temos completo entendimento, como as Rajadas Rápidas de Rádio ou FRBs (Fast Radio Bursts).
+            </div>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">8</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q8.question">Quais são os objetivos sociais?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed" data-t="q8.answer">
+              Além da pesquisa científica, o projeto BINGO apresenta importantes objetivos sociais. Ele conta com ações voltadas para a pesquisa, ensino, divulgação científica e inovação. Essas ações sempre em contato com o governo da Paraíba e universidades colaboradoras (UFCG, USP, UFPB), com pesquisadores participando de eventos sempre que convidados.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">9</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q9.question">Quero contribuir. Como faço?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed space-y-3" data-t="q9.answer">
+              <p>Para contribuir, entre em contato com nossos grupos de divulgação:</p>
+              <ul class="space-y-1 pl-4">
+                <li>Instagram: <a href="https://www.instagram.com/bingotelescopio/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition-colors">@bingotelescopio</a></li>
+                <li>Site Oficial: <a href="https://bingotelescope.org/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition-colors">bingotelescope.org</a></li>
+                <li>E-mail: <a href="mailto:info@bingotelescope.org" class="text-cyan-400 hover:text-cyan-300 transition-colors">info@bingotelescope.org</a></li>
+              </ul>
+              <p>Ou entrar em contato com nossos profissionais:</p>
+              <ul class="space-y-1 pl-4">
+                <li>Prof. Dr. Elcio Abdalla: <a href="mailto:eabdalla@usp.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">eabdalla@usp.br</a></li>
+                <li>Prof. Dr. Luciano Barosi: <a href="mailto:lbarosi@df.ufcg.edu.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">lbarosi@df.ufcg.edu.br</a></li>
+                <li>Prof. Dr. Alexandre Wuensche: <a href="mailto:ca.wuensche@inpe.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">ca.wuensche@inpe.br</a></li>
+                <li>Dr. Jordany Vieira: <a href="mailto:jordanyv@gmail.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">jordanyv@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">10</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q10.question">Quero entrar em contato para entrevista</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed space-y-3" data-t="q10.answer">
+              <p>Para entrevistas, entre em contato com nossos grupos de divulgação para poder marcar entrevistas:</p>
+              <ul class="space-y-1 pl-4">
+                <li>Instagram: <a href="https://www.instagram.com/bingotelescopio/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition-colors">@bingotelescopio</a></li>
+                <li>Site Oficial: <a href="https://bingotelescope.org/" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 transition-colors">bingotelescope.org</a></li>
+                <li>E-mail: <a href="mailto:info@bingotelescope.org" class="text-cyan-400 hover:text-cyan-300 transition-colors">info@bingotelescope.org</a></li>
+              </ul>
+              <p>Ou entrar em contato com nossos profissionais:</p>
+              <ul class="space-y-1 pl-4">
+                <li>Prof. Dr. Elcio Abdalla: <a href="mailto:eabdalla@usp.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">eabdalla@usp.br</a> — Coordenador Geral</li>
+                <li>Prof. Dr. Luciano Barosi: <a href="mailto:lbarosi@df.ufcg.edu.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">lbarosi@df.ufcg.edu.br</a> — Co-Coordenador</li>
+                <li>Prof. Dr. Alexandre Wuensche: <a href="mailto:ca.wuensche@inpe.br" class="text-cyan-400 hover:text-cyan-300 transition-colors">ca.wuensche@inpe.br</a> — Co-Coordenador</li>
+                <li>Dr. Jordany Vieira: <a href="mailto:jordanyv@gmail.com" class="text-cyan-400 hover:text-cyan-300 transition-colors">jordanyv@gmail.com</a> — Pesquisador Sênior</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">11</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q11.question">Onde encontro material gráfico?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed space-y-3" data-t="q11.answer">
+              <p>Para acessar esse tipo de material, a recomendação é visitar o portal oficial do projeto BINGO. Dentro do portal é possível encontrar diversas imagens em cada seção referentes aos projetos e trabalhos que serão desenvolvidos junto ao BINGO. Assim, podendo ter uma boa base de figuras para divulgação.</p>
+              <a href={`${base}outreach`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+                <span>Ver Divulgação Científica</span>
+                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="faq-item glass-card-glow rounded-2xl overflow-hidden">
+          <button class="faq-btn w-full text-left px-8 py-6 flex items-start justify-between gap-4 group" aria-expanded="false">
+            <div class="flex items-start gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-sm mt-0.5">12</span>
+              <h2 class="text-white font-semibold text-lg leading-snug" style="font-family: 'Outfit', sans-serif;" data-t="q12.question">Como citar o radiotelescópio e o material disponibilizado?</h2>
+            </div>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-slate-500 group-hover:text-cyan-400 transition-all duration-300 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer hidden px-8 pb-6">
+            <div class="pl-12 text-slate-300 leading-relaxed space-y-3" data-t="q12.answer">
+              <p>Para citar corretamente o projeto em trabalhos acadêmicos ou científicos, o ideal é consultar as publicações oficiais do consórcio BINGO, como o white paper do projeto, e seguir as normas de citação da sua instituição ou do periódico científico ao qual o material será submetido.</p>
+              <a href={`${base}publications`} class="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium transition-colors">
+                <span>Ver Publicações</span>
+                <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /faq-list -->
+
+      <!-- Links to related sections -->
+      <div class="mt-16 pt-12 border-t border-indigo-500/10 animate-on-scroll">
+        <p class="text-slate-400 text-center mb-6 text-sm" data-t="related.title">Explore mais informações no portal</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href={`${base}about`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-indigo-500/15 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 text-sm font-medium transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span data-t="related.about">Sobre o Projeto</span>
+          </a>
+          <a href={`${base}science`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-indigo-500/15 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 text-sm font-medium transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            <span data-t="related.science">Ciência</span>
+          </a>
+          <a href={`${base}press`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-indigo-500/15 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 text-sm font-medium transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+            <span data-t="related.press">Imprensa</span>
+          </a>
+          <a href={`${base}publications`} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-indigo-500/15 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 text-sm font-medium transition-all duration-200">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span data-t="related.publications">Publicações</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const chevron = btn.querySelector('.faq-chevron');
+        const isOpen = !answer.classList.contains('hidden');
+
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) {
+            other.querySelector('.faq-answer').classList.add('hidden');
+            other.querySelector('.faq-chevron').style.transform = '';
+            other.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (isOpen) {
+          answer.classList.add('hidden');
+          chevron.style.transform = '';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          answer.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</BaseLayout>

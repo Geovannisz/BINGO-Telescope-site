@@ -12,6 +12,7 @@ import outreach from './pages/outreach';
 import location from './pages/location';
 import press from './pages/press';
 import institutional from './pages/institutional';
+import faq from './pages/faq';
 import error404 from './pages/404';
 
 export const pageTranslations: Record<
@@ -28,5 +29,6 @@ export const pageTranslations: Record<
   location,
   press,
   institutional,
+  faq,
   '404': error404,
 };
