@@ -3,12 +3,14 @@ name: Carlos Alexandre Wuensche de Souza
 gender: Masculino
 role: Coordenador
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto.webp
 stage:
   - Stage 0
   - Stage I
   - Stage II
+  - Coordenação
 city: São José dos Campos - SP, Brasil
-area: astrofísica e cosmologia
+area: Astrofísica e Cosmologia
 email: ca.wuensche@inpe.br
 lattes: http://lattes.cnpq.br/1448223845901360
 bio: "Formado em Física pela Universidade Estadual do Rio de Janeiro, mestre em
