@@ -64,6 +64,7 @@ const base = import.meta.env.BASE_URL;
             <li><a href={`${base}science`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.science">Ciência</a></li>
             <li><a href={`${base}instrumentation`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.instrumentation">Instrumentação</a></li>
             <li><a href={`${base}location`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.location">Localização</a></li>
+            <li><a href={`${base}press`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.press">Imprensa</a></li>
             <!-- <li><a href={`${base}team`} class="text-slate-400 hover:text-cyan-400 text-sm transition-colors" data-i18n="footer.team">Equipe</a></li> --><!-- TODO: re-enable when all team members are registered -->
           </ul>
         </div>
@@ -82,16 +83,23 @@ const base = import.meta.env.BASE_URL;
         <div>
           <h3 class="text-white font-semibold mb-4 uppercase tracking-wider text-sm" style="font-family: 'Outfit', sans-serif;" data-i18n="footer.contact">Contato</h3>
           <ul class="space-y-3 text-sm text-slate-400">
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-cyan-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              info@bingotelescope.org
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-cyan-400/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span>
+                <a href="mailto:info@bingotelescope.org" class="hover:text-cyan-400 transition-colors">info@bingotelescope.org</a><br/>
+                <a href="mailto:bingotelescope@usp.br" class="hover:text-cyan-400 transition-colors">bingotelescope@usp.br</a><br/>
+                <a href="mailto:bingotelescope@df.ufcg.edu.br" class="hover:text-cyan-400 transition-colors">bingotelescope@df.ufcg.edu.br</a>
+              </span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-cyan-400/60 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+              <span>
+                USP · INPE · UFCG<br/>
+                <a href={`${base}press`} class="text-cyan-400/70 hover:text-cyan-400 transition-colors text-xs">Ver endereços completos →</a>
+              </span>
             </li>
             <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-cyan-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-              Universidade de São Paulo (USP)
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-cyan-400/60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <svg class="w-4 h-4 text-cyan-400/60 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               Aguiar, Paraíba — Brasil
             </li>
           </ul>

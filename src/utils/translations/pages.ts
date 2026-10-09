@@ -10,6 +10,8 @@ import uirapuru from './pages/uirapuru';
 import abdus from './pages/abdus';
 import outreach from './pages/outreach';
 import location from './pages/location';
+import press from './pages/press';
+import institutional from './pages/institutional';
 import error404 from './pages/404';
 
 export const pageTranslations: Record<
@@ -24,5 +26,7 @@ export const pageTranslations: Record<
   abdus,
   outreach,
   location,
+  press,
+  institutional,
   '404': error404,
 };

@@ -106,5 +106,15 @@ const about: Record<string, { en: string; zh: string }> = {
   'paper9': { en: 'BINGO Interferometry System (BIS) for FRBs', zh: 'BINGO Interferometry System（BIS）用于FRB' },
   'paper10': { en: 'Updated forecasts and BINGO-ABDUS', zh: '更新预测和BINGO-ABDUS' },
   'publications.link': { en: 'View all publications', zh: '查看全部出版物' },
+  'governance.title': { en: 'Governance', zh: '治理' },
+  'governance.p1': {
+    en: 'BINGO is governed by a Management Committee that sets the guidelines for the international collaboration, defines scientific priorities, and oversees the distribution of responsibilities among partner institutions.',
+    zh: 'BINGO由管理委员会负责治理，负责制定国际合作指南、确定科学优先事项并监督合作机构间的职责分工。',
+  },
+  'governance.p2': {
+    en: 'The management members, collaboration documents, and pioneer project proposals submitted to funding agencies can be accessed on the Institutional page.',
+    zh: '管理成员名单、合作文件及提交给资助机构的先驱项目提案可在机构页面查阅。',
+  },
+  'governance.cta': { en: 'View Institutional Page', zh: '查看机构页面' },
 };
 export default about;
