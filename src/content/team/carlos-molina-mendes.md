@@ -3,6 +3,7 @@ name: Carlos Molina Mendes
 gender: Masculino
 role: Pesquisador Sênior
 institution: Universidade de São Paulo (USP), Escola de Artes, Ciências e Humanidades (EACH)
+photo: /images/uploads/servletrecuperafoto-5.webp
 stage:
   - Stage IV
 city: São Paulo , SP - Brasil
