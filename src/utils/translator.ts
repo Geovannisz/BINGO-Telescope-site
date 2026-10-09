@@ -437,8 +437,8 @@ export function translateUIElements(lang: string): void {
         return;
       }
 
-      // For the extensions button with a chevron SVG, update only the first text node
-      if (key === 'nav.extensions' && htmlEl.tagName === 'BUTTON') {
+      // For any nav button with a chevron SVG child, update only the text node to preserve the SVG
+      if (htmlEl.tagName === 'BUTTON' && htmlEl.querySelector('svg')) {
         const textNode = Array.from(htmlEl.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
         if (textNode) {
           textNode.textContent = dict[key] + ' ';
