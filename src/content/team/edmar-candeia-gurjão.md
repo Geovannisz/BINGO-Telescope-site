@@ -1,7 +1,7 @@
 ---
 name: Edmar Candeia Gurjão
 gender: Masculino
-role: Professor Associado
+role: Pesquisador Sênior
 institution: Universidade Federal de Campina Grande (UFCG)
 photo: /images/uploads/fotoedmar.png
 stage:
