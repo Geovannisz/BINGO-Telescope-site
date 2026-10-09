@@ -8,7 +8,6 @@ photo: /images/uploads/servletrecuperafoto-2.webp
 stage:
   - Stage I
   - Stage IV
-  - Coordenação
   - builder
 city: São Paulo / SP / Brasil
 area: Cosmologia e Radioastronomia
