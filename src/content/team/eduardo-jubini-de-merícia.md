@@ -3,6 +3,7 @@ name: "Eduardo Jubini de Merícia "
 gender: Masculino
 role: Pós-doc
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto-6.webp
 stage:
   - Stage 0
 area: Mapeamento e separação de componentes
