@@ -3,6 +3,7 @@ name: Raphael Pereira Rolim e Silva
 gender: Masculino
 role: Doutorando
 institution: Instituto de Física da Universidade de São Paulo
+photo: /images/uploads/servletrecuperafoto-14.webp
 stage:
   - Stage III
   - Stage IV
