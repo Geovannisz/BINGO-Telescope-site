@@ -3,8 +3,9 @@ name: "Chayenny Edna da Silva Rodrigues "
 gender: Feminino
 role: Doutorando
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-10.webp
 stage:
-  - Stage 0
+  - Stage V
 city: ""
 area: Cosmologia e Astrofísica
 email: chayenneedna@hotmail.com
