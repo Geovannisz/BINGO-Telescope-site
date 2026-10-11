@@ -5,7 +5,8 @@ role: Pós-doc
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
 photo: /images/uploads/servletrecuperafoto-6.webp
 stage:
-  - Stage 0
+  - Stage II
+  - Stage III
 area: Mapeamento e separação de componentes
 email: ejubini@gmail.com
 lattes: http://lattes.cnpq.br/4548688195720786
