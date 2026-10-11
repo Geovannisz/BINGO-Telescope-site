@@ -3,8 +3,11 @@ name: Raiff Hugo Santos
 gender: Masculino
 role: Doutorando
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-13.webp
 stage:
-  - Coordenação
+  - Stage I
+  - Stage II
+  - Stage III
 area: Cosmologia e astrofísica
 email: r41phph@gmail.com
 lattes: http://lattes.cnpq.br/1349790981374704
