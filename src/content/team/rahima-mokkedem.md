@@ -3,6 +3,7 @@ name: Rahima Mokkedem
 gender: Feminino
 role: Pós-doc
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto-9.webp
 stage:
   - Stage II
   - Stage III
