@@ -3,10 +3,12 @@ name: Jorge Fernando Valle Silva
 gender: Masculino
 role: Pós-doc
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto-8.webp
 stage:
   - Stage 0
   - Stage I
 email: jorge.silva@inpe.br
+lattes: " http://lattes.cnpq.br/3350015577302962"
 bio: Possui graduação em Física pela Universidad Nacional Mayor de San Marcos
   (2005), mestrado em Astrofísica pelo Instituto Nacional de Pesquisas Espaciais
   (2009), e doutorado em Ciências e Aplicações Geoespaciais pela Universidade
