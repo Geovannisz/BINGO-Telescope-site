@@ -3,6 +3,7 @@ name: Gabriel Augusto de Souza Silva
 gender: Masculino
 role: Pós-doc
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto-7.webp
 stage:
   - Stage II
   - Stage III
