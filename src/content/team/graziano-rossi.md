@@ -3,6 +3,7 @@ name: Graziano Rossi
 gender: Masculino
 role: Pós-doc
 institution: Sejong University
+photo: /images/uploads/615209.webp
 stage:
   - Stage III
   - Stage IV
