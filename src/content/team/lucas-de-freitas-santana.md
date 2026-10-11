@@ -3,8 +3,9 @@ name: Lucas de Freitas Santana
 gender: Masculino
 role: Doutorando
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-12.webp
 stage:
-  - Coordenação
+  - Stage 0
 email: lucasfrsantana@gmail.com
 lattes: http://lattes.cnpq.br/2392676181847202
 bio: Lucas de Freitas Santana é Licenciado em Física pela Universidade Federal
