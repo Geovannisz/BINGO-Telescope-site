@@ -3,6 +3,7 @@ name: "Helissa Helen "
 gender: Feminino
 role: Doutorando
 institution: Instituto Nacional de Pesquisas Espaciais (INPE)
+photo: /images/uploads/servletrecuperafoto-11.webp
 stage:
   - Stage II
   - Stage III
