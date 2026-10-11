@@ -3,7 +3,7 @@ name: João Manuel Araujo Dantas Queiroz
 gender: Masculino
 role: Mestrando
 institution: Universidade Federal de Sergipe (UFS)
-photo: /images/uploads/joao.jpg
+photo: /images/uploads/joao.webp
 stage:
   - Stage IV
 city: Aracaju, SE - Brasil
