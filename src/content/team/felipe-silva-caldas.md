@@ -3,8 +3,9 @@ name: Felipe Silva Caldas
 gender: Masculino
 role: Colaborador Externo
 institution: Instituto de Física da Universidade de São Paulo (IFUSP)
+photo: /images/uploads/servletrecuperafoto-20.webp
 stage:
-  - Stage 0
+  - Stage IV
 area: Cosmologia e dados óticos
 email: felipesc.physis@gmail.com
 lattes: http://lattes.cnpq.br/0586928902739628
