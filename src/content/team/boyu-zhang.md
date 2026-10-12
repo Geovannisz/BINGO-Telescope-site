@@ -1,7 +1,7 @@
 ---
 name: Boyu Zhang      
 gender: Masculino
-role: Colaborador Externo
+role: Pós-doc
 institution: University of Science and Technology of China
 stage:
   - Stage IV
