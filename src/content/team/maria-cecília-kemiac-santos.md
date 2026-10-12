@@ -3,8 +3,9 @@ name: Maria Cecília Kemiac Santos
 gender: Feminino
 role: Iniciação Científica
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-17.webp
 stage:
-  - Stage 0
+  - Stage IV
 email: ceciliakemiac2@gmail.com
 lattes: http://lattes.cnpq.br/2104439289641137
 bio: Graduanda em Bacharelado em Física pela Universidade Federal de Campina
