@@ -3,8 +3,9 @@ name: Gabriel Rodrigues Hickel
 gender: Masculino
 role: Colaborador Externo
 institution: Universidade Federal de Itajubá (UNIFEI)
+photo: /images/uploads/servletrecuperafoto-21.webp
 stage:
-  - Stage 0
+  - Stage IV
 area: Astrofísica
 email: gabrielhickel@unifei.edu.br
 lattes: http://lattes.cnpq.br/6306096928606380
