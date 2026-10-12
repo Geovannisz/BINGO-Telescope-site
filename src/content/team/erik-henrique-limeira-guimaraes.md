@@ -3,8 +3,10 @@ name: Erik Henrique Limeira Guimaraes
 gender: Masculino
 role: Iniciação Científica
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-16.webp
 stage:
   - Stage 0
+  - Stage I
 city: Campina Grande, PB - Brasil
 email: erik.henrique@estudante.ufcg.edu.br
 lattes: http://lattes.cnpq.br/2105779512800832
