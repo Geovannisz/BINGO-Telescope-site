@@ -3,6 +3,7 @@ name: Adriel Cassimiro do Nascimento
 gender: Masculino
 role: Colaborador Externo
 institution: Servidor Público efetivo na Prefeitura Municipal de Esperança - PB
+photo: /images/uploads/servletrecuperafoto-19.webp
 stage:
   - Stage 0
 city: " Esperança, PB - Brasil"
