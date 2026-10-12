@@ -3,8 +3,9 @@ name: Murilo Teixeira Santoma
 gender: Masculino
 role: Iniciação Científica
 institution: Instituto de Física da Universidade de São Paulo (IFUSP)
+photo: /images/uploads/servletrecuperafoto-18.webp
 stage:
-  - Stage 0
+  - Stage IV
 email: msantoma@usp.br
 lattes: http://lattes.cnpq.br/3127512433180480
 bio: Possui graduação em Física pela Universidade de São Paulo(2025). Atuando
