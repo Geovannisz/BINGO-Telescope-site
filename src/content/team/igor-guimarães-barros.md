@@ -1,7 +1,9 @@
 ---
 name: Igor Guimarães Barros
+gender: Masculino
 role: Colaborador Externo
 institution: Universidade Federal de Campina Grande (UFCG)
+photo: /images/uploads/servletrecuperafoto-22.webp
 stage:
   - Stage 0
   - Stage I
