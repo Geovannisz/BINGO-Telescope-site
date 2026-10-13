@@ -57,7 +57,10 @@ const teamCollection = defineCollection({
     stage: z.union([
       z.string(),
       z.array(z.string())
-    ]).transform(val => Array.isArray(val) ? val : [val]).default(['Coordenação']),
+    ]).optional().nullable().transform(val => {
+      if (!val) return [];
+      return Array.isArray(val) ? val : [val];
+    }).default([]),
     city: z.string().optional(),
     area: z.string().optional(),
     email: z.string().optional(),

@@ -96,15 +96,17 @@ const displayName = name;
     <h3 class="text-base sm:text-lg font-bold text-white mb-1 leading-snug group-hover:text-cyan-300 transition-colors duration-200" translate="no" title={name}>{displayName}</h3>
     <p class="notranslate text-cyan-400 text-xs sm:text-sm font-medium mb-1.5 sm:mb-2" translate="no" data-role-t={role}>{displayRole}</p>
     <p class="text-slate-400 text-[0.65rem] sm:text-xs uppercase tracking-wider leading-tight mb-2" translate="no">{institution}</p>
-    <div class="flex flex-wrap justify-center gap-1.5 mt-2">
-      {stagesArray.map((s) => {
-        const sClass = stageColors[s] || 'bg-slate-500/15 text-slate-400 border-slate-500/30';
-        return (
-          <span class={`inline-block text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${sClass}`}>
-            {s}
-          </span>
-        );
-      })}
-    </div>
+    {stagesArray.length > 0 && (
+      <div class="flex flex-wrap justify-center gap-1.5 mt-2">
+        {stagesArray.map((s) => {
+          const sClass = stageColors[s] || 'bg-slate-500/15 text-slate-400 border-slate-500/30';
+          return (
+            <span class={`inline-block text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${sClass}`}>
+              {s}
+            </span>
+          );
+        })}
+      </div>
+    )}
   </div>
 </a>

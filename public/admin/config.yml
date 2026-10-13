@@ -125,6 +125,10 @@ collections:
       - order
       - name
       - role
+    view_filters:
+      - label: Builders
+        field: role
+        pattern: Builder
     fields:
       - label: Nome Completo
         name: name
@@ -153,6 +157,7 @@ collections:
           - Coordenador Geral
           - Coordenador
           - Core
+          - Builder
           - Pesquisador Sênior
           - Senior Researcher
           - Professor Titular
@@ -179,6 +184,7 @@ collections:
         name: stage
         widget: select
         multiple: true
+        required: false
         options:
           - Stage 0
           - Stage I
@@ -188,10 +194,9 @@ collections:
           - Stage V
           - Coordenação
           - Core
+          - Builder
           - builder
-        default:
-          - Coordenação
-        hint: Stage(s) do BINGO em que o pesquisador atua (selecione um ou mais)
+        hint: Stage(s) do BINGO em que o pesquisador atua (opcional, selecione um ou mais)
       - label: Cidade / Estado / País
         name: city
         widget: string

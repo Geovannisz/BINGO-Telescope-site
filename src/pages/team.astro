@@ -74,33 +74,37 @@ const sortByOrder = (a: any, b: any) => {
 };
 
 /* Group members by role */
+const isBuilder = (m: any) =>
+  m.data.role === 'Builder' ||
+  (Array.isArray(m.data.stage) && m.data.stage.some((s: string) => typeof s === 'string' && s.toLowerCase() === 'builder'));
+
 const grouped = roleOrder
   .map(role => {
     let members;
     if (role === 'Coordenador') {
       members = allTeam
-        .filter(m => m.data.role === 'Coordenador')
+        .filter(m => !isBuilder(m) && m.data.role === 'Coordenador')
         .sort(sortByOrder);
     } else if (role === 'Core') {
       members = allTeam
-        .filter(m => m.data.role === 'Core')
+        .filter(m => !isBuilder(m) && m.data.role === 'Core')
         .sort(sortByOrder);
     } else if (role === 'Builder') {
       members = allTeam
-        .filter(m => m.data.role === 'Builder')
+        .filter(isBuilder)
         .sort(sortByOrder);
     } else if (role === 'Pesquisador Sênior') {
       members = allTeam
-        .filter(m => m.data.role === 'Pesquisador Sênior' || m.data.role === 'Senior Researcher')
+        .filter(m => !isBuilder(m) && (m.data.role === 'Pesquisador Sênior' || m.data.role === 'Senior Researcher'))
         .sort(sortByOrder);
     } else if (role === 'Professor Titular, Associado e Doutor') {
       const targetRoles = ['Professor Titular', 'Professor Associado', 'Professor Doutor'];
       members = allTeam
-        .filter(m => targetRoles.includes(m.data.role))
+        .filter(m => !isBuilder(m) && targetRoles.includes(m.data.role))
         .sort(sortByOrder);
     } else {
       members = allTeam
-        .filter(m => m.data.role === role)
+        .filter(m => !isBuilder(m) && m.data.role === role)
         .sort(sortByOrder);
     }
 

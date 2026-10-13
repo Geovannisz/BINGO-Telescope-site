@@ -1,10 +1,11 @@
 ---
-name: Yu Sang    
-role: Pesquisador Sênior
-institution: Yangzhou University 
+name: Yu Sang
+order: 6
+role: Builder
+institution: Yangzhou University
 stage:
   - Stage IV
-  - builder
+  - Builder
 city: China
 area: Cosmologia
 email: sangyu@yzu.edu.cn
