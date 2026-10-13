@@ -3,8 +3,9 @@ name: João Ricardo Neves da Silva
 gender: Masculino
 role: Colaborador Externo
 institution: Universidade Federal de Itajubá (UNIFEI)
+photo: /images/uploads/servletrecuperafoto-23.webp
 stage:
-  - Stage 0
+  - Stage V
 area: Educação
 email: jricardo.fisica@unifei.edu.br
 lattes: http://lattes.cnpq.br/5821775579111920
