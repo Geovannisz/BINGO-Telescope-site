@@ -8,6 +8,7 @@ photo: /images/uploads/servletrecuperafoto-2.webp
 stage:
   - Stage I
   - Stage IV
+  - Coordenação
 city: São Paulo / SP / Brasil
 area: Cosmologia e Radioastronomia
 email: alessandrormarins@gmail.com

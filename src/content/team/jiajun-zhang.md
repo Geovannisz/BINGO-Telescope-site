@@ -8,6 +8,7 @@ photo: /images/uploads/captura-de-tela-2026-07-30-143359.png
 stage:
   - Stage II
   - Stage III
+  - Coordenação
 city: Shanghai - China
 area: Astrophysics, AI for Science.
 email: jjzhang@shao.ac.cn

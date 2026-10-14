@@ -9,6 +9,7 @@ stage:
   - Stage I
   - Stage II
   - Stage III
+  - Coordenação
 city: São José dos Campos, SP - Brasil
 area: Astrofísica
 email: thyrso.villela@inpe.br

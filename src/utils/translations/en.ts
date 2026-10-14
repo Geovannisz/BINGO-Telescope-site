@@ -232,6 +232,7 @@ const en: Record<string, string> = {
   'Projetos futuros': 'Future projects',
 
   // ── Stages ──
+  'Management Group': 'Management Group',
   'Receptor, Backend Digital & Outrigger': 'Receiver, Digital Backend & Outrigger',
   'Dados Brutos, FRBs & Outriggers': 'Raw Data, FRBs & Outriggers',
   'Construção de Mapas & Remoção de Foreground': 'Map-Making & Foreground Removal',

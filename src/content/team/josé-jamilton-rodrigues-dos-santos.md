@@ -4,7 +4,7 @@ gender: Masculino
 role: Colaborador Externo
 institution: Universidade Estadual da Paraíba (UEPB)
 stage:
-  - Coordenação
+  - Stage V
 area: Cosmologia e Astrofísica
 email: jamiltonrodrigues@gmail.com
 lattes: http://lattes.cnpq.br/5465012466654473

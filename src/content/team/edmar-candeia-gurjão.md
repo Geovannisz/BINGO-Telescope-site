@@ -1,11 +1,12 @@
 ---
 name: Edmar Candeia Gurjão
 gender: Masculino
-role: Pesquisador Sênior
+role: Core
 institution: Universidade Federal de Campina Grande (UFCG)
 photo: /images/uploads/fotoedmar.png
 stage:
   - Stage 0
+  - Coordenação
 city: Campina Grande, PB - Brasil
 area: Engenharia Elétrica
 email: ecg@dee.ufcg.edu.br

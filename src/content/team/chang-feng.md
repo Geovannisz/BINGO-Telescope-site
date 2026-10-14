@@ -6,6 +6,7 @@ role: Builder
 institution: University of Science and Technology of China
 stage:
   - Stage IV
+  - Coordenação
 city: China
 email: changfeng@ustc.edu.cn
 authorized: true

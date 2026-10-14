@@ -233,6 +233,7 @@ const zh: Record<string, string> = {
   'Projetos futuros': '未来项目',
 
   // ── Stages ──
+  'Management Group': '管理组 (Management Group)',
   'Receptor, Backend Digital & Outrigger': '接收机、数字后端与Outrigger',
   'Dados Brutos, FRBs & Outriggers': '原始数据、FRB与Outrigger',
   'Construção de Mapas & Remoção de Foreground': '制图与前景移除',

@@ -120,6 +120,16 @@ const grouped = roleOrder
 /* Working Groups data */
 const stages = [
   {
+    id: 'management',
+    name: 'Coordenação',
+    title: 'Management Group',
+    description: 'Supervisão estratégica, governança institucional, relações com agências de fomento, acordos internacionais e coordenação científica e operacional da colaboração BINGO.',
+    color: 'from-cyan-500/20 to-cyan-600/5',
+    border: 'border-cyan-500/30',
+    badge: 'bg-cyan-500/15 text-cyan-400',
+    icon: '👥',
+  },
+  {
     id: '0',
     name: 'Stage 0',
     title: 'Receptor, Backend Digital & Outrigger',
@@ -225,14 +235,14 @@ const stages = [
             </h2>
             <div class="section-divider"></div>
             <p class="mt-4 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-              O projeto BINGO é estruturado em seis etapas interdependentes — do hardware ao impacto social — cada uma liderada por um grupo de especialistas.
+              O projeto BINGO é estruturado em grupos de trabalho e etapas interdependentes — da governança e gerenciamento ao hardware e impacto social — cada um liderado por especialistas.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {stages.map((s) => (
               <div 
-                class={`group glass-card-glow p-5 sm:p-6 border ${s.border} transition-all duration-500 hover:shadow-lg hover:shadow-cyan-500/5 relative cursor-pointer bg-slate-900/40 hover:bg-slate-800/60 rounded-xl flex flex-col`}
+                class={`group glass-card-glow p-5 sm:p-6 border ${s.border} transition-all duration-500 hover:shadow-lg hover:shadow-cyan-500/5 relative cursor-pointer bg-slate-900/40 hover:bg-slate-800/60 rounded-xl flex flex-col ${s.id === 'management' ? 'md:col-span-2 lg:col-span-3' : ''}`}
                 tabindex="0"
               >
                 <div class="flex items-center justify-between mb-1">
