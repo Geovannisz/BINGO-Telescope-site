@@ -14,6 +14,7 @@ import press from './pages/press';
 import institutional from './pages/institutional';
 import faq from './pages/faq';
 import error404 from './pages/404';
+import team from './pages/team';
 
 export const pageTranslations: Record<
   string,
@@ -30,5 +31,6 @@ export const pageTranslations: Record<
   press,
   institutional,
   faq,
+  team,
   '404': error404,
 };
