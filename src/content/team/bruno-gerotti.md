@@ -1,7 +1,7 @@
 ---
 name: "Chayenny Edna da Silva Rodrigues "
 gender: Feminino
-role: Doutorando
+role: Colaborador Externo
 institution: Universidade Federal de Campina Grande (UFCG)
 photo: /images/uploads/servletrecuperafoto-10.webp
 stage:
