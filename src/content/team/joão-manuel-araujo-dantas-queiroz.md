@@ -6,6 +6,7 @@ institution: Universidade Federal de Sergipe (UFS)
 photo: /images/uploads/joao.webp
 stage:
   - Stage IV
+  - Stage III
 city: Aracaju, SE - Brasil
 area: Cosmologia
 email: joaomank@academico.ufs.br
@@ -16,15 +17,15 @@ bio: Mestrando em Astrofísica e graduado em Astrofísica pela Universidade
   crescimento de estruturas e estimação de parâmetros cosmológicos. Atualmente
   realiza pesquisa de mestrado sob orientação dos professores Dr. Javier Ernesto
   Gonzalez e Dr. Elcio Abdalla. É integrante da colaboração científica do
-  radiotelescópio BINGO como aluno de mestrado, investigando modelos de energia
-  escura interagente e matéria escura milicarregada, com aplicações ao
-  crescimento de estruturas e à interpretação de observações cosmológicas.
-  Durante a graduação foi bolsista CNPq e aluno de iniciação científica,
-  desenvolvendo pesquisas em perturbações da densidade da matéria, modelos de
-  energia escura e análise de dados cosmológicos sob orientação do Prof. Dr.
-  Javier Ernesto Gonzalez. Também participou de projetos de extensão voltados à
-  divulgação científica e ao desenvolvimento de tecnologias aeroespaciais para
-  competições.
+  radiotelescópio BINGO como aluno de mestrado, investigando modelos de setor
+  escuro acoplado e a degenerescência entre interação no setor escuro e energia
+  escura dinâmica, com ênfase no crescimento de estruturas e em previsões de
+  vínculos cosmológicos para o BINGO. Durante a graduação foi bolsista CNPq e
+  aluno de iniciação científica, desenvolvendo pesquisas em perturbações da
+  densidade da matéria, modelos de energia escura e análise de dados
+  cosmológicos sob orientação do Prof. Dr. Javier Ernesto Gonzalez. Também
+  participou de projetos de extensão voltados à divulgação científica e ao
+  desenvolvimento de tecnologias aeroespaciais para competições.
 interest_origin: Meu interesse pela Cosmologia surgiu durante a graduação,
   quando percebi que algumas das maiores questões da Física ainda permanecem sem
   resposta. Entender por que o Universo está se expandindo de forma acelerada e
@@ -42,8 +43,8 @@ memorable_experience: Uma das experiências mais marcantes foi ingressar na
   experimento internacional dedicado ao estudo da estrutura em grande escala do
   Universo representa uma oportunidade única de contribuir para uma das
   principais questões da Cosmologia atual.
-project_title: "Energia Escura Interagente e Matéria Escura Milicarregada:
-  Crescimento de Estruturas e Previsões para o BINGO. "
+project_title: "Setor escuro interagente em teoria de campos: perturbações
+  lineares, vínculos cosmológicos e previsões para o BINGO"
 project_description: Minha pesquisa investiga modelos em que a energia escura e
   a matéria escura podem interagir entre si. O objetivo é estudar como essa
   interação influencia a formação de galáxias e outras estruturas do Universo e
