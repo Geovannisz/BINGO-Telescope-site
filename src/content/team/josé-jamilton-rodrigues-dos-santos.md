@@ -3,6 +3,7 @@ name: José Jamilton Rodrigues dos Santos
 gender: Masculino
 role: Colaborador Externo
 institution: Universidade Estadual da Paraíba (UEPB)
+photo: /images/uploads/servletrecuperafoto-24.webp
 stage:
   - Stage V
 area: Cosmologia e Astrofísica
