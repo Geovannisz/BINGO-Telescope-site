@@ -1,7 +1,7 @@
 ---
 name: Luiza Olivieri Ponte
 gender: Feminino
-role: Mestrando
+role: Colaborador Externo
 institution: Instituto de Física da Universidade de São Paulo (IFUSP)
 photo: /images/uploads/servletrecuperafoto-15.webp
 stage:
