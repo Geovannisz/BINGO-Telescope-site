@@ -205,8 +205,10 @@ export const ui = {
 export const roleTranslations = {
   pt: {
     // Singular roles
-    'role.Coordenador Geral': 'Coordenador Geral',
-    'role.Coordenador': 'Coordenador',
+    'role.Coordenador Geral': 'Pesquisador Principal',
+    'role.Coordenador': 'Co-pesquisador Principal',
+    'role.Pesquisador Principal': 'Pesquisador Principal',
+    'role.Co-pesquisador Principal': 'Co-pesquisador Principal',
     'role.Core': 'Core',
     'role.Builder': 'Builder',
     'role.Pesquisador Sênior': 'Pesquisador Sênior',
@@ -222,8 +224,10 @@ export const roleTranslations = {
     'role.Colaborador Externo': 'Colaborador Externo',
     'role.Assessor/Assistente': 'Assessor/Assistente',
     // Plural labels
-    'label.Coordenador Geral': 'Coordenação Geral',
-    'label.Coordenador': 'Coordenação',
+    'label.Coordenador Geral': 'Pesquisador Principal',
+    'label.Coordenador': 'Co-pesquisadores Principais',
+    'label.Pesquisador Principal': 'Pesquisador Principal',
+    'label.Co-pesquisador Principal': 'Co-pesquisadores Principais',
     'label.Core': 'Core',
     'label.Builder': 'Builders',
     'label.Pesquisador Sênior': 'Pesquisadores Seniores',
@@ -240,8 +244,10 @@ export const roleTranslations = {
     'label.Colaborador Externo': 'Colaboradores Externos',
     'label.Assessor/Assistente': 'Assessores e Assistentes',
     // Descriptions
-    'desc.Coordenador Geral': 'Liderança e direção estratégica do projeto BINGO',
-    'desc.Coordenador': 'Coordenadores de áreas-chave do projeto BINGO',
+    'desc.Coordenador Geral': 'Liderança e direção científica e estratégica do projeto BINGO',
+    'desc.Coordenador': 'Co-pesquisadores principais e lideranças de áreas-chave do projeto BINGO',
+    'desc.Pesquisador Principal': 'Liderança e direção científica e estratégica do projeto BINGO',
+    'desc.Co-pesquisador Principal': 'Co-pesquisadores principais e lideranças de áreas-chave do projeto BINGO',
     'desc.Core': 'Membros centrais da colaboração BINGO',
     'desc.Builder': 'Cientistas que participaram ativamente da construção física do Telescópio BINGO',
     'desc.Pesquisador Sênior': 'Pesquisadores com doutorado que lideram linhas de pesquisa',
@@ -260,8 +266,10 @@ export const roleTranslations = {
   },
   en: {
     // Singular roles
-    'role.Coordenador Geral': 'General Coordinator',
-    'role.Coordenador': 'Coordinator',
+    'role.Coordenador Geral': 'Principal Investigator',
+    'role.Coordenador': 'Co-principal Investigator',
+    'role.Pesquisador Principal': 'Principal Investigator',
+    'role.Co-pesquisador Principal': 'Co-principal Investigator',
     'role.Core': 'Core',
     'role.Builder': 'Builder',
     'role.Pesquisador Sênior': 'Senior Researcher',
@@ -277,8 +285,10 @@ export const roleTranslations = {
     'role.Colaborador Externo': 'External Collaborator',
     'role.Assessor/Assistente': 'Advisor/Assistant',
     // Plural labels
-    'label.Coordenador Geral': 'General Coordination',
-    'label.Coordenador': 'Coordination',
+    'label.Coordenador Geral': 'Principal Investigator',
+    'label.Coordenador': 'Co-principal Investigators',
+    'label.Pesquisador Principal': 'Principal Investigator',
+    'label.Co-pesquisador Principal': 'Co-principal Investigators',
     'label.Core': 'Core',
     'label.Builder': 'Builders',
     'label.Pesquisador Sênior': 'Senior Researchers',
@@ -296,7 +306,9 @@ export const roleTranslations = {
     'label.Assessor/Assistente': 'Advisors and Assistants',
     // Descriptions
     'desc.Coordenador Geral': 'Leadership and strategic direction of the BINGO project',
-    'desc.Coordenador': 'Coordinators of key areas of the BINGO project',
+    'desc.Coordenador': 'Co-principal investigators and leaders of key areas of the BINGO project',
+    'desc.Pesquisador Principal': 'Leadership and strategic direction of the BINGO project',
+    'desc.Co-pesquisador Principal': 'Co-principal investigators and leaders of key areas of the BINGO project',
     'desc.Core': 'Core members of the BINGO collaboration',
     'desc.Builder': 'Scientists who actively participated in the physical construction of the BINGO Telescope',
     'desc.Pesquisador Sênior': 'PhD researchers leading specific research lines',
@@ -315,8 +327,10 @@ export const roleTranslations = {
   },
   zh: {
     // Singular roles
-    'role.Coordenador Geral': '总协调人',
-    'role.Coordenador': '协调员',
+    'role.Coordenador Geral': '首席研究员 (PI)',
+    'role.Coordenador': '共同首席研究员 (Co-PI)',
+    'role.Pesquisador Principal': '首席研究员 (PI)',
+    'role.Co-pesquisador Principal': '共同首席研究员 (Co-PI)',
     'role.Core': 'Core',
     'role.Builder': '建设者',
     'role.Pesquisador Sênior': '资深研究员',
@@ -332,8 +346,10 @@ export const roleTranslations = {
     'role.Colaborador Externo': '外部合作者',
     'role.Assessor/Assistente': '顾问/助理',
     // Plural labels
-    'label.Coordenador Geral': '总协调',
-    'label.Coordenador': '协调',
+    'label.Coordenador Geral': '首席研究员',
+    'label.Coordenador': '共同首席研究员',
+    'label.Pesquisador Principal': '首席研究员',
+    'label.Co-pesquisador Principal': '共同首席研究员',
     'label.Core': 'Core',
     'label.Builder': '建设者',
     'label.Pesquisador Sênior': '资深研究员',
@@ -351,7 +367,9 @@ export const roleTranslations = {
     'label.Assessor/Assistente': '顾问和助理',
     // Descriptions
     'desc.Coordenador Geral': 'BINGO项目的领导与战略方向',
-    'desc.Coordenador': 'BINGO项目关键领域的协调员',
+    'desc.Coordenador': 'BINGO项目关键领域的共同首席研究员',
+    'desc.Pesquisador Principal': 'BINGO项目的领导与战略方向',
+    'desc.Co-pesquisador Principal': 'BINGO项目关键领域的共同首席研究员',
     'desc.Core': 'BINGO合作的核心成员',
     'desc.Builder': '积极参与BINGO望远镜实体建设的科学家',
     'desc.Pesquisador Sênior': '领导特定研究方向的博士研究人员',

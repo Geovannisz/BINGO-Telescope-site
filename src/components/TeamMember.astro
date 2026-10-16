@@ -30,10 +30,12 @@ const base = import.meta.env.BASE_URL;
 
 /* Gender-based role translation for Portuguese UI */
 let displayRole = role;
-if (gender === 'Feminino') {
+if (role === 'Coordenador Geral' || role === 'Pesquisador Principal') {
+  displayRole = gender === 'Feminino' ? 'Pesquisadora Principal' : 'Pesquisador Principal';
+} else if (role === 'Coordenador' || role === 'Co-pesquisador Principal') {
+  displayRole = gender === 'Feminino' ? 'Co-pesquisadora Principal' : 'Co-pesquisador Principal';
+} else if (gender === 'Feminino') {
   const femaleRoles: Record<string, string> = {
-    'Coordenador Geral': 'Coordenadora Geral',
-    'Coordenador': 'Coordenadora',
     'Pesquisador Sênior': 'Pesquisadora Sênior',
     'Senior Researcher': 'Pesquisadora Sênior',
     'Professor Titular': 'Professora Titular',

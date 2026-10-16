@@ -62,11 +62,12 @@ const personSchema = {
 };
 /* Gender-based role translation for Portuguese UI */
 let displayRole: string = d.role;
-if (d.gender === 'Feminino') {
+if (d.role === 'Coordenador Geral') {
+  displayRole = d.gender === 'Feminino' ? 'Pesquisadora Principal' : 'Pesquisador Principal';
+} else if (d.role === 'Coordenador') {
+  displayRole = d.gender === 'Feminino' ? 'Co-pesquisadora Principal' : 'Co-pesquisador Principal';
+} else if (d.gender === 'Feminino') {
   const femaleRoles: Record<string, string> = {
-    'Coordenador Geral': 'Coordenadora Geral',
-    'Pesquisador Principal': 'Pesquisadora Principal',
-    'Principal Researcher': 'Pesquisadora Principal',
     'Pesquisador Sênior': 'Pesquisadora Sênior',
     'Senior Researcher': 'Pesquisadora Sênior',
     'Professor Titular': 'Professora Titular',
